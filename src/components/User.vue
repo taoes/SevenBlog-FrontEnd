@@ -30,17 +30,21 @@
         computed: {
             newUserName: function () {
                 return this.$store.state.user.name
-            },setValue:function () {
-
             }
         }, methods: {
             addUser: function () {
                 if (this.$store.state.user.name === '') {
-                    this.$Message.error('数据为空，无法新增');
+                    this.$Notice.error({
+                        title: '数据新增失败',
+                        desc: 'Here is the notification description. Here is the notification description. '
+                    });
                     return
                 }
                 this.userList.push(this.$store.state.user.name)
-                this.$Message.info('新增完成');
+                this.$Notice.info({
+                    title: '数据新增完成',
+                    desc: 'Here is the notification description. Here is the notification description. '
+                });
             }
         }
     }

@@ -1,57 +1,33 @@
 <template>
     <div id="app">
         <Menu mode="horizontal" :theme="theme1" active-name="1">
-            <router-link to="/home">
-                <MenuItem name="1">
-                    <Icon type="ios-paper"/>
-                    内容管理
+            <router-link v-for="(menu,index) in menuList" :key="index" :to="menu.path">
+                <MenuItem  :name="menu.name">
+                    <Icon :type="menu.icon"/>
+                    {{menu.name}}
                 </MenuItem>
             </router-link>
-
-            <router-link to="/user">
-                <MenuItem name="2">
-
-                    <Icon type="ios-people"/>
-                    用户管理
-
-                </MenuItem>
-            </router-link>
-
-            <Submenu name="3">
-                <template slot="title">
-                    <Icon type="ios-stats"/>
-                    统计分析
-                </template>
-                <MenuGroup title="使用">
-                    <MenuItem name="3-1">新增和启动</MenuItem>
-                    <MenuItem name="3-2">活跃分析</MenuItem>
-                    <MenuItem name="3-3">时段分析</MenuItem>
-                </MenuGroup>
-                <MenuGroup title="留存">
-                    <MenuItem name="3-4">用户留存</MenuItem>
-                    <MenuItem name="3-5">流失用户</MenuItem>
-                </MenuGroup>
-            </Submenu>
-            <MenuItem name="4">
-                <Icon type="ios-construct"/>
-                综合设置
-            </MenuItem>
         </Menu>
 
-        <br>
-        <router-view></router-view>
+        <div class="routerView">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
 <script>
-    import Navigation from "@/components/Navigation";
-    import Side from "@/components/Side";
-    import ContentArea from "@/components/Content";
+    import menuApi from "@/api/MenuApi";
 
     export default {
         name: 'app',
         data: function () {
-            return {theme1: 'light'}
+            return {theme1: 'primary', "menuList": []}
+        },
+        created: function () {
+            let respFunc = (resp) => {
+                this.menuList = resp.data
+            };
+            menuApi.getMenuList(respFunc, () => this.$Message.error("网络请求出现异常"));
         },
         components: {}, computed: {
             sideWidth: function () {
@@ -64,7 +40,7 @@
 <style>
     #app {
         width: 100%;
-        font-family: 'Monaco', Helvetica, Arial, sans-serif;
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;
@@ -92,5 +68,12 @@
 
     .ivu-menu-item > a {
         color: #2c3e50;
+    }
+
+    .routerView {
+        padding-top: 20px;
+        width: 100%;
+        height: 1080px;
+        background-color: #f0f2f5;
     }
 </style>
