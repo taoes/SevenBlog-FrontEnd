@@ -73,7 +73,8 @@
     .routerView {
         padding-top: 20px;
         width: 100%;
-        height: 1080px;
+        height: 1280px;
+        max-height: 10800px;
         background-color: #f0f2f5;
     }
 </style>

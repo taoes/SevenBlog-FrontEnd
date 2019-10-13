@@ -1,6 +1,7 @@
 <template>
 
     <div class="github">
+        <BackTop></BackTop>
         <Row style="padding:20px">
             <Col span="12">
                 <Card :bordered="false">
@@ -76,6 +77,11 @@
         data() {
             return {
                 data: [],
+                github:{
+                    list:[
+                        {}
+                    ]
+                },
                 setting: {
                     radius: 100,
                     label: {
@@ -93,7 +99,8 @@
                         {'日期': 'GoLang', '访问用户': 3792},
                         {'日期': 'Python', '访问用户': 4593}
                     ]
-                }, accessData: {
+                },
+                accessData: {
                     columns: ['日期', '访问用户'],
                     radius: 1,
                     label: {

@@ -4,6 +4,7 @@ import Content from "@/components/Content";
 import BlogList from "@/components/BlogList";
 import DengYing from "@/components/DengYing";
 import Home from "@/components/Home";
+import Camera from "@/components/Camera";
 
 
 var router = new VueRouter({
@@ -26,7 +27,10 @@ var router = new VueRouter({
         }, {
             path: '/deng_ying',
             component: DengYing
-        },
+        }, {
+            path: '/camera',
+            component: Camera
+        }
     ]
 });
 
