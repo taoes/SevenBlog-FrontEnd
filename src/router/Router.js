@@ -9,7 +9,6 @@ import ArticleDetail from "@/components/blog/ArticleDetail";
 
 
 var router = new VueRouter({
-    mode: 'history',
     routes: [
         {
             path: '/',
