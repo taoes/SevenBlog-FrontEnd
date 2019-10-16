@@ -5,7 +5,8 @@ var config = {
         list: BASE_URL + "/menu"
     },
     blog: {
-        list: BASE_URL + "/blog"
+        list: BASE_URL + "/blog",
+        detail: BASE_URL + "/blog/detail"
     }
 };
 

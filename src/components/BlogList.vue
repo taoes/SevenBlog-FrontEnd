@@ -1,27 +1,32 @@
 <template>
     <div class="blogList">
         <List item-layout="vertical" id="list">
+
             <ListItem v-for="item in data" :key="item.title">
-                <ListItemMeta avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar" :title="item.title" :description="item.description"/>
-                {{ item.content }}
-                <template slot="action">
-                    <li>
-                        <Icon type="ios-star-outline"/>
-                        123
-                    </li>
-                    <li>
-                        <Icon type="ios-thumbs-up-outline"/>
-                        234
-                    </li>
-                    <li>
-                        <Icon type="ios-chatbubbles-outline"/>
-                        345
-                    </li>
-                </template>
-                <template slot="extra">
-                    <img :src="item.avatar" style="width: 280px">
-                </template>
+                <router-link to="/article">
+                    <ListItemMeta avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar"
+                                  :title="item.title" :description="item.description"/>
+                    {{ item.content }}
+                    <template slot="action">
+                        <li>
+                            <Icon type="ios-star-outline"/>
+                            123
+                        </li>
+                        <li>
+                            <Icon type="ios-thumbs-up-outline"/>
+                            234
+                        </li>
+                        <li>
+                            <Icon type="ios-chatbubbles-outline"/>
+                            345
+                        </li>
+                    </template>
+                    <template slot="extra">
+                        <img :src="item.avatar" style="width: 280px">
+                    </template>
+                </router-link>
             </ListItem>
+
         </List>
         <div class="page">
             <Page :total="total" :pageSize="pageSize" prev-text="上页" next-text="下页" placement="top"
@@ -45,7 +50,7 @@
                 data: [],
                 total: 0,
                 pageSize: 5,
-                markDown:"# 1234 - [x] 2423"
+                markDown: "# 1234 - [x] 2423"
             }
         }, methods: {
             pageOnChange: function (pageNumber) {

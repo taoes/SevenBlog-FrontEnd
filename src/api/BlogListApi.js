@@ -14,6 +14,13 @@ var menuApi = {
         }).catch(error => {
             errorFunc(error)
         });
+    },
+    getBlogDetail: function (blogId, respFunc, errorFunc) {
+        return axios.get(apiConfig.blog.detail).then((resp) => {
+            respFunc(resp);
+        }).catch(error => {
+            errorFunc(error)
+        });
     }
 
 }

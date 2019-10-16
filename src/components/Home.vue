@@ -51,7 +51,6 @@
             </Col>
         </Row>
 
-        <!--         心灵寄语-->
         <Row style="padding:20px">
             <Col span="24">
                 <Card :bordered="true">
@@ -64,8 +63,6 @@
                     <p>Content of card</p>
                 </Card>
             </Col>
-
-
         </Row>
     </div>
 
@@ -77,8 +74,8 @@
         data() {
             return {
                 data: [],
-                github:{
-                    list:[
+                github: {
+                    list: [
                         {}
                     ]
                 },

@@ -53,8 +53,7 @@
 
 </template>
 <script>
-    const pic1 = "https://unionfab-dev.oss-cn-hangzhou.aliyuncs.com/1/201909/108300e0-250b-42d4-9c91-fc2082b236cf";
-    const pic2 = "https://unionfab-dev.oss-cn-hangzhou.aliyuncs.com/1/201909/f5228a70-b0c5-4385-adf6-db69e9de9c3b";
+
     export default {
         data() {
             return {

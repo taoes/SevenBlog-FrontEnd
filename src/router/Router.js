@@ -32,7 +32,7 @@ var router = new VueRouter({
             path: '/camera',
             component: Camera
         }, {
-            path: '/name',
+            path: '/article',
             component: ArticleDetail
         }
     ]
