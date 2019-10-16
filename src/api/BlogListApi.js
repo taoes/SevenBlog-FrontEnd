@@ -16,6 +16,7 @@ var menuApi = {
         });
     },
     getBlogDetail: function (blogId, respFunc, errorFunc) {
+        console.log("查询blogId=" + blogId + "\t的文章详情");
         return axios.get(apiConfig.blog.detail).then((resp) => {
             respFunc(resp);
         }).catch(error => {

@@ -9,6 +9,7 @@ import ArticleDetail from "@/components/blog/ArticleDetail";
 
 
 var router = new VueRouter({
+    mode: 'history',
     routes: [
         {
             path: '/',
@@ -24,18 +25,28 @@ var router = new VueRouter({
         },
         {
             path: '/blog',
+            name: 'blog',
             component: BlogList
-        }, {
+        },
+        {
+            name: 'article',
+            path: '/blog/article/:id',
+            component: ArticleDetail
+        }
+        ,
+        {
             path: '/ying',
             component: DengYing
         }, {
             path: '/camera',
             component: Camera
-        }, {
-            path: '/article',
-            component: ArticleDetail
         }
     ]
+});
+
+
+router.afterEach((to, from) => {
+    console.log("路由：" + from.path + " => " + to.path)
 });
 
 export default router;

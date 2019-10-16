@@ -9,7 +9,7 @@
     export default {
         name: "BaiKe",
         data: function () {
-
+            return {}
         },
         computed: {}, methods: {}
     }

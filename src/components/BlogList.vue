@@ -1,9 +1,8 @@
 <template>
     <div class="blogList">
         <List item-layout="vertical" id="list">
-
             <ListItem v-for="item in data" :key="item.title">
-                <router-link to="/article">
+                <router-link :to="'/blog/article/'+item.id">
                     <ListItemMeta avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar"
                                   :title="item.title" :description="item.description"/>
                     {{ item.content }}
@@ -26,14 +25,12 @@
                     </template>
                 </router-link>
             </ListItem>
-
         </List>
         <div class="page">
             <Page :total="total" :pageSize="pageSize" prev-text="上页" next-text="下页" placement="top"
                   style="width: 80%;margin-left: 10%"
                   @on-change="pageOnChange"/>
         </div>
-        <router-view></router-view>
     </div>
 </template>
 <script>
