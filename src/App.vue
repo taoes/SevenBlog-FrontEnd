@@ -2,13 +2,12 @@
     <div id="app">
         <Menu mode="horizontal" :theme="theme1" active-name="1">
             <router-link v-for="(menu,index) in menuList" :key="index" :to="menu.path">
-                <MenuItem  :name="menu.name">
+                <MenuItem :name="menu.name">
                     <Icon :type="menu.icon"/>
                     {{menu.name}}
                 </MenuItem>
             </router-link>
         </Menu>
-
         <div class="routerView">
             <router-view></router-view>
         </div>
@@ -44,6 +43,10 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;
+    }
+
+    html body {
+        cursor: url('./assets/cursor.png'), auto;
     }
 
     body {

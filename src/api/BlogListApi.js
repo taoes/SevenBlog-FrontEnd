@@ -3,12 +3,12 @@ import apiConfig from './HttpConfig'
 
 var menuApi = {
 
-    getBlogList: function (pageNumber, respFunc, errorFunc) {
+    getBlogList: function (pageNumber, pageSize, respFunc, errorFunc) {
 
         var param = {
             pageNumber: pageNumber,
-            pageSize: 10
-        }
+            pageSize: pageSize
+        };
         return axios.get(apiConfig.blog.list, {params: param}).then((resp) => {
             respFunc(resp);
         }).catch(error => {

@@ -2,7 +2,7 @@
     <div class="blogList">
         <List item-layout="vertical" id="list">
             <ListItem v-for="item in data" :key="item.title">
-                <ListItemMeta :avatar="item.avatar" :title="item.title" :description="item.description"/>
+                <ListItemMeta avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar" :title="item.title" :description="item.description"/>
                 {{ item.content }}
                 <template slot="action">
                     <li>
@@ -19,14 +19,16 @@
                     </li>
                 </template>
                 <template slot="extra">
-                    <img src="https://dev-file.iviewui.com/5wxHCQMUyrauMCGSVEYVxHR5JmvS7DpH/large" style="width: 280px">
+                    <img :src="item.avatar" style="width: 280px">
                 </template>
             </ListItem>
         </List>
         <div class="page">
-            <Page :total="100" prev-text="上页" next-text="下页" placement="top" style="width: 80%;margin-left: 10%"
+            <Page :total="total" :pageSize="pageSize" prev-text="上页" next-text="下页" placement="top"
+                  style="width: 80%;margin-left: 10%"
                   @on-change="pageOnChange"/>
         </div>
+        <router-view></router-view>
     </div>
 </template>
 <script>
@@ -36,28 +38,33 @@
     let errorFunc = () => {
         this.$Message.error("网络请求出现异常")
     };
+
     export default {
         data() {
             return {
-                data: []
+                data: [],
+                total: 0,
+                pageSize: 5,
+                markDown:"# 1234 - [x] 2423"
             }
         }, methods: {
             pageOnChange: function (pageNumber) {
                 let respFunc = (resp) => {
-                    this.data = resp.data;
-                    this.$Message.info("页面切换到" + pageNumber + "页完成")
+                    this.data = resp.data.data;
+                    this.total = resp.data.total;
+                    javascript:scroll(0, 0)
                 };
 
 
-                blogApiListApi.getBlogList(pageNumber, respFunc, errorFunc);
+                blogApiListApi.getBlogList(pageNumber, this.pageSize, respFunc, errorFunc);
             }
-        }, created: function () {
+        }, mounted: function () {
             let respFunc = (resp) => {
-                this.data = resp.data
+                this.data = resp.data.data;
+                this.total = resp.data.total;
+                javascript:scroll(0, 0)
             };
-
-
-            blogApiListApi.getBlogList(1, respFunc, errorFunc);
+            blogApiListApi.getBlogList(1, this.pageSize, respFunc, errorFunc);
         }
     }
 </script>

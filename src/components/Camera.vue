@@ -77,7 +77,6 @@
                         {name: "荷叶2", img: "http://pzb5gmte2.bkt.clouddn.com/2019.5.back.jpg"},
                         {name: "池边", img: "http://pzb5gmte2.bkt.clouddn.com/2019.2"},
                         {name: "池边2", img: "http://pzb5gmte2.bkt.clouddn.com/2019.3"},
-
                     ]
                 }
             }
@@ -144,16 +143,6 @@
         position: relative;
         box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
         margin-right: 4px;
-    }
-
-    .demo:hover {
-        display: block;
-
-    }
-
-    .video-player {
-        width: 270px;
-        height: 460px;
     }
 
 
