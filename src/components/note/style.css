@@ -1,0 +1,9 @@
+.note {
+    margin-left: 10%;
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 5px 5px 30px 1px #515a6e;
+    background-color: #FFFFFF;
+}

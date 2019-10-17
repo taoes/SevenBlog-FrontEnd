@@ -1,11 +1,12 @@
 import VueRouter from "vue-router";
 import BaiKe from "@/components/BaiKe";
-import Content from "@/components/Content";
+
 import BlogList from "@/components/BlogList";
 import DengYing from "@/components/DengYing";
 import Home from "@/components/home/Home";
 import Camera from "@/components/Camera";
 import ArticleDetail from "@/components/blog/ArticleDetail";
+import Note from "@/components/note/Note";
 
 
 var router = new VueRouter({
@@ -16,7 +17,7 @@ var router = new VueRouter({
         },
         {
             path: '/book',
-            component: Content
+            component: Note
         },
         {
             path: '/user',

@@ -6,6 +6,8 @@
                     <ListItemMeta avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar"
                                   :title="item.title" :description="item.description"/>
                     {{ item.content }}
+
+                </router-link>
                     <template slot="action">
                         <li>
                             <Icon type="ios-star-outline"/>
@@ -21,9 +23,10 @@
                         </li>
                     </template>
                     <template slot="extra">
-                        <img :src="item.avatar" style="width: 280px">
+                        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2321248164,1606717613&fm=26&gp=0.jpg" style="width: 280px;max-height: 200px">
                     </template>
-                </router-link>
+
+
             </ListItem>
         </List>
         <div class="page">
