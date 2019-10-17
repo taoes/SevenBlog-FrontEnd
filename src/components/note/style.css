@@ -2,8 +2,24 @@
     margin-left: 10%;
     width: 80%;
     height: 80%;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 5px 5px 30px 1px #515a6e;
     background-color: #FFFFFF;
+
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.cardDiv {
+    padding: 5px;
+
+}
+
+
+.desc {
+    margin-top: 20px;
 }

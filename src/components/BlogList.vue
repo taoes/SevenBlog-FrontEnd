@@ -23,7 +23,7 @@
                         </li>
                     </template>
                     <template slot="extra">
-                        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2321248164,1606717613&fm=26&gp=0.jpg" style="width: 280px;max-height: 200px">
+                        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2321248164,1606717613&fm=26&gp=0.jpg" style="width: 280px;max-height: 200px ">
                     </template>
 
 

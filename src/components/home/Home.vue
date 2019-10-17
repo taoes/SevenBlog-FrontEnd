@@ -170,23 +170,4 @@
 
 <style scoped>
 
-    .cardTitle {
-        margin-left: 1em;
-        margin: 20px;
-    }
-
-    .github {
-        width: 80%;
-        margin-left: 10%;
-    }
-
-
-    .ivu-card {
-        margin-left: 20px;
-        margin-right: 20px;
-        height: 300px;
-        box-shadow: 1px 1px 1px 1px lightgray;
-    }
-
-
 </style>

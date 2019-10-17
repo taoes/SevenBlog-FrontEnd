@@ -1,6 +1,18 @@
 <template>
-    <div class="note">
-fsdf
+
+    <div class="note bookCard">
+        <div class="cardDiv" v-for="(book,index) of bookList" @click="toNewPage(book)" :key="index"
+             style="width: 314px;height: 400px">
+            <Card>
+                <div style="text-align:center">
+                    <img :src="book.cover" :alt="book.desc">
+                    <div class="desc">
+                        <h3>{{book.title}}</h3>
+                        <span>{{book.subTitle}}</span>
+                    </div>
+                </div>
+            </Card>
+        </div>
     </div>
 </template>
 
@@ -8,10 +20,63 @@ fsdf
     import "./style.css"
 
     export default {
-        name: "Note"
+        name: "Note",
+        data: function () {
+            return {
+                bookList: [
+                    {
+                        cover: "https://file.iviewui.com/dist/2ecd3b0452aa197097d5131afacab7b8.png",
+                        url: "https://www.yuque.com/mybook/jvm",
+                        title: "☕️ 深入理解Java虚拟机 ",
+                        subTitle: "JVM高级特性与最佳实践",
+                        desc: ""
+                    },
+                    {
+                        cover: "https://file.iviewui.com/dist/2ecd3b0452aa197097d5131afacab7b8.png",
+                        url: "https://www.yuque.com/mybook/jvm",
+                        title: "🌲 深入NodeJS 技术栈(敬请期待)",
+                        subTitle: "NodeJS相关知识点整理",
+                        desc: ""
+                    }, {
+                        cover: "https://file.iviewui.com/dist/2ecd3b0452aa197097d5131afacab7b8.png",
+                        url: "https://www.yuque.com/mybook/jvm",
+                        title: "🔐 数据库相关总结(敬请期待)",
+                        subTitle: "Mysql以及NoSQL等技术记录",
+                        desc: ""
+                    }, {
+                        cover: "https://file.iviewui.com/dist/2ecd3b0452aa197097d5131afacab7b8.png",
+                        url: "https://www.yuque.com/mybook/jvm",
+                        title: "Java的IO流(敬请期待)",
+                        subTitle: "",
+                        desc: ""
+                    }
+                    , {
+                        cover: "https://file.iviewui.com/dist/2ecd3b0452aa197097d5131afacab7b8.png",
+                        url: "https://www.yuque.com/mybook/jvm",
+                        title: "🔮 杂谈",
+                        subTitle: "",
+                        desc: ""
+                    }
+                ]
+            }
+        },
+        methods: {
+            toNewPage: function (book) {
+                this.$Modal.confirm({
+                    title: '即将访问语雀页面',
+                    content: '<p>页面将跳转到 《' + book.title + '》 是否继续? </p>',
+                    onOk: () => {
+                        window.open(book.url, '_blank', 'toolbar=yes, width=900, height=700')
+                    },
+                    onCancel: () => {
+
+                    }
+                });
+            }
+        }
+
     }
 </script>
 
 <style scoped>
-
 </style>
