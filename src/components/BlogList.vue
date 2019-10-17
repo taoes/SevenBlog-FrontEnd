@@ -54,7 +54,7 @@
                 let respFunc = (resp) => {
                     this.data = resp.data.data;
                     this.total = resp.data.total;
-                    javascript:scroll(0, 0)
+                    scroll(0, 0)
                 };
 
 

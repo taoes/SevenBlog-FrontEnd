@@ -42,7 +42,7 @@
             <Panel class="Panel" :name="name" v-for="(serial,name) of serialList">
                 {{name}}
                 <p slot="content" class="content">
-                    <img v-for="pic in serial" :src="pic.img" :key="pic.name" @click="showPic(pic)">
+                    <img v-for="pic in serial" :src="pic.img +'?imageView2/1/w/300/h/300'" :key="pic.name" @click="showPic(pic)">
                 </p>
             </Panel>
         </Collapse>
