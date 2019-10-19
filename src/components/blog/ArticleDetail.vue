@@ -1,17 +1,21 @@
 <template>
     <div class="articleDetail">
-        <mavonEditor
-                class="markdownPreview"
-                :value="value"
-                :subfield="false"
-                :defaultOpen="'preview'"
-                :boxShadow="false"
-                :toolbarsFlag="false"
-                :editable="false"
-                :scrollStyle="false"
-                :ishljs="true"
-                :navigation="true"
-        ></mavonEditor>
+        <BlogMenu></BlogMenu>
+        <div style="margin-left: 20px;width: 100%">
+            <mavonEditor
+                    class="markdownPreview"
+                    :value="blog.content || emptyTip"
+                    :subfield="false"
+                    :defaultOpen="'preview'"
+                    :boxShadow="false"
+                    :toolbarsFlag="false"
+                    :editable="false"
+                    :scrollStyle="true"
+                    :ishljs="true"
+                    :navigation="tocStatus"
+                    style="max-height: 800px"
+            ></mavonEditor>
+        </div>
     </div>
 </template>
 
@@ -19,6 +23,7 @@
     import {mavonEditor} from 'mavon-editor'
 
     import BlogListApi from "@/api/BlogListApi";
+    import BlogMenu from "./BlogMenu";
 
 
     let errorFunc = (error) => {
@@ -30,19 +35,21 @@
         name: "ArticleDetail",
         data: function () {
             return {
-                value: '',
-                title: '测试标题',
+                blog: {},
+                emptyTip: '> 文章内容为空，数据库可能出了点问题',
+                tocStatus: false, // 显示文章的导航目录
                 starCount: 1000,
                 readCount: 132234,
                 commentCount: 1234
             }
         }, components: {
+            BlogMenu,
             mavonEditor
         },
         mounted: function () {
-            let id = this.$route.params.id
+            let id = this.$route.params.id;
             let respFunc = (resp) => {
-                this.value = resp.data.content;
+                this.blog = resp.data;
             };
             BlogListApi.getBlogDetail(id, respFunc, errorFunc);
         }
@@ -53,43 +60,18 @@
 
 
     .articleDetail {
-        width: 80%;
-        height: 100%;
-        margin-left: 10%;
+        width: 100%;
+        display: flex;
+        height: 80%;
         border-radius: 100px;
-        padding: 20px;
     }
 
     .markdownPreview {
-        width: 100%;
-        height: 80%;
+        min-width: 90%;
+        margin-right: 30px;
         background-color: white;
         box-shadow: 1px 1px 1px 1px lightgray;
     }
 
-    .ctrl {
-        width: 50%;
-        margin-left: 25%;
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .cardTitle {
-        margin-left: 1em;
-        margin: 20px;
-    }
-
-    .github {
-        width: 80%;
-        margin-left: 10%;
-    }
-
-    .ivu-card {
-        margin-left: 20px;
-        margin-right: 20px;
-        height: 300px;
-        box-shadow: 1px 1px 1px 1px lightgray;
-    }
 
 </style>

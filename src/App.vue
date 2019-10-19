@@ -20,7 +20,7 @@
     export default {
         name: 'app',
         data: function () {
-            return {theme1: 'primary', "menuList": []}
+            return {theme1: 'dark', "menuList": []}
         },
         created: function () {
             let respFunc = (resp) => {
@@ -67,6 +67,12 @@
 
     Side {
         margin-top: 40px;
+    }
+
+    .ivu-menu {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        width: 100%;
     }
 
     .ivu-menu-item > a {

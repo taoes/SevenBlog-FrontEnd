@@ -23,15 +23,14 @@
                         <span class="cardTitle">我的Github项目</span>
                     </div>
 
-                    <div class="repos" v-for="repos of reposList" @click="toNewTag(repos.title,repos.href)">
-                        <Divider orientation="left">
-                            <span class="reposTitle">{{repos.title}}</span>
-                        </Divider>
-                        <p class="reposDesc">{{repos.desc}}</p>
+                    <div class="repos">
+                        <Collapse v-model="githubCollapse" accordion>
+                            <Panel :name="repos.name" :key="repos.id" v-for="(repos,index) of reposList">
+                                {{repos.name}}
+                                <p slot="content" class="reposDesc">{{repos.desc}}</p>
+                            </Panel>
+                        </Collapse>
                     </div>
-
-
-                    、
                 </Card>
             </Col>
 
@@ -47,7 +46,6 @@
                 </Card>
             </Col>
         </Row>
-
 
         <Row style="padding:20px">
             <Col span="12">
@@ -93,28 +91,14 @@
 <script>
 
     import "./style.css"
+    import reposApi from '@/api/GithubRepos'
 
     export default {
         data() {
             return {
+                githubCollapse: "0",
                 showModal: false,
-                reposList: [
-                    {
-                        title: "CodeSnippets",
-                        href: "https://github.com/zhou-seven/java-snippets",
-                        desc: "🔥 日常开发的奇淫巧技(正在完善)"
-                    },
-                    {
-                        title: "Saka",
-                        href: "https://github.com/zhou-seven/Saka",
-                        desc: "🏗 基于Spring Boot的事件消息框架, 能够发送消息到消息总线并且执行"
-                    },
-                    {
-                        title: "NettyWebService",
-                        href: "https://github.com/zhou-seven/NettyWebService",
-                        desc: "🧬 基于Netty4实现的轻量级的 Web 服务器, 支持IOC容器以及拦截器，路由等特性"
-                    },
-                ],
+                reposList: [],
                 setting: {
                     radius: 100,
                     label: {
@@ -151,19 +135,20 @@
             }
         }, methods: {
             toNewTag: function (title, href) {
-
-                this.$Modal.confirm({
-                    title: '即将访问Github页面',
-                    content: '<p>页面将跳转到' + title + ' 是否继续? </p>',
-                    onOk: () => {
-                        window.open(href, '_blank', 'toolbar=yes, width=900, height=700')
-                    },
-                    onCancel: () => {
-
-                    }
-                });
-
+                window.open(href, '_blank', 'toolbar=yes, width=900, height=700')
             }
+        }, mounted() {
+
+            let respFunc = (resp) => {
+                this.reposList = resp.data
+            };
+
+            let error = () => {
+
+            };
+
+            reposApi.getAllRepos(6, respFunc, error);
+
         }
     }
 </script>
