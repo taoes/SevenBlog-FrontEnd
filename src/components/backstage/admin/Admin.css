@@ -1,0 +1,23 @@
+.adminDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+}
+
+
+.adminMenu {
+    width: 260px;
+    height: 1024px;
+    background-color: white;
+}
+
+
+/* 管理员界面内容区域 */
+.adminContent {
+    width: 100%;
+    height: 1024px;
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}

@@ -78,7 +78,7 @@
 
     .markdownPreview {
         min-width: 90%;
-        margin-right: 30px;
+        margin-right: 0px;
         background-color: white;
         box-shadow: 1px 1px 1px 1px lightgray;
     }

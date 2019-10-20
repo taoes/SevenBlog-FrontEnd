@@ -79,9 +79,7 @@
         name: "BlogMenu",
         computed: {
             defaultActive: function () {
-                return ['back','front']
-
-                // this.$store.blogMenu.state.defaultActive
+                return ['back', 'front']
             }
         },
         methods: {
@@ -90,9 +88,7 @@
                     type: 'changeType',
                     params: index
                 });
-
                 this.$router.push('/blog')
-
             }
         }
     }

@@ -7,6 +7,8 @@ import Home from "@/components/home/Home";
 import Camera from "@/components/camera/Camera";
 import ArticleDetail from "@/components/blog/ArticleDetail";
 import Note from "@/components/note/Note";
+import AdminLogin from "@/components/backstage/AdminLogin";
+import Admin from "@/components/backstage/admin/Admin";
 
 const routerPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -45,6 +47,14 @@ var router = new VueRouter({
         }, {
             path: '/camera',
             component: Camera
+        }
+        , {
+            path: '/admin',
+            component: Admin
+        }
+        , {
+            path: '/admin/login',
+            component: AdminLogin
         }
     ]
 });

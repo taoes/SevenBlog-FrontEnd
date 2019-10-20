@@ -1,0 +1,20 @@
+.backLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+
+.inputDiv {
+    width: 500px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    margin-top: 10px;
+}
+
+.el-input {
+    margin-left: 20px;
+}
