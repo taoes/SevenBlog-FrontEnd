@@ -23,3 +23,8 @@
 .desc {
     margin-top: 20px;
 }
+
+.image {
+    border-radius: 20px;
+    width: 180px;
+}

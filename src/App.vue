@@ -1,13 +1,18 @@
 <template>
     <div id="app">
-        <Menu mode="horizontal" :theme="theme1" active-name="1">
-            <router-link v-for="(menu,index) in menuList" :key="index" :to="menu.path">
-                <MenuItem :name="menu.name">
-                    <Icon :type="menu.icon"/>
+        <el-menu
+                class="el-menu-demo"
+                mode="horizontal"
+                background-color="#545c64"
+                text-color="#fff"
+                active-text-color="#ffd04b">
+            <el-menu-item v-for="(menu,index) of menuList" :index="menu.name">
+                <router-link :key="menu.path" :to="menu.path">
+                    <i :class="menu.icon"></i>
                     {{menu.name}}
-                </MenuItem>
-            </router-link>
-        </Menu>
+                </router-link>
+            </el-menu-item>
+        </el-menu>
         <div class="routerView">
             <router-view></router-view>
         </div>
@@ -49,7 +54,10 @@
         cursor: url('./assets/cursor.png'), auto;
     }
 
-    body {
+    html {
+        max-width: 100%;
+        overflow-x: hidden;
+    }body {
         margin: 0;
         padding: 0;
     }
@@ -85,5 +93,13 @@
         height: 1280px;
         max-height: 10800px;
         background-color: #f0f2f5;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .router-link-active {
+        text-decoration: none;
     }
 </style>

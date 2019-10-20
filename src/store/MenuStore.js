@@ -1,7 +1,7 @@
 export default {
     state: {
         params: '',
-
+        defaultActive: 'back'
     },
     getters: {},
     actions: {},

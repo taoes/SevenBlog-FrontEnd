@@ -1,84 +1,94 @@
 <template>
-    <div style="background-color: #ffffff">
-        <Menu theme="light" accordion :open-names="['back','frond']" @on-select="onSelectItem">
+    <div class="blogMenu">
+        <div>
+            <div style="background-color: #ffffff">
+                <el-menu theme="light" :default-openeds="defaultActive" @select="onSelectItem">
 
-            <MenuItem name="">
-                <Icon type="ios-folder-open"/>
-                全部文章
-            </MenuItem>
+                    <el-menu-item index="">
+                        <i class="el-icon-s-grid"></i>
+                        全部文章
+                    </el-menu-item>
 
-            <MenuItem name="pc">
-                <Icon type="ios-desktop"/>
-                计算机相关
-            </MenuItem>
-
-
-            <MenuItem name="database">
-                <Icon type="ios-print"/>
-                数据库知识点
-            </MenuItem>
+                    <el-menu-item index="pc">
+                        <i class="el-icon-monitor"></i>
+                        计算机相关
+                    </el-menu-item>
 
 
-            <Submenu name="back">
-                <template slot="title">
-                    <Icon type="logo-tux"/>
-                    后端开发
-                </template>
+                    <el-menu-item index="database">
+                        <i class="el-icon-coin"></i>
+                        数据库知识点
+                    </el-menu-item>
 
 
-                <MenuItem name="java">
-                    <Icon type="logo-codepen"/>
-                    Java 语言
-                </MenuItem>
+                    <el-submenu index="back">
+                        <template slot="title">
+                            <i class="el-icon-position"></i>
+                            <span>后端技术</span>
+                        </template>
 
 
-                <MenuItem name="go">
-                    <Icon type="logo-google"/>
-                    GoLang 语言
-                </MenuItem>
+                        <el-menu-item index="java">
+                            <i class="el-icon-folder"></i>
+                            Java 语言
+                        </el-menu-item>
 
 
-                <MenuItem name="python">
-                    <Icon type="logo-python"/>
-                    Python 语言
-                </MenuItem>
+                        <el-menu-item index="go">
+                            <i class="el-icon-folder"></i>
+                            GoLang 语言
+                        </el-menu-item>
 
 
-                <MenuItem name="framework">
-                    <Icon type="ios-construct"/>
-                    框架 & 组件
-                </MenuItem>
+                        <el-menu-item index="python">
+                            <i class="el-icon-folder"></i>
+                            Python 语言
+                        </el-menu-item>
 
-            </Submenu>
 
-            <Submenu name="frond">
-                <template slot="title">
-                    <Icon type="logo-chrome"/>
-                    前端开发
-                </template>
-                <MenuItem name="vue_react">
-                    <Icon type="ios-flower"/>
-                    Vue & React
-                </MenuItem>
-                <MenuItem name="js">
-                    <Icon type="logo-javascript"/>
-                    JavaScript
-                </MenuItem>
-            </Submenu>
-        </Menu>
+                        <el-menu-item index="framework">
+                            <i class="el-icon-folder"></i>
+                            框架 & 组件
+                        </el-menu-item>
+
+                    </el-submenu>
+
+                    <el-submenu index="front">
+                        <template slot="title">
+                            <i class="el-icon-mouse"></i>
+                            <span>前端技术</span>
+                        </template>
+
+                        <el-menu-item index="vue_react">
+                            <i class="el-icon-folder"></i>
+                            Vue & React
+                        </el-menu-item>
+                        <el-menu-item index="js">
+                            <i class="el-icon-folder"></i>
+                            JavaScript
+                        </el-menu-item>
+                    </el-submenu>
+                </el-menu>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    import './BlogMenu.css'
-
     export default {
         name: "BlogMenu",
+        computed: {
+            defaultActive: function () {
+                return ['back','front']
+
+                // this.$store.blogMenu.state.defaultActive
+            }
+        },
         methods: {
-            onSelectItem: function (resp) {
+            onSelectItem: function (index) {
                 this.$store.commit({
                     type: 'changeType',
-                    params: resp
+                    params: index
                 });
 
                 this.$router.push('/blog')
@@ -88,6 +98,12 @@
     }
 </script>
 
-<style scoped>
+<style>
+
+    .blogMenu {
+        width: 260px;
+        height: 1024px;
+        background-color: white;
+    }
 
 </style>

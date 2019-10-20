@@ -3,27 +3,39 @@
         <BlogMenu></BlogMenu>
 
         <div class="blogList">
-            <List item-layout="vertical" id="list">
-                <ListItem v-for="item in data" :key="item.title">
+            <el-card shadow="hover" v-for="item in data" :key="item.title">
+                <div slot="header" class="clearfix">
                     <router-link :to="'/blog/article/'+item.id">
-                        <ListItemMeta
-                                avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar"
-                                :title="item.title"
-                                :description="item.description"/>
+                    <span style="font-size: 14px;color:#303133 ">
+                        <i class="el-icon-s-management"></i>&nbsp;{{item.title}}</span>
+                        <div style="float: right; padding: 3px 0" type="text">
+                            <el-tag v-for="tag of item.tags" :type="tag.type" size="small" style="margin-left: 10px">
+                                {{tag.name}}
+                            </el-tag>
+                        </div>
                     </router-link>
-                    <div class="articleTagList">
-                        <Tag :color="tag.type" :key="tag.id" v-for="tag of item.tags">{{tag.name}}</Tag>
+                </div>
+
+                <div style="display: flex;flex-direction: row">
+                    <div class="descDiv" style="padding-right: 30px;color:#606266;">
+                        {{item.description}}
                     </div>
-                    <template slot="extra">
-                        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2321248164,1606717613&fm=26&gp=0.jpg"
-                             style="width: 280px;max-height: 200px ">
-                    </template>
-                </ListItem>
-            </List>
+                    <div>
+                        <img style="width: 280px"
+                             src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2321248164,1606717613&fm=26&gp=0.jpg">
+                    </div>
+                </div>
+            </el-card>
+
+
             <div class="page">
-                <Page :total="total" :pageSize="pageSize" prev-text="上页" next-text="下页" placement="top"
-                      style="width: 80%;margin-left: 10%"
-                      @on-change="pageOnChange"/>
+                <el-pagination
+                        background
+                        layout="prev, pager, next"
+                        :page-size="5"
+                        :total="total"
+                        @current-change="currentChange">
+                </el-pagination>
             </div>
         </div>
     </div>
@@ -55,11 +67,11 @@
         },
         watch: {
             blogType(newValue, oldValue) {
-                this.pageOnChange(1);
+                this.currentChange(1);
             }
         },
         methods: {
-            pageOnChange: function (pageNumber) {
+            currentChange: function (pageNumber) {
                 let respFunc = (resp) => {
                     this.data = resp.data.data;
                     this.total = resp.data.total;
@@ -68,7 +80,7 @@
                 blogApiListApi.getBlogList(pageNumber, this.pageSize, this.blogType, respFunc, errorFunc);
             }
         }, mounted: function () {
-            this.pageOnChange(1);
+            this.currentChange(1);
         }
     }
 </script>
@@ -80,21 +92,32 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        min-height: 80%;
+        height:1024px;
     }
 
     .blogList {
         margin-left: 20px;
         width: 90%;
+        max-height: 1024px;
+        overflow-y: auto;
         margin-right: 30px;
         padding: 20px;
         border-radius: 4px;
         box-shadow: 5px 5px 30px 1px #515a6e;
         background-color: #FFFFFF;
     }
+    .el-card {
+        margin-bottom: 20px;
+    }
+
+    .descDiv {
+        margin-left: 10px;
+        margin-right: 30px;
+    }
 
     .page {
         text-align: center;
+        margin-top: 20px;
     }
 
     .articleTagList {

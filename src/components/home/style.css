@@ -1,20 +1,15 @@
-.cardTitle {
-    margin-left: 1em;
-    margin: 20px;
-}
 
 .github {
     width: 100%;
-    margin-left: 30px;
-    margin-right: 60px;
+
+
 }
 
 
-.ivu-card {
-    margin-left: 20px;
-    margin-right: 70px;
+.el-card {
     height: 300px;
-    box-shadow: 1px 1px 1px 1px lightgray;
+    margin-left: 20px;
+    margin-right: 10px;
 }
 
 

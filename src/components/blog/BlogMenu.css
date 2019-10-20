@@ -1,6 +1,0 @@
-.blogArea {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    min-height: 80%;
-}

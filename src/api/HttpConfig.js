@@ -1,6 +1,6 @@
-const BASE_URL = "http://localhost:8080";
-// const BASE_URL = "https://api.zhoutao123.com";
-
+// const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://api.zhoutao123.com";
+//
 const GITHUB_BASE_URL = "https://api.github.com/users/zhou-seven";
 
 

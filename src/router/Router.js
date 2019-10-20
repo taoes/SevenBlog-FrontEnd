@@ -4,9 +4,14 @@ import BaiKe from "@/components/BaiKe";
 import BlogList from "@/components/BlogList";
 import DengYing from "@/components/DengYing";
 import Home from "@/components/home/Home";
-import Camera from "@/components/Camera";
+import Camera from "@/components/camera/Camera";
 import ArticleDetail from "@/components/blog/ArticleDetail";
 import Note from "@/components/note/Note";
+
+const routerPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+    return routerPush.call(this, location).catch(error => error)
+};
 
 
 var router = new VueRouter({
@@ -46,7 +51,7 @@ var router = new VueRouter({
 
 
 router.afterEach((to, from) => {
-    console.log("路由：" + from.path + " => " + to.path)
+    // console.log("路由：" + from.path + " => " + to.path)
 });
 
 export default router;

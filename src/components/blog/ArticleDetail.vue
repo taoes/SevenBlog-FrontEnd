@@ -1,8 +1,9 @@
 <template>
     <div class="articleDetail">
         <BlogMenu></BlogMenu>
-        <div style="margin-left: 20px;width: 100%">
+        <div style="margin-left: 20px;width: 100%;height: 1024px;background-color: #ffffff">
             <mavonEditor
+
                     class="markdownPreview"
                     :value="blog.content || emptyTip"
                     :subfield="false"
@@ -13,9 +14,13 @@
                     :scrollStyle="true"
                     :ishljs="true"
                     :navigation="tocStatus"
-                    style="max-height: 800px"
+                    style="max-height: 960px"
             ></mavonEditor>
+            <div class="articleCtr">
+                <el-button @click="backLastPage"><i class="el-icon-back"></i> 返回上一层</el-button>
+            </div>
         </div>
+
     </div>
 </template>
 
@@ -46,6 +51,11 @@
             BlogMenu,
             mavonEditor
         },
+        methods: {
+            backLastPage: function () {
+                this.$router.back(-1);
+            }
+        },
         mounted: function () {
             let id = this.$route.params.id;
             let respFunc = (resp) => {
@@ -61,8 +71,8 @@
 
     .articleDetail {
         width: 100%;
+        height: 1000px;
         display: flex;
-        height: 80%;
         border-radius: 100px;
     }
 
@@ -71,6 +81,11 @@
         margin-right: 30px;
         background-color: white;
         box-shadow: 1px 1px 1px 1px lightgray;
+    }
+
+    .articleCtr {
+        padding: 10px;
+        margin-left: 10px;
     }
 
 
