@@ -14,7 +14,10 @@
             </el-menu-item>
             <div style="float: right;width: 120px">
                 <el-submenu v-if="showLoginInfo" index="personCent">
-                    <template slot="title">个人中心</template>
+                    <template slot="title">
+                        <i class="el-icon-refresh-left"></i>
+                        个人中心
+                    </template>
                     <el-menu-item index="logout" @click="toNewPage('/admin')">
                         管理系统
                     </el-menu-item>
@@ -23,6 +26,7 @@
                     </el-menu-item>
                 </el-submenu>
                 <el-menu-item v-else index="loginButton" key="loginButton" @click="toNewPage('/admin/login')">
+                    <i class="el-icon-refresh-left"></i>
                     登录
                 </el-menu-item>
             </div>
