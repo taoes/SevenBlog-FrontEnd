@@ -35,8 +35,16 @@
 
             },
             loginAdmin: function () {
-                this.$store.commit('setToken', "周涛");
-                this.$router.push('/admin');
+                if (this.username === 'zhoutao' && this.password === '123456') {
+                    this.$store.commit('setToken', "周涛");
+                    this.$router.push('/admin');
+                } else {
+                    this.$notify.error({
+                        title: '授权失败',
+                        message: '账户名和密码不匹配,请重新登录'
+                    });
+                    this.resetInput();
+                }
             }
         }, created() {
             let token = this.$store.state.token.value;
