@@ -53,7 +53,8 @@
         },
         computed: {
             showLoginInfo: function () {
-                return this.$store.state.token.value != null;
+                let token = localStorage.getItem('token');
+                return token;
             }
         },
         methods: {

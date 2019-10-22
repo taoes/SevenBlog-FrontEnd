@@ -36,7 +36,7 @@
             },
             loginAdmin: function () {
                 if (this.username === 'zhoutao' && this.password === '123456') {
-                    this.$store.commit('setToken', "周涛");
+                    localStorage.setItem('token', "周涛");
                     this.$router.push('/admin');
                 } else {
                     this.$notify.error({
@@ -47,11 +47,10 @@
                 }
             }
         }, created() {
-            let token = this.$store.state.token.value;
-            if (token != null && token !== '') {
+            let token = localStorage.getItem('token');
+            console.log("AdminLogin 获取到的token = ", token)
+            if (token) {
                 this.$router.push('/admin')
-            } else {
-
             }
         }
     }

@@ -36,7 +36,7 @@
         </el-row>
 
         <el-row style="padding:20px">
-            <el-col span="12">
+            <el-col :span="12">
                 <el-card :bordered="false" style="height:400px">
                     <div slot="title">
                         <Icon type="md-pie" size="20"/>
@@ -46,7 +46,7 @@
                 </el-card>
             </el-col>
 
-            <el-col span="12">
+            <el-col :span="12">
                 <el-card :bordered="true" style="height: 400px">
                     <div slot="title">
                         <Icon type="ios-map" size="20"/>
@@ -58,7 +58,7 @@
         </el-row>
 
         <el-row style="padding:20px">
-            <el-col span="24">
+            <el-col :span="24">
                 <el-card :bordered="true">
                     <div slot="title">
                         <Icon type="logo-github" size="20"/>
