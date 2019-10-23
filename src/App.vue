@@ -25,7 +25,7 @@
                         注销登录
                     </el-menu-item>
                 </el-submenu>
-                <el-menu-item v-else index="loginButton" key="loginButton" @click="toNewPage('/admin/login')">
+                <el-menu-item v-else index="loginButton" key="loginButton" @click="toNewPage('/login')">
                     <i class="el-icon-refresh-left"></i>
                     登录
                 </el-menu-item>
@@ -54,7 +54,7 @@
         computed: {
             showLoginInfo: function () {
                 let token = localStorage.getItem('token');
-                return token;
+                return token !== undefined && token !== null && token !== '';
             }
         },
         methods: {
@@ -65,7 +65,7 @@
                 this.$store.commit({
                     type: 'signOut'
                 });
-                this.toNewPage('/admin/login')
+                this.toNewPage('/login')
             }
         },
         created: function () {

@@ -8,9 +8,7 @@ import Camera from "@/components/camera/Camera";
 import ArticleDetail from "@/components/blog/ArticleDetail";
 import Note from "@/components/note/Note";
 import AdminLogin from "@/components/backstage/AdminLogin";
-import Admin from "@/components/backstage/admin/Admin";
-import Article from "@/components/backstage/blog/article/Article";
-import Category from "@/components/backstage/blog/category/Category";
+import adminRouter from "./AdminRouter";
 
 const routerPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -35,7 +33,7 @@ var router = new VueRouter({
         {
             path: '/blog',
             name: 'blog',
-            component: BlogList
+            component: BlogList,
         },
         {
             name: 'article',
@@ -49,24 +47,13 @@ var router = new VueRouter({
         }, {
             path: '/camera',
             component: Camera
-        }
-        , {
-            path: '/admin',
-            component: Admin,
-            children: [
-                {
-                    path: 'article',
-                    component: Article
-                }, {
-                    path: 'category',
-                    component: Category
-                }
-            ]
-        }
-        , {
-            path: '/admin/login',
+        },
+        {
+            name: 'login',
+            path: '/login',
             component: AdminLogin
-        }
+        },
+        adminRouter
     ]
 });
 

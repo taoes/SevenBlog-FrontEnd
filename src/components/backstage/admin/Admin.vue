@@ -33,7 +33,7 @@
                     title: '未授权',
                     message: '系统未发现授权信息,请重新登录'
                 });
-                this.$router.push('/admin/login')
+                this.$router.push('/login')
             }
         }
     }

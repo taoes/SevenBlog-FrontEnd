@@ -59,7 +59,10 @@
                 <template slot-scope="scope">
                     <el-button icon="el-icon-search" circle size="mini"
                                @click="toArticleDetail(scope.row.id)"></el-button>
-                    <el-button type="primary" icon="el-icon-edit" circle size="mini"></el-button>
+
+                    <el-button type="primary" icon="el-icon-edit" circle size="mini"
+                               @click="toArticleEdit(scope.row.id)"
+                    ></el-button>
                 </template>
 
             </el-table-column>
@@ -95,7 +98,9 @@
                 };
                 blogApiListApi.getBlogList(pageNumber, this.pageSize, this.blogType, respFunc, errorFunc);
             }, toArticleDetail: function (articleIndex) {
-                this.$router.push('/blog/article/' + articleIndex)
+                this.$router.push('/admin/article/' + articleIndex)
+            }, toArticleEdit: function (articleIndex) {
+                this.$router.push('/admin/article/edit/' + articleIndex)
             }
         }, mounted() {
             this.currentPageChange(1);
