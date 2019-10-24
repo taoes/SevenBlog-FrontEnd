@@ -1,18 +1,31 @@
+.container {
+  height: 100%;
+  /* overflow: auto; */
+}
+.mavon {
+  padding: 12px;
+  margin-top: 12px;
+  display: flex;
+}
+
 .articleEdit {
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    height: 1024px;
-    width: 90%;
-    max-width: 90%;
+  height: 100%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.editor {
+  height: 100px;
+  width: 80%;
+  height: 100%;
+  flex: 1;
 }
 
 /* 标题输入框样式*/
 .inputTitle {
-    width: 200px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
-
-
