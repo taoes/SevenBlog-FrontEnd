@@ -1,7 +1,7 @@
 import Admin from "@/components/backstage/admin/Admin";
 import Article from "@/components/backstage/blog/article/Article";
 import ArticleEdit from "../components/backstage/blog/article/ArticleEdit";
-import Category from '@/components/backstage/blog/category/Category';
+import Category from '../components/backstage/blog/category/Category';
 
 
 let adminRouter = {

@@ -3,9 +3,8 @@
     display: -webkit-flex;
     flex-direction: column;
     height: 1024px;
-    width:90%;
-    max-width:90%;
-
+    width: 90%;
+    max-width: 90%;
 }
 
 /* 标题输入框样式*/
