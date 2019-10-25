@@ -2,11 +2,7 @@
     <div id="app">
         <el-menu
                 class="el-menu-demo"
-                mode="horizontal"
-                background-color="#545c64"
-                text-color="#fff"
-                active-text-color="#ffd04b"
-        >
+                mode="horizontal">
             <el-menu-item v-for="menu of menuList" :index="menu.name" :key="menu.name">
                 <router-link :key="menu.path" :to="menu.path">
                     <i :class="menu.icon"></i>
@@ -42,7 +38,7 @@
         name: "app",
         data: function () {
             return {
-                theme1: "dark",
+                theme1: "light",
                 menuList: []
             };
         },

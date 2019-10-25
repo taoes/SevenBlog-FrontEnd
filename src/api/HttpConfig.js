@@ -2,12 +2,12 @@ import NProgress from 'nprogress'
 import axios from 'axios'
 import 'nprogress/nprogress.css'
 
-// const BASE_URL = "https://api.zhoutao123.com";
-const BASE_URL = "http://localhost:8080";
-const GITHUB_BASE_URL = "https://api.github.com/users/zhou-seven";
+// const BASE_URL = 'https://api.zhoutao123.com';
+const BASE_URL = 'http://localhost:8080';
+const GITHUB_BASE_URL = 'https://api.github.com/users/zhou-seven';
 
 
-axios.defaults.timeout = 5000
+axios.defaults.timeout = 5000;
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = BASE_URL;
 
@@ -32,17 +32,18 @@ axios.interceptors.response.use((response) => {
 
 var config = {
     menu: {
-        list: "/menu"
+        list: '/menu'
     },
     blog: {
-        list: "/blog",
-        detail: "/blog/detail"
+        list: '/blog',
+        detail: '/blog/detail',
+        updateOrCreate: '/blog'
     },
     github: {
-        repos: "/github/repos"
+        repos: '/github/repos'
     }, tag: {
-        list: "/tag",
-        update: "/tag"
+        list: '/tag',
+        update: '/tag'
     }
 };
 

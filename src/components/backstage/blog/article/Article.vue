@@ -1,10 +1,11 @@
 <template>
     <div class="article">
         <div style="margin-bottom: 20px;display: flex;flex-direction: row">
-            <el-input placeholder="搜索关键字" style="width: 400px"></el-input>
+            <el-input placeholder="搜索关键字" style="width: 600px" size="small"></el-input>
             <div id="buttones" style="margin-left: 20px">
-                <el-button type="primary" icon="el-icon-search">搜索</el-button>
-                <el-button type="primary" icon="el-icon-circle-plus-outline" @click="addNewArticle">创建文章</el-button>
+                <el-button type="primary" icon="el-icon-search" size="small">搜索</el-button>
+                <el-button type="primary" icon="el-icon-circle-plus-outline" size="small" @click="addNewArticle">创建文章
+                </el-button>
             </div>
         </div>
         <el-table
@@ -14,6 +15,7 @@
                 :fit="true"
                 style="width: 100%;height: 90%;">
             <el-table-column
+                    height="100px"
                     type="index"
                     label="序号"
                     min-width="5%">
@@ -26,7 +28,7 @@
             </el-table-column>
 
             <el-table-column
-                    prop="category"
+                    prop="type"
                     label="目录"
                     min-width="15%">
             </el-table-column>

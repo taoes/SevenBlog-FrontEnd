@@ -17,10 +17,10 @@
                 </div>
 
                 <div style="display: flex;flex-direction: row">
-                    <div class="descDiv" style="padding-right: 30px;color:#606266;">
+                    <div class="descDiv" style="padding-right: 30px;color:#606266;flex-grow: 4">
                         {{item.description}}
                     </div>
-                    <div>
+                    <div style="float: right">
                         <img style="width: 280px"
                              src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2321248164,1606717613&fm=26&gp=0.jpg">
                     </div>

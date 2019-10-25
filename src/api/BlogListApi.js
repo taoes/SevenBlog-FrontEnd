@@ -1,11 +1,9 @@
 import axios from "axios";
 import apiConfig from './HttpConfig'
 
-var menuApi = {
-
+const blogList = {
     getBlogList: function (pageNumber, pageSize, blogType, respFunc, errorFunc) {
-
-        var param = {
+        let param = {
             pageNumber,
             pageSize,
             blogType: blogType || ""
@@ -17,10 +15,14 @@ var menuApi = {
         });
     },
     getBlogDetail: function (blogId, respFunc, errorFunc) {
-        console.log("查询blogId=" + blogId + "\t的文章详情");
-
-
         return axios.get(apiConfig.blog.detail + "/" + blogId).then((resp) => {
+            respFunc(resp);
+        }).catch(error => {
+            errorFunc(error)
+        });
+    },
+    updateOrCreate: function (param, respFunc, errorFunc) {
+        return axios.post(apiConfig.blog.updateOrCreate, param).then((resp) => {
             respFunc(resp);
         }).catch(error => {
             errorFunc(error)
@@ -29,4 +31,4 @@ var menuApi = {
 
 };
 
-export default menuApi;
+export default blogList;

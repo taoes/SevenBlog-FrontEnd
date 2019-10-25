@@ -2,12 +2,16 @@
     <div class="articleDetail">
         <BlogMenu></BlogMenu>
         <div style="margin-left: 20px;width: 100%;height: 1024px;background-color: #ffffff">
+            <div class="articleCtr">
+                <el-button @click="backLastPage" size="small" icon="el-icon-back"> 返回</el-button>
+                <el-button @click="editArticle" size="small" icon="el-icon-edit"> 编辑</el-button>
+            </div>
             <mavonEditor
-
                     class="markdownPreview"
                     :value="blog.content || emptyTip"
                     :subfield="false"
                     :defaultOpen="'preview'"
+                    :codeStyle="markdownTheme"
                     :boxShadow="false"
                     :toolbarsFlag="false"
                     :editable="false"
@@ -16,9 +20,7 @@
                     :navigation="tocStatus"
                     style="max-height: 960px"
             ></mavonEditor>
-            <div class="articleCtr">
-                <el-button @click="backLastPage"><i class="el-icon-back"></i> 返回上一层</el-button>
-            </div>
+
         </div>
 
     </div>
@@ -54,6 +56,10 @@
         methods: {
             backLastPage: function () {
                 this.$router.back(-1);
+            }, editArticle: function () {
+                this.$router.push("/admin/article/edit/" + this.blog.id)
+            }, markdownTheme: function () {
+                return this.$store.state.markdown.theme;
             }
         },
         mounted: function () {
