@@ -1,31 +1,48 @@
 .container {
-  height: 100%;
-  /* overflow: auto; */
+    height: 100%;
+    /* overflow: auto; */
 }
+
 .mavon {
-  padding: 12px;
-  margin-top: 12px;
-  display: flex;
+    padding: 12px;
+    margin-top: 12px;
+    display: flex;
 }
 
 .articleEdit {
-  height: 100%;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+    height: 1024px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .editor {
-  height: 100px;
-  width: 80%;
-  height: 100%;
-  flex: 1;
+    height: 100%;
+    flex: 1;
 }
 
 /* 标题输入框样式*/
 .inputTitle {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+
+/*文章分组样式*/
+.articleGroup {
+    padding: 10px;
+}
+
+
+.Collect {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+}
+
+
+.el-select__tags {
+    margin-left: 20px;
 }

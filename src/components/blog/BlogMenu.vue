@@ -79,7 +79,10 @@
         name: "BlogMenu",
         computed: {
             defaultActive: function () {
-                return ['back', 'front']
+                return ['pc']
+            },
+            collapse: function () {
+                return this.$store.state.adminMenu.collapse;
             }
         },
         methods: {

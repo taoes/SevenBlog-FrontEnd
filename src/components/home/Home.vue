@@ -1,7 +1,7 @@
 <template>
 
     <div class="github">
-        <el-backtop target=".app"></el-backtop>
+        <el-backtop target=".github"></el-backtop>
         <el-row style="padding:10px">
             <el-col :span="12">
                 <el-card class="box-card" :bordered="false" style="overflow-y: auto">

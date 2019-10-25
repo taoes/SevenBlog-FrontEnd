@@ -4,6 +4,7 @@ import Vue from 'vue'
 import SideStore from './SizeStore'
 import MenuStore from './MenuStore'
 import TokenStore from "./TokenStore";
+import AdminMenuStore from './AdminMenuStore'
 
 Vue.use(Vuex);
 
@@ -11,7 +12,8 @@ const store = new Vuex.Store({
     modules: {
         user: SideStore,
         token: TokenStore,
-        blogMenu: MenuStore
+        blogMenu: MenuStore,
+        adminMenu: AdminMenuStore
     }
 });
 

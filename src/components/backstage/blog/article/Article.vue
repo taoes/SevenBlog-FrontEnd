@@ -1,8 +1,16 @@
 <template>
     <div class="article">
+        <div style="margin-bottom: 20px;display: flex;flex-direction: row">
+            <el-input placeholder="搜索关键字" style="width: 400px"></el-input>
+            <div id="buttones" style="margin-left: 20px">
+                <el-button type="primary" icon="el-icon-search">搜索</el-button>
+                <el-button type="primary" icon="el-icon-circle-plus-outline" @click="addNewArticle">创建文章</el-button>
+            </div>
+        </div>
         <el-table
                 :data="articleList"
                 border
+                size="mini"
                 :fit="true"
                 style="width: 100%;height: 90%;">
             <el-table-column
@@ -98,9 +106,14 @@
                 };
                 blogApiListApi.getBlogList(pageNumber, this.pageSize, this.blogType, respFunc, errorFunc);
             }, toArticleDetail: function (articleIndex) {
-                this.$router.push('/admin/article/' + articleIndex)
+                // 跳转到详情页面
+                this.$router.push('/blog/article/' + articleIndex)
             }, toArticleEdit: function (articleIndex) {
+                // 跳转到编辑文章界面
                 this.$router.push('/admin/article/edit/' + articleIndex)
+            }, addNewArticle: function () {
+                // 创建新的文章
+                this.$router.push('/admin/article/edit/' + 0);
             }
         }, mounted() {
             this.currentPageChange(1);

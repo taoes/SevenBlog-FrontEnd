@@ -3,6 +3,9 @@
         <el-menu
                 theme="light"
                 class="el-menu-demo"
+                unique-opened
+                :collapse="collapse"
+                :default-openeds="openMenu"
                 @select="onSelectItem"
         >
             <el-menu-item index="1" disabled>后台管理系统</el-menu-item>
@@ -35,8 +38,22 @@
 <script>
     export default {
         name: "AdminMenu",
+        data: function () {
+            return {
+                openMenu: ['article']
+            }
+        },
+        computed: {
+            collapse: function () {
+                return this.$store.state.adminMenu.collapse;
+            },
+            active: function () {
+                return this.$store.state.adminMenu.active;
+            }
+        },
         methods: {
             onSelectItem: function (index) {
+                this.$store.commit('changeAdminMenuActive', index)
                 this.$router.push('/admin/' + index)
             }
         }

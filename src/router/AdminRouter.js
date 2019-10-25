@@ -2,6 +2,7 @@ import Admin from "@/components/backstage/admin/Admin";
 import Article from "@/components/backstage/blog/article/Article";
 import ArticleEdit from "../components/backstage/blog/article/ArticleEdit";
 import Category from '../components/backstage/blog/category/Category';
+import TagList from "../components/backstage/blog/tag/TagList";
 
 
 let adminRouter = {
@@ -21,8 +22,14 @@ let adminRouter = {
                 component: ArticleEdit
             },
             {
+                name: 'Category',
                 path: 'category',
                 component: Category
+            },
+            {
+                path: 'tag',
+                name: 'tagManagement',
+                component: TagList
             }
         ]
 
