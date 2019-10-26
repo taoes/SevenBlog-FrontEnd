@@ -32,7 +32,9 @@ axios.interceptors.response.use((response) => {
 
 var config = {
     menu: {
-        list: '/menu'
+        list: '/menu',
+        category: '/category',
+        categoryList: '/category/list'
     },
     blog: {
         list: '/blog',

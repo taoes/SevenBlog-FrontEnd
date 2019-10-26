@@ -32,12 +32,6 @@
     import BlogListApi from "@/api/BlogListApi";
     import BlogMenu from "./BlogMenu";
 
-
-    let errorFunc = (error) => {
-        console.log("网络请求出现异常");
-        console.error(error);
-    };
-
     export default {
         name: "ArticleDetail",
         data: function () {
@@ -67,7 +61,7 @@
             let respFunc = (resp) => {
                 this.blog = resp.data;
             };
-            BlogListApi.getBlogDetail(id, respFunc, errorFunc);
+            BlogListApi.getBlogDetail(id, respFunc);
         }
     }
 </script>

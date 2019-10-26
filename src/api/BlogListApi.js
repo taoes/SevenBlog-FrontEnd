@@ -18,7 +18,9 @@ const blogList = {
         return axios.get(apiConfig.blog.detail + "/" + blogId).then((resp) => {
             respFunc(resp);
         }).catch(error => {
-            errorFunc(error)
+            if (errorFunc) {
+                errorFunc(error)
+            }
         });
     },
     updateOrCreate: function (param, respFunc, errorFunc) {

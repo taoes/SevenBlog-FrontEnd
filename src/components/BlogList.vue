@@ -3,13 +3,30 @@
         <BlogMenu></BlogMenu>
 
         <div class="blogList">
+            <div style="margin-bottom: 20px">
+                <el-input
+                        size="small"
+                        style="width: 400px"
+                        icon="el-icon-upload ">
+                </el-input>
+                <el-button
+                        style="margin-left: 30px"
+                        type="info"
+                        size="small"
+                        icon="el-icon-search"
+                        @click="preview">全局搜索
+                </el-button>
+            </div>
+
+
             <el-card shadow="hover" v-for="item in data" :key="item.title">
                 <div slot="header" class="clearfix">
                     <router-link :to="'/blog/article/'+item.id">
                     <span style="font-size: 14px;color:#303133 ">
                         <i class="el-icon-s-management"></i>&nbsp;{{item.title}}</span>
                         <div style="float: right; padding: 3px 0" type="text">
-                            <el-tag v-for="tag of item.tags" :type="tag.type" size="small" style="margin-left: 10px">
+                            <el-tag v-for="tag of item.tags" :key="tag.id" :type="tag.type" size="small"
+                                    style="margin-left: 10px">
                                 {{tag.name}}
                             </el-tag>
                         </div>
@@ -63,6 +80,8 @@
         computed: {
             blogType: function () {
                 return this.$store.state.blogMenu.params;
+            },showMenu:function () {
+                return this.$store.state.menu.blogCategoryMenu;
             }
         },
         watch: {
@@ -92,7 +111,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        height:1024px;
+        height: 1024px;
     }
 
     .blogList {
@@ -106,6 +125,7 @@
         box-shadow: 5px 5px 30px 1px #515a6e;
         background-color: #FFFFFF;
     }
+
     .el-card {
         margin-bottom: 20px;
     }

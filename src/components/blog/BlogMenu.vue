@@ -9,64 +9,17 @@
                         全部文章
                     </el-menu-item>
 
-                    <el-menu-item index="pc">
-                        <i class="el-icon-monitor"></i>
-                        计算机相关
-                    </el-menu-item>
-
-
-                    <el-menu-item index="database">
-                        <i class="el-icon-coin"></i>
-                        数据库知识点
-                    </el-menu-item>
-
-
-                    <el-submenu index="back">
+                    <el-submenu v-for="(value,key) of category" :index="key" :key="key">
                         <template slot="title">
-                            <i class="el-icon-position"></i>
-                            <span>后端技术</span>
+                            <i class="el-icon-s-promotion"></i>
+                            <span>{{key}}</span>
                         </template>
 
-
-                        <el-menu-item index="java">
-                            <i class="el-icon-folder"></i>
-                            Java 语言
+                        <el-menu-item v-for="item of value" :index="item.key" :key="item.key">
+                            <i class="el-icon-s-grid"></i>
+                            {{ item.name}}
                         </el-menu-item>
 
-
-                        <el-menu-item index="go">
-                            <i class="el-icon-folder"></i>
-                            GoLang 语言
-                        </el-menu-item>
-
-
-                        <el-menu-item index="python">
-                            <i class="el-icon-folder"></i>
-                            Python 语言
-                        </el-menu-item>
-
-
-                        <el-menu-item index="framework">
-                            <i class="el-icon-folder"></i>
-                            框架 & 组件
-                        </el-menu-item>
-
-                    </el-submenu>
-
-                    <el-submenu index="front">
-                        <template slot="title">
-                            <i class="el-icon-mouse"></i>
-                            <span>前端技术</span>
-                        </template>
-
-                        <el-menu-item index="vue_react">
-                            <i class="el-icon-folder"></i>
-                            Vue & React
-                        </el-menu-item>
-                        <el-menu-item index="js">
-                            <i class="el-icon-folder"></i>
-                            JavaScript
-                        </el-menu-item>
                     </el-submenu>
                 </el-menu>
             </div>
@@ -75,11 +28,18 @@
 </template>
 
 <script>
+    import menuApi from "@/api/MenuApi";
+
     export default {
         name: "BlogMenu",
+        data: function () {
+            return {
+                category: {}
+            }
+        },
         computed: {
             defaultActive: function () {
-                return ['back','front']
+                return Object.keys(this.category)
             },
             collapse: function () {
                 return this.$store.state.adminMenu.collapse;
@@ -93,6 +53,10 @@
                 });
                 this.$router.push('/blog')
             }
+        }, mounted() {
+            // 获取文章目录分类
+            let successFun = (resp) => this.category = resp.data;
+            menuApi.getCategory(successFun);
         }
     }
 </script>
