@@ -23,7 +23,7 @@
 
                 <div style="margin-left: 40px">
                     <span>文章标题</span>
-                    <el-input style="width: 200px" v-model="article.title" size="small"
+                    <el-input style="width: 400px" v-model="article.title" size="small"
                               :placeholder="article.placeholder"/>
                 </div>
 
@@ -57,8 +57,11 @@
 
         <div class="mavon">
             <mavon-editor
+                    ref=md
                     :codeStyle="markdownTheme"
+                    @change="markdownChange"
                     v-model="article.content"
+                    @imgAdd="uploadImg"
                     class="editor"
                     style="height: 990px"/>
         </div>
@@ -72,6 +75,7 @@
     import {mavonEditor} from "mavon-editor";
     import blogList from "@/api/BlogListApi";
     import menuApi from "@/api/MenuApi";
+    import addFileApi from "@/api/FileApi";
 
     let errorFunc = () => {
 
@@ -106,8 +110,18 @@
             }
         },
         methods: {
-            collapseAdminMenu: function () {
-                this.$store.commit('changeCollapse');
+            uploadImg: function (pos, $file) {
+                var formData = new FormData();
+                formData.append('file', $file);
+
+                let respFunc = (resp) => {
+                    this.$refs.md.$img2Url(pos, resp.data.url);
+                };
+                let errorFunc = () => {
+                    this.$message("上传文件失败, 请稍后重试");
+                };
+                addFileApi.upload(formData, respFunc, errorFunc);
+
             },
             backLastPage: function () {
                 this.$router.back();
@@ -118,17 +132,27 @@
                     this.$notify.success({title: "更新完成", message: "文章更新完成"});
                 };
                 blogList.updateOrCreate(this.article, respFunction, errorFunc);
+                this.$router.push("/blog");
             }, preview: function () {
                 this.$notify.error({
                     title: "功能暂不支持",
                     message: "🌲 功能暂未开发完成，敬请期待"
                 })
+            }, markdownChange: function (value) {
+                if (this.article.id) {
+                    localStorage.setItem(this.article.id, value);
+                } else {
+                    localStorage.setItem('new', value);
+                }
+            }, checkDraft: function () {
+
             }
         },
         mounted: function () {
             let id = this.$route.params.id;
             this.edit = id;
             this.id = id;
+
             // 获取文章
             if (this.edit) {
                 let respFunc = (resp) => {
@@ -140,8 +164,6 @@
             menuApi.getCategory((resp) => {
                 this.category = resp.data
             });
-
-
         }
     };
 </script>

@@ -24,7 +24,7 @@
             <el-table-column
                     prop="title"
                     label="文章名称"
-                    min-width="15%">
+                    min-width="25%">
             </el-table-column>
 
             <el-table-column
@@ -35,15 +35,15 @@
 
 
             <el-table-column
-                    prop="createTime"
+                    prop="createDatetime"
                     label="创建时间"
-                    min-width="20%">
+                    min-width="15%">
             </el-table-column>
 
             <el-table-column
-                    prop="createTime"
+                    prop="updateDatetime"
                     label="更新时间"
-                    min-width="20%">
+                    min-width="15%">
             </el-table-column>
 
             <el-table-column
@@ -97,16 +97,15 @@
             }
         },
         methods: {
-            isSupportChange: function (value, articleId) {
+            isSupportChange: function () {
 
             },
-            currentPageChange: function (pageNumber) {
+            currentPageChange: function () {
                 let respFunc = (resp) => {
-                    this.articleList = resp.data.data;
-                    this.total = resp.data.total;
+                    this.articleList = resp.data;
                     scroll(0, 0)
                 };
-                blogApiListApi.getBlogList(pageNumber, this.pageSize, this.blogType, respFunc, errorFunc);
+                blogApiListApi.getBlogSimpleList(respFunc, errorFunc);
             }, toArticleDetail: function (articleIndex) {
                 // 跳转到详情页面
                 this.$router.push('/blog/article/' + articleIndex)
@@ -118,7 +117,7 @@
                 this.$router.push('/admin/article/edit/' + 0);
             }
         }, mounted() {
-            this.currentPageChange(1);
+            this.currentPageChange();
         }
         ,
         watch: {}

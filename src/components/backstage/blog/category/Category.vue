@@ -49,7 +49,7 @@
 </template>
 
 <script>
-    import menuApi from '@/api/MenuApi'
+    import {getCategoryList} from '@/api/MenuApi'
 
     export default {
         name: "Category",
@@ -60,10 +60,12 @@
         }, methods: {
             back: function () {
                 this.$router.back();
+            }, add: function () {
+
             }
         },
-        mounted() {
-            menuApi.getCategoryList((reps) => this.categoryList = reps.data);
+        mounted: function () {
+            getCategoryList((reps) => this.categoryList = reps.data);
         }
     }
 </script>

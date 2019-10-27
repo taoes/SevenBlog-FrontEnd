@@ -11,18 +11,19 @@
                 </el-input>
                 <el-button
                         style="margin-left: 30px"
-                        type="info"
+                        type="primary"
                         size="small"
                         icon="el-icon-search"
-                        @click="preview">全局搜索
+                        @click="search">全局搜索
                 </el-button>
             </div>
 
 
-            <el-card shadow="hover" v-for="item in data" :key="item.title">
+            <el-card shadow="hover" v-for="item in data" :key="item.title" style="max-height: 240px">
                 <div slot="header" class="clearfix">
                     <router-link :to="'/blog/article/'+item.id">
-                    <span style="font-size: 14px;color:#303133 ">
+                    <span class="blogTitle"
+                          style="font-size: 16px;color:#1A1A1A;font-weight: bold;font-family:'SimSun',serif">
                         <i class="el-icon-s-management"></i>&nbsp;{{item.title}}</span>
                         <div style="float: right; padding: 3px 0" type="text">
                             <el-tag v-for="tag of item.tags" :key="tag.id" :type="tag.type" size="small"
@@ -34,11 +35,11 @@
                 </div>
 
                 <div style="display: flex;flex-direction: row">
-                    <div class="descDiv" style="padding-right: 30px;color:#606266;flex-grow: 4">
+                    <div class="descDiv" style="padding-right: 30px;color:#909399;flex-grow: 4">
                         {{item.description}}
                     </div>
                     <div style="float: right">
-                        <img style="width: 280px"
+                        <img style="width: 240px"
                              src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2321248164,1606717613&fm=26&gp=0.jpg">
                     </div>
                 </div>
@@ -80,12 +81,12 @@
         computed: {
             blogType: function () {
                 return this.$store.state.blogMenu.params;
-            },showMenu:function () {
+            }, showMenu: function () {
                 return this.$store.state.menu.blogCategoryMenu;
             }
         },
         watch: {
-            blogType(newValue, oldValue) {
+            blogType() {
                 this.currentChange(1);
             }
         },
@@ -97,6 +98,8 @@
                     scroll(0, 0)
                 };
                 blogApiListApi.getBlogList(pageNumber, this.pageSize, this.blogType, respFunc, errorFunc);
+            }, search: function () {
+                //todo 全局搜索
             }
         }, mounted: function () {
             this.currentChange(1);
@@ -127,7 +130,8 @@
     }
 
     .el-card {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        background-color: #FEFEFE;
     }
 
     .descDiv {
@@ -142,6 +146,11 @@
 
     .articleTagList {
         margin-left: 50px;
+    }
+
+    /*     文章标题鼠标样式*/
+    blogTitle:hover {
+        color: #2c3e50;
     }
 
 

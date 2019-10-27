@@ -1,17 +1,22 @@
 import axios from "axios";
-import apiConfig from './HttpConfig'
+import config from "./HttpConfig";
 
-const commentApi = {
-    addNewComment: function (param, respFunc, errorFunc) {
-        return axios.post(apiConfig.comment.add, param).then((resp) => {
-            respFunc(resp);
-        }).catch(error => {
+const addFileApi = {
+    upload: function (formData, respFunc, errorFunc) {
+        return axios({
+            url: config.file.upload,
+            method: 'post',
+            data: formData,
+            headers: {'Content-Type': 'multipart/form-data'},
+        }).then((url) => {
+            respFunc(url);
+        }).catch((error) => {
             if (errorFunc) {
                 errorFunc(error);
             }
-        });
+        })
     }
 
 };
 
-export default commentApi;
+export default addFileApi;

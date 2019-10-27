@@ -14,6 +14,16 @@ const blogList = {
             errorFunc(error)
         });
     },
+    getBlogSimpleList: function (respFunc, errorFunc) {
+        axios.get(apiConfig.blog.simpleList).then((resp) => {
+            respFunc(resp)
+        })
+            .catch((error) => {
+                if (errorFunc) {
+                    respFunc(error)
+                }
+            });
+    },
     getBlogDetail: function (blogId, respFunc, errorFunc) {
         return axios.get(apiConfig.blog.detail + "/" + blogId).then((resp) => {
             respFunc(resp);

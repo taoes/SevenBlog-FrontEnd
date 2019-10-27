@@ -2,6 +2,7 @@
     <div id="app">
         <el-menu
                 class="el-menu-demo"
+                text-color="#000"
                 mode="horizontal">
             <el-menu-item v-for="menu of menuList" :index="menu.name" :key="menu.name">
                 <router-link :key="menu.path" :to="menu.path">

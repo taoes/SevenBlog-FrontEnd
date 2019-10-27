@@ -4,7 +4,6 @@ import 'nprogress/nprogress.css'
 
 // const BASE_URL = 'https://api.zhoutao123.com';
 const BASE_URL = 'http://localhost:8080';
-const GITHUB_BASE_URL = 'https://api.github.com/users/zhou-seven';
 
 
 axios.defaults.timeout = 5000;
@@ -30,7 +29,7 @@ axios.interceptors.response.use((response) => {
 });
 
 
-var config = {
+const config = {
     menu: {
         list: '/menu',
         category: '/category',
@@ -38,14 +37,21 @@ var config = {
     },
     blog: {
         list: '/blog',
+        simpleList: '/blog/list',
         detail: '/blog/detail',
         updateOrCreate: '/blog'
+    },
+    comment: {
+        add: '/comment',
+        listByArticleId: '/comment'
     },
     github: {
         repos: '/github/repos'
     }, tag: {
         list: '/tag',
         update: '/tag'
+    }, file: {
+        upload: '/file/upload'
     }
 };
 
