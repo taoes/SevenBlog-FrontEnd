@@ -1,13 +1,11 @@
 
 .github {
     width: 100%;
-
-
 }
 
 
 .el-card {
-    height: 300px;
+    height: 200px;
     margin-left: 20px;
     margin-right: 10px;
 }
@@ -60,4 +58,18 @@
     .github-corner .octo-arm {
         animation: octocat-wave 560ms ease-in-out
     }
+}
+
+
+
+/*备案信息查询*/
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #515a6e;
+    color: white;
+    align-items: center;
+    width: 100%;
+    min-height: 30px;
 }

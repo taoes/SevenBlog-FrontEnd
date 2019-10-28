@@ -19,29 +19,28 @@
             </div>
 
 
-            <el-card shadow="hover" v-for="item in data" :key="item.title" style="max-height: 240px">
+            <el-card shadow="hover" v-for="item in data" :key="item.title">
                 <div slot="header" class="clearfix">
                     <router-link :to="'/blog/article/'+item.id">
                     <span class="blogTitle"
                           style="font-size: 16px;color:#1A1A1A;font-weight: bold;font-family:'SimSun',serif">
                         <i class="el-icon-s-management"></i>&nbsp;{{item.title}}</span>
-                        <div style="float: right; padding: 3px 0" type="text">
-                            <el-tag v-for="tag of item.tags" :key="tag.id" :type="tag.type" size="small"
-                                    style="margin-left: 10px">
-                                {{tag.name}}
-                            </el-tag>
-                        </div>
                     </router-link>
                 </div>
 
-                <div style="display: flex;flex-direction: row">
-                    <div class="descDiv" style="padding-right: 30px;color:#909399;flex-grow: 4">
+                <div style="display: flex;flex-direction: column;">
+
+                    <div class="descDiv" style="padding-right: 30px;width:100%;color:#000000;flex-grow: 1">
                         {{item.description}}
                     </div>
-                    <div style="float: right">
-                        <img style="width: 240px"
-                             src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2321248164,1606717613&fm=26&gp=0.jpg">
+
+                    <div style="padding: 3px 0;flex-grow: 4;align-self: stretch" type="text">
+                        <el-tag v-for="tag of tagList" :key="tag.id" :type="tag.type" size="small"
+                                style="margin-left: 10px;">
+                            {{tag.name}}
+                        </el-tag>
                     </div>
+
                 </div>
             </el-card>
 
@@ -75,7 +74,7 @@
                 type: '',
                 total: 0,
                 pageSize: 5,
-                markDown: "# 1234 - [x] 2423"
+                tagList: [{id: 1, type: 'info', name: 'Jsva'}]
             }
         },
         computed: {
@@ -112,17 +111,17 @@
 
     .blogListDiv {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: nowrap;
         height: 1024px;
     }
 
     .blogList {
+        margin-top: 30px;
         margin-left: 20px;
-        width: 90%;
         max-height: 1024px;
         overflow-y: auto;
-        margin-right: 30px;
+        margin-right: 20px;
         padding: 20px;
         border-radius: 4px;
         box-shadow: 5px 5px 30px 1px #515a6e;
@@ -130,7 +129,7 @@
     }
 
     .el-card {
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         background-color: #FEFEFE;
     }
 

@@ -44,12 +44,19 @@
                     min-width="15%">
             </el-table-column>
 
+            <el-table-column
+                    prop="key"
+                    label="目录图标"
+                    min-width="15%">
+                <i class="el-icon-baseball"></i>
+            </el-table-column>
+
         </el-table>
     </div>
 </template>
 
 <script>
-    import {getCategoryList} from '@/api/MenuApi'
+    import menuApi from '@/api/MenuApi'
 
     export default {
         name: "Category",
@@ -60,16 +67,30 @@
         }, methods: {
             back: function () {
                 this.$router.back();
-            }, add: function () {
+            }, tableRowClassName: function ({rowIndex}) {
+                if (rowIndex % 3 === 1) {
+                    return 'warning-row';
+                } else if (rowIndex % 3 === 2) {
+                    return 'success-row';
+                }
+                return '';
+            }
+            , add: function () {
 
             }
         },
         mounted: function () {
-            getCategoryList((reps) => this.categoryList = reps.data);
+            menuApi.getCategoryList((reps) => this.categoryList = reps.data);
         }
     }
 </script>
 
 <style scoped>
+    .el-table .warning-row {
+        background: oldlace;
+    }
 
+    .el-table .success-row {
+        background: #f0f9eb;
+    }
 </style>

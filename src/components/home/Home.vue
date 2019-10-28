@@ -1,6 +1,6 @@
 <template>
-
     <div class="github">
+        <AppMenu></AppMenu>
         <el-backtop target=".github"></el-backtop>
         <el-row style="padding:10px">
             <el-col :span="12">
@@ -11,7 +11,7 @@
 
                     <div class="repos">
                         <el-collapse v-model="githubCollapse" accordion>
-                            <el-collapse-item :title="'🏝' + repos.name"  v-for="(repos) of reposList">
+                            <el-collapse-item :title="'🏝' + repos.name" v-for="(repos) of reposList">
                                 <p class="reposDesc">{{repos.desc}}</p>
                             </el-collapse-item>
                         </el-collapse>
@@ -71,7 +71,13 @@
             </el-col>
         </el-row>
 
-
+        <div class="footer">
+            <el-link href="https://github.com/tao-seven" style="margin-left: 10px;margin-right: 10px;color: white">
+                访问Github
+            </el-link>
+            <span>@ 2019 燕归来兮</span>
+            <span> 皖ICP 备17025334号-1</span>
+        </div>
     </div>
 
 
@@ -80,8 +86,10 @@
 
     import "./style.css"
     import reposApi from '@/api/GithubRepos'
+    import AppMenu from "../AppMenu";
 
     export default {
+        components: {AppMenu},
         data() {
             return {
                 githubCollapse: "0",

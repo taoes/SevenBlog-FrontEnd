@@ -1,13 +1,16 @@
 export default {
     state: {
         params: '',
-        defaultActive: 'back'
+        collapse: false,
+        defaultActive: ['back']
     },
     getters: {},
     actions: {},
     mutations: {
         changeType(state, param) {
             state.params = param.params;
+        }, changeCollapse(state) {
+            state.collapse = !state.collapse;
         }
     }
 };

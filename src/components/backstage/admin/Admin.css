@@ -1,12 +1,11 @@
 .adminDiv {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   height: 100%;
 }
 
 .adminMenu {
-  height: 1024px;
   background-color: white;
 }
 

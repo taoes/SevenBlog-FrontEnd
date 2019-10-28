@@ -1,11 +1,17 @@
 <template>
     <div class="articleDetail">
         <BlogMenu></BlogMenu>
-        <div style="margin-left: 20px;width: 100%;background-color: #ffffff">
+        <div class="articleDetailContent">
             <div class="articleCtr">
-                <el-button @click="backLastPage" type="primary" size="small" icon="el-icon-back"> 返回</el-button>
-                <el-button @click="editArticle" type="primary" size="small" icon="el-icon-edit"> 编辑</el-button>
-                <el-button @click="changeDialogStatus" type="primary" size="small" icon="el-icon-edit"> 评论文章</el-button>
+                <el-button @click="backLastPage" size="small" icon="el-icon-back"> 返回</el-button>
+                <el-button @click="editArticle" size="small" icon="el-icon-edit"> 编辑</el-button>
+                <el-button @click="changeDialogStatus" size="small" icon="el-icon-edit"> 评论文章</el-button>
+                <div style="float: right;margin-right: 30px">
+                    文章评分:
+                    <div style="float: right">
+                        <el-rate value="4.5" disabled show-score></el-rate>
+                    </div>
+                </div>
             </div>
             <mavonEditor
                     class="markdownPreview"
@@ -79,14 +85,25 @@
         width: 100%;
         height: 1000px;
         display: flex;
+        flex-direction: column;
         border-radius: 100px;
+    }
+
+    .articleDetailContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 30px;
+        margin-right: 40px;
+        margin-left: 40px;
+        background-color: white;
     }
 
     .markdownPreview {
         min-width: 90%;
+        padding: 20px;
         margin-right: 0;
         background-color: white;
-        box-shadow: 1px 1px 1px 1px lightgray;
     }
 
     .articleCtr {

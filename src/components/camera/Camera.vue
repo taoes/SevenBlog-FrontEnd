@@ -1,58 +1,62 @@
 <template>
+    <div>
+        <AppMenu></AppMenu>
+        <div class="camera">
+            <el-collapse v-model="defaultShowPanel" accordion>
+                <el-collapse-item class="Panel">
+                    <template slot="title">
+                        <span class="titleStyle">🔥 大事件时间轴</span>
+                    </template>
+                    <el-timeline>
+                        <el-timeline-item color="green" size="normal">
+                            <p class="time">2011年12月</p>
+                            <p>🔥 歃血为盟,结兄弟谊；死生相托,吉凶相救；福祸相依,患难相扶;</p>
+                        </el-timeline-item>
 
-    <div class="carame">
-        <el-collapse v-model="defaultShowPanel" accordion>
-            <el-collapse-item class="Panel">
-                <template slot="title">
-                    <span class="titleStyle">🔥 大事件时间轴</span>
-                </template>
-                <el-timeline>
-                    <el-timeline-item color="green" size="normal">
-                        <p class="time">2011年12月</p>
-                        <p>🔥 歃血为盟,结兄弟谊；死生相托,吉凶相救；福祸相依,患难相扶;</p>
-                    </el-timeline-item>
-
-                    <el-timeline-item color="red" size="normal">
-                        <p class="time">2012年4月日</p>
-                        <p>我们从涡阳四中,各奔前程</p>
-                    </el-timeline-item>
-
-
-                    <el-timeline-item color="#0088ee" size="normal">
-                        <p class="time">2018年年10月1日</p>
-                        <p>xxxxxx</p>
-                    </el-timeline-item>
+                        <el-timeline-item color="red" size="normal">
+                            <p class="time">2012年4月日</p>
+                            <p>我们从涡阳四中,各奔前程</p>
+                        </el-timeline-item>
 
 
-                    <el-timeline-item color="yellow" size="normal">
-                        <p class="time">2012年6月7日</p>
-                        <p>我们从涡阳四中,各奔前程</p>
-                    </el-timeline-item>
+                        <el-timeline-item color="#0088ee" size="normal">
+                            <p class="time">2018年年10月1日</p>
+                            <p>xxxxxx</p>
+                        </el-timeline-item>
 
 
-                    <el-timeline-item color="blue" size="normal">
-                        <p class="time">2012年6月7日</p>
-                        <p>我们从涡阳四中,各奔前程</p>
-                    </el-timeline-item>
-
-                </el-timeline>
-            </el-collapse-item>
+                        <el-timeline-item color="yellow" size="normal">
+                            <p class="time">2012年6月7日</p>
+                            <p>我们从涡阳四中,各奔前程</p>
+                        </el-timeline-item>
 
 
-            <el-collapse-item class="Panel" v-for="(serial,name) of serialList" style="padding-left: 0px">
+                        <el-timeline-item color="blue" size="normal">
+                            <p class="time">2012年6月7日</p>
+                            <p>我们从涡阳四中,各奔前程</p>
+                        </el-timeline-item>
 
-                <template slot="title">
-                    <span class="titleStyle">&nbsp;{{name}}</span>
-                </template>
-                <img v-for="pic in serial" :src="pic.img +'?imageView2/1/w/500/h/500'" :key="pic.url"
-                     @click="changeShowStatus(pic)" :alt="pic.name">
-            </el-collapse-item>
-        </el-collapse>
+                    </el-timeline>
+                </el-collapse-item>
+
+
+                <el-collapse-item :key="name" class="Panel" v-for="(serial,name) of serialList"
+                                  style="padding-left: 0px">
+
+                    <template slot="title">
+                        <span class="titleStyle">&nbsp;{{name}}</span>
+                    </template>
+                    <img v-for="pic in serial" :src="pic.img +'?imageView2/1/w/500/h/500'" :key="pic.url"
+                         @click="changeShowStatus(pic)" :alt="pic.name">
+                </el-collapse-item>
+            </el-collapse>
+        </div>
     </div>
-
 
 </template>
 <script>
+
+    import AppMenu from "../AppMenu";
 
     export default {
         data() {
@@ -81,7 +85,9 @@
                     ]
                 }
             }
-        }, methods: {
+        },
+        components: {AppMenu},
+        methods: {
             changeShowStatus: function (pic) {
                 this.dialogFormVisible = !this.dialogFormVisible;
                 this.picture = pic;
@@ -92,8 +98,9 @@
 
 <style scoped>
 
-    .carame {
+    .camera {
         width: 80%;
+        margin-top: 30px;
         margin-left: 10%;
     }
 

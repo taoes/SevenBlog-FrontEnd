@@ -1,25 +1,25 @@
 <template>
-    <div class="backLogin">
-
-        <div class="inputDiv">
-            账户名: &nbsp;<el-input placeholder="请输入账户" v-model="username"></el-input>
-        </div>
-
-
-        <div class="inputDiv">
-            密&nbsp;&nbsp;&nbsp;&nbsp;码: &nbsp;<el-input style="float: inside" placeholder="请输入密码" v-model="password"
-                                                        show-password></el-input>
-        </div>
-
-        <div style="margin-top: 20px;display: flex;justify-content: space-around">
-            <el-button type="danger" v-model="username" @onclick="resetInput">重置</el-button>
-            <el-button type="primary" v-model="password" @click="loginAdmin">登录</el-button>
+    <div>
+        <AppMenu></AppMenu>
+        <div class="backLogin">
+            <div class="inputDiv">
+                账户名: &nbsp;<el-input placeholder="请输入账户" v-model="username"></el-input>
+            </div>
+            <div class="inputDiv">
+                密&nbsp;&nbsp;&nbsp;&nbsp;码: &nbsp;<el-input style="float: inside" placeholder="请输入密码" v-model="password"
+                                                            show-password></el-input>
+            </div>
+            <div style="margin-top: 20px;display: flex;justify-content: space-around">
+                <el-button type="danger" v-model="username" @onclick="resetInput">重置</el-button>
+                <el-button type="primary" v-model="password" @click="loginAdmin">登录</el-button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     import './AdminLogin.css'
+    import AppMenu from "../AppMenu";
 
     export default {
         name: "AdminLogin",
@@ -28,7 +28,9 @@
                 username: '',
                 password: ''
             }
-        }, methods: {
+        },
+        components: {AppMenu},
+        methods: {
             resetInput: function () {
                 this.username = '';
                 this.password = '';
@@ -48,7 +50,6 @@
             }
         }, created() {
             let token = localStorage.getItem('token');
-            console.log("AdminLogin 获取到的token = ", token)
             if (token) {
                 this.$router.push('/admin')
             }

@@ -2,11 +2,21 @@
     <div class="blogMenu">
         <div>
             <div style="background-color: #ffffff">
-                <el-menu theme="light" :default-openeds="defaultActive" @select="onSelectItem">
-
+                <el-menu
+                        theme="light"
+                        mode="horizontal"
+                        :default-openeds="defaultActive"
+                        @select="onSelectItem"
+                        :collapse="collapse"
+                        background-color="#545c64"
+                        text-color="#fff"
+                        active-text-color="#ffd04b"
+                >
                     <el-menu-item index="">
                         <i class="el-icon-s-grid"></i>
-                        全部文章
+                        <template slot="title">
+                            全部文章
+                        </template>
                     </el-menu-item>
 
                     <el-submenu v-for="(value,key) of category" :index="key" :key="key">
@@ -19,9 +29,29 @@
                             <i class="el-icon-s-grid"></i>
                             {{ item.name}}
                         </el-menu-item>
-
                     </el-submenu>
+
+                    <el-submenu index="navigation">
+                        <template slot="title">
+                            <i class="el-icon-location"></i>
+                            <span>站点导航</span>
+                        </template>
+
+                        <el-menu-item index="/">
+                            <i class="el-icon-s-flag"></i>
+                            系统首页
+                        </el-menu-item>
+
+
+                        <el-menu-item index="/admin">
+                            <i class="el-icon-s-check"></i>
+                            管理界面
+                        </el-menu-item>
+                    </el-submenu>
+
                 </el-menu>
+
+
             </div>
         </div>
     </div>
@@ -34,19 +64,27 @@
         name: "BlogMenu",
         data: function () {
             return {
-                category: {}
+                category: {},
+                blogMenuStyle: {
+                    backgroundColor: 'white'
+                }
             }
         },
         computed: {
             defaultActive: function () {
-                return Object.keys(this.category)
+                return this.$store.state.blogMenu.defaultActive;
             },
             collapse: function () {
-                return this.$store.state.adminMenu.collapse;
+                return this.$store.state.blogMenu.collapse;
             }
         },
         methods: {
             onSelectItem: function (index) {
+                if (index.startsWith("/")) {
+                    this.$router.push(index);
+                    return;
+                }
+
                 this.$store.commit({
                     type: 'changeType',
                     params: index
@@ -62,11 +100,5 @@
 </script>
 
 <style>
-
-    .blogMenu {
-        width: 260px;
-        height: 1024px;
-        background-color: white;
-    }
 
 </style>
