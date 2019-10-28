@@ -1,9 +1,9 @@
 <template>
-    <div class="blogListDiv">
+    <div class="blogListDiv" ref="blogListDiv">
         <BlogMenu></BlogMenu>
 
         <div class="blogList">
-            <div style="margin-bottom: 20px">
+            <div style="margin-bottom: 20px;margin-top: 20px">
                 <el-input
                         size="small"
                         style="width: 400px"
@@ -23,8 +23,8 @@
                 <div slot="header" class="clearfix">
                     <router-link :to="'/blog/article/'+item.id">
                     <span class="blogTitle"
-                          style="font-size: 16px;color:#1A1A1A;font-weight: bold;font-family:'SimSun',serif">
-                        <i class="el-icon-s-management"></i>&nbsp;{{item.title}}</span>
+                          style="font-size: 20px;color:#000000;font-weight: 900;text-shadow: #4a4a4a 0 4px 16px;">
+                        <i class="el-icon-folder-opened"></i>&nbsp;{{item.title}}</span>
                     </router-link>
                 </div>
 
@@ -34,7 +34,7 @@
                         {{item.description}}
                     </div>
 
-                    <div style="padding: 3px 0;flex-grow: 4;align-self: stretch" type="text">
+                    <div style="padding: 3px 0;flex-grow: 4;margin-top: 5px" type="text">
                         <el-tag v-for="tag of tagList" :key="tag.id" :type="tag.type" size="small"
                                 style="margin-left: 10px;">
                             {{tag.name}}
@@ -63,7 +63,6 @@
     import BlogMenu from "./blog/BlogMenu";
 
     let errorFunc = () => {
-        this.$Message.error("网络请求出现异常")
     };
 
     export default {
@@ -73,8 +72,8 @@
                 data: [],
                 type: '',
                 total: 0,
-                pageSize: 5,
-                tagList: [{id: 1, type: 'info', name: 'Jsva'}]
+                pageSize: 7,
+                tagList: [{id: 1, type: 'info', name: 'java'}, {id: 2, type: 'success', name: 'SpringBoot'}]
             }
         },
         computed: {
@@ -94,7 +93,8 @@
                 let respFunc = (resp) => {
                     this.data = resp.data.data;
                     this.total = resp.data.total;
-                    scroll(0, 0)
+
+                    this.$refs.blogListDiv.scrollTop();
                 };
                 blogApiListApi.getBlogList(pageNumber, this.pageSize, this.blogType, respFunc, errorFunc);
             }, search: function () {
@@ -119,10 +119,7 @@
     .blogList {
         margin-top: 30px;
         margin-left: 20px;
-        max-height: 1024px;
-        overflow-y: auto;
         margin-right: 20px;
-        padding: 20px;
         border-radius: 4px;
         box-shadow: 5px 5px 30px 1px #515a6e;
         background-color: #FFFFFF;
@@ -141,6 +138,7 @@
     .page {
         text-align: center;
         margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .articleTagList {

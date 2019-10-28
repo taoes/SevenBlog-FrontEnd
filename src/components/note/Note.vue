@@ -1,21 +1,8 @@
 <template>
 
     <div class="note bookCard">
-        <!--        <div class="cardDiv" v-for="(book,index) of bookList" @click="toNewPage(book)" :key="index"-->
-        <!--             style="width: 314px;height: 400px">-->
-        <!--            <Card>-->
-        <!--                <div style="text-align:center">-->
-        <!--                    <img :src="book.cover" :alt="book.desc">-->
-        <!--                    <div class="desc">-->
-        <!--                        <h3>{{book.title}}</h3>-->
-        <!--                        <span>{{book.subTitle}}</span>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </Card>-->
-        <!--        </div>-->
-
         <el-row>
-            <el-col :span="8" v-for="(book, index) in bookList" :key="book.title" style="text-align: center">
+            <el-col :span="8" v-for="(book) in bookList" :key="book.title" style="text-align: center">
                 <el-card :body-style="{ padding: '40px'}"
                          style="height: 380px;margin-top: 30px;margin-bottom: 40px">
                     <img :src="book.cover"

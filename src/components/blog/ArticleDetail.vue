@@ -9,7 +9,7 @@
                 <div style="float: right;margin-right: 30px">
                     文章评分:
                     <div style="float: right">
-                        <el-rate value="4.5" disabled show-score></el-rate>
+                        <el-rate :value="4.5" disabled show-score></el-rate>
                     </div>
                 </div>
             </div>
@@ -94,16 +94,14 @@
         flex-direction: column;
         justify-content: center;
         margin-top: 30px;
-        margin-right: 40px;
-        margin-left: 40px;
-        background-color: white;
+        margin-right: 5%;
+        margin-left: 5%;
     }
 
     .markdownPreview {
         min-width: 90%;
         padding: 20px;
         margin-right: 0;
-        background-color: white;
     }
 
     .articleCtr {

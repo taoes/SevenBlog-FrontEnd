@@ -5,7 +5,7 @@
 
 
 .el-card {
-    height: 200px;
+    height: fit-content;
     margin-left: 20px;
     margin-right: 10px;
 }

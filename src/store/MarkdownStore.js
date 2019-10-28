@@ -1,6 +1,7 @@
 export default {
     state: {
-        theme: 'idea'
+        // theme: 'atom-one-dark'
+        theme: 'googlecode'
     },
     getters: {},
     actions: {},

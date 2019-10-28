@@ -18,7 +18,7 @@
     };
 </script>
 
-<style scoped>
+<style>
     #nprogress .bar {
         background: snow !important;
     }
@@ -28,4 +28,17 @@
         margin-left: 20px;
         margin-right: 10px;
     }
+
+
+    blockquote p {
+        font-size: 12px;
+        font-weight: inherit;
+        color: orangered;
+    }
+
+    .v-note-show p {
+        text-indent: 2em;
+    }
+
+
 </style>
