@@ -46,9 +46,28 @@
                     <template slot="title">
                         <span class="titleStyle">&nbsp;{{name}}</span>
                     </template>
-                    <img v-for="pic in serial" :src="pic.img +'?imageView2/1/w/500/h/500'" :key="pic.url"
-                         @click="changeShowStatus(pic)" :alt="pic.name">
+
+
+                    <div v-viewer="options">
+                        <template v-for="{name, img} in serial">
+                            <img :src="img +'?imageView2/1/w/400/h/400'" :data-source="img" class="image" :key="name"
+                                 :alt="name">
+                        </template>
+                    </div>
+
+
+                    <!--                    <viewer :images="serial">-->
+                    <!--                        <img v-for="(src,index) in serial"-->
+                    <!--                             :src="src.img + '?imageView2/1/w/500/h/500'"-->
+                    <!--                             :data-source="src.img " :key="index"-->
+                    <!--                             :alt="src.name">-->
+                    <!--                    </viewer>-->
                 </el-collapse-item>
+
+
+                <!-- component -->
+
+
             </el-collapse>
         </div>
     </div>
@@ -61,27 +80,32 @@
     export default {
         data() {
             return {
+                options: {
+                    toolbar: true,
+                    url: 'data-source'
+                },
                 dialogFormVisible: false,
                 picture: {},
                 defaultShowPanel: "大事件时间轴",
+
                 serialList: {
                     "☘️ 2015年合影留念": [
-                        {name: "荷叶", img: "http://pzb5gmte2.bkt.clouddn.com/2015"},
-                        {name: "荷叶", img: "http://pzb5gmte2.bkt.clouddn.com/2015.2"},
+                        {name: "荷叶1", img: "http://pzb5gmte2.bkt.clouddn.com/2015"},
+                        {name: "荷叶2", img: "http://pzb5gmte2.bkt.clouddn.com/2015.2"},
                     ],
                     "🏝 2016年合影留念": [
-                        {name: "荷叶", img: "http://pzb5gmte2.bkt.clouddn.com/2016"},
+                        {name: "荷叶3", img: "http://pzb5gmte2.bkt.clouddn.com/2016"},
                     ],
                     "🌲 2018年合影留念": [
-                        {name: "荷叶222", img: "http://pzb5gmte2.bkt.clouddn.com/2018"},
+                        {name: "荷叶221", img: "http://pzb5gmte2.bkt.clouddn.com/2018"},
                         {name: "荷叶222", img: "http://pzb5gmte2.bkt.clouddn.com/2018.2"},
-                        {name: "荷叶222", img: "http://pzb5gmte2.bkt.clouddn.com/2018.3"},
+                        {name: "荷叶223", img: "http://pzb5gmte2.bkt.clouddn.com/2018.3"},
                     ], "🌳 2019年合影留念": [
                         {name: "回廊", img: "http://pzb5gmte2.bkt.clouddn.com/2019.1.jpg"},
-                        {name: "荷叶", img: "http://pzb5gmte2.bkt.clouddn.com/2019.4.jpg"},
-                        {name: "荷叶2", img: "http://pzb5gmte2.bkt.clouddn.com/2019.5.back.jpg"},
-                        {name: "池边", img: "http://pzb5gmte2.bkt.clouddn.com/2019.2"},
-                        {name: "池边2", img: "http://pzb5gmte2.bkt.clouddn.com/2019.3"},
+                        {name: "荷叶4", img: "http://pzb5gmte2.bkt.clouddn.com/2019.4.jpg"},
+                        {name: "荷叶5", img: "http://pzb5gmte2.bkt.clouddn.com/2019.5.back.jpg"},
+                        {name: "池边6", img: "http://pzb5gmte2.bkt.clouddn.com/2019.2"},
+                        {name: "池边7", img: "http://pzb5gmte2.bkt.clouddn.com/2019.3"},
                     ]
                 }
             }

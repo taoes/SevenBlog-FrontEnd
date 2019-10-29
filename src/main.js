@@ -8,6 +8,8 @@ import VCharts from 'v-charts'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
 
 import {mavonEditor} from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
@@ -18,7 +20,7 @@ Vue.use(VCharts);
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
-
+Vue.use(Viewer)
 
 new Vue({
     render: h => h(App),
