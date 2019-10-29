@@ -49,17 +49,12 @@
                             <i class="el-icon-s-flag"></i>
                             系统首页
                         </el-menu-item>
-
-
                         <el-menu-item index="/admin">
                             <i class="el-icon-s-check"></i>
                             管理界面
                         </el-menu-item>
                     </el-submenu>
-
                 </el-menu>
-
-
             </div>
         </div>
     </div>

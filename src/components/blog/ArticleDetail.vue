@@ -28,7 +28,7 @@
 
         <div id="commentList">
             <span style="margin-left: 30px;margin-bottom:20px;color: #4a4a4a;font-size: 20px">评论内容</span>
-            <BlogCommentList></BlogCommentList>
+            <BlogCommentList :article-id="this.$route.params.id"></BlogCommentList>
         </div>
 
         <div>
@@ -90,7 +90,6 @@
 
 <style scoped>
 
-
     .articleDetail {
         width: 100%;
         height: 1000px;
@@ -120,7 +119,6 @@
     }
 
     #commentList {
-        border: #000000 2px solid;
         padding-top: 20px;
         margin-top: 20px;
         background-color: #FFFFFF;

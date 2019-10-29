@@ -6,7 +6,8 @@
                 <el-card :body-style="{ padding: '40px'}"
                          style="height: 380px;margin-top: 30px;margin-bottom: 40px">
                     <img :src="book.cover"
-                         class="image">
+                         class="image"
+                         :alt="book.title">
                 </el-card>
             </el-col>
         </el-row>

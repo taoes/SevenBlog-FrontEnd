@@ -10,6 +10,20 @@ const commentApi = {
                 errorFunc(error);
             }
         });
+    }, getComment: function (articleIndex, respFunc, errorFunc) {
+        let param = {
+            articleId: articleIndex
+        };
+
+
+        return axios.get(apiConfig.comment.add, {params: param}).then((resp) => {
+            respFunc(resp);
+        }).catch(error => {
+            if (errorFunc) {
+                errorFunc(error);
+            }
+        });
+
     }
 
 };
