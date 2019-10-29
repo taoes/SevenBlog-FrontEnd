@@ -71,13 +71,7 @@
             </el-col>
         </el-row>
 
-        <div class="footer">
-            <el-link href="https://github.com/tao-seven" style="margin-left: 10px;margin-right: 10px;color: white">
-                访问Github
-            </el-link>
-            <span>@ 2019 燕归来兮</span>
-            <span> 皖ICP 备17025334号-1</span>
-        </div>
+
     </div>
 
 
@@ -86,6 +80,7 @@
 
     import "./style.css"
     import reposApi from '@/api/GithubRepos'
+    import blogListApi from '@/api/BlogListApi'
     import AppMenu from "../AppMenu";
 
     export default {
@@ -103,15 +98,8 @@
                     },
                 },
                 contentRateData: {
-                    columns: ['日期', '访问用户'],
-                    rows: [
-                        {'日期': 'JVM虚拟机', '访问用户': 1393},
-                        {'日期': 'React', '访问用户': 3530},
-                        {'日期': 'VUE', '访问用户': 2923},
-                        {'日期': 'NodeJS', '访问用户': 1723},
-                        {'日期': 'GoLang', '访问用户': 3792},
-                        {'日期': 'Python', '访问用户': 4593}
-                    ]
+                    columns: ['name', 'value'],
+                    rows: []
                 },
                 accessData: {
                     columns: ['日期', '访问用户'],
@@ -142,9 +130,12 @@
             let error = () => {
 
             };
-
             reposApi.getAllRepos(6, respFunc, error);
 
+
+            blogListApi.getTypeCount((resp => {
+                this.contentRateData.rows = resp.data
+            }));
         }
     }
 </script>

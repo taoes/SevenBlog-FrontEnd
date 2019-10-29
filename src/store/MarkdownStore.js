@@ -1,6 +1,6 @@
 export default {
     state: {
-        // theme: 'atom-one-dark'
+        // theme: 'atom-one'
         theme: 'googlecode'
     },
     getters: {},

@@ -12,6 +12,14 @@
                         text-color="#fff"
                         active-text-color="#ffd04b"
                 >
+
+                    <el-menu-item index="/">
+                        <i class="el-icon-s-home"></i>
+                        <template slot="title">
+                            主页
+                        </template>
+                    </el-menu-item>
+
                     <el-menu-item index="">
                         <i class="el-icon-s-grid"></i>
                         <template slot="title">
@@ -21,13 +29,13 @@
 
                     <el-submenu v-for="(value,key) of category" :index="key" :key="key">
                         <template slot="title">
-                            <i class="el-icon-s-promotion"></i>
-                            <span>{{key}}</span>
+                            <i class="el-icon-data-board"></i>
+                            <span style="color: white">{{key}}</span>
                         </template>
 
                         <el-menu-item v-for="item of value" :index="item.key" :key="item.key">
-                            <i class="el-icon-s-grid"></i>
-                            {{ item.name}}
+                            <i class="el-icon-collection"></i>
+                            <span style="color: white">{{ item.name}}</span>
                         </el-menu-item>
                     </el-submenu>
 

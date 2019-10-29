@@ -3,17 +3,15 @@
         <BlogMenu></BlogMenu>
         <div class="articleDetailContent">
             <div class="articleCtr">
-                <el-button @click="backLastPage" size="small" icon="el-icon-back"> 返回</el-button>
-                <el-button @click="editArticle" size="small" icon="el-icon-edit"> 编辑</el-button>
-                <el-button @click="changeDialogStatus" size="small" icon="el-icon-edit"> 评论文章</el-button>
-                <div style="float: right;margin-right: 30px">
-                    文章评分:
-                    <div style="float: right">
-                        <el-rate :value="4.5" disabled show-score></el-rate>
-                    </div>
-                </div>
+                <el-button @click="backLastPage" size="small" icon="el-icon-back">返回</el-button>
+                <el-button @click="editArticle" size="small" icon="el-icon-edit">编辑</el-button>
+                <a class="el-button el-button--default el-button--small" href="#blogCommentList" size="small">
+                    <i class="el-icon-bottom"></i>
+                    查看评论</a>
+                <el-button @click="changeDialogStatus" size="small" icon="el-icon-chat-dot-round">评论</el-button>
             </div>
             <mavonEditor
+                    id="articleDetail"
                     class="markdownPreview"
                     :value="blog.content || emptyTip"
                     :subfield="false"
@@ -25,8 +23,16 @@
                     :scrollStyle="true"
                     :ishljs="true"
                     :navigation="tocStatus"
-                    style=""
             ></mavonEditor>
+        </div>
+
+        <div id="commentList">
+            <span style="margin-left: 30px;margin-bottom:20px;color: #4a4a4a;font-size: 20px">评论内容</span>
+            <BlogCommentList></BlogCommentList>
+        </div>
+
+        <div>
+            <Footer></Footer>
         </div>
 
         <el-dialog :visible.sync="showCommentDialog">
@@ -41,6 +47,8 @@
     import BlogListApi from "@/api/BlogListApi";
     import BlogMenu from "./BlogMenu";
     import BlogComment from "./comment/BlogComment";
+    import BlogCommentList from "./comment/BlogCommentList";
+    import Footer from "../Footer";
 
     export default {
         name: "ArticleDetail",
@@ -54,7 +62,9 @@
         }, components: {
             BlogComment,
             BlogMenu,
-            mavonEditor
+            mavonEditor,
+            Footer,
+            BlogCommentList
         },
         methods: {
             backLastPage: function () {
@@ -94,13 +104,13 @@
         flex-direction: column;
         justify-content: center;
         margin-top: 30px;
-        margin-right: 5%;
-        margin-left: 5%;
+        margin-right: 20px;
+        margin-left: 20px;
+        padding: 0;
     }
 
-    .markdownPreview {
+    #articleDetail {
         min-width: 90%;
-        padding: 20px;
         margin-right: 0;
     }
 
@@ -109,9 +119,14 @@
         margin-left: 10px;
     }
 
-    /*评论组件样式*/
-    .comment {
+    #commentList {
+        border: #000000 2px solid;
+        padding-top: 20px;
         margin-top: 20px;
+        background-color: #FFFFFF;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 10px;
     }
 
 </style>

@@ -37,7 +37,7 @@
     }
 
     .v-note-show p {
-        text-indent: 2em;
+
     }
 
 

@@ -1,5 +1,7 @@
 <template>
     <div class="blogListDiv" ref="blogListDiv">
+        <el-backtop></el-backtop>
+
         <BlogMenu></BlogMenu>
 
         <div class="blogList">
@@ -23,24 +25,21 @@
                 <div slot="header" class="clearfix">
                     <router-link :to="'/blog/article/'+item.id">
                     <span class="blogTitle"
-                          style="font-size: 20px;color:#000000;font-weight: 900;text-shadow: #4a4a4a 0 4px 16px;">
+                          style="font-size: 20px;color:darkslateblue;font-weight: 900;font-family: Courier,serif">
                         <i class="el-icon-folder-opened"></i>&nbsp;{{item.title}}</span>
                     </router-link>
                 </div>
 
                 <div style="display: flex;flex-direction: column;">
-
                     <div class="descDiv" style="padding-right: 30px;width:100%;color:#000000;flex-grow: 1">
                         {{item.description}}
                     </div>
-
                     <div style="padding: 3px 0;flex-grow: 4;margin-top: 5px" type="text">
                         <el-tag v-for="tag of tagList" :key="tag.id" :type="tag.type" size="small"
                                 style="margin-left: 10px;">
                             {{tag.name}}
                         </el-tag>
                     </div>
-
                 </div>
             </el-card>
 
@@ -55,18 +54,23 @@
                 </el-pagination>
             </div>
         </div>
+
+        <div>
+            <Footer></Footer>
+        </div>
     </div>
 </template>
 <script>
 
     import blogApiListApi from "@/api/BlogListApi";
     import BlogMenu from "./blog/BlogMenu";
+    import Footer from "./Footer";
 
     let errorFunc = () => {
     };
 
     export default {
-        components: {BlogMenu},
+        components: {BlogMenu, Footer},
         data() {
             return {
                 data: [],
