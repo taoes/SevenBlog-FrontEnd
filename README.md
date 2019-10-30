@@ -39,7 +39,7 @@
 
 > 预览界面有部分仍未完成，实际进度以个人网站为准 [https://www.zhoutao123.com](https://www.zhoutao123.com)
 
-### 首页
+### 首页(部分完成)
 
 ![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/index-page.jpg)
 
@@ -48,13 +48,13 @@
 ![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/index-blog.jpg)
 
 
-### 首页适应手机
-
-![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/index-blog-mobile.jpg)
-
 ### 博文详情
 ![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/blog-detail.jpg)
 
+
+### 文章管理
+
+![文章管理界面](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/%E6%96%87%E7%AB%A0%E7%AE%A1%E7%90%86.png)
 
 
 
