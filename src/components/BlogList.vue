@@ -26,7 +26,7 @@
                 <div slot="header" class="clearfix">
                     <router-link :to="'/blog/article/'+item.id">
                     <span class="blogTitle"
-                          style="font-size: 20px;color:darkslateblue;font-weight: 900;font-family: Courier,serif">
+                          style="font-size: 20px;color:midnightblue;font-weight: 900;">
                         <i class="el-icon-folder-opened"></i>&nbsp;{{item.title}}</span>
                     </router-link>
                 </div>
