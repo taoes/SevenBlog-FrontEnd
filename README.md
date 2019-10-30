@@ -45,7 +45,7 @@
 
 ### 博客首页
 
-![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture//index-blog.jpg)
+![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/index-blog.jpg)
 
 
 ### 首页适应手机
