@@ -2,8 +2,10 @@
     <div class="github">
         <AppMenu></AppMenu>
         <el-backtop target=".github"></el-backtop>
-        <el-row style="padding:10px">
-            <el-col :span="12">
+
+        <div id="homeApp">
+
+            <el-row class="homeRow">
                 <el-card class="box-card" :bordered="false" style="overflow-y: auto">
                     <div slot="header">
                         <span class="cardTitle">🌋 Github项目</span>
@@ -11,15 +13,14 @@
 
                     <div class="repos">
                         <el-collapse v-model="githubCollapse" accordion>
-                            <el-collapse-item :title="'🏝' + repos.name" v-for="(repos) of reposList">
+                            <el-collapse-item :title="repos.name" v-for="(repos) of reposList" :key="repos.name">
                                 <p class="reposDesc">{{repos.desc}}</p>
                             </el-collapse-item>
                         </el-collapse>
                     </div>
                 </el-card>
-            </el-col>
 
-            <el-col :span="12">
+
                 <el-card class="box-card" :bordered="true">
                     <div slot="header">
                         <span class="cardTitle">🌲 推荐文章</span>
@@ -32,34 +33,31 @@
                     <p>Content of card</p>
                     <p>Content of card</p>
                 </el-card>
-            </el-col>
-        </el-row>
+            </el-row>
 
-        <el-row style="padding:20px">
-            <el-col :span="12">
-                <el-card :bordered="false" style="height:400px">
+
+            <el-row class="homeRow">
+                <el-card :bordered="false">
                     <div slot="title">
                         <Icon type="md-pie" size="20"/>
                         <span class="cardTitle">文章内容</span>
                     </div>
                     <ve-pie :data="contentRateData" :settings="setting"></ve-pie>
                 </el-card>
-            </el-col>
 
-            <el-col :span="12">
-                <el-card :bordered="true" style="height: 400px">
+                <el-card :bordered="true">
                     <div slot="title">
                         <Icon type="ios-map" size="20"/>
                         <span class="cardTitle">访客信息</span>
                     </div>
                     <ve-ring :data="accessData" :settings="setting"></ve-ring>
                 </el-card>
-            </el-col>
-        </el-row>
 
-        <el-row style="padding:20px">
-            <el-col :span="24">
-                <el-card :bordered="true">
+            </el-row>
+
+
+            <el-row class="homeRow">
+                <el-card :bordered="true" class="onwRow">
                     <div slot="title">
                         <Icon type="logo-github" size="20"/>
                         <span class="cardTitle">博主动态</span>
@@ -68,9 +66,9 @@
                     <p>Content of card</p>
                     <p>Content of card</p>
                 </el-card>
-            </el-col>
-        </el-row>
+            </el-row>
 
+        </div>
 
     </div>
 
@@ -142,4 +140,57 @@
 
 <style scoped>
 
+    #homeApp {
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    @media only screen and (min-width: 987px) {
+
+        .homeRow {
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: center;
+            height: fit-content;
+        }
+
+        .el-card {
+            margin: 10px;
+            min-height: 400px;
+            width: 50%;
+        }
+
+        .onwRow {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (max-width: 987px) {
+
+        .homeRow {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: fit-content;
+            align-items: center;
+        }
+
+        .el-card {
+            margin-top: 20px;
+            min-height: 400px;
+            margin-left: 20px;
+            margin-right: 20px;
+            width: 100%;
+        }
+
+        .onwRow {
+            width: 100%;
+        }
+    }
 </style>

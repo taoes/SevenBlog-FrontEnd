@@ -8,7 +8,8 @@
             <div style="margin-bottom: 20px;margin-top: 20px">
                 <el-input
                         size="small"
-                        style="width: 400px"
+                        style="width: 50%"
+                        id="searchArticleInput"
                         icon="el-icon-upload ">
                 </el-input>
                 <el-button
@@ -120,13 +121,30 @@
         height: 1024px;
     }
 
-    .blogList {
-        margin-top: 30px;
-        margin-left: 20px;
-        margin-right: 20px;
-        border-radius: 4px;
-        box-shadow: 5px 5px 30px 1px #515a6e;
-        background-color: #FFFFFF;
+
+    @media only screen and (min-width: 987px) {
+
+        .blogList {
+            margin-top: 30px;
+            margin-left: 15%;
+            margin-right: 15%;
+            border-radius: 4px;
+            box-shadow: 5px 5px 30px 1px #515a6e;
+            background-color: #FFFFFF;
+        }
+
+
+    }
+
+    @media only screen and (max-width: 987px) {
+        .blogList {
+            margin-top: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 4px;
+            box-shadow: 5px 5px 30px 1px #515a6e;
+            background-color: #FFFFFF;
+        }
     }
 
     .el-card {

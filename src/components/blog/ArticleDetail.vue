@@ -3,12 +3,11 @@
         <BlogMenu></BlogMenu>
         <div class="articleDetailContent">
             <div class="articleCtr">
-                <el-button @click="backLastPage" size="small" icon="el-icon-back">返回</el-button>
-                <el-button @click="editArticle" size="small" icon="el-icon-edit">编辑</el-button>
-                <a class="el-button el-button--default el-button--small" href="#blogCommentList" size="small">
-                    <i class="el-icon-bottom"></i>
-                    查看评论</a>
-                <el-button @click="changeDialogStatus" size="small" icon="el-icon-chat-dot-round">评论</el-button>
+                <el-button @click="backLastPage" :type="buttonType" size="small" icon="el-icon-back">返回</el-button>
+                <el-button @click="editArticle" :type="buttonType" size="small" icon="el-icon-edit">编辑</el-button>
+                <el-button @click="changeDialogStatus" :type="buttonType" size="small" icon="el-icon-chat-dot-round">
+                    评论
+                </el-button>
             </div>
             <mavonEditor
                     id="articleDetail"
@@ -20,8 +19,8 @@
                     :boxShadow="false"
                     :toolbarsFlag="false"
                     :editable="false"
-                    :scrollStyle="true"
-                    :ishljs="true"
+                    :scrollStyle="false"
+                    :ishljs="false"
                     :navigation="tocStatus"
             ></mavonEditor>
         </div>
@@ -55,6 +54,7 @@
         data: function () {
             return {
                 blog: {},
+                buttonType: 'default',
                 emptyTip: '> 文章内容为空，数据库可能出了点问题',
                 tocStatus: false, // 显示文章的导航目录
                 showCommentDialog: false
@@ -98,15 +98,6 @@
         border-radius: 100px;
     }
 
-    .articleDetailContent {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-top: 30px;
-        margin-right: 20px;
-        margin-left: 20px;
-        padding: 0;
-    }
 
     #articleDetail {
         min-width: 90%;
@@ -114,17 +105,56 @@
     }
 
     .articleCtr {
-        padding: 10px;
-        margin-left: 10px;
+        margin: 10px;
     }
 
-    #commentList {
-        padding-top: 20px;
-        margin-top: 20px;
-        background-color: #FFFFFF;
-        margin-left: 20px;
-        margin-right: 20px;
-        border-radius: 10px;
+
+    @media only screen and (min-width: 987px) {
+
+        #commentList {
+            padding-top: 20px;
+            margin-top: 20px;
+            background-color: #FEFEFE;
+            box-shadow: 5px 5px 30px 1px #515a6e;
+            margin-left: 10%;
+            margin-right: 10%;
+            border-radius: 10px;
+        }
+
+        .articleDetailContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 30px;
+            margin-right: 10%;
+            margin-left: 10%;
+            box-shadow: 5px 5px 30px 1px #515a6e;
+            padding: 10px;
+        }
     }
 
+
+    @media only screen and (max-width: 987px) {
+
+        #commentList {
+            padding-top: 20px;
+            margin-top: 20px;
+            background-color: #FEFEFE;
+            box-shadow: 5px 5px 30px 1px #515a6e;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 10px;
+        }
+
+        .articleDetailContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 30px;
+            margin-right: 10px;
+            margin-left: 10px;
+            box-shadow: 5px 5px 30px 1px #515a6e;
+            padding: 10px;
+        }
+    }
 </style>

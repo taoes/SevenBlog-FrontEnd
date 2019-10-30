@@ -7,7 +7,7 @@ yarn build
 
 if [[ $? -eq 0 ]]; then
   echo "编译成功, 切换至编译文件夹"
-  cd ./dist
+  cd dist
 else
   echo "编译失败, 请检查！！！"
 fi

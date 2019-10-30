@@ -12,20 +12,20 @@
                 {{menu.name}}
             </router-link>
         </el-menu-item>
-        <div style="float: right;width: 120px">
-            <el-submenu v-if="showLoginInfo" index="personCent">
-                <template slot="title">
-                    <i class="el-icon-refresh-left"></i>
-                    个人中心
-                </template>
-                <el-menu-item index="logout" @click="toNewPage('/admin')">管理系统</el-menu-item>
-                <el-menu-item index="logout" @click="signOut">注销登录</el-menu-item>
-            </el-submenu>
-            <el-menu-item v-else index="loginButton" key="loginButton" @click="toNewPage('/login')">
-                <i class="el-icon-refresh-left"></i>
-                登录
-            </el-menu-item>
-        </div>
+
+        <el-submenu v-if="showLoginInfo" index="personCent">
+            <template slot="title">
+                <i class="el-icon-user-solid"></i>
+                个人中心
+            </template>
+            <el-menu-item index="logout" @click="toNewPage('/admin')">管理系统</el-menu-item>
+            <el-menu-item index="logout" @click="signOut">注销登录</el-menu-item>
+        </el-submenu>
+        <el-menu-item v-else index="loginButton" key="loginButton" @click="toNewPage('/login')">
+            <i class="el-icon-user-solid"></i>
+            登录
+        </el-menu-item>
+
     </el-menu>
 </template>
 

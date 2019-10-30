@@ -35,10 +35,4 @@
         font-weight: inherit;
         color: orangered;
     }
-
-    .v-note-show p {
-
-    }
-
-
 </style>
