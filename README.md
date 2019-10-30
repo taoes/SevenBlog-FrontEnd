@@ -1,6 +1,8 @@
 # 项目说明
 
-个人基于VUE实现的博客系统，后端使用Java开发的系统，非大众化博客平台，设计个人需求的博客系统 [地址 https://www.zhoutao123.com](https://www.zhoutao123.com)
+个人基于VUE实现的博客系统，后端使用Java开发的系统，非大众化博客平台，设计个人需求的博客系统 [地址 https://www.zhoutao123.com](https://www.zhoutao123.com),
+
+后端代码暂未开放，如果您需要请联系与我~😁
 
 
 
@@ -32,24 +34,26 @@
 + SpringBoot2.x
 + Mysql 5.7
 
+
 ## 预览界面
 
 > 预览界面有部分仍未完成，实际进度以个人网站为准 [https://www.zhoutao123.com](https://www.zhoutao123.com)
 
 ### 首页
 
-![](./doc/index-page.jpg)
+![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/index-page.jpg)
 
 ### 博客首页
-![](./doc/index-blog.jpg)
+
+![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture//index-blog.jpg)
 
 
 ### 首页适应手机
 
-<img src="./doc/index-blog-mobile.jpg" width = "100" align=right />
+![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/index-blog-mobile.jpg)
 
 ### 博文详情
-![](./doc/blog-detail.jpg)
+![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/blog-detail.jpg)
 
 
 
