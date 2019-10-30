@@ -92,7 +92,6 @@
 
     .articleDetail {
         width: 100%;
-        height: 1000px;
         display: flex;
         flex-direction: column;
         border-radius: 100px;

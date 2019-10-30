@@ -22,7 +22,7 @@
             </div>
 
 
-            <el-card shadow="hover" v-for="item in data" :key="item.title">
+            <el-card shadow="hover" v-for="item in data" :key="item.title" style="height: fit-content">
                 <div slot="header" class="clearfix">
                     <router-link :to="'/blog/article/'+item.id">
                     <span class="blogTitle"

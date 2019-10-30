@@ -2,27 +2,27 @@
 
     <el-menu
             class="el-menu-demo"
-            background-color="#545c64"
+            background-color="#409EFF"
             text-color="#fff"
-            active-text-color="#ffd04b"
+            active-text-color="#FFFFFF"
             mode="horizontal">
         <el-menu-item v-for="menu of menuList" :index="menu.name" :key="menu.name">
             <router-link :key="menu.path" :to="menu.path">
-                <i :class="menu.icon"></i>
+                <i :class="menu.icon" style="color:#FFFFFF"></i>
                 {{menu.name}}
             </router-link>
         </el-menu-item>
 
         <el-submenu v-if="showLoginInfo" index="personCent">
             <template slot="title">
-                <i class="el-icon-user-solid"></i>
+                <i class="el-icon-user-solid" style="color:#FFFFFF"></i>
                 个人中心
             </template>
             <el-menu-item index="logout" @click="toNewPage('/admin')">管理系统</el-menu-item>
             <el-menu-item index="logout" @click="signOut">注销登录</el-menu-item>
         </el-submenu>
         <el-menu-item v-else index="loginButton" key="loginButton" @click="toNewPage('/login')">
-            <i class="el-icon-user-solid"></i>
+            <i class="el-icon-user-solid" style="color:#FFFFFF"></i>
             登录
         </el-menu-item>
 
@@ -68,5 +68,8 @@
 </script>
 
 <style scoped>
+    .el-submenu__title>.el-submenu__icon-arrow {
+        color: #FEFEFE;
+    }
 
 </style>
