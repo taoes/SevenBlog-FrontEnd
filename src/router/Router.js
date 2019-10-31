@@ -16,7 +16,7 @@ VueRouter.prototype.push = function push(location) {
 };
 
 
-var router = new VueRouter({
+export default new VueRouter({
     routes: [
         {
             path: '/',
@@ -57,9 +57,3 @@ var router = new VueRouter({
     ]
 });
 
-
-router.afterEach((to, from) => {
-    // console.log("路由：" + from.path + " => " + to.path)
-});
-
-export default router;

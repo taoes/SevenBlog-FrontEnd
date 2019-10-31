@@ -1,6 +1,6 @@
 <template>
     <div class="contentArea">
-            人文百科
+        人文百科
     </div>
 </template>
 

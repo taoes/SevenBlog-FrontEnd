@@ -9,6 +9,11 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/vue-fontawesome": "^0.1.7",
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "echarts": "^4.3.0",
