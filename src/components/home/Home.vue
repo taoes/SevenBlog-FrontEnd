@@ -12,11 +12,26 @@
                     </div>
 
                     <div class="repos">
-                        <el-collapse v-model="githubCollapse" accordion>
-                            <el-collapse-item :title="repos.name" v-for="(repos) of reposList" :key="repos.name">
-                                <p class="reposDesc">{{repos.desc}}</p>
-                            </el-collapse-item>
-                        </el-collapse>
+                        <div style="margin-top: 10px" :title="repos.name" v-for="(repos) of reposList"
+                             :key="repos.name">
+                            <!--                            <img-->
+                            <!--                                    src="https://gitee.com/taoes/blog/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b"-->
+                            <!--                                    alt=""></img>-->
+                            <mavonEditor
+                                    class="gitee"
+                                    value='[![ 燕归来兮/blog](https://gitee.com/taoes/blog/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://gitee.com/taoes/blog)'
+                                    :subfield="false"
+                                    :defaultOpen="'preview'"
+                                    codeStyle="googlecode"
+                                    :boxShadow="false"
+                                    :toolbarsFlag="false"
+                                    :editable="false"
+                                    :scrollStyle="true"
+                                    :ishljs="true"
+                                    :navigation="false"
+                                    style="min-height: 0;padding: 0;margin: 0;"
+                            ></mavonEditor>
+                        </div>
                     </div>
                 </el-card>
 
@@ -77,12 +92,13 @@
 <script>
 
     import "./style.css"
+    import {mavonEditor} from "mavon-editor";
     import reposApi from '@/api/GithubRepos'
     import blogListApi from '@/api/BlogListApi'
     import AppMenu from "../AppMenu";
 
     export default {
-        components: {AppMenu},
+        components: {AppMenu, mavonEditor},
         data() {
             return {
                 githubCollapse: "0",
@@ -115,7 +131,9 @@
                     ]
                 }
             }
-        }, methods: {
+        },
+
+        methods: {
             toNewTag: function (title, href) {
                 window.open(href, '_blank', 'toolbar=yes, width=900, height=700')
             }
@@ -191,6 +209,10 @@
 
         .onwRow {
             width: 100%;
+        }
+
+        .gitee>.v-note-wrapper {
+            padding: 0px;
         }
     }
 </style>

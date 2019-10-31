@@ -4,6 +4,10 @@
 
 后端代码暂未开放，如果您需要请联系与我~😁
 
+# Github
+
++ [✅ 前端仓库地址](https://github.com/zhou-seven/SevenBlog-FrontEnd)
++ [✅ 后端仓库地址](https://github.com/zhou-seven/SevenBlog-BackEnd)
 
 
 ## 使用方法
@@ -23,16 +27,17 @@
 ## 技术栈
 
 ### 前端
-+ VUE
-+ Vuex
-+ Vue Router
-+ JavaScript(后期准备使用TypeScript重构)
+- [x] VUE
+- [x] Vuex
+- [x] Vue Router
+- [x] JavaScript(后期使用TypeScript重构)
 
 ### 后端
-+ Java8
-+ MyBatisPlus
-+ SpringBoot2.x
-+ Mysql 5.7
+- [x] Java8
+- [x] Gradle
+- [x] MyBatis-Plus
+- [x] SpringBoot2.x
+- [x] Mysql 5.7
 
 
 ## 预览界面
