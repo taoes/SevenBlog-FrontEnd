@@ -1,24 +1,29 @@
 <template>
+    <div>
+        <AppMenu></AppMenu>
+        <div class="note bookCard">
 
-    <div class="note bookCard">
-        <el-row>
-            <el-col :span="8" v-for="(book) in bookList" :key="book.title" style="text-align: center">
-                <el-card :body-style="{ padding: '40px'}"
-                         style="height: 380px;margin-top: 30px;margin-bottom: 40px">
-                    <img :src="book.cover"
-                         class="image"
-                         :alt="book.title">
-                </el-card>
-            </el-col>
-        </el-row>
+            <el-row>
+                <el-col :span="8" v-for="(book) in bookList" :key="book.title" style="text-align: center">
+                    <el-card :body-style="{ padding: '40px'}"
+                             style="height: 380px;margin-top: 30px;margin-bottom: 40px">
+                        <img :src="book.cover"
+                             class="image"
+                             :alt="book.title">
+                    </el-card>
+                </el-col>
+            </el-row>
+        </div>
     </div>
 </template>
 
 <script>
     import "./style.css"
+    import AppMenu from "../AppMenu";
 
     export default {
         name: "Note",
+        components: {AppMenu},
         data: function () {
             return {
                 bookList: [

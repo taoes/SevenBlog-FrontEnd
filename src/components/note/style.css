@@ -3,10 +3,10 @@
     width: 80%;
     height: 80%;
     padding: 10px;
+    margin-top: 30px;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 5px 5px 30px 1px #515a6e;
     background-color: #FFFFFF;
-
     display: flex;
     display: -webkit-flex;
     flex-direction: row;

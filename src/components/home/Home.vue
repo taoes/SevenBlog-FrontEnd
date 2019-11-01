@@ -13,8 +13,17 @@
                     </div>
 
                     <div class="repos">
-                        <div style="margin-top: 10px" :title="repos.name" v-for="(repos) of reposList"
+                        <div style="margin-top: 2px" :title="repos.name" v-for="(repos,index) of reposList"
                              :key="repos.name">
+
+                            <el-divider content-position="left">
+                                <span style="font-size: 16px;color:darkslategray;font-weight: 600;">{{index + 1}}  {{repos.name}}</span>
+                            </el-divider>
+                            <div style="border-left: 1px solid darkred;padding-left: 10px;min-height: 50px">
+                                {{repos.desc}}
+                            </div>
+
+
                         </div>
                     </div>
                 </el-card>
@@ -87,17 +96,12 @@
             return {
                 githubCollapse: "0",
                 showModal: false,
-                reposList: [],
                 setting: {
                     radius: 100,
                     label: {
                         align: 'left',
                         verticalAlign: 'top'
                     },
-                },
-                contentRateData: {
-                    columns: ['name', 'value'],
-                    rows: []
                 },
                 accessData: {
                     columns: ['日期', '访问用户'],
@@ -115,27 +119,21 @@
                     ]
                 }
             }
-        },
-
-        methods: {
-            toNewTag: function (title, href) {
-                window.open(href, '_blank', 'toolbar=yes, width=900, height=700')
+        }, computed: {
+            reposList: function () {
+                return this.$store.getters.getRepoList;
+            }, contentRateData: function () {
+                return this.$store.getters.getBlogCategoryRate;
             }
-        }, mounted() {
+        },
+        created() {
+            if (!this.reposList) {
+                this.$store.dispatch('updateGithubRepoList', {size: 6});
+            }
 
-            let respFunc = (resp) => {
-                this.reposList = resp.data
-            };
-
-            let error = () => {
-
-            };
-            reposApi.getAllRepos(6, respFunc, error);
-
-
-            blogListApi.getTypeCount((resp => {
-                this.contentRateData.rows = resp.data
-            }));
+            if (!this.contentRateData) {
+                this.$store.dispatch('updateBlogCategoryList');
+            }
         }
     }
 </script>
@@ -195,7 +193,7 @@
             width: 100%;
         }
 
-        .gitee>.v-note-wrapper {
+        .gitee > .v-note-wrapper {
             padding: 0px;
         }
     }

@@ -5,15 +5,15 @@
         <BlogMenu></BlogMenu>
 
         <div class="blogList">
-            <div style="margin-bottom: 20px;margin-top: 20px">
+            <div style="margin-bottom: 20px;margin-top: 20px;display: flex;flex-direction: row">
                 <el-input
                         size="small"
-                        style="width: 50%"
+                        style="width: 100%"
                         id="searchArticleInput"
                         icon="el-icon-upload ">
                 </el-input>
                 <el-button
-                        style="margin-left: 30px"
+                        style="margin-left: 30px;margin-right: 30px"
                         type="primary"
                         size="small"
                         icon="el-icon-search"
@@ -25,7 +25,8 @@
             <el-card shadow="hover" v-for="item in data" :key="item.title" style="height: fit-content">
                 <div style="margin-bottom: 30px">
                     <router-link :to="'/blog/article/'+item.id">
-                        <span class="blogTitle" style="font-size: 20px;color:black;font-weight: 900;">{{item.title}}</span>
+                        <span class="blogTitle"
+                              style="font-size: 20px;color:black;font-weight: 900;">{{item.title}}</span>
                     </router-link>
                 </div>
 
@@ -81,7 +82,7 @@
         },
         computed: {
             blogType: function () {
-                return this.$store.state.blogMenu.params;
+                return this.$store.state.menu.params;
             }, showMenu: function () {
                 return this.$store.state.menu.blogCategoryMenu;
             }
