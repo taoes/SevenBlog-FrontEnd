@@ -2,9 +2,9 @@
 
     <el-menu
             class="el-menu-demo"
-            background-color="#409EFF"
+            background-color="#545c64"
             text-color="#fff"
-            active-text-color="#FFFFFF"
+            active-text-color="#ffd04b"
             mode="horizontal">
         <el-menu-item v-for="menu of menuList" :index="menu.name" :key="menu.name">
             <router-link :key="menu.path" :to="menu.path">
@@ -68,8 +68,4 @@
 </script>
 
 <style scoped>
-    .el-submenu__title>.el-submenu__icon-arrow {
-        color: #FEFEFE;
-    }
-
 </style>

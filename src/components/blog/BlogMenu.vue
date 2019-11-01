@@ -8,9 +8,9 @@
                         :default-openeds="defaultActive"
                         @select="onSelectItem"
                         :collapse="collapse"
-                        background-color="#409EFF"
+                        background-color="#545c64"
                         text-color="#fff"
-                        active-text-color="#FFFFFF"
+                        active-text-color="#ffd04b"
                 >
 
                     <el-menu-item index="/">
@@ -103,8 +103,4 @@
 </script>
 
 <style>
-    .el-submenu__title>.el-submenu__icon-arrow {
-        color: #FEFEFE;
-    }
-
 </style>
