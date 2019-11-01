@@ -8,29 +8,13 @@
             <el-row class="homeRow">
                 <el-card class="box-card" :bordered="false" style="overflow-y: auto">
                     <div slot="header">
-                        <span class="cardTitle">🌋 Github项目</span>
+                        <i class="fab fa-github"></i>
+                        <span class="cardTitle"> Github项目</span>
                     </div>
 
                     <div class="repos">
                         <div style="margin-top: 10px" :title="repos.name" v-for="(repos) of reposList"
                              :key="repos.name">
-                            <!--                            <img-->
-                            <!--                                    src="https://gitee.com/taoes/blog/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b"-->
-                            <!--                                    alt=""></img>-->
-                            <mavonEditor
-                                    class="gitee"
-                                    value='[![ 燕归来兮/blog](https://gitee.com/taoes/blog/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://gitee.com/taoes/blog)'
-                                    :subfield="false"
-                                    :defaultOpen="'preview'"
-                                    codeStyle="googlecode"
-                                    :boxShadow="false"
-                                    :toolbarsFlag="false"
-                                    :editable="false"
-                                    :scrollStyle="true"
-                                    :ishljs="true"
-                                    :navigation="false"
-                                    style="min-height: 0;padding: 0;margin: 0;"
-                            ></mavonEditor>
                         </div>
                     </div>
                 </el-card>

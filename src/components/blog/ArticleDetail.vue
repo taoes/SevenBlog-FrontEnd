@@ -117,7 +117,6 @@
             box-shadow: 5px 5px 30px 1px #515a6e;
             margin-left: 10%;
             margin-right: 10%;
-            border-radius: 10px;
         }
 
         .articleDetailContent {
@@ -142,7 +141,6 @@
             box-shadow: 5px 5px 30px 1px #515a6e;
             margin-left: 10px;
             margin-right: 10px;
-            border-radius: 10px;
         }
 
         .articleDetailContent {

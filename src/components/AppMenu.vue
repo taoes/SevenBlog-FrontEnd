@@ -8,7 +8,7 @@
             mode="horizontal">
         <el-menu-item v-for="menu of menuList" :index="menu.name" :key="menu.name">
             <router-link :key="menu.path" :to="menu.path">
-                <i :class="menu.icon" style="color:#FFFFFF"></i>
+                <i :class="menu.icon" style="color:#FFFFFF;margin-top: -4px" ></i>
                 {{menu.name}}
             </router-link>
         </el-menu-item>

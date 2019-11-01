@@ -25,7 +25,7 @@
             <el-card shadow="hover" v-for="item in data" :key="item.title" style="height: fit-content">
                 <div style="margin-bottom: 30px">
                     <router-link :to="'/blog/article/'+item.id">
-                        <span class="blogTitle" style="font-size: 20px;color:midnightblue;font-weight: 900;">{{item.title}}</span>
+                        <span class="blogTitle" style="font-size: 20px;color:black;font-weight: 900;">{{item.title}}</span>
                     </router-link>
                 </div>
 
