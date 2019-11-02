@@ -4,10 +4,18 @@
                 mode="horizontal"
                 class="el-menu-demo"
                 @select="onSelectItem"
-                background-color="#409EFF"
+                background-color="#545c64"
                 text-color="#fff"
-                active-text-color="#FFFFFF"
+                active-text-color="#ffd04b"
         >
+
+            <el-menu-item index="/">
+                <i class="el-icon-s-home" style="color: #FFFFFF"></i>
+                <template slot="title">
+                    主页
+                </template>
+            </el-menu-item>
+
             <el-submenu index="article">
                 <template slot="title">
                     <i class="el-icon-s-cooperation" style="color: #FEFEFE"></i>
@@ -59,6 +67,13 @@
         },
         methods: {
             onSelectItem: function (index) {
+
+                if (index.startsWith("/")) {
+                    this.$router.push(index);
+                    return;
+                }
+
+
                 this.$store.commit('changeAdminMenuActive', index)
                 this.$router.push('/admin/' + index)
             }
@@ -68,11 +83,4 @@
 
 <style scoped>
 
-    i > .el-icon- * {
-        color: #FEFEFE;
-    }
-
-    .el-submenu__title > .el-submenu__icon-arrow {
-        color: #FEFEFE;
-    }
 </style>

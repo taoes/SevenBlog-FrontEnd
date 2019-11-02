@@ -3,10 +3,12 @@
         <AppMenu></AppMenu>
         <div class="backLogin">
             <div class="inputDiv">
-                账户名: &nbsp;<el-input placeholder="请输入账户" v-model="username"></el-input>
+                <span class="spanText">账 户:</span>
+                <el-input placeholder="请输入账户" v-model="username"></el-input>
             </div>
             <div class="inputDiv">
-                密&nbsp;&nbsp;&nbsp;&nbsp;码: &nbsp;<el-input style="float: inside" placeholder="请输入密码" v-model="password"
+                <span class="spanText">密 码:</span>
+                <el-input style="float: inside" placeholder="请输入密码" v-model="password"
                                                             show-password></el-input>
             </div>
             <div style="margin-top: 20px;display: flex;justify-content: space-around">

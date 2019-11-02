@@ -8,49 +8,49 @@
                         :default-openeds="defaultActive"
                         @select="onSelectItem"
                         :collapse="collapse"
-                        background-color="#409EFF"
+                        background-color="#545c64"
                         text-color="#fff"
-                        active-text-color="#FFFFFF"
+                        active-text-color="#ffd04b"
                 >
 
                     <el-menu-item index="/">
-                        <i class="el-icon-s-home" style="color: #FFFFFF"></i>
+                        <i class="fab fa-phoenix-framework" style="color: #FFFFFF;margin-right:5px"></i>
                         <template slot="title">
-                            主页
+                            <span class="menuTitle"> 主页</span>
                         </template>
                     </el-menu-item>
 
                     <el-menu-item index="">
-                        <i class="el-icon-s-grid" style="color: #FFFFFF"></i>
+                        <i class="fas fa-th" style="color: #FFFFFF;margin-right: 5px"></i>
                         <template slot="title">
-                            全部文章
+                            <span class="menuTitle">全部文章</span>
                         </template>
                     </el-menu-item>
 
-                    <el-submenu v-for="(value,key) of category" :index="key" :key="key">
+                    <el-submenu v-for="category of blogCategory" :index="category.name" :key="category.id">
                         <template slot="title">
-                            <i class="el-icon-data-board" style="color: #FFFFFF"></i>
-                            <span style="color: white">{{key}}</span>
+                            <i :class="category.icon" style="color: #FFFFFF"></i>
+                            <span class="menuTitle" style="color: white;margin-left: 5px">{{category.name}}</span>
                         </template>
 
-                        <el-menu-item v-for="item of value" :index="item.key" :key="item.key">
-                            <i class="el-icon-collection" style="color: #FFFFFF"></i>
+                        <el-menu-item v-for="item of category.sub" :index="item.key" :key="item.key">
+                            <i :class="item.icon" style="color: #FFFFFF;margin-right: 5px"></i>
                             <span style="color: white">{{ item.name}}</span>
                         </el-menu-item>
                     </el-submenu>
 
                     <el-submenu index="navigation">
                         <template slot="title">
-                            <i class="el-icon-location" style="color: #FFFFFF"></i>
-                            <span>站点导航</span>
+                            <i class="fas fa-map-signs" style="color: #FFFFFF;margin-right: 5px"></i>
+                            <span class="menuTitle">站点导航</span>
                         </template>
 
                         <el-menu-item index="/">
-                            <i class="el-icon-s-flag" style="color: #FFFFFF"></i>
+                            <i class="fab fa-old-republic" style="color: #FFFFFF;margin-right: 5px"></i>
                             系统首页
                         </el-menu-item>
                         <el-menu-item index="/admin">
-                            <i class="el-icon-s-check" style="color: #FFFFFF"></i>
+                            <i class="fab fa-keycdn" style="color: #FFFFFF;margin-right: 5px"></i>
                             管理界面
                         </el-menu-item>
                     </el-submenu>
@@ -61,13 +61,10 @@
 </template>
 
 <script>
-    import menuApi from "@/api/MenuApi";
-
     export default {
         name: "BlogMenu",
         data: function () {
             return {
-                category: {},
                 blogMenuStyle: {
                     backgroundColor: 'white'
                 }
@@ -75,10 +72,12 @@
         },
         computed: {
             defaultActive: function () {
-                return this.$store.state.blogMenu.defaultActive;
+                return this.$store.state.menu.defaultActive;
             },
             collapse: function () {
-                return this.$store.state.blogMenu.collapse;
+                return this.$store.state.menu.collapse;
+            }, blogCategory: function () {
+                return this.$store.getters.getBlogMenu;
             }
         },
         methods: {
@@ -87,24 +86,30 @@
                     this.$router.push(index);
                     return;
                 }
-
                 this.$store.commit({
                     type: 'changeType',
                     params: index
                 });
                 this.$router.push('/blog')
             }
-        }, mounted() {
-            // 获取文章目录分类
-            let successFun = (resp) => this.category = resp.data;
-            menuApi.getCategory(successFun);
+        }, created() {
+            if (!this.$store.state.menu.blogMenu) {
+                this.$store.dispatch('updateBlogMenu');
+            }
         }
     }
 </script>
 
-<style>
-    .el-submenu__title>.el-submenu__icon-arrow {
-        color: #FEFEFE;
+<style scoped>
+    @media only screen and (min-width: 800px) {
+        .menuTitle {
+            display: inline-block;
+        }
     }
 
+    @media only screen and (max-width: 800px) {
+        .menuTitle {
+            display: none;
+        }
+    }
 </style>

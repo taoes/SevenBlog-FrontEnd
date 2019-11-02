@@ -1,13 +1,15 @@
 <template>
     <div class="contentArea">
-            人文百科
+        <AppMenu></AppMenu>
     </div>
 </template>
 
 <script>
 
+    import AppMenu from "./AppMenu";
     export default {
         name: "BaiKe",
+        components: {AppMenu},
         data: function () {
             return {}
         },

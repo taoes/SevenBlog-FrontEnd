@@ -39,10 +39,6 @@ const blogList = {
         }).catch(error => {
             errorFunc(error)
         });
-    }, getTypeCount(respFunc) {
-        return axios.get(apiConfig.blog.count).then((resp) => {
-            respFunc(resp);
-        });
     }
 
 };

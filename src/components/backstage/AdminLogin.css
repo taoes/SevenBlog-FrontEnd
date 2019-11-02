@@ -7,14 +7,46 @@
 }
 
 
-.inputDiv {
-    width: 500px;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: baseline;
-    margin-top: 10px;
+@media only screen and (min-width: 800px) {
+
+    .inputDiv {
+        width: 500px;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: baseline;
+        margin-top: 10px;
+    }
+
+    .el-input {
+        margin-left: 10px;
+    }
+
+
+    .spanText {
+        min-width: 48px;
+    }
+
 }
 
-.el-input {
-    margin-left: 20px;
+
+@media only screen and (max-width: 800px) {
+
+
+    .inputDiv {
+        width: 70%;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: baseline;
+        margin-top: 10px;
+    }
+
+    .el-input {
+        margin-left: 10px;
+    }
+
+
+    .spanText {
+        min-width: 48px;
+    }
+
 }
