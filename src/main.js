@@ -31,7 +31,10 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(mavonEditor);
 Vue.use(ElementUI);
 Vue.use(VCharts);
-
+// 引入
+import MarkdownRun from 'vue-markdown-run';
+// 全局注入
+Vue.use(MarkdownRun);
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(Viewer)

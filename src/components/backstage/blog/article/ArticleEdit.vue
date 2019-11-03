@@ -24,7 +24,7 @@
                 <div style="margin-left: 40px">
                     <span>文章标题</span>
                     <el-input style="width: 400px" v-model="article.title" size="small"
-                              :placeholder="article.placeholder"/>
+                              :placeholder="article.placeholder"></el-input>
                 </div>
 
 
@@ -56,14 +56,9 @@
 
 
         <div class="mavon">
-            <mavon-editor
-                    ref=md
-                    :codeStyle="markdownTheme"
-                    @change="markdownChange"
-                    v-model="article.content"
-                    @imgAdd="uploadImg"
-                    class="editor"
-                    style="height: 990px"/>
+            <markdown-run
+                    :mark="article.content"
+            />
         </div>
 
 
@@ -72,7 +67,7 @@
 
 <script>
     import "./ArticleEdit.css";
-    import {mavonEditor} from "mavon-editor";
+    import {MarkdownRun} from 'vue-markdown-run';
     import blogList from "@/api/BlogListApi";
     import menuApi from "@/api/MenuApi";
     import addFileApi from "@/api/FileApi";
@@ -96,7 +91,7 @@
                 }, category: []
             };
         },
-        components: {mavonEditor},
+        components: {MarkdownRun},
         computed: {
             markdownTheme: function () {
                 return this.$store.state.markdown.theme;

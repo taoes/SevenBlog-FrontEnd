@@ -58,7 +58,7 @@
                         <Icon type="ios-map" size="20"/>
                         <span class="cardTitle">访客信息</span>
                     </div>
-                    <ve-ring :data="accessData" :settings="setting"></ve-ring>
+                    <ve-ring :data="accessInfo" :settings="setting"></ve-ring>
                 </el-card>
 
             </el-row>
@@ -102,28 +102,32 @@
                         align: 'left',
                         verticalAlign: 'top'
                     },
-                },
-                accessData: {
-                    columns: ['日期', '访问用户'],
-                    radius: 1,
-                    label: {
-                        align: 'left',
-                        verticalAlign: 'top'
-                    },
-                    rows: [
-                        {'日期': '🇨🇳 中国', '访问用户': 1390},
-                        {'日期': '🇯🇵 日本', '访问用户': 353},
-                        {'日期': '🇰🇷 韩国', '访问用户': 292},
-                        {'日期': '🇺🇸 美国', '访问用户': 17},
-                        {'日期': '🏳️‍🌈其他', '访问用户': 37},
-                    ]
                 }
+                // accessData: {
+                //     columns: ['日期', '访问用户'],
+                //     radius: 1,
+                //     label: {
+                //         align: 'left',
+                //         verticalAlign: 'top'
+                //     },
+                //     rows: [
+                //         {'日期': '🇨🇳 中国', '访问用户': 1390},
+                //         {'日期': '🇯🇵 日本', '访问用户': 353},
+                //         {'日期': '🇰🇷 韩国', '访问用户': 292},
+                //         {'日期': '🇺🇸 美国', '访问用户': 17},
+                //         {'日期': '🏳️‍🌈其他', '访问用户': 37},
+                //     ]
+                // }
             }
         }, computed: {
             reposList: function () {
                 return this.$store.getters.getRepoList;
             }, contentRateData: function () {
                 return this.$store.getters.getBlogCategoryRate;
+            }, accessInfo: function () {
+                let s = this.$store.getters.getAccessInfo;
+                console.log(s)
+                return s;
             }
         },
         created() {
@@ -133,6 +137,10 @@
 
             if (!this.contentRateData) {
                 this.$store.dispatch('updateBlogCategoryList');
+            }
+
+            if (!this.accessInfo) {
+                this.$store.dispatch('updateAccessInfo');
             }
         }
     }

@@ -12,6 +12,13 @@
             height: 290px;
         }
     </style>
+
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script type="text/javascript">
+        sessionStorage.setItem('ip', returnCitySN["cip"]);
+        sessionStorage.setItem('area', returnCitySN["cname"]);
+    </script>
+
 </head>
 <body>
 <noscript>
@@ -28,8 +35,6 @@
     let animalData = [
         "https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json"
     ];
-
-
     L2Dwidget.init({
         "model": {
             jsonPath: 'https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json',
@@ -41,7 +46,7 @@
             "height": 300,
             "hOffset": 30,
             "vOffset": 10,
-        }, "mobile": {"show": true, "scale": 0.3},
+        }, "mobile": {"show": false, "scale": "0.05"},
         "react": {"opacityDefault": 0.9, "opacityOnHover": 0.2},
         "dialog": {"enable": true, "hitokoto": true}
     });

@@ -2,8 +2,8 @@ import NProgress from 'nprogress'
 import axios from 'axios'
 import 'nprogress/nprogress.css'
 
-const BASE_URL = 'https://api.zhoutao123.com';
-// const BASE_URL = 'http://localhost:8080';
+// const BASE_URL = 'https://api.zhoutao123.com';
+const BASE_URL = 'http://localhost:8080';
 
 
 axios.defaults.timeout = 5000;
@@ -53,6 +53,9 @@ const config = {
         update: '/tag'
     }, file: {
         upload: '/file/upload'
+    }, access: {
+        add: '/access',
+        count: '/access/count'
     }
 };
 

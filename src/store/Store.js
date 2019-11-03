@@ -7,6 +7,7 @@ import TokenStore from "./TokenStore";
 import AdminMenuStore from './AdminMenuStore'
 import MarkdownStore from "./MarkdownStore";
 import HomeStore from "./HomeStore";
+import AccessStore from "./AccessStore";
 
 Vue.use(Vuex);
 
@@ -15,7 +16,8 @@ const store = new Vuex.Store({
         user: SideStore,
         token: TokenStore,
         menu: MenuStore,
-        home:HomeStore,
+        home: HomeStore,
+        access: AccessStore,
         adminMenu: AdminMenuStore,
         markdown: MarkdownStore
     }

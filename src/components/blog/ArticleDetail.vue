@@ -42,6 +42,7 @@
 
 <script>
     import {mavonEditor} from 'mavon-editor'
+    import * as sysTool from '../../assets/SysTool'
 
     import BlogListApi from "@/api/BlogListApi";
     import BlogMenu from "./BlogMenu";
@@ -57,7 +58,13 @@
                 buttonType: 'default',
                 emptyTip: '> 文章内容为空，数据库可能出了点问题',
                 tocStatus: false, // 显示文章的导航目录
-                showCommentDialog: false
+                showCommentDialog: false,
+                accessInfo: {
+                    ip: '1.1.1.1',
+                    area: '北京市',
+                    browser: 'chrome',
+                    os: 'windows7'
+                }
             }
         }, components: {
             BlogComment,
@@ -83,6 +90,12 @@
                 this.blog = resp.data;
             };
             BlogListApi.getBlogDetail(id, respFunc);
+        }, created() {
+            this.accessInfo.ip = sessionStorage.getItem('ip');
+            this.accessInfo.area = sessionStorage.getItem('area');
+            this.accessInfo.browser = sysTool.GetCurrentBrowser();
+            this.accessInfo.os = sysTool.GetOs();
+            this.$store.dispatch('addAccessInfo', this.accessInfo);
         }
     }
 </script>
