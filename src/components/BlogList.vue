@@ -35,9 +35,10 @@
                         {{item.description}}
                     </div>
                     <div style="padding: 3px 0;flex-grow: 4;margin-top: 5px" type="text">
-                        <el-tag v-for="tag of tagList" :key="tag.id" :type="tag.type" size="small"
+                        <el-tag v-for="(tag) of item.tagList" :key="tag" :type="tagType[Math.floor(Math.random()*5)]" effect="dark"
+                                size="small"
                                 style="margin-left: 10px;">
-                            {{tag.name}}
+                            {{tag}}
                         </el-tag>
                     </div>
                 </div>
@@ -77,7 +78,7 @@
                 type: '',
                 total: 0,
                 pageSize: 7,
-                tagList: [{id: 1, type: 'info', name: 'java'}, {id: 2, type: 'success', name: 'SpringBoot'}]
+                tagType: ['success', '', 'info', 'danger', 'warning']
             }
         },
         computed: {
