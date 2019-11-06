@@ -8,59 +8,64 @@
             <el-row class="homeRow">
                 <el-card class="box-card" :bordered="false" style="overflow-y: auto">
                     <div slot="header">
-                        <i class="fab fa-github"></i>
-                        <span class="cardTitle"> Github项目</span>
+                        <span class="cardTitle">🌲 Github项目</span>
                     </div>
-
-                    <div class="repos">
-                        <div style="margin-top: 2px" :title="repos.name" v-for="(repos,index) of reposList"
-                             :key="repos.name">
-
-                            <el-divider content-position="left">
-                                <span style="font-size: 16px;color:darkslategray;font-weight: 600;">{{index + 1}}  {{repos.name}}</span>
-                            </el-divider>
-                            <div style="border-left: 1px solid darkred;padding-left: 10px;min-height: 50px">
-                                {{repos.desc}}
-                            </div>
-
-
-                        </div>
+                    <div class="repos" style="padding-top: 0px">
+                        <el-table
+                                :data="reposList"
+                                :show-header="false"
+                                @row-click="clickGithub"
+                                style="width: 100%;">
+                            <el-table-column
+                                    prop="title"
+                                    min-width="50%">
+                                <template slot-scope="scope">
+                                    <i class="fab fa-github-alt"></i>
+                                    <span style="margin-right: 30px;margin-left: 20px;color: #303133;height: 30px">{{scope.row.name}}</span>
+                                </template>
+                            </el-table-column>
+                        </el-table>
                     </div>
                 </el-card>
 
 
-                <el-card class="box-card" :bordered="true">
+                <el-card class="box-card" :bordered="true" style="overflow-y: auto">
                     <div slot="header">
                         <span class="cardTitle">🌲 推荐文章</span>
                     </div>
-                    <p>Content of card</p>
-                    <p>Content of card</p>
-                    <p>Content of card</p>
-                    <p>Content of card</p>
-                    <p>Content of card</p>
-                    <p>Content of card</p>
-                    <p>Content of card</p>
+                    <el-table
+                            :data="recommendArticle"
+                            :show-header="false"
+                            @row-click="clickArticle"
+                            style="width: 100%;">
+                        <el-table-column
+                                prop="title"
+                                min-width="50%">
+                            <template slot-scope="scope">
+                                <i class="far fa-eye"></i>
+                                <span style="padding-left: 5px;padding-right: 2px">{{scope.row.access}}</span>
+                                <span style="margin-right: 30px;margin-left: 20px;color: #303133;height: 30px">{{scope.row.title}}</span>
+                                <el-tag
+                                        :type="tagType[Math.floor(Math.random()*5)]"
+                                        v-for="tag of scope.row.tagList" style="margin-left: 5px"
+                                        size="small">
+                                    {{tag}}
+                                </el-tag>
+                            </template>
+                        </el-table-column>
+                    </el-table>
                 </el-card>
             </el-row>
 
 
             <el-row class="homeRow">
                 <el-card :bordered="false">
-                    <div slot="title">
-                        <Icon type="md-pie" size="20"/>
-                        <span class="cardTitle">文章内容</span>
-                    </div>
                     <ve-pie :data="contentRateData" :settings="setting"></ve-pie>
                 </el-card>
 
                 <el-card :bordered="true">
-                    <div slot="title">
-                        <Icon type="ios-map" size="20"/>
-                        <span class="cardTitle">访客信息</span>
-                    </div>
                     <ve-ring :data="accessInfo" :settings="setting"></ve-ring>
                 </el-card>
-
             </el-row>
 
 
@@ -75,19 +80,13 @@
                     <p>Content of card</p>
                 </el-card>
             </el-row>
-
         </div>
-
     </div>
-
-
 </template>
 <script>
 
     import "./style.css"
     import {mavonEditor} from "mavon-editor";
-    import reposApi from '@/api/GithubRepos'
-    import blogListApi from '@/api/BlogListApi'
     import AppMenu from "../AppMenu";
 
     export default {
@@ -96,6 +95,7 @@
             return {
                 githubCollapse: "0",
                 showModal: false,
+                tagType: ['success', '', 'info', 'danger', 'warning'],
                 setting: {
                     radius: 100,
                     label: {
@@ -103,21 +103,6 @@
                         verticalAlign: 'top'
                     },
                 }
-                // accessData: {
-                //     columns: ['日期', '访问用户'],
-                //     radius: 1,
-                //     label: {
-                //         align: 'left',
-                //         verticalAlign: 'top'
-                //     },
-                //     rows: [
-                //         {'日期': '🇨🇳 中国', '访问用户': 1390},
-                //         {'日期': '🇯🇵 日本', '访问用户': 353},
-                //         {'日期': '🇰🇷 韩国', '访问用户': 292},
-                //         {'日期': '🇺🇸 美国', '访问用户': 17},
-                //         {'日期': '🏳️‍🌈其他', '访问用户': 37},
-                //     ]
-                // }
             }
         }, computed: {
             reposList: function () {
@@ -125,9 +110,18 @@
             }, contentRateData: function () {
                 return this.$store.getters.getBlogCategoryRate;
             }, accessInfo: function () {
-                let s = this.$store.getters.getAccessInfo;
-                console.log(s)
-                return s;
+                return this.$store.getters.getAccessInfo;
+            }, recommendArticle: function () {
+                if (!this.$store.getters.getRecommendArticle) {
+                    return null;
+                }
+                return this.$store.getters.getRecommendArticle.data;
+            }
+        }, methods: {
+            clickArticle: function (row, column, event) {
+                this.$router.push('/blog/article/' + row.id);
+            }, clickGithub: function (row) {
+                window.open(row.url, '_blank');
             }
         },
         created() {
@@ -141,6 +135,10 @@
 
             if (!this.accessInfo) {
                 this.$store.dispatch('updateAccessInfo');
+            }
+
+            if (!this.recommendArticle) {
+                this.$store.dispatch('updateRecommendArticle');
             }
         }
     }
@@ -157,7 +155,6 @@
     }
 
     @media only screen and (min-width: 987px) {
-
         .homeRow {
             padding: 10px;
             display: flex;
@@ -203,6 +200,10 @@
 
         .gitee > .v-note-wrapper {
             padding: 0px;
+        }
+
+        .el-card .el-card__body {
+            padding-top: 10px;
         }
     }
 </style>

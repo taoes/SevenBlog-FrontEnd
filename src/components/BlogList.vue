@@ -23,24 +23,35 @@
 
 
             <el-card shadow="hover" v-for="item in data" :key="item.title" style="height: fit-content">
-                <div style="margin-bottom: 30px">
+                <div style="margin-bottom: 10px">
                     <router-link :to="'/blog/article/'+item.id">
                         <span class="blogTitle"
                               style="font-size: 20px;color:black;font-weight: 900;">{{item.title}}</span>
                     </router-link>
+                    <el-tag v-for="(tag) of item.tagList" :key="tag" :type="tagType[Math.floor(Math.random()*5)]"
+                            effect="dark"
+                            size="small"
+                            style="margin-left: 10px;">
+                        {{tag}}
+                    </el-tag>
                 </div>
 
+                <el-divider></el-divider>
                 <div style="display: flex;flex-direction: column;">
                     <div class="descDiv" style="padding-right: 30px;width:100%;color:#000000;flex-grow: 1">
                         {{item.description}}
                     </div>
-                    <div style="padding: 3px 0;flex-grow: 4;margin-top: 5px" type="text">
-                        <el-tag v-for="(tag) of item.tagList" :key="tag" :type="tagType[Math.floor(Math.random()*5)]" effect="dark"
-                                size="small"
-                                style="margin-left: 10px;">
-                            {{tag}}
-                        </el-tag>
-                    </div>
+                </div>
+
+                <div style="margin-left: 20px;margin-top: 20px" type="text">
+                    <i class="far fa-eye" style="color: gray"></i>
+                    <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{item.access}}</span>
+
+                    <i class="far fa-thumbs-up" style="color: gray;margin-left: 30px"></i>
+                    <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{item.access}}</span>
+
+                    <i class="far fa-thumbs-down" style="color: gray;margin-left: 30px"></i>
+                    <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{item.access}}</span>
                 </div>
             </el-card>
 

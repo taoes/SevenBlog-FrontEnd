@@ -56,9 +56,14 @@
 
 
         <div class="mavon">
-            <markdown-run
-                    :mark="article.content"
-            />
+            <mavon-editor
+                    ref=md
+                    :codeStyle="markdownTheme"
+                    @change="markdownChange"
+                    v-model="article.content"
+                    @imgAdd="uploadImg"
+                    class="editor"
+                    style="height: 990px"/>
         </div>
 
 
@@ -67,7 +72,7 @@
 
 <script>
     import "./ArticleEdit.css";
-    import {MarkdownRun} from 'vue-markdown-run';
+    import {mavonEditor} from 'mavon-editor'
     import blogList from "@/api/BlogListApi";
     import menuApi from "@/api/MenuApi";
     import addFileApi from "@/api/FileApi";
@@ -91,7 +96,7 @@
                 }, category: []
             };
         },
-        components: {MarkdownRun},
+        components: {mavonEditor},
         computed: {
             markdownTheme: function () {
                 return this.$store.state.markdown.theme;

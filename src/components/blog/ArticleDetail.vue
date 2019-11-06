@@ -2,13 +2,19 @@
     <div class="articleDetail">
         <BlogMenu></BlogMenu>
         <div class="articleDetailContent">
-            <div class="articleCtr">
-                <el-button @click="backLastPage" :type="buttonType" size="small" icon="el-icon-back">返回</el-button>
-                <el-button @click="editArticle" :type="buttonType" size="small" icon="el-icon-edit">编辑</el-button>
-                <el-button @click="changeDialogStatus" :type="buttonType" size="small" icon="el-icon-chat-dot-round">
-                    评论
-                </el-button>
+            <h1 style="font-weight: 900;font-size: 27px">{{blog.title}}</h1>
+            <div style="margin-left: 20px;margin-top: 5px;margin-bottom: 5px" type="text">
+                <i class="far fa-eye" style="color: #0088EE"></i>
+                <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{blog.access}}</span>
+
+                <i class="far fa-thumbs-up" style="color: #E6A23C;margin-left: 30px"></i>
+                <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{blog.access}}</span>
+
+                <i class="far fa-thumbs-down" style="color: #F56C6C;margin-left: 30px"></i>
+                <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{0}}</span>
             </div>
+
+            <el-divider></el-divider>
             <mavonEditor
                     id="articleDetail"
                     class="markdownPreview"
@@ -23,6 +29,31 @@
                     :ishljs="false"
                     :navigation="tocStatus"
             ></mavonEditor>
+            <div class="articleCtr">
+                <el-button @click="backLastPage" :type="buttonType" size="small">
+                    <i class="fas fa-backward"></i>
+                    返回
+                </el-button>
+
+                <el-button @click="backLastPage" :type="buttonType" size="small">
+                    <i class="fas fa-step-backward"></i>
+                    上一篇
+                </el-button>
+
+                <el-button @click="editArticle" :type="buttonType" size="small">
+                    <i class="far fa-edit"></i>
+                    编辑
+                </el-button>
+                <el-button @click="changeDialogStatus" :type="buttonType" size="small">
+                    <i class="fas fa-comments"></i>
+                    评论
+                </el-button>
+
+                <el-button @click="backLastPage" :type="buttonType" size="small">
+                    <i class="fas fa-step-forward"></i>
+                    下一篇
+                </el-button>
+            </div>
         </div>
 
         <div id="commentList">
@@ -118,6 +149,7 @@
 
     .articleCtr {
         margin: 10px;
+        display: flex;
     }
 
 
@@ -133,6 +165,7 @@
         }
 
         .articleDetailContent {
+            background-color: #FFFFFF;
             display: flex;
             flex-direction: column;
             justify-content: center;
