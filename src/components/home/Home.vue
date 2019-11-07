@@ -118,7 +118,7 @@
                 return this.$store.getters.getRecommendArticle.data;
             }
         }, methods: {
-            clickArticle: function (row, column, event) {
+            clickArticle: function (row) {
                 this.$router.push('/blog/article/' + row.id);
             }, clickGithub: function (row) {
                 window.open(row.url, '_blank');
