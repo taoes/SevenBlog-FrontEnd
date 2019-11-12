@@ -1,6 +1,6 @@
 <template>
     <div class="github">
-        <AppMenu></AppMenu>
+        <AdminMenu></AdminMenu>
         <el-backtop target=".github"></el-backtop>
 
         <div id="homeApp">
@@ -88,9 +88,10 @@
     import "./style.css"
     import {mavonEditor} from "mavon-editor";
     import AppMenu from "../AppMenu";
+    import AdminMenu from "../backstage/menu/AdminMenu";
 
     export default {
-        components: {AppMenu, mavonEditor},
+        components: {AdminMenu, AppMenu, mavonEditor},
         data() {
             return {
                 githubCollapse: "0",
