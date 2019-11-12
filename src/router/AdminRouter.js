@@ -3,12 +3,13 @@ import Article from "@/components/backstage/blog/article/Article";
 import ArticleEdit from "../components/backstage/blog/article/ArticleEdit";
 import Category from '../components/backstage/blog/category/Category';
 import TagList from "../components/backstage/blog/tag/TagList";
+import Home from "../components/home/Home";
 
 
 let adminRouter = {
 
     path: '/admin',
-    component: Admin,
+    component: Home,
     children:
         [
             {

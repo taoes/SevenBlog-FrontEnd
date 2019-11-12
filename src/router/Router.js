@@ -3,12 +3,12 @@ import BaiKe from "@/components/BaiKe";
 
 import BlogList from "@/components/BlogList";
 import DengYing from "@/components/DengYing";
-import Home from "@/components/home/Home";
 import Camera from "@/components/camera/Camera";
 import ArticleDetail from "@/components/blog/ArticleDetail";
 import Note from "@/components/note/Note";
 import AdminLogin from "@/components/backstage/AdminLogin";
 import adminRouter from "./AdminRouter";
+import Index from "../components/index/Index";
 
 const routerPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -20,7 +20,7 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            component: Home
+            component: Index
         },
         {
             path: '/book',
