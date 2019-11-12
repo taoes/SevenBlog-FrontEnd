@@ -1,0 +1,85 @@
+
+
+
+.spanStyle {
+    text-indent: 2em;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: black;
+    font-size: 14px;
+    line-height: 30px;
+    font-family: fantasy;
+}
+
+
+#musicPlayer {
+    height: 300px;
+    width: 80%;
+    border: rebeccapurple 1px dashed;
+    box-shadow: 1px 1px 1px 1px #515a6e;
+}
+
+
+#index .title {
+    font-size: 2em;
+    margin-top: 85px;
+}
+
+
+#recommendArticle {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media only screen and (min-width: 987px) {
+    .Index {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    #index {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        height: fit-content;
+        background-color: #FFF;
+        margin-top: 20px;
+        border-radius: 20px;
+        box-shadow: 5px 5px 30px 1px #515a6e;
+
+    }
+
+}
+
+
+@media only screen and (max-width: 987px) {
+
+    .Index {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    #index {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        height: fit-content;
+        background-color: #FFF;
+        margin-top: 20px;
+        border-radius: 20px;
+        box-shadow: 5px 5px 30px 1px #515a6e;
+
+    }
+}

@@ -152,6 +152,9 @@
         display: flex;
     }
 
+    .el-divider--horizontal {
+        margin: 10px 0;
+    }
 
     @media only screen and (min-width: 987px) {
 
@@ -165,6 +168,7 @@
         }
 
         .articleDetailContent {
+            border-radius: 20px;
             background-color: #FFFFFF;
             display: flex;
             flex-direction: column;
@@ -190,6 +194,7 @@
         }
 
         .articleDetailContent {
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;

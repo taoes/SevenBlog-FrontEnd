@@ -11,6 +11,12 @@ export default {
         blogMenu: null,
         defaultActive: ['back'],
         appMenu: null,
+        color: {
+            backgroundColor: "#545C64",
+            textColor: "#F00",
+            iconColor: "#FFF",
+            activeTextColor: "#FFD04B"
+        }
 
     },
     getters: {
@@ -18,6 +24,8 @@ export default {
             return state.appMenu;
         }, getBlogMenu: function (state) {
             return state.blogMenu;
+        }, getMenuColor: function (state) {
+            return state.color;
         }
     },
     actions: {
