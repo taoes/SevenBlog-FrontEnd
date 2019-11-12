@@ -43,15 +43,15 @@
                     </div>
                 </div>
 
-                <div style="margin-left: 20px;margin-top: 20px" type="text">
+                <div style="margin-left: 8px;margin-top: 20px" type="text">
                     <i class="far fa-eye" style="color: gray"></i>
                     <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{item.access}}</span>
 
-                    <i class="far fa-thumbs-up" style="color: gray;margin-left: 30px"></i>
-                    <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{item.access}}</span>
+                    <i class="far fa-thumbs-up" style="color: gray;margin-left: 15px"></i>
+                    <span style="margin-left:5px;margin-right: 2px;color: darkgray">{{item.access}}</span>
 
-                    <i class="far fa-thumbs-down" style="color: gray;margin-left: 30px"></i>
-                    <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{item.access}}</span>
+                    <i class="far fa-thumbs-down" style="color: gray;margin-left: 15px"></i>
+                    <span style="margin-left:5px;margin-right: 2px;color: darkgray">{{item.access}}</span>
                 </div>
             </el-card>
 
@@ -164,6 +164,7 @@
     }
 
     .descDiv {
+        line-height: 24px;
         margin-left: 10px;
         margin-right: 30px;
     }
