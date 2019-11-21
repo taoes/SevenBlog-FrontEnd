@@ -16,7 +16,7 @@
                 <i class="el-icon-user-solid menuIcon"></i>
                 <span class="menuTitle" style="color: white">个人中心</span>
             </template>
-            <el-menu-item index="logout" @click="toNewPage('/admin')">
+            <el-menu-item index="logout" @click="toNewPage('/admin/index')">
                 <i class="fab fa-keycdn menuIcon"></i>
                 <span style="color:#ffffff;margin-left: 5px">管理系统</span>
             </el-menu-item>

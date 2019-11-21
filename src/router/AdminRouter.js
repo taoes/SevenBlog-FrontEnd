@@ -3,15 +3,21 @@ import Article from "@/components/backstage/blog/article/Article";
 import ArticleEdit from "../components/backstage/blog/article/ArticleEdit";
 import Category from '../components/backstage/blog/category/Category';
 import TagList from "../components/backstage/blog/tag/TagList";
+import System from "../components/backstage/system/System";
 import Home from "../components/home/Home";
 
 
 let adminRouter = {
 
     path: '/admin',
-    component: Home,
+    component: Admin,
     children:
         [
+            {
+                name: 'index',
+                path: 'index',
+                component: Home
+            },
             {
                 name: 'article',
                 path: 'article',
@@ -31,6 +37,10 @@ let adminRouter = {
                 path: 'tag',
                 name: 'tagManagement',
                 component: TagList
+            },
+            {
+                path: 'system',
+                component: System
             }
         ]
 

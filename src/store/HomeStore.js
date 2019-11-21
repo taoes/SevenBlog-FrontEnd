@@ -1,6 +1,5 @@
 import axios from "axios";
 import config from "../api/HttpConfig";
-import da from "element-ui/src/locale/lang/da";
 
 let {github, blog, access} = config;
 

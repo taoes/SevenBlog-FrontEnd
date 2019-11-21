@@ -1,6 +1,6 @@
 <template>
     <div class="article">
-        <div style="margin-bottom: 20px;display: flex;flex-direction: row">
+        <div class="articleCtl">
             <el-input placeholder="搜索关键字" style="width: 600px" size="small"></el-input>
             <div id="buttones" style="margin-left: 20px">
                 <el-button type="primary" icon="el-icon-search" size="small">搜索</el-button>
@@ -8,80 +8,108 @@
                 </el-button>
             </div>
         </div>
-        <el-table
-                :data="articleList"
-                border
-                size="mini"
-                :fit="true"
-                style="width: 100%;height: 90%;">
-            <el-table-column
-                    height="100px"
-                    type="index"
-                    label="序号"
-                    min-width="5%">
-            </el-table-column>
+        <div class="articleList">
+            <el-table
+                    :data="articleList"
+                    border
+                    size="mini"
+                    :fit="true"
+                    style="width: 100%;height: 90%;">
+                <el-table-column
+                        height="100px"
+                        type="index"
+                        label="序号"
+                        min-width="5%">
+                    <template slot="header">
+                        <i class="fas fa-list-ol icon"></i>
+                        <span>序2号</span>
+                    </template>
+                </el-table-column>
 
-            <el-table-column
-                    prop="title"
-                    label="文章名称"
-                    min-width="25%">
-            </el-table-column>
+                <el-table-column
+                        prop="title"
+                        label="文章名称"
+                        min-width="25%">
+                    <template slot="header">
+                        <i class="fas fa-rss icon"></i>
+                        <span>文章名称</span>
+                    </template>
+                </el-table-column>
 
-            <el-table-column
-                    prop="type"
-                    label="目录"
-                    min-width="15%">
-            </el-table-column>
+                <el-table-column
+                        prop="type"
+                        label="目录"
+                        min-width="15%">
+                    <template slot="header">
+                        <i class="fas fa-folder icon"></i>
+                        <span>所属目录</span>
+                    </template>
+                </el-table-column>
 
 
-            <el-table-column
-                    prop="createDatetime"
-                    label="创建时间"
-                    min-width="15%">
-            </el-table-column>
+                <el-table-column
+                        prop="createDatetime"
+                        label="创建时间"
+                        min-width="15%">
+                    <template slot="header">
+                        <i class="far fa-clock icon"></i>
+                        <span>创建时间</span>
+                    </template>
+                </el-table-column>
 
-            <el-table-column
-                    prop="updateDatetime"
-                    label="更新时间"
-                    min-width="15%">
-            </el-table-column>
+                <el-table-column
+                        prop="updateDatetime"
+                        label="更新时间"
+                        min-width="15%">
+                    <template slot="header">
+                        <i class="fas fa-history icon"></i>
+                        <span>更新时间</span>
+                    </template>
+                </el-table-column>
 
-            <el-table-column
-                    prop="support"
-                    min-width="15%"
-                    label="是否置顶"
-            >
-                <template slot-scope="scope">
-                    <el-switch
-                            v-model="scope.row.top"
-                            @change="isSupportChange($event,scope.row.id)"
-                            active-color="#13ce66"
-                            inactive-color="#ff4949">
-                    </el-switch>
-                </template>
-            </el-table-column>
+                <el-table-column
+                        prop="support"
+                        min-width="15%"
+                        label="是否置顶"
+                >
+                    <template slot="header">
+                        <i class="far fa-arrow-alt-circle-up icon"></i>
+                        <span>是否置顶</span>
+                    </template>
+                    <template slot-scope="scope">
+                        <el-switch
+                                v-model="scope.row.top"
+                                @change="isSupportChange($event,scope.row.id)"
+                                active-color="#13ce66"
+                                inactive-color="#ff4949">
+                        </el-switch>
+                    </template>
+                </el-table-column>
 
-            <el-table-column
-                    prop="ctrl"
-                    label="控制区"
-                    min-width="15%"
-            >
-                <template slot-scope="scope">
-                    <el-button icon="el-icon-search" circle size="mini"
-                               @click="toArticleDetail(scope.row.id)"></el-button>
+                <el-table-column
+                        prop="ctrl"
+                        label=""
+                        min-width="15%">
+                    <template slot-scope="scope">
+                        <el-button icon="far fa-eye" size="mini"
+                                   @click="toArticleDetail(scope.row.id)">
+                        </el-button>
 
-                    <el-button type="primary" icon="el-icon-edit" circle size="mini"
-                               @click="toArticleEdit(scope.row.id)"
-                    ></el-button>
-                </template>
+                        <el-button type="primary" icon="far fa-edit" size="mini"
+                                   @click="toArticleEdit(scope.row.id)">
+                        </el-button>
+                    </template>
 
-            </el-table-column>
-        </el-table>
+                </el-table-column>
+            </el-table>
+        </div>
+        <Footer></Footer>
     </div>
 </template>
 
 <script>
     import './Article.css'
+    import Footer from "../../../Footer";
     import blogApiListApi from "@/api/BlogListApi";
 
 
@@ -125,5 +153,35 @@
 </script>
 
 <style scoped>
+
+    .articleCtl {
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        margin: 20px 4%;
+    }
+
+    .articleList {
+        max-height: 800px;
+        overflow-x: auto;
+        margin-right: 4%;
+        margin-left: 4%;
+    }
+
+    .icon {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+
+    i {
+        margin-right: 2px;
+        color: #0088EE;
+    }
+
+    i span {
+        color: black;
+    }
+
 
 </style>

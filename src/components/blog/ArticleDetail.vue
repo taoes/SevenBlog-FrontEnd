@@ -30,26 +30,26 @@
                     :navigation="tocStatus"
             ></mavonEditor>
             <div class="articleCtr">
-                <el-button @click="backLastPage" :type="buttonType" size="small">
+                <el-button @click="backLastPage" :type="buttonType" size="mini">
                     <i class="fas fa-backward"></i>
                     返回
                 </el-button>
 
-                <el-button @click="backLastPage" :type="buttonType" size="small">
+                <el-button @click="backLastPage" :type="buttonType" size="mini">
                     <i class="fas fa-step-backward"></i>
                     上一篇
                 </el-button>
 
-                <el-button @click="editArticle" :type="buttonType" size="small">
+                <el-button @click="editArticle" :type="buttonType" size="mini">
                     <i class="far fa-edit"></i>
                     编辑
                 </el-button>
-                <el-button @click="changeDialogStatus" :type="buttonType" size="small">
+                <el-button @click="changeDialogStatus" :type="buttonType" size="mini">
                     <i class="fas fa-comments"></i>
                     评论
                 </el-button>
 
-                <el-button @click="backLastPage" :type="buttonType" size="small">
+                <el-button @click="backLastPage" :type="buttonType" size="mini">
                     <i class="fas fa-step-forward"></i>
                     下一篇
                 </el-button>
@@ -86,8 +86,8 @@
         data: function () {
             return {
                 blog: {},
-                buttonType: 'default',
-                emptyTip: '> 文章内容为空，数据库可能出了点问题',
+                buttonType: 'primary',
+                emptyTip: '# 文章内容为空',
                 tocStatus: false, // 显示文章的导航目录
                 showCommentDialog: false,
                 accessInfo: {
@@ -119,6 +119,7 @@
             let id = this.$route.params.id;
             let respFunc = (resp) => {
                 this.blog = resp.data;
+                document.title = this.blog.title;
             };
             BlogListApi.getBlogDetail(id, respFunc);
         }, created() {
@@ -127,6 +128,7 @@
             this.accessInfo.browser = sysTool.GetCurrentBrowser();
             this.accessInfo.os = sysTool.GetOs();
             this.$store.dispatch('addAccessInfo', this.accessInfo);
+        }, destroyed() {
         }
     }
 </script>

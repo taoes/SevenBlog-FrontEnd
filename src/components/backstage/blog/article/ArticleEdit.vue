@@ -5,17 +5,20 @@
             <div class="articleGroup" style="display: flex;flex-direction: row">
                 <div>
                     <el-button
-                            size="small"
+                            size="mini"
+                            type="primary"
                             icon="el-icon-back"
                             @click="backLastPage">返回
                     </el-button>
                     <el-button
-                            size="small"
+                            size="mini"
+                            type="primary"
                             icon="el-icon-upload "
                             @click="submit">提交
                     </el-button>
                     <el-button
                             size="small"
+                            type="primary"
                             icon="el-icon-camera-solid"
                             @click="preview">预览
                     </el-button>
@@ -30,13 +33,19 @@
 
                 <div style="margin-left: 40px;">
                     <span>文章分类</span>
-                    <el-select v-model="article.type" placeholder="请选择" size="small">
-                        <el-option
-                                v-for="item in blogCategory"
-                                :key="item.id"
-                                :label="item.name"
-                                :value="item.key">
-                        </el-option>
+                    <el-select v-model="article.type" placeholder="文章类别" size="small">
+                        <el-option-group
+                                v-for="group in blogCategory"
+                                :key="group.id"
+                                :label="group.name">
+                            <el-option
+                                    v-for="item in group.sub"
+                                    :key="item.id"
+                                    :label="item.name"
+                                    :value="item.key">
+                            </el-option>
+                        </el-option-group>
+
                     </el-select>
                 </div>
 
@@ -154,7 +163,7 @@
             this.id = id;
 
             // 获取文章
-            if (this.edit) {
+            if (this.edit && this.id != 0) {
                 let respFunc = (resp) => {
                     this.article = resp.data;
                 };
