@@ -1,16 +1,13 @@
 <template>
     <div class="github">
-        <AdminMenu></AdminMenu>
         <el-backtop target=".github"></el-backtop>
-
         <div id="homeApp">
-
             <el-row class="homeRow">
                 <el-card class="box-card" :bordered="false" style="overflow-y: auto">
                     <div slot="header">
                         <span class="cardTitle">🌲 Github项目</span>
                     </div>
-                    <div class="repos" style="padding-top: 0px">
+                    <div class="repos">
                         <el-table
                                 :data="reposList"
                                 :show-header="false"
@@ -64,7 +61,7 @@
                 </el-card>
 
                 <el-card :bordered="true">
-                    <ve-ring :data="accessInfo" :settings="setting"></ve-ring>
+                    <ve-histogram :data="accessInfo" :settings="setting"></ve-histogram>
                 </el-card>
             </el-row>
 

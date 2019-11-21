@@ -54,20 +54,7 @@
                                  :alt="name">
                         </template>
                     </div>
-
-
-                    <!--                    <viewer :images="serial">-->
-                    <!--                        <img v-for="(src,index) in serial"-->
-                    <!--                             :src="src.img + '?imageView2/1/w/500/h/500'"-->
-                    <!--                             :data-source="src.img " :key="index"-->
-                    <!--                             :alt="src.name">-->
-                    <!--                    </viewer>-->
                 </el-collapse-item>
-
-
-                <!-- component -->
-
-
             </el-collapse>
         </div>
     </div>
@@ -87,36 +74,29 @@
                 dialogFormVisible: false,
                 picture: {},
                 defaultShowPanel: "大事件时间轴",
-
                 serialList: {
                     "☘️ 2015年合影留念": [
-                        {name: "荷叶1", img: "http://pzb5gmte2.bkt.clouddn.com/2015"},
-                        {name: "荷叶2", img: "http://pzb5gmte2.bkt.clouddn.com/2015.2"},
+                        {name: "荷叶1", img: "http://pic.zhoutao123.com/2015"},
+                        {name: "荷叶2", img: "http://pic.zhoutao123.com/2015.2"},
                     ],
                     "🏝 2016年合影留念": [
-                        {name: "荷叶3", img: "http://pzb5gmte2.bkt.clouddn.com/2016"},
+                        {name: "荷叶3", img: "http://pic.zhoutao123.com/2016"},
                     ],
                     "🌲 2018年合影留念": [
-                        {name: "荷叶221", img: "http://pzb5gmte2.bkt.clouddn.com/2018"},
-                        {name: "荷叶222", img: "http://pzb5gmte2.bkt.clouddn.com/2018.2"},
-                        {name: "荷叶223", img: "http://pzb5gmte2.bkt.clouddn.com/2018.3"},
+                        {name: "荷叶221", img: "http://pic.zhoutao123.com/2018"},
+                        {name: "荷叶222", img: "http://pic.zhoutao123.com/2018.2"},
+                        {name: "荷叶223", img: "http://pic.zhoutao123.com/2018.3"},
                     ], "🌳 2019年合影留念": [
-                        {name: "回廊", img: "http://pzb5gmte2.bkt.clouddn.com/2019.1.jpg"},
-                        {name: "荷叶4", img: "http://pzb5gmte2.bkt.clouddn.com/2019.4.jpg"},
-                        {name: "荷叶5", img: "http://pzb5gmte2.bkt.clouddn.com/2019.5.back.jpg"},
-                        {name: "池边6", img: "http://pzb5gmte2.bkt.clouddn.com/2019.2"},
-                        {name: "池边7", img: "http://pzb5gmte2.bkt.clouddn.com/2019.3"},
+                        {name: "回廊", img: "http://pic.zhoutao123.com/2019.1.jpg"},
+                        {name: "荷叶4", img: "http://pic.zhoutao123.com/2019.4.jpg"},
+                        {name: "荷叶5", img: "http://pic.zhoutao123.com/2019.5.back.jpg"},
+                        {name: "池边6", img: "http://pic.zhoutao123.com/2019.2"},
+                        {name: "池边7", img: "http://pic.zhoutao123.com/2019.3"},
                     ]
                 }
             }
         },
-        components: {AppMenu},
-        methods: {
-            changeShowStatus: function (pic) {
-                this.dialogFormVisible = !this.dialogFormVisible;
-                this.picture = pic;
-            }
-        }
+        components: {AppMenu}
     }
 </script>
 

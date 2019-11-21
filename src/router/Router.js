@@ -16,44 +16,75 @@ VueRouter.prototype.push = function push(location) {
 };
 
 
-export default new VueRouter({
+const router = new VueRouter({
     routes: [
         {
             path: '/',
+            meta: {
+                title: '首页'
+            },
             component: Index
         },
         {
             path: '/book',
+            meta: {
+                title: '学习笔记'
+            },
             component: Note
         },
         {
             path: '/user',
+            meta: {
+                title: '百科'
+            },
             component: BaiKe
         },
         {
             path: '/blog',
             name: 'blog',
+            meta: {
+                title: '技术博客'
+            },
             component: BlogList,
         },
         {
             name: 'article',
+            meta: {
+                title: '博文详情'
+            },
             path: '/blog/article/:id',
             component: ArticleDetail
         }
         ,
         {
             path: '/ying',
+            meta: {
+                title: '影子不长'
+            },
             component: DengYing
         }, {
             path: '/camera',
+            meta: {
+                title: '时光流影'
+            },
             component: Camera
         },
         {
             name: 'login',
             path: '/login',
+            meta: {
+                title: '登录后台'
+            },
             component: AdminLogin
         },
         adminRouter
     ]
 });
+
+
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title ? to.meta.title + " ☘️ 燕归来兮" : "燕归来兮";
+    next()
+});
+export default router;
 
