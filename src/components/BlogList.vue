@@ -39,19 +39,19 @@
                 <el-divider></el-divider>
                 <div style="display: flex;flex-direction: column;">
                     <div class="descDiv" style="padding-right: 30px;width:100%;color:#000000;flex-grow: 1">
-                        {{item.description}}
+                        <span class="descSpan">{{item.description}}</span>
                     </div>
                 </div>
 
-                <div style="margin-left: 8px;margin-top: 20px" type="text">
-                    <i class="far fa-eye" style="color: gray"></i>
+                <div style="margin-left: 20px;margin-top: 5px;margin-bottom: 5px" type="text">
+                    <i class="far fa-eye" style="color: #0088EE"></i>
                     <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{item.access}}</span>
 
-                    <i class="far fa-thumbs-up" style="color: gray;margin-left: 15px"></i>
-                    <span style="margin-left:5px;margin-right: 2px;color: darkgray">{{item.access}}</span>
+                    <i class="far fa-thumbs-up" style="color: #E6A23C;margin-left: 30px"></i>
+                    <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{Math.ceil(item.access/3)}}</span>
 
-                    <i class="far fa-thumbs-down" style="color: gray;margin-left: 15px"></i>
-                    <span style="margin-left:5px;margin-right: 2px;color: darkgray">{{item.access}}</span>
+                    <i class="far fa-thumbs-down" style="color: #F56C6C;margin-left: 30px"></i>
+                    <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{0}}</span>
                 </div>
             </el-card>
 
@@ -140,8 +140,8 @@
             margin-left: 15%;
             margin-right: 15%;
             border-radius: 4px;
-            box-shadow: 5px 5px 30px 1px #515a6e;
-            background-color: #FFFFFF;
+            box-shadow: 5px 5px 20px 1px #515a6e;
+            background-color: rgba(255, 255, 255, 0);
         }
 
 
@@ -149,12 +149,12 @@
 
     @media only screen and (max-width: 987px) {
         .blogList {
-            margin-top: 30px;
-            margin-left: 10px;
-            margin-right: 10px;
+            margin-top: 20px;
+            margin-left: 0;
+            margin-right: 0;
             border-radius: 4px;
-            box-shadow: 5px 5px 30px 1px #515a6e;
-            background-color: #FFFFFF;
+            box-shadow: 5px 5px 3px 1px #515a6e;
+            background-color: rgba(255, 255, 255, 0);
         }
     }
 
@@ -167,6 +167,11 @@
         line-height: 24px;
         margin-left: 10px;
         margin-right: 30px;
+    }
+
+    .descSpan {
+        color: darkslategrey;
+        font-weight: bold;
     }
 
     .page {

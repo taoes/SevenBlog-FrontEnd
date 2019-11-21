@@ -2,18 +2,15 @@
     <div>
         <div id="mobileMenu">
             <el-button @click="showMobileMenu = !showMobileMenu"
+                       size="small"
+                       type="primary"
                        style="margin-left: 20px;margin-top: 20px;margin-bottom: 0">
                 <i class="fas fa-bars"></i>
                 菜单
             </el-button>
             <slide-out :visible="showMobileMenu"
                        @close="showMobileMenu = false"
-                        size="50%">
-
-                <div slot="header" style="display: flex;flex-direction: row;align-items: center">
-                    <img src="@/assets/logo.png" style="width: 10%;" alt="LOGO">
-                    <span style="margin-left: 5px;font-weight: 900">不忘初心、方得始终</span>
-                </div>
+                       size="35%">
                 <div>
                     <el-menu
                             @select="onSelectItem"
