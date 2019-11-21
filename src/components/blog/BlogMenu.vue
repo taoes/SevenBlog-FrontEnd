@@ -1,6 +1,72 @@
 <template>
     <div class="blogMenu">
-        <div>
+        <div id="mobileMenu">
+
+            <el-button @click="showMobileMenu = !showMobileMenu"
+                       style="margin-left: 20px;margin-top: 20px;margin-bottom: 0">
+                <i class="fas fa-bars"></i>
+                菜单
+            </el-button>
+
+            <slide-out :visible="showMobileMenu" @close="showMobileMenu = false" size="50%">
+                <div slot="header" style="display: flex;flex-direction: row;align-items: center">
+                    <img src="@/assets/logo.png" style="width: 10%;" alt="LOGO">
+                    <span style="margin-left: 5px;font-weight: 900">不忘初心、方得始终</span>
+                </div>
+                <div style="background-color: #ffffff">
+                    <el-menu
+                            theme="light"
+                            :default-openeds="defaultActive"
+                            @select="onSelectItem"
+                            :collapse="collapse"
+                    >
+
+                        <el-menu-item index="/">
+                            <i class="fab fa-phoenix-framework menuIcon" style="margin-right:5px"></i>
+                            <template slot="title">
+                                <span class="menuTitle subMenuTitle">系统主页</span>
+                            </template>
+                        </el-menu-item>
+
+                        <el-menu-item index="">
+                            <i class="fas fa-th menuIcon" style="margin-right: 5px"></i>
+                            <template slot="title">
+                                <span class="menuTitle subMenuTitle">全部文章</span>
+                            </template>
+                        </el-menu-item>
+
+                        <el-submenu v-for="category of blogCategory" :index="category.name" :key="category.id">
+                            <template slot="title">
+                                <i :class="category.icon" class="menuIcon"></i>
+                                <span class="menuTitle subMenuTitle" style="margin-left: 5px">{{category.name}}</span>
+                            </template>
+
+                            <el-menu-item v-for="item of category.sub" :index="item.key" :key="item.key">
+                                <i :class="item.icon" class="menuIcon" style="margin-right: 5px"></i>
+                                <span class="subMenuTitle subMenuTitle">{{ item.name}}</span>
+                            </el-menu-item>
+                        </el-submenu>
+
+                        <el-submenu index="navigation">
+                            <template slot="title">
+                                <i class="fas fa-map-signs menuIcon" style="margin-right: 5px"></i>
+                                <span class="menuTitle menuIcon subMenuTitle">站点导航</span>
+                            </template>
+
+                            <el-menu-item index="/">
+                                <i class="fab fa-old-republic menuIcon" style="margin-right: 5px"></i>
+                                <span class="subMenuTitle subMenuTitle">系统首页</span>
+                            </el-menu-item>
+                            <el-menu-item index="/admin">
+                                <i class="fab fa-keycdn menuIcon" style="margin-right: 5px"></i>
+                                <span class="subMenuTitle subMenuTitle">管理界面</span>
+                            </el-menu-item>
+                        </el-submenu>
+                    </el-menu>
+                </div>
+            </slide-out>
+        </div>
+        <div id="pcMenu">
             <div style="background-color: #ffffff">
                 <el-menu
                         theme="light"
@@ -21,35 +87,35 @@
                     <el-menu-item index="">
                         <i class="fas fa-th menuIcon" style="margin-right: 5px"></i>
                         <template slot="title">
-                            <span class="menuTitle">全部文章</span>
+                            <span class="menuTitle subMenuTitle">全部文章</span>
                         </template>
                     </el-menu-item>
 
                     <el-submenu v-for="category of blogCategory" :index="category.name" :key="category.id">
                         <template slot="title">
                             <i :class="category.icon" class="menuIcon"></i>
-                            <span class="menuTitle" style="margin-left: 5px">{{category.name}}</span>
+                            <span class="menuTitle subMenuTitle" style="margin-left: 5px">{{category.name}}</span>
                         </template>
 
                         <el-menu-item v-for="item of category.sub" :index="item.key" :key="item.key">
-                            <i :class="item.icon" class="menuIcon" style="margin-right: 5px"></i>
-                            <span style="color:#FFF">{{ item.name}}</span>
+                            <i :class="item.icon" class="menuIcon subMenuTitle" style="margin-right: 5px"></i>
+                            <span class="subMenuTitle">{{ item.name}}</span>
                         </el-menu-item>
                     </el-submenu>
 
                     <el-submenu index="navigation">
                         <template slot="title">
                             <i class="fas fa-map-signs menuIcon" style="margin-right: 5px"></i>
-                            <span class="menuTitle menuIcon">站点导航</span>
+                            <span class="menuTitle menuIcon subMenuTitle">站点导航</span>
                         </template>
 
                         <el-menu-item index="/">
                             <i class="fab fa-old-republic menuIcon" style="margin-right: 5px"></i>
-                            <span style="color: white">系统首页</span>
+                            <span class="subMenuTitle">系统首页</span>
                         </el-menu-item>
                         <el-menu-item index="/admin">
                             <i class="fab fa-keycdn menuIcon" style="margin-right: 5px"></i>
-                            <span style="color: white">管理界面</span>
+                            <span class="subMenuTitle">管理界面</span>
                         </el-menu-item>
                     </el-submenu>
                 </el-menu>
@@ -63,6 +129,7 @@
         name: "BlogMenu",
         data: function () {
             return {
+                showMobileMenu: false,
                 blogMenuStyle: {
                     backgroundColor: 'white'
                 }
@@ -90,6 +157,7 @@
                     type: 'changeType',
                     params: index
                 });
+                this.showMobileMenu = false;
                 this.$router.push('/blog')
             }
         }, created() {
@@ -106,16 +174,45 @@
             display: inline-block;
             color: #FFFFFF;
         }
-    }
 
-    @media only screen and (max-width: 800px) {
-        .menuTitle {
+        .subMenuTitle span {
+            color: red;
+        }
+
+        #pcMenu {
+            display: block;
+        }
+
+        #mobileMenu {
             display: none;
+        }
+
+        .menuIcon {
             color: #FFFFFF;
         }
     }
 
-    .menuIcon {
-        color: #FFFFFF;
+    @media only screen and (max-width: 800px) {
+        .menuTitle {
+            color: black;
+        }
+
+        .subMenuTitle > span {
+            color: red;
+        }
+
+        #pcMenu {
+            display: none;
+        }
+
+        #mobileMenu {
+            display: block;
+        }
+
+        .menuIcon {
+            color: black;
+        }
     }
+
+
 </style>

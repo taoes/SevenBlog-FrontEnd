@@ -15,7 +15,6 @@ import {mavonEditor} from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 
 
-
 import fontawesome from '@fortawesome/fontawesome'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import solid from '@fortawesome/fontawesome-free-solid'
@@ -36,7 +35,15 @@ Vue.use(VCharts);
 // 全局注入
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
-Vue.use(Viewer)
+Vue.use(Viewer);
+
+import SlideOut from '@hyjiacan/vue-slideout'
+import '@hyjiacan/vue-slideout/lib/slideout.css'
+
+// 引入 SlideOut 组件，并设置组件默认值
+Vue.use(SlideOut, {
+    // 在此处填写默认的属性值
+})
 
 new Vue({
     render: h => h(App),
