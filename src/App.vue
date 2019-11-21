@@ -33,6 +33,17 @@
     blockquote p {
         font-size: 12px;
         font-weight: inherit;
-        color: orangered;
+        color: red;
+    }
+
+    .el-menu--horizontal > .el-submenu .el-submenu__icon-arrow {
+        color: white;
+    }
+</style>
+
+<style>
+    .markdown-body .highlight pre, .markdown-body pre {
+        padding: 0;
+        font-size: 10px;
     }
 </style>

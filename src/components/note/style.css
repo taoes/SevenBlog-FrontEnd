@@ -10,7 +10,7 @@
     display: flex;
     display: -webkit-flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: inherit;
 
 }
 
