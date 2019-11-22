@@ -48,7 +48,7 @@
                     </template>
 
 
-                    <div v-viewer="options">
+                    <div v-viewer="options" style="display: flex;align-items: center;flex-wrap: wrap">
                         <template v-for="{name, img} in serial">
                             <img :src="img +'?imageView2/1/w/400/h/400'" :data-source="img" class="image" :key="name"
                                  :alt="name">

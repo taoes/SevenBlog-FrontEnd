@@ -40,24 +40,44 @@
 - [x] Mysql 5.7
 
 
-## 预览界面
+
+## 移动版预览
+
+#### 博客列表
+
+![](./doc/top.png)
+
+---
+
+![](./doc/top.png)
+
+#### 侧边菜单
+
+![](./doc/category.png)
+
+#### 博文详情
+
+![](./doc/detail.png)
+
+
+## PC预览界面
 
 > 预览界面有部分仍未完成，实际进度以个人网站为准 [https://www.zhoutao123.com](https://www.zhoutao123.com)
 
-### 首页(部分完成)
+#### 首页(部分完成)
 
 ![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/index-page.jpg)
 
-### 博客首页
+#### 博客首页
 
 ![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/index-blog.jpg)
 
 
-### 博文详情
+#### 博文详情
 ![](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/blog-detail.jpg)
 
 
-### 文章管理
+#### 文章管理
 
 ![文章管理界面](https://taoes-blog.oss-cn-shanghai.aliyuncs.com/picture/%E6%96%87%E7%AB%A0%E7%AE%A1%E7%90%86.png)
 
