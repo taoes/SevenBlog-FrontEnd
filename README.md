@@ -45,19 +45,19 @@
 
 #### 博客列表
 
-![](./doc/top.png)
+<img src="./doc/top.png" width="200"/>
 
 ---
 
-![](./doc/top.png)
+<img src="./doc/top.png" width="200"/>
 
 #### 侧边菜单
 
-![](./doc/category.png)
+<img src="./doc/category.png" width="200"/>
 
 #### 博文详情
 
-![](./doc/detail.png)
+<img src="./doc/detail.png" width="200"/>
 
 
 ## PC预览界面
