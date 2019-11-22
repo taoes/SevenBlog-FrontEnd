@@ -45,20 +45,24 @@
 
 #### 博客列表
 
-<img src="./doc/top.png" width="200"/>
-
+<div style="text-align: center">
+<img src="./doc/top.png" width="400"/>
+</div>
 ---
 
-<img src="./doc/top.png" width="200"/>
-
+<div style="text-align: center">
+<img src="./doc/top.png" width="400"/>
+</div>
 #### 侧边菜单
 
-<img src="./doc/category.png" width="200"/>
-
+<div style="text-align: center">
+<img src="./doc/category.png" width="400"/>
+</div>
 #### 博文详情
 
-<img src="./doc/detail.png" width="200"/>
-
+<div style="text-align: center">
+<img src="./doc/detail.png" width="400"/>
+</div>
 
 ## PC预览界面
 
