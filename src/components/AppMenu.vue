@@ -1,18 +1,30 @@
 <template>
     <div>
         <div id="mobileMenu">
-            <el-button @click="showMobileMenu = !showMobileMenu"
-                       size="small"
-                       type="primary"
-                       style="margin-left: 20px;margin-top: 20px;margin-bottom: 0">
-                <i class="fas fa-bars"></i>
-                菜单
-            </el-button>
+            <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center">
+                <el-button @click="showMobileMenu = !showMobileMenu"
+                           style="margin-left: 20px;margin-top: 10px;margin-bottom: 10px"
+                           size="small"
+                           type="primary">
+                    <i class="fas fa-bars" style="color: #f0f2f5"></i>
+                </el-button>
+
+                <div style="display: flex;flex-direction: row;align-items: center" @click="onSelectItem('/')">
+                    <img src="@/assets/favicon.png" width="20px">
+                    <span class="mobileTitle">燕归来兮</span>
+                </div>
+
+                <div>
+                    <i class="el-icon-user-solid" style="color: white;margin-right: 10px;width: 30px"></i>
+                </div>
+            </div>
+
             <slide-out :visible="showMobileMenu"
                        @close="showMobileMenu = false"
                        size="35%">
                 <div>
                     <el-menu
+                            unique-opened="true"
                             @select="onSelectItem"
                             class="el-menu-demo">
                         <el-menu-item v-for="menu of menuList" :index="menu.path" :key="menu.name">
@@ -23,7 +35,7 @@
                         <el-submenu v-if="showLoginInfo" index="personCent">
                             <template slot="title">
                                 <i class="el-icon-user-solid menuIcon"></i>
-                                <span class="subMenuTitle">个人中心</span>
+                                <span class="subMenuTitle" style="color: black">个人中心</span>
                             </template>
                             <el-menu-item index="logout" @click="toNewPage('/admin/index')">
                                 <i class="fab fa-keycdn menuIcon"></i>
@@ -36,7 +48,7 @@
                         </el-submenu>
                         <el-menu-item v-else index="loginButton" key="loginButton" @click="toNewPage('/login')">
                             <i class="el-icon-user-solid menuIcon"></i>
-                            <span class="menuTitle" style="color: white">登录系统</span>
+                            <span class="menuTitle subMenuTitle" style="color: black">登录系统</span>
                         </el-menu-item>
                     </el-menu>
                 </div>
@@ -162,16 +174,25 @@
 
         #mobileMenu {
             display: block;
-
+            background-color: #0088EE !important;
         }
 
         .subMenuTitle {
             color: black;
+            font-weight: 900;
             margin-left: 8px
         }
 
         .menuIcon {
             color: black;
+        }
+
+
+        .mobileTitle {
+            color: #f0f2f5;
+            padding: 5px;
+            font-weight: 900;
+            font-size: 18px;
         }
     }
 
