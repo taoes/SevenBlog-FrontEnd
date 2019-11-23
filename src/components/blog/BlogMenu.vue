@@ -1,20 +1,29 @@
 <template>
     <div class="blogMenu">
         <div id="mobileMenu">
+            <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center">
+                <el-button @click="showMobileMenu = !showMobileMenu"
+                           style="margin-left: 20px;margin-top: 10px;margin-bottom: 10px"
+                           size="small"
+                           type="primary">
+                    <i class="fas fa-bars" style="color: #f0f2f5"></i>
+                </el-button>
 
-            <el-button @click="showMobileMenu = !showMobileMenu"
-                       style="margin-left: 20px;margin-top: 20px;margin-bottom: 0"
-                       size="small"
-                       type="primary"
-            >
-                <i class="fas fa-bars"></i>
-                菜单
-            </el-button>
+                <div style="display: flex;flex-direction: row;align-items: center" @click="onSelectItem('/')">
+                    <img src="@/assets/favicon.png" width="20px">
+                    <span class="mobileTitle">燕归来兮</span>
+                </div>
+
+                <div>
+                    <i class="el-icon-user-solid" style="color: white;margin-right: 10px"></i>
+                </div>
+            </div>
+
 
             <slide-out :visible="showMobileMenu" @close="showMobileMenu = false" size="40%">
 
                 <el-menu
-                        theme="light"
+                        unique-opened="true"
                         :default-openeds="defaultActive"
                         @select="onSelectItem"
                         :collapse="collapse"
@@ -195,8 +204,9 @@
             color: black;
         }
 
-        .subMenuTitle span {
-            color: red;
+        .subMenuTitle {
+            font-weight: 900;
+            color: black;
         }
 
         #pcMenu {
@@ -205,11 +215,20 @@
 
         #mobileMenu {
             display: block;
+            background-color: #0088EE !important;
         }
 
         .menuIcon {
             color: black;
         }
+
+        .mobileTitle {
+            color: #f0f2f5;
+            padding: 5px;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
     }
 
 
