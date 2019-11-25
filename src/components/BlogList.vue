@@ -5,16 +5,16 @@
         <BlogMenu></BlogMenu>
 
         <div class="blogList">
-            <div style="margin-bottom: 20px;margin-top: 20px;display: flex;flex-direction: row">
+            <div style="margin-bottom: 20px;margin-top: 20px;display: flex;flex-direction: row;padding-left: 20px">
                 <el-input
                         size="small"
                         style="width: 100%"
                         id="searchArticleInput"
+                        v-model="searchText"
                         icon="el-icon-upload ">
                 </el-input>
                 <el-button
                         style="margin-left: 30px;margin-right: 30px"
-                        type="primary"
                         size="small"
                         icon="el-icon-search"
                         @click="search">全局搜索
@@ -89,6 +89,7 @@
                 type: '',
                 total: 0,
                 pageSize: 7,
+                searchText: '',
                 tagType: ['success', '', 'info', 'danger', 'warning']
             }
         },
@@ -112,9 +113,14 @@
 
                     this.$refs.blogListDiv.scrollTop();
                 };
+                document.querySelector("#sss").scrollIntoView(true);
                 blogApiListApi.getBlogList(pageNumber, this.pageSize, this.blogType, respFunc, errorFunc);
             }, search: function () {
-                //todo 全局搜索
+                this.$message({
+                    showClose: true,
+                    message: '抱歉，搜索功能正在紧急开发中',
+                    type: 'error'
+                });
             }
         }, mounted: function () {
             this.currentChange(1);

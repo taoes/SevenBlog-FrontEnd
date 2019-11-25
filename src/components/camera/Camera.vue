@@ -3,9 +3,9 @@
         <AppMenu></AppMenu>
         <div class="camera">
             <el-collapse v-model="defaultShowPanel" accordion>
-                <el-collapse-item class="Panel">
+                <el-collapse-item class="Panel" style="padding-left: 0">
                     <template slot="title">
-                        <span class="titleStyle">🔥 大事件时间轴</span>
+                        <span class="titleStyle"> 🔥 大事件时间轴</span>
                     </template>
                     <el-timeline>
                         <el-timeline-item color="green" size="normal">
@@ -41,14 +41,15 @@
 
 
                 <el-collapse-item :key="name" class="Panel" v-for="(serial,name) of serialList"
-                                  style="padding-left: 0px">
+                                  style="padding-left: 0">
 
                     <template slot="title">
                         <span class="titleStyle">&nbsp;{{name}}</span>
                     </template>
 
 
-                    <div v-viewer="options" style="display: flex;align-items: center;flex-wrap: wrap">
+                    <div v-viewer="options"
+                         style="display: flex;align-items: center;flex-wrap: wrap;justify-content: center">
                         <template v-for="{name, img} in serial">
                             <img :src="img +'?imageView2/1/w/400/h/400'" :data-source="img" class="image" :key="name"
                                  :alt="name">
@@ -127,6 +128,8 @@
     }
 
     .titleStyle {
+        font-size: 14px;
+        font-weight: 500;
         margin-left: 20px;
     }
 

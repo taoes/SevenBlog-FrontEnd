@@ -42,8 +42,10 @@ import '@hyjiacan/vue-slideout/lib/slideout.css'
 
 // 引入 SlideOut 组件，并设置组件默认值
 Vue.use(SlideOut, {
+    title: "燕归来兮",
     // 在此处填写默认的属性值
-})
+    dock:'left'
+});
 
 new Vue({
     render: h => h(App),

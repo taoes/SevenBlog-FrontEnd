@@ -5,8 +5,7 @@
                 <el-button @click="showMobileMenu = !showMobileMenu"
                            style="margin-left: 20px;margin-top: 10px;margin-bottom: 10px"
                            size="small"
-                           type="primary">
-                    <i class="fas fa-bars" style="color: #f0f2f5"></i>
+                           icon="fas fa-bars">
                 </el-button>
 
                 <div style="display: flex;flex-direction: row;align-items: center" @click="onSelectItem('/')">
@@ -21,9 +20,11 @@
 
 
             <slide-out :visible="showMobileMenu" @close="showMobileMenu = false" size="40%">
-
+                <template slot="footer">
+                    🌲 不忘初心、方得始终
+                </template>
                 <el-menu
-                        unique-opened="true"
+                        :unique-opened="true"
                         :default-openeds="defaultActive"
                         @select="onSelectItem"
                         :collapse="collapse"
@@ -32,7 +33,7 @@
                     <el-menu-item index="/">
                         <i class="fab fa-phoenix-framework menuIcon" style="margin-right:5px"></i>
                         <template slot="title">
-                            <span class="menuTitle subMenuTitle">系统主页</span>
+                            <span class="menuTitle subMenuTitle">主页</span>
                         </template>
                     </el-menu-item>
 
@@ -63,11 +64,11 @@
 
                         <el-menu-item index="/">
                             <i class="fab fa-old-republic menuIcon" style="margin-right: 5px"></i>
-                            <span class="subMenuTitle subMenuTitle">系统首页</span>
+                            <span class="subMenuTitle">系统首页</span>
                         </el-menu-item>
                         <el-menu-item index="/admin">
                             <i class="fab fa-keycdn menuIcon" style="margin-right: 5px"></i>
-                            <span class="subMenuTitle subMenuTitle">管理界面</span>
+                            <span class="subMenuTitle">管理界面</span>
                         </el-menu-item>
                     </el-submenu>
                 </el-menu>
@@ -78,7 +79,7 @@
                 <el-menu
                         theme="light"
                         mode="horizontal"
-                        background-color="#409EFF"
+                        background-color="#3b455e"
                         :default-openeds="defaultActive"
                         @select="onSelectItem"
                         :collapse="collapse"
@@ -87,7 +88,7 @@
                     <el-menu-item index="/">
                         <i class="fab fa-phoenix-framework menuIcon" style="margin-right:5px"></i>
                         <template slot="title">
-                            <span class="menuTitle">系统主页</span>
+                            <span class="menuTitle">主页</span>
                         </template>
                     </el-menu-item>
 
@@ -182,8 +183,8 @@
             color: #FFFFFF;
         }
 
-        .subMenuTitle span {
-            color: red;
+        .subMenuTitle {
+            color: white;
         }
 
         #pcMenu {
@@ -215,7 +216,7 @@
 
         #mobileMenu {
             display: block;
-            background-color: #0088EE !important;
+            background-color: #3b455e !important;
         }
 
         .menuIcon {
@@ -228,7 +229,6 @@
             font-weight: 900;
             font-size: 18px;
         }
-
     }
 
 
