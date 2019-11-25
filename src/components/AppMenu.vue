@@ -5,8 +5,8 @@
                 <el-button @click="showMobileMenu = !showMobileMenu"
                            style="margin-left: 20px;margin-top: 10px;margin-bottom: 10px"
                            size="small"
-                           type="primary">
-                    <i class="fas fa-bars" style="color: #f0f2f5"></i>
+                           icon="fas fa-bars"
+                >
                 </el-button>
 
                 <div style="display: flex;flex-direction: row;align-items: center" @click="onSelectItem('/')">
@@ -22,20 +22,25 @@
             <slide-out :visible="showMobileMenu"
                        @close="showMobileMenu = false"
                        size="35%">
+                <template slot="footer">
+                    🔥 以梦为码、不负韶华
+                </template>
                 <div>
                     <el-menu
-                            unique-opened="true"
+                            :unique-opened="true"
                             @select="onSelectItem"
                             class="el-menu-demo">
                         <el-menu-item v-for="menu of menuList" :index="menu.path" :key="menu.name">
-                            <i :class="menu.icon" class="menuIcon"></i>
-                            <span class="subMenuTitle">{{menu.name}}</span>
+                            <template slot="title">
+                                <i :class="menu.icon" class="menuIcon"></i>
+                                <span class="subMenuTitle">{{menu.name}}</span>
+                            </template>
                         </el-menu-item>
 
                         <el-submenu v-if="showLoginInfo" index="personCent">
                             <template slot="title">
                                 <i class="el-icon-user-solid menuIcon"></i>
-                                <span class="subMenuTitle" style="color: black">个人中心</span>
+                                <span class="subMenuTitle">个人中心</span>
                             </template>
                             <el-menu-item index="logout" @click="toNewPage('/admin/index')">
                                 <i class="fab fa-keycdn menuIcon"></i>
@@ -48,7 +53,7 @@
                         </el-submenu>
                         <el-menu-item v-else index="loginButton" key="loginButton" @click="toNewPage('/login')">
                             <i class="el-icon-user-solid menuIcon"></i>
-                            <span class="menuTitle subMenuTitle" style="color: black">登录系统</span>
+                            <span class="subMenuTitle" style="color: black">登录系统</span>
                         </el-menu-item>
                     </el-menu>
                 </div>
@@ -58,7 +63,7 @@
         <div id="pcMenu">
             <el-menu
                     class="el-menu-demo"
-                    background-color="#409EFF"
+                    background-color="#3b455e"
                     mode="horizontal">
                 <el-menu-item v-for="menu of menuList" :index="menu.name" :key="menu.name">
                     <router-link :key="menu.path" :to="menu.path">
@@ -174,11 +179,11 @@
 
         #mobileMenu {
             display: block;
-            background-color: #0088EE !important;
+            background-color: #3b455e !important;
         }
 
         .subMenuTitle {
-            color: black;
+            color: #4a4a4a;
             font-weight: 900;
             margin-left: 8px
         }
