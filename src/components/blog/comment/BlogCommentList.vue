@@ -1,25 +1,21 @@
 <template>
-    <div id="blogCommentList" style="margin-top: 20px">
+    <div id="blogCommentList" style="margin-top: 20px;">
         <el-timeline>
             <el-timeline-item :key="comment.id"
-                              :timestamp="comment.name + '提交于' +  comment.createDatetime"
+                              :timestamp="comment.name + ' submit @ ' +  comment.createDatetime"
                               placement="top"
                               type='primary'
                               icon='el-icon-more'
                               v-for="comment of commentList">
-                <mavonEditor
-                        :value=" comment.content|| ''"
-                        :subfield="false"
-                        :defaultOpen="'preview'"
-                        :codeStyle="markdownTheme"
-                        :boxShadow="false"
-                        :toolbarsFlag="false"
-                        :editable="false"
-                        :scrollStyle="true"
-                        :ishljs="true"
-                        :navigation="false"
-                        style="min-height: 0"
-                ></mavonEditor>
+
+                <div style="display: flex;align-items: baseline">
+                    <div class="block">
+                        <el-avatar shape="square" :size="30" :src="squareUrl"></el-avatar>
+                    </div>
+                    <div style="flex-grow: 1">
+                        <span style="color: black;font-weight: 800">{{comment.content|| ''}}</span>
+                    </div>
+                </div>
             </el-timeline-item>
         </el-timeline>
     </div>
@@ -34,6 +30,7 @@
         name: "BlogComment",
         data: function () {
             return {
+                squareUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
                 commentList: [
                     {
                         id: 0,

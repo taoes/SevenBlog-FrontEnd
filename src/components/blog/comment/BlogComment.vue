@@ -1,36 +1,43 @@
 <template>
-    <div id="blogComment">
-        <el-form ref="commentForm" :rules="rules" :model="commentForm" label-width="80px" size="mini">
-            <el-form-item label="昵称" palaceholder="请输入您的昵称" prop="name">
-                <el-input v-model="commentForm.name"></el-input>
-            </el-form-item>
-            <el-form-item label="网址">
-                <el-input v-model="commentForm.site" placeholder="请输入您的网站">
-                </el-input>
-            </el-form-item>
-            <el-form-item label="邮箱">
-                <el-input v-model="commentForm.email" placeholder="请输入您的邮箱"></el-input>
-            </el-form-item>
-            <el-form-item label="评分">
-                <el-rate v-model="commentForm.rate" style="margin-left: 15px" show-text
-                         :texts="['极差','不好','一般','不错','很赞']"></el-rate>
-            </el-form-item>
-            <el-form-item label="评论">
-                <mavon-editor
-                        placeholder="期待您的评论"
-                        fontSize="12px"
-                        defaultOpen="edit"
-                        :subfield="false"
-                        :toolbars="markdownOption"
-                        codeStyle="xcode"
-                        v-model="commentForm.content"
-                        class="editor"
-                        style="height: 150px;margin-left: 15px"/>
-            </el-form-item>
-            <el-form-item size="large">
-                <el-button type="primary" size="small" @click="onSubmit('commentForm')">提交</el-button>
-            </el-form-item>
-        </el-form>
+
+    <div>
+        <div>
+            <span style="margin-left:30px;color: black;font-size: 20px">Comment for your</span>
+        </div>
+        <div id="blogComment">
+
+
+            <el-form ref="commentForm" :rules="rules" :model="commentForm" label-width="0px" size="mini">
+                <el-form-item prop="name">
+                    <el-input v-model="commentForm.name" placeholder="Please input your name or nickname"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-input v-model="commentForm.site"
+                              placeholder="Please input your web site if you will hope visit for me">
+                    </el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-input v-model="commentForm.email"
+                              placeholder="Please input your e-mail if you hope keep link with me"></el-input>
+                </el-form-item>
+                <el-form-item>
+
+                    <el-rate v-model="commentForm.rate" style="margin-left: 5px" show-text
+                             :texts="['Bad','Not Well','Normal','Well','Amazing']"></el-rate>
+                </el-form-item>
+                <el-form-item>
+                    <el-input
+                            type="textarea"
+                            :autosize="{ minRows: 2, maxRows: 4}"
+                            placeholder="Please input your comment for this article"
+                            v-model="commentForm.content">
+                    </el-input>
+                </el-form-item>
+                <el-form-item size="large">
+                    <el-button type="primary" size="small" @click="onSubmit('commentForm')">Submit</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
     </div>
 </template>
 
@@ -45,16 +52,15 @@
             return {
                 commentForm: {
                     name: '',
-                    site: 'https://',
+                    site: '',
                     email: '',
                     rate: 5,
                     content: '',
                 },
                 rules: {
                     name: [
-                        {required: true, message: '请输入活动名称', trigger: 'blur'},
-                        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-                    ]
+                        {required: true, message: 'Input your name on the Internet', trigger: 'blur'}
+                    ],
                 }
 
                 , markdownOption: {
@@ -71,7 +77,6 @@
             };
         },
         props: {
-            closeDialog: {type: Function, required: true},
             resourceId: {type: Number, required: true}
         },
         components: {
@@ -96,7 +101,6 @@
                 this.commentForm.articleId = this.resourceId;
                 commentApi.addNewComment(this.commentForm, () => {
                     this.$notify.success({title: "您的评论已提交", message: "非常感谢您的评论！"});
-                    this.closeDialog();
                 }, () => {
                     this.$notify.error({
                         title: "您的评论提交失败",
