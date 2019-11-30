@@ -35,6 +35,9 @@ const config = {
         category: '/category',
         categoryList: '/category/list'
     },
+    admin: {
+        login: '/user/login'
+    },
     blog: {
         list: '/blog',
         simpleList: '/blog/list',
