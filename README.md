@@ -16,7 +16,7 @@
 
 ```shell script
 + git clone https://github.com/zhou-seven/SevenBlog.git
-+ sudo npm -g yarn
++ sudo npm install yarn -g
 + yarn install
 + yarn serve
 ```
@@ -38,6 +38,7 @@
 - [x] MyBatis-Plus
 - [x] SpringBoot2.x
 - [x] Mysql 5.7
+- [x] Redis Cache
 
 
 
