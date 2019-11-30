@@ -31,38 +31,36 @@
                     :toolbarsFlag="false"
                     :editable="false"
                     :scrollStyle="false"
-                    :ishljs="false"
+                    :ishljs="true"
                     :navigation="tocStatus"
             ></mavonEditor>
             <div class="articleCtr">
                 <el-button @click="backLastPage" :type="buttonType" size="mini">
                     <i class="fas fa-backward"></i>
-                    返回
+                    Back
                 </el-button>
                 <el-button @click="editArticle" :type="buttonType" size="mini">
                     <i class="far fa-edit"></i>
-                    编辑
+                    Edit
                 </el-button>
 
             </div>
         </div>
 
         <div id="comment">
-            <ArticleComment></ArticleComment>
+            <BlogComment :resource-id="articleId"></BlogComment>
         </div>
 
         <div id="commentList">
-            <span style="margin-left: 30px;margin-bottom:20px;color: #4a4a4a;font-size: 20px">评论内容</span>
-            <BlogCommentList :article-id="this.$route.params.id"></BlogCommentList>
+            <span style="margin-left: 30px;margin-bottom:20px;color: black;font-size: 20px">Comment area</span>
+            <div style="padding: 0px">
+                <BlogCommentList :article-id="this.$route.params.id"></BlogCommentList>
+            </div>
         </div>
 
         <div>
             <Footer></Footer>
         </div>
-
-        <el-dialog :visible.sync="showCommentDialog">
-            <BlogComment :close-dialog="this.changeDialogStatus" :resource-id="blog.id"></BlogComment>
-        </el-dialog>
     </div>
 </template>
 
@@ -81,6 +79,7 @@
         name: "ArticleDetail",
         data: function () {
             return {
+                articleId: 0,
                 blog: {},
                 buttonType: 'primary',
                 emptyTip: '# 文章内容为空',
@@ -115,6 +114,7 @@
         mounted: function () {
             document.querySelector("#sss").scrollIntoView(true);
             let id = this.$route.params.id;
+            this.articleId = parseInt(id);
             let respFunc = (resp) => {
                 this.blog = resp.data;
                 document.title = this.blog.title;
@@ -158,7 +158,7 @@
     @media only screen and (min-width: 987px) {
 
         #commentList, #comment {
-            padding-top: 20px;
+            padding: 20px;
             margin-top: 20px;
             background-color: #FEFEFE;
             box-shadow: 5px 5px 30px 1px #515a6e;
@@ -184,7 +184,7 @@
     @media only screen and (max-width: 987px) {
 
         #commentList, #comment {
-            padding-top: 20px;
+            padding: 20px;
             margin-top: 20px;
             background-color: #FEFEFE;
             box-shadow: 5px 5px 30px 1px #515a6e;

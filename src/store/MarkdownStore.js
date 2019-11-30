@@ -1,6 +1,6 @@
 export default {
     state: {
-        theme: 'vs2015'
+        theme: 'googlecode'
     },
     getters: {},
     actions: {},

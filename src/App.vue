@@ -47,10 +47,15 @@
     }
 
     .v-show-content pre {
-        font-weight: 900 !important;
+        font-weight: 500 !important;
         line-height: 1.2 !important;
-        font-size: 10px !important;
+        font-size: 14px !important;
         padding: 0 !important;
+    }
+
+    .v-show-content img {
+        width: 80% !important;
+        margin: auto 0;
     }
 
     .el-menu--horizontal > .el-submenu .el-submenu__icon-arrow {

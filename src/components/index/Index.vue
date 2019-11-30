@@ -1,6 +1,17 @@
 <template>
     <div>
         <AppMenu></AppMenu>
+        <div id="carousel">
+            <el-carousel indicator-position="outside" height="500px" :interval="2000" arrow="always">
+                <el-carousel-item v-for="item in carouselImg" :key="item">
+                    <el-image
+                            class="pic"
+                            fit="cover"
+                            :src="item"></el-image>
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+
         <div class="Index">
             <div id="index">
                 <h1><i class="far fa-lightbulb"></i> 我的理想 </h1>
@@ -28,7 +39,7 @@
 
                 <div id="recommendArticle">
                     <div v-for="backImg of backgroundImage" style="margin: 30px">
-                        <img :src="backImg" style="width: 200px;height: 200px">
+                        <el-image fit="cover" :src="backImg" style="width: 200px;height: 200px"></el-image>
                     </div>
 
 
@@ -58,7 +69,15 @@
                         "http://static.blinkfox.com/2019-01-25.jpg",
                         "http://static.blinkfox.com/blog/2019/08/20jpa-20190820.png",
                         "http://static.blinkfox.com/2019-02-14.jpg",
-                    ]
+                    ],
+                carouselImg: [
+                    "https://www.zhoutao123.com/picture/index/1.jpeg",
+                    "https://www.zhoutao123.com/picture/index/2.jpg",
+                    "https://www.zhoutao123.com/picture/index/3.jpg",
+                    "https://www.zhoutao123.com/picture/index/4.jpg",
+
+
+                ]
             }
         },
         computed: {},
@@ -69,4 +88,26 @@
         }
     };
 </script>
+
+<style scoped>
+
+    @media only screen and (min-width: 800px) {
+        #carousel {
+            display: block;
+        }
+
+        .pic {
+            width: 100%;
+            height: 500px;
+            margin-top: -3px;
+        }
+    }
+
+
+    @media only screen and (max-width: 800px) {
+        #carousel {
+            display: none;
+        }
+    }
+</style>
 
