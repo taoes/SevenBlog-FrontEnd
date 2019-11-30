@@ -9,6 +9,7 @@ import MarkdownStore from "./MarkdownStore";
 import HomeStore from "./HomeStore";
 import AccessStore from "./AccessStore";
 import ArticleStore from "./ArticleStore";
+import UserStore from "./UserStore";
 
 Vue.use(Vuex);
 
@@ -21,7 +22,8 @@ const store = new Vuex.Store({
         access: AccessStore,
         blog: ArticleStore,
         adminMenu: AdminMenuStore,
-        markdown: MarkdownStore
+        markdown: MarkdownStore,
+        userStore: UserStore
     }
 });
 

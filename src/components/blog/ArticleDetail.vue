@@ -47,6 +47,10 @@
             </div>
         </div>
 
+        <div id="comment">
+            <ArticleComment></ArticleComment>
+        </div>
+
         <div id="commentList">
             <span style="margin-left: 30px;margin-bottom:20px;color: #4a4a4a;font-size: 20px">评论内容</span>
             <BlogCommentList :article-id="this.$route.params.id"></BlogCommentList>
@@ -71,6 +75,7 @@
     import BlogComment from "./comment/BlogComment";
     import BlogCommentList from "./comment/BlogCommentList";
     import Footer from "../Footer";
+    import ArticleComment from "../comment/ArticleComment";
 
     export default {
         name: "ArticleDetail",
@@ -89,6 +94,7 @@
                 }
             }
         }, components: {
+            ArticleComment,
             BlogComment,
             BlogMenu,
             mavonEditor,
@@ -151,7 +157,7 @@
 
     @media only screen and (min-width: 987px) {
 
-        #commentList {
+        #commentList, #comment {
             padding-top: 20px;
             margin-top: 20px;
             background-color: #FEFEFE;
@@ -177,7 +183,7 @@
 
     @media only screen and (max-width: 987px) {
 
-        #commentList {
+        #commentList, #comment {
             padding-top: 20px;
             margin-top: 20px;
             background-color: #FEFEFE;
