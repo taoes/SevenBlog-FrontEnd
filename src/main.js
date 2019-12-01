@@ -44,7 +44,7 @@ import '@hyjiacan/vue-slideout/lib/slideout.css'
 Vue.use(SlideOut, {
     title: "燕归来兮",
     // 在此处填写默认的属性值
-    dock:'bottom'
+    dock:'right'
 });
 
 new Vue({
