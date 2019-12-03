@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <el-link href="https://github.com/tao-seven" style="margin-left: 10px;margin-right: 10px;color: white">
+        <el-link href="https://github.com/taoes" style="margin-left: 10px;margin-right: 10px;color: white">
             访问Github
         </el-link>
         <span>@ 2019 燕归来兮</span>
