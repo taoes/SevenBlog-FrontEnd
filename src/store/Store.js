@@ -10,6 +10,7 @@ import HomeStore from "./HomeStore";
 import AccessStore from "./AccessStore";
 import ArticleStore from "./ArticleStore";
 import UserStore from "./UserStore";
+import LinkStore from "./LinkStore";
 
 Vue.use(Vuex);
 
@@ -23,7 +24,8 @@ const store = new Vuex.Store({
         blog: ArticleStore,
         adminMenu: AdminMenuStore,
         markdown: MarkdownStore,
-        userStore: UserStore
+        userStore: UserStore,
+        linkStore: LinkStore
     }
 });
 

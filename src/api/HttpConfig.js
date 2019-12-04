@@ -59,6 +59,8 @@ const config = {
     }, access: {
         add: '/access',
         count: '/access/count'
+    }, link: {
+        list: '/link'
     }
 };
 

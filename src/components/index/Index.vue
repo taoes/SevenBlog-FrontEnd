@@ -41,8 +41,6 @@
                     <div v-for="backImg of backgroundImage" style="margin: 30px">
                         <el-image fit="cover" :src="backImg" style="width: 200px;height: 200px"></el-image>
                     </div>
-
-
                 </div>
 
             </div>
