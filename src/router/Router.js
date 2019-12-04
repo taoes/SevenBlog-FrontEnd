@@ -9,6 +9,7 @@ import Note from "@/components/note/Note";
 import AdminLogin from "@/components/backstage/AdminLogin";
 import adminRouter from "./AdminRouter";
 import Index from "../components/index/Index";
+import Link from "../components/Link";
 
 const routerPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -68,6 +69,13 @@ const router = new VueRouter({
                 title: '时光流影'
             },
             component: Camera
+        },
+        {
+            path: '/link',
+            meta: {
+                title: '友情链接'
+            },
+            component: Link
         },
         {
             name: 'login',
