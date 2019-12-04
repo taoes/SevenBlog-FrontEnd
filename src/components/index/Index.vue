@@ -73,8 +73,6 @@
                     "https://www.zhoutao123.com/picture/index/2.jpg",
                     "https://www.zhoutao123.com/picture/index/3.jpg",
                     "https://www.zhoutao123.com/picture/index/4.jpg",
-
-
                 ]
             }
         },

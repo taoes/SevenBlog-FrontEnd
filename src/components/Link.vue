@@ -2,8 +2,8 @@
     <div>
         <AppMenu></AppMenu>
         <div class="cards">
-            <el-card class="card" v-for="link in this.getLinkList" :key="link.id">
-                <img src="http://static.blinkfox.com/2019-01-25.jpg"
+            <el-card class="card" v-for="(link,index) in this.getLinkList" :key="link.id">
+                <img :src="logo[index % 4]"
                      class="image" alt="ddd"/>
                 <div style="text-align: center">
                     <span class="webTitle">{{link.name}}</span>
@@ -37,7 +37,13 @@
         data: function () {
             return {
                 openLink: {},
-                dialogVisible: false
+                dialogVisible: false,
+                logo: [
+                    "http://static.blinkfox.com/2019-02-14.jpg",
+                    "http://static.blinkfox.com/2019-01-25.jpg",
+                    "http://static.blinkfox.com/blog/2019/08/20jpa-20190820.png",
+                    "http://static.blinkfox.com/2019-02-14.jpg",
+                ]
             }
         }, computed: {
             ...mapGetters(['getLinkList']),
