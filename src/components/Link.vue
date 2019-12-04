@@ -7,6 +7,7 @@
                      class="image" alt="ddd"/>
                 <div style="text-align: center">
                     <span class="webTitle">{{link.name}}</span>
+                    <p>{{link.desc}}</p>
                     <div style="padding-top: 10px">
                         <el-button size="mini" type="primary" @click="toLink(link)"> 点击访问</el-button>
                     </div>
@@ -16,7 +17,7 @@
         <el-dialog
                 :title="openLink.name"
                 :visible.sync="dialogVisible"
-                width="30%">
+                width="200">
             <span>即将打开站外网站，是够继续？</span>
             <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
