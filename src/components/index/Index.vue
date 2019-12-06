@@ -29,7 +29,7 @@
                     总感觉经历过风雨过后就必定有彩虹，最后才发觉风雨过后还有暴风雪，没有我所谓的彩虹；总感觉别人说的话就像是黄婆卖瓜，最后才发现自己说话时也是自卖自夸，没有所谓的中正；总感觉恩爱情仇是那么的简单，最后才发现有朝一日落到自己身上时，没有所谓的坚强。`</p>
 
 
-                <h1 class="title"><i class="fa fa-music"></i> 听听音乐 </h1>
+                <h1 class="title"><i class="fa fa-music"></i> 我的作品 </h1>
                 <div id="musicPlayer">
 
                 </div>
@@ -38,8 +38,13 @@
                 <h1 class="title"><i class="fa fa-music"></i> 推荐文章</h1>
 
                 <div id="recommendArticle">
-                    <div v-for="backImg of backgroundImage" style="margin: 30px">
-                        <el-image fit="cover" :src="backImg" style="width: 200px;height: 200px"></el-image>
+                    <div v-for="(article,index) of this.getHotArticle" style="margin: 30px">
+                        <div style="display: flex;flex-direction: column;max-width: 200px" @click="toHotArticle(index)">
+                            <el-image fit="cover" :src="backgroundImage[index]"
+                                      style="width: 200px;height: 200px"></el-image>
+
+                            <span style="padding-top: 10px"> <b style="color: #2c3e50">【{{article.access}}】</b> {{article.title}}</span>
+                        </div>
                     </div>
                 </div>
 
@@ -51,6 +56,7 @@
 <script>
     import AppMenu from "../AppMenu";
     import './Index.css'
+    import {mapActions, mapGetters} from "vuex";
 
     export default {
         name: 'Index',
@@ -63,6 +69,7 @@
 　　 总感觉经历过风雨过后就必定有彩虹，最后才发觉风雨过后还有暴风雪，没有我所谓的彩虹；总感觉别人说的话就像是黄婆卖瓜，最后才发现自己说话时也是自卖自夸，没有所谓的中正；总感觉恩爱情仇是那么的简单，最后才发现有朝一日落到自己身上时，没有所谓的坚强。`,
                 backgroundImage:
                     [
+                        "https://www.zhoutao123.com/picture/index/1.jpeg",
                         "http://static.blinkfox.com/2019-02-14.jpg",
                         "http://static.blinkfox.com/2019-01-25.jpg",
                         "http://static.blinkfox.com/blog/2019/08/20jpa-20190820.png",
@@ -76,13 +83,22 @@
                 ]
             }
         },
-        computed: {},
+        computed: {
+            ...mapGetters(['getHotArticle']),
+            ...mapActions(['updateHotArticle'])
+        },
+        methods: {
+            toHotArticle: function (index) {
+                this.$router.push(`/blog/article/${this.getHotArticle[index].id}`)
+            }
+        },
         components: {AppMenu},
-        created() {
-            // 从本地读取配置,配置不存在从远程获取
-        }, beforeMount() {
+        mounted() {
+            if (this.getHotArticle) {
+                this.updateHotArticle
+            }
         }
-    };
+    }
 </script>
 
 <style scoped>
