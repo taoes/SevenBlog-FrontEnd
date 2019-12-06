@@ -40,6 +40,7 @@ const config = {
     },
     blog: {
         list: '/blog',
+        hot: '/blog/hot',
         simpleList: '/blog/list',
         detail: '/blog/detail',
         updateOrCreate: '/blog',
