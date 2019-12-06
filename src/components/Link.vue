@@ -1,19 +1,69 @@
 <template>
     <div>
         <AppMenu></AppMenu>
-        <div class="cards">
-            <el-card class="card" v-for="(link,index) in this.getLinkList" :key="link.id">
-                <img :src="logo[index % 4]"
-                     class="image" alt="ddd"/>
-                <div style="text-align: center">
-                    <span class="webTitle">{{link.name}}</span>
-                    <p>{{link.desc}}</p>
-                    <div style="padding-top: 10px">
-                        <el-button size="mini" type="primary" @click="toLink(link)"> 点击访问</el-button>
+        <div class="linkArea">
+            <div class="title">
+
+                <el-divider>
+                    <h1 class="title"><i class="fa fa-music"></i> 我的站点 </h1>
+                </el-divider>
+
+            </div>
+            <div class="cards">
+                <el-card class="card" v-for="(link,index) in this.getLinkList" :key="link.id">
+                    <img :src="logo[index % 4]"
+                         class="image" alt="ddd"/>
+                    <div style="text-align: center">
+                        <span class="webTitle">{{link.name}}</span>
+                        <p>{{link.desc}}</p>
                     </div>
-                </div>
-            </el-card>
+                </el-card>
+            </div>
+
+
+            <div class="title">
+
+                <el-divider>
+                    <h1 class="title"><i class="fa fa-music"></i> 友情链接 </h1>
+                </el-divider>
+
+            </div>
+            <div class="cards">
+                <el-card class="card" v-for="(link,index) in this.getLinkList" :key="link.id">
+                    <img :src="logo[index % 4]"
+                         class="image" alt="ddd"/>
+                    <div style="text-align: center">
+                        <span class="webTitle">{{link.name}}</span>
+                        <p>{{link.desc}}</p>
+                        <div style="padding-top: 10px">
+                            <el-button size="mini" type="primary" @click="toLink(link)"> 点击访问</el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </div>
+
+
+            <div class="title">
+                <el-divider>
+                    <h1 class="title"><i class="fa fa-music"></i> 推荐站点 </h1>
+                </el-divider>
+            </div>
+            <div class="cards">
+
+                <el-card class="card" v-for="(link,index) in this.getLinkList" :key="link.id">
+                    <img :src="logo[index % 4]"
+                         class="image" alt="ddd"/>
+                    <div style="text-align: center">
+                        <span class="webTitle">{{link.name}}</span>
+                        <p>{{link.desc}}</p>
+                        <div style="padding-top: 10px">
+                            <el-button size="mini" type="primary" @click="toLink(link)"> 点击访问</el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </div>
         </div>
+
         <el-dialog
                 :title="openLink.name"
                 :visible.sync="dialogVisible"
@@ -76,11 +126,10 @@
     .cards {
         display: flex;
         display: -webkit-flex;
-        margin-left: 10%;
-        margin-right: 10%;
         justify-content: center;
         flex-wrap: wrap;
         margin-top: 20px;
+        padding-top: 20px;
     }
 
     .image {
@@ -99,5 +148,20 @@
 
     .el-card {
         height: fit-content !important;
+    }
+
+
+    .title {
+        text-align: center;
+    }
+
+    .linkArea {
+        margin-top: 30px;
+        margin-left: 10%;
+        margin-right: 10%;
+        background-color: white;
+        padding-top: 20px;
+        padding-right: 10px;
+        padding-left: 10px;
     }
 </style>
