@@ -11,11 +11,14 @@
             </div>
             <div class="cards">
                 <el-card class="card" v-for="(link,index) in this.getLinkList" :key="link.id">
-                    <img :src="logo[index % 4]"
-                         class="image" alt="ddd"/>
+                    <img :src="randomUrl + index"
+                         class="image" alt="图片加载失败"/>
                     <div style="text-align: center">
                         <span class="webTitle">{{link.name}}</span>
                         <p>{{link.desc}}</p>
+                        <div style="padding-top: 10px">
+                            <el-button size="mini" @click="toLink(link)" icon="el-icon-position"> 点击访问</el-button>
+                        </div>
                     </div>
                 </el-card>
             </div>
@@ -30,13 +33,13 @@
             </div>
             <div class="cards">
                 <el-card class="card" v-for="(link,index) in this.getLinkList" :key="link.id">
-                    <img :src="logo[index % 4]"
+                    <img :src="randomUrl + index * 100"
                          class="image" alt="ddd"/>
                     <div style="text-align: center">
                         <span class="webTitle">{{link.name}}</span>
                         <p>{{link.desc}}</p>
                         <div style="padding-top: 10px">
-                            <el-button size="mini" type="primary" @click="toLink(link)"> 点击访问</el-button>
+                            <el-button size="mini" @click="toLink(link)"> 点击访问</el-button>
                         </div>
                     </div>
                 </el-card>
@@ -51,13 +54,13 @@
             <div class="cards">
 
                 <el-card class="card" v-for="(link,index) in this.getLinkList" :key="link.id">
-                    <img :src="logo[index % 4]"
+                    <img :src="randomUrl + index * 10"
                          class="image" alt="ddd"/>
                     <div style="text-align: center">
                         <span class="webTitle">{{link.name}}</span>
                         <p>{{link.desc}}</p>
                         <div style="padding-top: 10px">
-                            <el-button size="mini" type="primary" @click="toLink(link)"> 点击访问</el-button>
+                            <el-button size="mini" @click="toLink(link)"> 点击访问</el-button>
                         </div>
                     </div>
                 </el-card>
@@ -67,7 +70,7 @@
         <el-dialog
                 :title="openLink.name"
                 :visible.sync="dialogVisible"
-                width="200">
+                width="260px">
             <span>即将打开站外网站，是够继续？</span>
             <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
@@ -86,14 +89,9 @@
         components: {AppMenu},
         data: function () {
             return {
+                randomUrl: 'https://picsum.photos/100/150?url=',
                 openLink: {},
                 dialogVisible: false,
-                logo: [
-                    "http://static.blinkfox.com/2019-02-14.jpg",
-                    "http://static.blinkfox.com/2019-01-25.jpg",
-                    "http://static.blinkfox.com/blog/2019/08/20jpa-20190820.png",
-                    "http://static.blinkfox.com/2019-02-14.jpg",
-                ]
             }
         }, computed: {
             ...mapGetters(['getLinkList']),
@@ -118,9 +116,13 @@
 
 <style scoped>
     .card {
-        width: 200px;
+        height: 300px !important;
         color: #999;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
+    }
+
+    .el-card__body {
+        padding: 0 !important;
     }
 
     .cards {
@@ -147,7 +149,9 @@
     }
 
     .el-card {
-        height: fit-content !important;
+        padding-bottom: 10px !important;
+        width: 200px !important;
+        height: 300px !important;
     }
 
 

@@ -55,7 +55,8 @@
                         </div>
                     </div>
                 </div>
-                <el-button type="primary" icon="el-icon-star-off" @click="openBlog()" style="margin-bottom: 30px">更多文章，点击访问我的博客
+                <el-button type="primary" icon="el-icon-star-off" @click="openBlog()" style="margin-bottom: 30px">
+                    更多文章，点击访问我的博客
                 </el-button>
 
             </div>
@@ -80,14 +81,6 @@
 　　 总以为生活与我作对，要白色拖地长裙，却只得到一条黑色暴腿短裤；总认为生活与我相逆，想要出人头地，却总埋没于人群；总想得到自己想要的东西，却总失去自己不想失去的东西。
 
 　　 总感觉经历过风雨过后就必定有彩虹，最后才发觉风雨过后还有暴风雪，没有我所谓的彩虹；总感觉别人说的话就像是黄婆卖瓜，最后才发现自己说话时也是自卖自夸，没有所谓的中正；总感觉恩爱情仇是那么的简单，最后才发现有朝一日落到自己身上时，没有所谓的坚强。`,
-                backgroundImage:
-                    [
-                        "https://www.zhoutao123.com/picture/index/1.jpeg",
-                        "http://static.blinkfox.com/2019-02-14.jpg",
-                        "http://static.blinkfox.com/2019-01-25.jpg",
-                        "http://static.blinkfox.com/blog/2019/08/20jpa-20190820.png",
-                        "http://static.blinkfox.com/2019-02-14.jpg",
-                    ],
                 carouselImg: [
                     "https://www.zhoutao123.com/picture/index/1.jpeg",
                     "https://www.zhoutao123.com/picture/index/2.jpg",
