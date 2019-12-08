@@ -11,6 +11,7 @@ import AccessStore from "./AccessStore";
 import ArticleStore from "./ArticleStore";
 import UserStore from "./UserStore";
 import LinkStore from "./LinkStore";
+import GithubReposStore from "./GithubReposStore";
 
 Vue.use(Vuex);
 
@@ -25,7 +26,8 @@ const store = new Vuex.Store({
         adminMenu: AdminMenuStore,
         markdown: MarkdownStore,
         userStore: UserStore,
-        linkStore: LinkStore
+        linkStore: LinkStore,
+        githubStore: GithubReposStore
     }
 });
 

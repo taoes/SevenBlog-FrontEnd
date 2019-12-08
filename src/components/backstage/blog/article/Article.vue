@@ -109,7 +109,7 @@
 
 <script>
     import './Article.css'
-    import Footer from "../../../Footer";
+    import Footer from "../../../MyFooter";
     import blogApiListApi from "@/api/BlogListApi";
 
 

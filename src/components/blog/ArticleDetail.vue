@@ -59,7 +59,7 @@
         </div>
 
         <div>
-            <Footer></Footer>
+            <MyFooter></MyFooter>
         </div>
     </div>
 </template>
@@ -72,7 +72,7 @@
     import BlogMenu from "./BlogMenu";
     import BlogComment from "./comment/BlogComment";
     import BlogCommentList from "./comment/BlogCommentList";
-    import Footer from "../Footer";
+    import MyFooter from "../MyFooter";
     import ArticleComment from "../comment/ArticleComment";
 
     export default {
@@ -97,7 +97,7 @@
             BlogComment,
             BlogMenu,
             mavonEditor,
-            Footer,
+            MyFooter,
             BlogCommentList
         },
         methods: {
