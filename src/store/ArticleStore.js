@@ -31,7 +31,6 @@ export default {
         setRecommendArticle: function (state, payload) {
             state.recommendArticle = payload;
         }, setHotArticle: function (state, payload) {
-            console.log(payload)
             state.hotArticle = payload;
         }
     }

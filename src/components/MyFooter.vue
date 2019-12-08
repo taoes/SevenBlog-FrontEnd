@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <el-link href="https://github.com/taoes" style="margin-left: 10px;margin-right: 10px;color: white">
+        <el-link :href="this.getGithubAddress" style="margin-left: 10px;margin-right: 10px;color: white">
             访问Github
         </el-link>
         <span>@ 2019 燕归来兮</span>
@@ -10,8 +10,13 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
-        name: "Footer"
+        name: "MyFooter",
+        computed: {
+            ...mapGetters['getGithubAddress']
+        }
     }
 </script>
 
@@ -26,7 +31,7 @@
         color: white;
         align-items: center;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 40px;
         min-height: 30px;
     }
 </style>

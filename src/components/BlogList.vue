@@ -68,7 +68,7 @@
         </div>
 
         <div>
-            <Footer></Footer>
+            <MyFooter></MyFooter>
         </div>
     </div>
 </template>
@@ -76,13 +76,13 @@
 
     import blogApiListApi from "@/api/BlogListApi";
     import BlogMenu from "./blog/BlogMenu";
-    import Footer from "./Footer";
+    import MyFooter from "./MyFooter";
 
     let errorFunc = () => {
     };
 
     export default {
-        components: {BlogMenu, Footer},
+        components: {MyFooter, BlogMenu},
         data() {
             return {
                 data: [],
