@@ -27,6 +27,11 @@ fontawesome.library.add(brands);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
+
+import VueParticles from 'vue-particles'
+
+Vue.use(VueParticles)
+
 Vue.use(mavonEditor);
 Vue.use(ElementUI);
 Vue.use(VCharts);
@@ -44,7 +49,7 @@ import '@hyjiacan/vue-slideout/lib/slideout.css'
 Vue.use(SlideOut, {
     title: "燕归来兮",
     // 在此处填写默认的属性值
-    dock:'right'
+    dock: 'right'
 });
 
 new Vue({
