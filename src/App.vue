@@ -1,29 +1,8 @@
 <template>
     <div id="app">
-        <div style="position: absolute;z-index: 1000;" >
-            <vue-particles
-                    color="#ff0000"
-                    :particleOpacity="0.7"
-                    :particlesNumber="80"
-                    shapeType="circle"
-                    :particleSize="4"
-                    linesColor="#dedede"
-                    :linesWidth="1"
-                    :lineLinked="true"
-                    :lineOpacity="0.4"
-                    :linesDistance="150"
-                    :moveSpeed="3"
-                    :hoverEffect="true"
-                    hoverMode="grab"
-                    :clickEffect="true"
-                    clickMode="push"
-                    style="width: 100%;height: 100%"
-            >
-            </vue-particles>
-        </div>
-        <div class="routerView" style="position: absolute">
-            <router-view></router-view>
-        </div>
+        <router-view>
+
+        </router-view>
     </div>
 </template>
 
