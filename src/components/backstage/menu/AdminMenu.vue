@@ -3,62 +3,70 @@
         <el-menu
                 mode="horizontal"
                 class="el-menu-demo"
+                background-color="#3b455e"
                 @select="onSelectItem"
-                background-color="#409EFF"
-                text-color="#FFFFFF"
-                active-text-color="lightyellow"
-
         >
 
             <el-menu-item index="/">
                 <i class="el-icon-s-home" style="color: #FFFFFF"></i>
-                <template slot="title">
+                <span class="menuTitle">
                     系统主页
-                </template>
+                </span>
             </el-menu-item>
 
             <el-menu-item index="index">
                 <i class="el-icon-s-home" style="color: #FFFFFF"></i>
-                <template slot="title">
+                <span class="menuTitle">
                     管理首页
-                </template>
+                </span>
             </el-menu-item>
 
             <el-submenu index="article">
-                <template slot="title">
-                    <i class="el-icon-s-cooperation" style="color: #FEFEFE"></i>
+
+                <span class="menuTitle" slot="title">
+<i class="el-icon-s-cooperation" style="color: #FEFEFE"></i>
                     博客资源
-                </template>
+                </span>
                 <el-menu-item index="article">
                     <i class="fas fa-rss"></i>
+                    <span class="menuTitle">
+
                     文章管理
+                    </span>
                 </el-menu-item>
                 <el-menu-item index="category">
+                    <span class="menuTitle">
                     <i class="fas fa-folder"></i>
-                    目录管理
+                    目录管理</span>
                 </el-menu-item>
                 <el-menu-item index="tag">
-                    <i class="fas fa-tag"></i>
-                    标签管理
+                    <span class="menuTitle">
+                        <i class="fas fa-tag"></i>
+                        标签管理
+                    </span>
                 </el-menu-item>
             </el-submenu>
 
             <el-submenu index="resource">
-                <template slot="title">
+                <span class="menuTitle">
                     <i class="el-icon-upload" style="color: #FEFEFE"></i>
                     资源管理
-                </template>
+                </span>
                 <el-menu-item index="picture">
+                    <span class="menuTitle">
                     <i class="fas fa-image"></i>
                     图片资源
+                        </span>
                 </el-menu-item>
                 <el-menu-item index="comment">
                     <i class="fas fa-comments"></i>
                     评论管理
                 </el-menu-item>
                 <el-menu-item index="menu">
+                    <span class="menuTitle">
                     <i class="fas fa-compass"></i>
                     菜单管理
+                        </span>
                 </el-menu-item>
             </el-submenu>
 
@@ -109,5 +117,9 @@
 </script>
 
 <style scoped>
+
+    .menuTitle {
+        color: #f0f2f5;
+    }
 
 </style>

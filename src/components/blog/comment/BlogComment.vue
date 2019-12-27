@@ -2,39 +2,36 @@
 
     <div>
         <div>
-            <span style="margin-left:30px;color: black;font-size: 20px">Comment for your</span>
+            <span style="margin-left:30px;color: black;font-size: 20px">期待您的评论</span>
         </div>
         <div id="blogComment">
-
-
             <el-form ref="commentForm" :rules="rules" :model="commentForm" label-width="0px" size="mini">
                 <el-form-item prop="name">
-                    <el-input v-model="commentForm.name" placeholder="Please input your name or nickname"></el-input>
+                    <el-input v-model="commentForm.name" placeholder="请输入您的名称或者昵称"/>
                 </el-form-item>
                 <el-form-item>
                     <el-input v-model="commentForm.site"
-                              placeholder="Please input your web site if you will hope visit for me">
+                              placeholder="请输入您的站点，如果您希望我回访的话">
                     </el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-input v-model="commentForm.email"
-                              placeholder="Please input your e-mail if you hope keep link with me"></el-input>
+                              placeholder="请输入您的邮箱地址，我将通过邮箱回复您"/>
                 </el-form-item>
                 <el-form-item>
-
                     <el-rate v-model="commentForm.rate" style="margin-left: 5px" show-text
-                             :texts="['Bad','Not Well','Normal','Well','Amazing']"></el-rate>
+                             :texts="startStep"/>
                 </el-form-item>
                 <el-form-item>
                     <el-input
                             type="textarea"
                             :autosize="{ minRows: 2, maxRows: 4}"
-                            placeholder="Please input your comment for this article"
+                            placeholder="请输入您对此篇文章的评论(支持MarkDown语法)"
                             v-model="commentForm.content">
                     </el-input>
                 </el-form-item>
                 <el-form-item size="large">
-                    <el-button type="primary" size="small" @click="onSubmit('commentForm')">Submit</el-button>
+                    <el-button type="primary" @click="onSubmit('commentForm')">提交评论</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -43,7 +40,8 @@
 
 <script>
 
-    import {mavonEditor} from "mavon-editor";
+    import MarkdownItVue from 'markdown-it-vue'
+    import 'markdown-it-vue/dist/markdown-it-vue.css'
     import commentApi from '@/api/CommentApi';
 
     export default {
@@ -57,22 +55,11 @@
                     rate: 5,
                     content: '',
                 },
+                startStep: ['垃圾文章', '一般般', '凑乎看', '非常不错', '令人称奇'],
                 rules: {
                     name: [
                         {required: true, message: 'Input your name on the Internet', trigger: 'blur'}
                     ],
-                }
-
-                , markdownOption: {
-                    subfield: false,
-                    preview: true,
-                    bold: true, // 粗体
-                    italic: true, // 斜体
-                    header: true, // 标题
-                    quote: true, // 引用
-                    link: true, // 链接
-                    code: true, // code
-                    table: true, // 表格
                 }
             };
         },
@@ -80,7 +67,7 @@
             resourceId: {type: Number, required: true}
         },
         components: {
-            mavonEditor
+            MarkdownItVue
         },
         methods: {
             onSubmit(commentForm) {
