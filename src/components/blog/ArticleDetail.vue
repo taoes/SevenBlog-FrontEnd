@@ -4,69 +4,62 @@
                 style="z-index: 1000000"
                 :visibility-height="10"
                 target="#sss"
-        ></el-backtop>
-        <BlogMenu></BlogMenu>
+        />
+        <BlogMenu/>
         <div class="articleDetailContent">
-            <h1 style="font-weight: 900;font-size: 27px">{{blog.title}}</h1>
-            <div style="margin-left: 20px;margin-top: 5px;margin-bottom: 5px" type="text">
-                <i class="far fa-eye" style="color: #0088EE"></i>
+            <h1 class="articleTitle" align="center"> {{blog.title}}</h1>
+            <el-divider/>
+
+            <div style="margin-left: 20px;margin-top: 20px;margin-bottom: 30px" type="text">
+                <i class="far fa-eye" style="color: #0088EE"/>
                 <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{blog.access}}</span>
 
-                <i class="far fa-thumbs-up" style="color: #E6A23C;margin-left: 30px"></i>
+                <i class="far fa-thumbs-up" style="color: #E6A23C;margin-left: 30px"/>
                 <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{Math.ceil(blog.access/3)}}</span>
 
-                <i class="far fa-thumbs-down" style="color: #F56C6C;margin-left: 30px"></i>
+                <i class="far fa-thumbs-down" style="color: #F56C6C;margin-left: 30px"/>
                 <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{0}}</span>
             </div>
 
-            <el-divider></el-divider>
-            <mavonEditor
-                    id="articleDetail"
-                    class="markdownPreview"
-                    :value="blog.content || emptyTip"
-                    :subfield="false"
-                    :defaultOpen="'preview'"
-                    :codeStyle="markdownTheme()"
-                    :boxShadow="false"
-                    :toolbarsFlag="false"
-                    :editable="false"
-                    :scrollStyle="false"
-                    :ishljs="true"
-                    :navigation="tocStatus"
-            ></mavonEditor>
+
+            <markdown-it-vue class="md-body" :content="blog.content" :options="options"/>
+
+
+
             <div class="articleCtr">
-                <el-button @click="backLastPage" :type="buttonType" size="mini">
-                    <i class="fas fa-backward"></i>
-                    Back
+                <el-button @click="backLastPage" :type="buttonType">
+                    <i class="fas fa-backward"/>
+                    返回上一层
                 </el-button>
-                <el-button @click="editArticle" :type="buttonType" size="mini">
-                    <i class="far fa-edit"></i>
-                    Edit
+                <el-button @click="editArticle" :type="buttonType">
+                    <i class="far fa-edit"/>
+                    编辑文章
                 </el-button>
 
             </div>
         </div>
 
         <div id="comment">
-            <BlogComment :resource-id="articleId"></BlogComment>
+            <BlogComment :resource-id="articleId"/>
         </div>
 
         <div id="commentList">
-            <span style="margin-left: 30px;margin-bottom:20px;color: black;font-size: 20px">Comment area</span>
-            <div style="padding: 0px">
-                <BlogCommentList :article-id="this.$route.params.id"></BlogCommentList>
+            <span style="margin-left: 30px;margin-bottom:20px;color: black;font-size: 20px">评论区</span>
+            <div style="padding: 0">
+                <BlogCommentList :article-id="this.$route.params.id"/>
             </div>
         </div>
 
         <div>
-            <MyFooter></MyFooter>
+            <MyFooter/>
         </div>
     </div>
 </template>
 
 <script>
-    import {mavonEditor} from 'mavon-editor'
     import * as sysTool from '../../assets/SysTool'
+    import MarkdownItVue from 'markdown-it-vue'
+    import 'markdown-it-vue/dist/markdown-it-vue.css'
 
     import BlogListApi from "@/api/BlogListApi";
     import BlogMenu from "./BlogMenu";
@@ -95,8 +88,8 @@
         }, components: {
             ArticleComment,
             BlogComment,
+            MarkdownItVue,
             BlogMenu,
-            mavonEditor,
             MyFooter,
             BlogCommentList
         },
@@ -147,12 +140,19 @@
     }
 
     .articleCtr {
-        margin: 10px;
+        margin: 50px 10px 30px 10px;
         display: flex;
     }
 
     .el-divider--horizontal {
         margin: 10px 0;
+    }
+
+    .articleTitle {
+        font-weight: 900;
+        font-size: 30px;
+        font-family: "Songti TC", SansSerif;
+        color: black;
     }
 
     @media only screen and (min-width: 987px) {

@@ -39,6 +39,7 @@
 .Collect {
     display: flex;
     margin: 10px;
+    margin-bottom: 20px;
     flex-direction: column;
 }
 

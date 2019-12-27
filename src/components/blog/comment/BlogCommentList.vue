@@ -2,18 +2,18 @@
     <div id="blogCommentList" style="margin-top: 20px;">
         <el-timeline>
             <el-timeline-item :key="comment.id"
-                              :timestamp="comment.name + ' submit @ ' +  comment.createDatetime"
+
+                              :timestamp="comment.name + ' 评论于 ' +  comment.createDatetime"
                               placement="top"
                               type='primary'
                               icon='el-icon-more'
                               v-for="comment of commentList">
 
-                <div style="display: flex;align-items: baseline">
-                    <div class="block">
-                        <el-avatar shape="square" :size="30" :src="squareUrl"></el-avatar>
-                    </div>
-                    <div style="flex-grow: 1">
-                        <span style="color: black;font-weight: 800">{{comment.content|| ''}}</span>
+                <div style="display: flex;flex-direction: row">
+                    <el-avatar shape="square" :size="30" :src="squareUrl"/>
+                    <div>
+                        <markdown-it-vue style="color: black;font-weight: 700"
+                                         :content="':::info\n' + comment.content|| '' + '\n:::'"/>
                     </div>
                 </div>
             </el-timeline-item>
@@ -22,8 +22,8 @@
 </template>
 
 <script>
-
-    import {mavonEditor} from "mavon-editor";
+    import MarkdownItVue from 'markdown-it-vue'
+    import 'markdown-it-vue/dist/markdown-it-vue.css'
     import CommentApi from '@/api/CommentApi'
 
     export default {
@@ -31,24 +31,14 @@
         data: function () {
             return {
                 squareUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
-                commentList: [
-                    {
-                        id: 0,
-                        name: '张三疯',
-                        rate: 5,
-                        site: "https://www.zhoutao123.com",
-                        email: "zhoutaotao@aliyun.com",
-                        content: "+ 你好",
-                        createDatetime: '2019-03-09 23:43:05'
-                    }
-                ]
-            };
+                commentList: []
+            }
         },
         props: {
             articleId: {type: String, required: true},
         },
         components: {
-            mavonEditor
+            MarkdownItVue
         },
         computed: {
             markdownTheme: function () {

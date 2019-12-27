@@ -1,15 +1,15 @@
 <template>
     <div>
-        <AppMenu></AppMenu>
+        <AppMenu/>
         <div class="backLogin">
             <div class="inputDiv">
                 <span class="spanText">账 户:</span>
-                <el-input placeholder="请输入账户" v-model="username"></el-input>
+                <el-input placeholder="请输入账户" v-model="username"/>
             </div>
             <div class="inputDiv">
                 <span class="spanText">密 码:</span>
                 <el-input style="float: inside" placeholder="请输入密码" v-model="password"
-                          show-password></el-input>
+                          show-password/>
             </div>
             <div style="margin-top: 20px;display: flex;justify-content: space-around">
                 <el-button type="danger" v-model="username" @onclick="resetInput">重置</el-button>
@@ -44,7 +44,7 @@
                     {
                         username: this.username,
                         password: this.password,
-                        successFunc: (data) => this.$router.push('/admin'),
+                        successFunc: () => this.$router.push('/admin'),
                         errorFunc: (resp) => {
                             this.$notify.error({
                                 title: '操作失败',

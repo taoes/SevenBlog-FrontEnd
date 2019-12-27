@@ -35,7 +35,7 @@
                         <div style="display: flex;flex-direction: column;max-width: 200px"
                              @click="toGithubRepos(index)">
                             <el-image fit="cover" :src='randomUrl + repos.id'
-                                      style="width: 200px;height: 200px"></el-image>
+                                      style="width: 200px;height: 200px"/>
                             <span style="padding-top: 10px;color:rebeccapurple"> <b style="color: #2c3e50">【{{repos.name}}】</b></span>
                         </div>
                     </div>
@@ -44,13 +44,13 @@
                 </el-button>
 
 
-                <h1 class="title"><i class="fa fa-music"></i> 推荐文章</h1>
+                <h1 class="title"><i class="fa fa-music"/> 推荐文章</h1>
 
                 <div id="recommendArticle">
-                    <div v-for="(article,index) of this.getHotArticle" style="margin: 30px">
+                    <div v-for="(article,index) of this.getHotArticle" :key="index" style="margin: 30px">
                         <div style="display: flex;flex-direction: column;max-width: 200px" @click="toHotArticle(index)">
                             <el-image fit="cover" :src="randomUrl + article.id"
-                                      style="width: 200px;height: 200px"></el-image>
+                                      style="width: 200px;height: 200px"/>
                             <span style="padding-top: 10px;color:rebeccapurple"> <b style="color: #2c3e50">【{{article.access}}】</b> {{article.title}}</span>
                         </div>
                     </div>

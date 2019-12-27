@@ -21,7 +21,7 @@
                         label="序号"
                         min-width="5%">
                     <template slot="header">
-                        <i class="fas fa-list-ol icon"></i>
+                        <i class="fas fa-list-ol icon"/>
                         <span>序2号</span>
                     </template>
                 </el-table-column>
@@ -31,7 +31,7 @@
                         label="文章名称"
                         min-width="25%">
                     <template slot="header">
-                        <i class="fas fa-rss icon"></i>
+                        <i class="fas fa-rss icon"/>
                         <span>文章名称</span>
                     </template>
                 </el-table-column>
@@ -41,7 +41,7 @@
                         label="目录"
                         min-width="15%">
                     <template slot="header">
-                        <i class="fas fa-folder icon"></i>
+                        <i class="fas fa-folder icon"/>
                         <span>所属目录</span>
                     </template>
                 </el-table-column>
@@ -52,7 +52,7 @@
                         label="创建时间"
                         min-width="15%">
                     <template slot="header">
-                        <i class="far fa-clock icon"></i>
+                        <i class="far fa-clock icon"/>
                         <span>创建时间</span>
                     </template>
                 </el-table-column>
@@ -62,7 +62,7 @@
                         label="更新时间"
                         min-width="15%">
                     <template slot="header">
-                        <i class="fas fa-history icon"></i>
+                        <i class="fas fa-history icon"/>
                         <span>更新时间</span>
                     </template>
                 </el-table-column>
@@ -73,7 +73,7 @@
                         label="是否置顶"
                 >
                     <template slot="header">
-                        <i class="far fa-arrow-alt-circle-up icon"></i>
+                        <i class="far fa-arrow-alt-circle-up icon"/>
                         <span>是否置顶</span>
                     </template>
                     <template slot-scope="scope">
@@ -81,8 +81,7 @@
                                 v-model="scope.row.top"
                                 @change="isSupportChange($event,scope.row.id)"
                                 active-color="#13ce66"
-                                inactive-color="#ff4949">
-                        </el-switch>
+                                inactive-color="#ff4949"/>
                     </template>
                 </el-table-column>
 
@@ -103,13 +102,11 @@
                 </el-table-column>
             </el-table>
         </div>
-        <Footer></Footer>
     </div>
 </template>
 
 <script>
     import './Article.css'
-    import Footer from "../../../MyFooter";
     import blogApiListApi from "@/api/BlogListApi";
 
 

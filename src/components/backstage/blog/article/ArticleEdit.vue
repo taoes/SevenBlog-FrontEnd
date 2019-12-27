@@ -27,7 +27,7 @@
                 <div style="margin-left: 40px">
                     <span>文章标题</span>
                     <el-input style="width: 400px" v-model="article.title" size="small"
-                              :placeholder="article.placeholder"></el-input>
+                              :placeholder="article.placeholder"/>
                 </div>
 
 
@@ -45,7 +45,6 @@
                                     :value="item.key">
                             </el-option>
                         </el-option-group>
-
                     </el-select>
                 </div>
 
@@ -63,28 +62,19 @@
 
         </div>
 
-
-        <div class="mavon">
-            <mavon-editor
-                    ref=md
-                    :codeStyle="markdownTheme"
-                    @change="markdownChange"
-                    v-model="article.content"
-                    @imgAdd="uploadImg"
-                    class="editor"
-                    style="height: 990px"/>
+        <div class="markdownEdit">
+            <Markdown :article="this.article"/>
         </div>
-
 
     </div>
 </template>
 
 <script>
     import "./ArticleEdit.css";
-    import {mavonEditor} from 'mavon-editor'
     import blogList from "@/api/BlogListApi";
     import menuApi from "@/api/MenuApi";
     import addFileApi from "@/api/FileApi";
+    import Markdown from "../../../markdown/Markdown";
 
     let errorFunc = () => {
 
@@ -95,32 +85,38 @@
         data: function () {
             return {
                 edit: true,
+                content: '',
                 article: {
                     id: undefined,
                     title: "",
                     placeholder: "请输入标题~",
-                    content: "暂无内容",
+                    content:
+                        `
+::: error
+    暂无内容
+:::
+                    `,
                     type: '',
                     tagList: [],
                 }, category: []
             };
         },
-        components: {mavonEditor},
+        components: {Markdown},
         computed: {
             markdownTheme: function () {
                 return this.$store.state.markdown.theme;
             },
             blogCategory: function () {
-                let sumCatrgory = [];
-                for (let i in this.category) {
-                    sumCatrgory = sumCatrgory.concat(this.category[i])
+                let sumCategory = [];
+                for (let index in this.category) {
+                    sumCategory = sumCategory.concat(this.category[index])
                 }
-                return sumCatrgory;
+                return sumCategory;
             }
         },
         methods: {
             uploadImg: function (pos, $file) {
-                var formData = new FormData();
+                let formData = new FormData();
                 formData.append('file', $file);
 
                 let respFunc = (resp) => {
@@ -141,7 +137,7 @@
                     this.$notify.success({title: "更新完成", message: "文章更新完成"});
                 };
                 blogList.updateOrCreate(this.article, respFunction, errorFunc);
-                this.$router.push("/blog");
+                // this.$router.push("/blog");
             }, preview: function () {
                 this.$notify.error({
                     title: "功能暂不支持",
@@ -163,7 +159,7 @@
             this.id = id;
 
             // 获取文章
-            if (this.edit && this.id != 0) {
+            if (this.edit && this.id !== 0) {
                 let respFunc = (resp) => {
                     this.article = resp.data;
                 };
@@ -180,5 +176,11 @@
 <style scoped>
     .el-select__tags {
         margin-left: 30px;
+    }
+
+    .markdownEdit {
+        width: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 </style>
