@@ -7,7 +7,6 @@
         <div class="blogList">
             <div style="margin-bottom: 20px;margin-top: 20px;display: flex;flex-direction: row;padding-left: 20px">
                 <el-input
-                        size="small"
                         style="width: 100%"
                         id="searchArticleInput"
                         v-model="searchText"
@@ -15,7 +14,6 @@
                 </el-input>
                 <el-button
                         style="margin-left: 30px;margin-right: 30px"
-                        size="small"
                         icon="el-icon-search"
                         @click="search">全局搜索
                 </el-button>
@@ -25,8 +23,7 @@
             <el-card shadow="hover" v-for="item in data" :key="item.title" style="height: fit-content">
                 <div style="margin-bottom: 10px">
                     <router-link :to="'/blog/article/'+item.id">
-                        <span class="blogTitle"
-                              style="font-size: 20px;color:black;font-weight: 900;">{{item.title}}</span>
+                        <span class="blogTitle">{{item.title}}</span>
                     </router-link>
                     <el-tag v-for="(tag) of item.tagList" :key="tag" :type="tagType[Math.floor(Math.random()*5)]"
                             effect="dark"
@@ -36,21 +33,21 @@
                     </el-tag>
                 </div>
 
-                <el-divider></el-divider>
+                <el-divider/>
                 <div style="display: flex;flex-direction: column;">
                     <div class="descDiv" style="padding-right: 30px;width:100%;color:#000000;flex-grow: 1">
-                        <span class="descSpan">{{item.description}}</span>
+                        <markdown-it-vue class="descSpan" :content="item.description"/>
                     </div>
                 </div>
 
                 <div style="margin-left: 20px;margin-top: 5px;margin-bottom: 5px" type="text">
-                    <i class="far fa-eye" style="color: #0088EE"></i>
+                    <i class="far fa-eye" style="color: #0088EE"/>
                     <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{item.access}}</span>
 
-                    <i class="far fa-thumbs-up" style="color: #E6A23C;margin-left: 30px"></i>
+                    <i class="far fa-thumbs-up" style="color: #E6A23C;margin-left: 30px"/>
                     <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{Math.ceil(item.access/3)}}</span>
 
-                    <i class="far fa-thumbs-down" style="color: #F56C6C;margin-left: 30px"></i>
+                    <i class="far fa-thumbs-down" style="color: #F56C6C;margin-left: 30px"/>
                     <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{0}}</span>
                 </div>
             </el-card>
@@ -68,7 +65,7 @@
         </div>
 
         <div>
-            <MyFooter></MyFooter>
+            <MyFooter/>
         </div>
     </div>
 </template>
@@ -77,12 +74,14 @@
     import blogApiListApi from "@/api/BlogListApi";
     import BlogMenu from "./blog/BlogMenu";
     import MyFooter from "./MyFooter";
+    import MarkdownItVue from 'markdown-it-vue'
+    import 'markdown-it-vue/dist/markdown-it-vue.css'
 
     let errorFunc = () => {
     };
 
     export default {
-        components: {MyFooter, BlogMenu},
+        components: {MyFooter, MarkdownItVue, BlogMenu},
         data() {
             return {
                 data: [],
@@ -178,6 +177,7 @@
     .descSpan {
         color: darkslategrey;
         font-weight: bold;
+        font-family: "Songti TC", SansSerif, serif;
     }
 
     .page {
@@ -191,7 +191,14 @@
     }
 
     /*     文章标题鼠标样式*/
-    blogTitle:hover {
+    .blogTitle {
+        font-size: 2em;
+        color: black;
+        font-weight: 900;
+        font-family: "Songti TC", SansSerif, serif;
+    }
+
+    .blogTitle:hover {
         color: #2c3e50;
     }
 
