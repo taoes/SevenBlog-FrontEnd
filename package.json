@@ -20,7 +20,6 @@
     "echarts": "^4.3.0",
     "element-ui": "^2.12.0",
     "highlight.js": "^9.15.10",
-    "mavon-editor": "^2.7.6",
     "nprogress": "^0.2.0",
     "v-charts": "^1.19.0",
     "v-viewer": "^1.4.2",
