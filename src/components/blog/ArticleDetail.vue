@@ -25,7 +25,6 @@
             <markdown-it-vue class="md-body" :content="blog.content" :options="options"/>
 
 
-
             <div class="articleCtr">
                 <el-button @click="backLastPage" :type="buttonType">
                     <i class="fas fa-backward"/>
@@ -151,9 +150,10 @@
     .articleTitle {
         font-weight: 900;
         font-size: 30px;
-        font-family: "Songti TC", SansSerif;
+        font-family: "Songti TC", SansSerif, serif;
         color: black;
     }
+
 
     @media only screen and (min-width: 987px) {
 

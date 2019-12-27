@@ -63,7 +63,7 @@
         </div>
 
         <div class="markdownEdit">
-            <Markdown :article="this.article"/>
+            <Markdown :article="this.article" :options="options"/>
         </div>
 
     </div>
@@ -90,15 +90,17 @@
                     id: undefined,
                     title: "",
                     placeholder: "请输入标题~",
-                    content:
-                        `
-::: error
-    暂无内容
-:::
-                    `,
+                    content: '',
                     type: '',
                     tagList: [],
-                }, category: []
+                },
+                category: [],
+                options: {
+                    markdownIt: {
+                        html: true,
+                        langPrefix: true
+                    }
+                }
             };
         },
         components: {Markdown},
@@ -137,7 +139,7 @@
                     this.$notify.success({title: "更新完成", message: "文章更新完成"});
                 };
                 blogList.updateOrCreate(this.article, respFunction, errorFunc);
-                // this.$router.push("/blog");
+                this.$router.push("/blog");
             }, preview: function () {
                 this.$notify.error({
                     title: "功能暂不支持",
@@ -149,8 +151,6 @@
                 } else {
                     localStorage.setItem('new', value);
                 }
-            }, checkDraft: function () {
-
             }
         },
         mounted: function () {
