@@ -6,12 +6,16 @@
                 target="#sss"
         />
         <BlogMenu/>
-        <div class="articleDetailContent">
-            <h1 class="articleTitle" align="center"> {{blog.title}}</h1>
-            <el-divider/>
 
+
+        <el-image :src="carouselImg[Math.floor(Math.random()*5)]"
+                  style="width: auto;  height: auto;  min-width: 100%; max-height: 500px; " fit="cover"></el-image>
+        <div style="display: flex;justify-content: center;z-index: 1000;margin-top: -350px">
+            <h1 class="articleTitle" align="center"> {{blog.title}}</h1>
+        </div>
+        <div class="articleDetailContent">
             <div style="margin-left: 20px;margin-top: 20px;margin-bottom: 30px" type="text">
-                <i class="far fa-eye" style="color: #0088EE"/>
+                <i class="far fa-eye" style="color: #0088EE"></i>
                 <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{blog.access}}</span>
 
                 <i class="far fa-thumbs-up" style="color: #E6A23C;margin-left: 30px"/>
@@ -21,9 +25,9 @@
                 <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{0}}</span>
             </div>
 
-
-            <markdown-it-vue class="md-body" :content="blog.content" :options="options"/>
-
+            <div style="padding: 20px">
+                <markdown-it-vue class="md-body" :content="blog.content" :options="options"/>
+            </div>
 
             <div class="articleCtr">
                 <el-button @click="backLastPage" :type="buttonType">
@@ -77,6 +81,13 @@
                 emptyTip: '# 文章内容为空',
                 tocStatus: false, // 显示文章的导航目录
                 showCommentDialog: false,
+                carouselImg: [
+                    "https://www.zhoutao123.com/picture/index/1.jpeg",
+                    "https://www.zhoutao123.com/picture/11.jpeg",
+                    "https://www.zhoutao123.com/picture/1112.jpeg",
+                    "https://www.zhoutao123.com/picture/index/2.jpg",
+                    "https://www.zhoutao123.com/picture/index/4.jpg",
+                ],
                 accessInfo: {
                     ip: '1.1.1.1',
                     area: '北京市',
@@ -149,9 +160,9 @@
 
     .articleTitle {
         font-weight: 900;
-        font-size: 30px;
-        font-family: "Songti TC", SansSerif, serif;
-        color: black;
+        font-size: 50px;
+        font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+        color: seashell;
     }
 
 
@@ -167,12 +178,14 @@
         }
 
         .articleDetailContent {
+
             border-radius: 20px;
             background-color: #FFFFFF;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin-top: 30px;
+            margin-top: -0px;
+            z-index: 100000;
             margin-right: 10%;
             margin-left: 10%;
             box-shadow: 5px 5px 30px 1px #515a6e;
