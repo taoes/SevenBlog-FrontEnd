@@ -38,6 +38,14 @@ Vue.use(ElementUI);
 Vue.use(VCharts);
 // 引入
 
+
+
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad,{
+    error:'./static/error.png',
+    loading:'./static/loading.png'
+})
+
 // 全局注入
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
