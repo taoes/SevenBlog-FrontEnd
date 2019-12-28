@@ -5,6 +5,7 @@ import Category from '../components/backstage/blog/category/Category';
 import TagList from "../components/backstage/blog/tag/TagList";
 import System from "../components/backstage/system/System";
 import Home from "../components/home/Home";
+import Picture from "../components/backstage/picture/Picture";
 
 
 let adminRouter = {
@@ -41,6 +42,10 @@ let adminRouter = {
             {
                 path: 'system',
                 component: System
+            },
+            {
+                path: 'picture',
+                component: Picture
             }
         ]
 

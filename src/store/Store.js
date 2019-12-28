@@ -12,6 +12,7 @@ import ArticleStore from "./ArticleStore";
 import UserStore from "./UserStore";
 import LinkStore from "./LinkStore";
 import GithubReposStore from "./GithubReposStore";
+import PictureStore from "./PictureStore";
 
 Vue.use(Vuex);
 
@@ -27,7 +28,8 @@ const store = new Vuex.Store({
         markdown: MarkdownStore,
         userStore: UserStore,
         linkStore: LinkStore,
-        githubStore: GithubReposStore
+        githubStore: GithubReposStore,
+        picture: PictureStore
     }
 });
 
