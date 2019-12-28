@@ -62,6 +62,10 @@ const config = {
         count: '/access/count'
     }, link: {
         list: '/link'
+    }, picture: {
+        list: "/picture/page",
+        update: "/picture",
+        pictureGroup: "/picture"
     }
 };
 

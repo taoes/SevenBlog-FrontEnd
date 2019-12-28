@@ -7,7 +7,7 @@
                     class="upload-demo"
                     :data="file"
                     multiple
-                    action="http://localhost:8080/file/upload"
+                    action="https://api.zhoutao123.com/file/upload"
                     :on-success="onSuccess"
                     :limit="3">
                 <el-button>
