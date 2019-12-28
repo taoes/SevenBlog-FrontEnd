@@ -177,7 +177,7 @@
     .descSpan {
         color: darkslategrey;
         font-weight: bold;
-        font-family: "Songti TC", SansSerif, serif;
+        font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
     }
 
     .page {
@@ -195,7 +195,7 @@
         font-size: 2em;
         color: black;
         font-weight: 900;
-        font-family: "Songti TC", SansSerif, serif;
+        font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
     }
 
     .blogTitle:hover {

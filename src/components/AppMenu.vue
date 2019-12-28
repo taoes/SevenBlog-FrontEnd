@@ -147,6 +147,7 @@
         .menuTitle {
             display: inline-block;
             color: #FFFFFF;
+            font-weight: 900;
         }
 
         #pcMenu {

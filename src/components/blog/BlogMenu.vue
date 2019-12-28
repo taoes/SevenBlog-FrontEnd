@@ -180,7 +180,7 @@
     @media only screen and (min-width: 800px) {
         .menuTitle {
             display: inline-block;
-            color: #FFFFFF;
+            font-weight: 900;
         }
 
         .subMenuTitle {
