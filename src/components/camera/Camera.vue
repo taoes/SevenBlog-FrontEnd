@@ -40,18 +40,18 @@
                 </el-collapse-item>
 
 
-                <el-collapse-item :key="name" class="Panel" v-for="(serial,name) of serialList"
+                <el-collapse-item :key="name" class="Panel" v-for="(serial,name) of this.getPictureGroup()"
                                   style="padding-left: 0">
 
                     <template slot="title">
-                        <span class="titleStyle">&nbsp;{{name}}</span>
+                        <h2 class="titleStyle">&nbsp;📷 {{name}}</h2>
                     </template>
 
 
                     <div v-viewer="options"
                          style="display: flex;align-items: center;flex-wrap: wrap;justify-content: center">
-                        <template v-for="{name, img} in serial">
-                            <img :src="img +'?imageView2/1/w/400/h/400'" :data-source="img" class="image" :key="name"
+                        <template v-for="{name, img,id} in serial">
+                            <img v-lazy="img +'?imageView2/1/w/400/h/400'" :data-source="img" class="image" :key="id"
                                  :alt="name">
                         </template>
                     </div>
@@ -64,6 +64,7 @@
 <script>
 
     import AppMenu from "../AppMenu";
+    import {mapActions, mapGetters} from "vuex";
 
     export default {
         data() {
@@ -97,7 +98,16 @@
                 }
             }
         },
-        components: {AppMenu}
+        components: {AppMenu},
+        methods: {
+            ...mapGetters(['getPictureGroup']),
+            ...mapActions(['updatePictureGroup'])
+        },
+        mounted() {
+            if (this.getPictureGroup) {
+                this.updatePictureGroup()
+            }
+        }
     }
 </script>
 
@@ -128,7 +138,7 @@
     }
 
     .titleStyle {
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 500;
         margin-left: 20px;
     }
