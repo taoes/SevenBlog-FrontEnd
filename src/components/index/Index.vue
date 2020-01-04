@@ -12,14 +12,18 @@
             </el-carousel>
         </div>
 
+        <div>
+            <h1></h1>
+        </div>
+
         <div class="Index">
             <div id="index">
-                <h1><i class="far fa-lightbulb"></i> 我的理想 </h1>
+                <h1><i class="far fa-lightbulb"></i> 心之所向，素履以往 </h1>
                 <p class="spanStyle">
                     {{dream}}
                 </p>
 
-                <h1 class="title"><i class="fa fa-music"></i> 总得追求点什么</h1>
+                <h1 class="title"><i class="fa fa-music"></i> 生如逆旅，一苇以航</h1>
                 <p class="spanStyle">喜欢追寻梦想，走向远方，却总徘徊于现实，感受人世沧桑；想要随风飘扬，随波逐浪，却总经不起风浪，步步踉跄；希望插上翅膀，展翅颉颃，却颤栗于悬崖，被时光流放。</p>
                 <p class="spanStyle">
                     喜爱一个人，喜他的善良，爱他的坚强，经年以后，怨他的倔强，恨他的猖狂；赞赏一个人，赏他的高尚，赞他的顽强，多年之后，厌他的冥顽不顾，恶他的装模作样；羡慕一个人，幕他的名扬天下，羡他的荣华富贵，期年之后，妒他富有四海，嫉他繁荣昌盛。</p>
@@ -75,7 +79,7 @@
         name: 'Index',
         data: function () {
             return {
-                randomUrl: 'https://picsum.photos/50/50?url=',
+                randomUrl: 'https://picsum.photos/200/200?url=',
                 dream: "不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐",
                 selfIntroduction: `
 　　 总以为生活与我作对，要白色拖地长裙，却只得到一条黑色暴腿短裤；总认为生活与我相逆，想要出人头地，却总埋没于人群；总想得到自己想要的东西，却总失去自己不想失去的东西。

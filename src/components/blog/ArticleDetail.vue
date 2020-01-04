@@ -8,9 +8,11 @@
         <BlogMenu/>
 
 
-        <el-image :src="carouselImg[Math.floor(Math.random()*5)]"
+        <el-image
+                class="blogHeadDetail"
+                :src="carouselImg[Math.floor(Math.random()*8)]"
                   style="width: auto;  height: auto;  min-width: 100%; max-height: 500px; " fit="cover"></el-image>
-        <div style="display: flex;justify-content: center;z-index: 1000;margin-top: -350px">
+        <div class="blogHeadDetail" style="justify-content: center;z-index: 1000;margin-top: -350px">
             <h1 class="articleTitle" align="center"> {{blog.title}}</h1>
         </div>
         <div class="articleDetailContent">
@@ -87,6 +89,9 @@
                     "https://www.zhoutao123.com/picture/1112.jpeg",
                     "https://www.zhoutao123.com/picture/index/2.jpg",
                     "https://www.zhoutao123.com/picture/index/4.jpg",
+                    "https://www.zhoutao123.com/picture/index/13.jpg",
+                    "https://www.zhoutao123.com/picture/index/14.jpg",
+                    "https://www.zhoutao123.com/picture/index/15.jpg"
                 ],
                 accessInfo: {
                     ip: '1.1.1.1',
@@ -191,6 +196,10 @@
             box-shadow: 5px 5px 30px 1px #515a6e;
             padding: 10px;
         }
+
+        .blogHeadDetail {
+            display: flex;
+        }
     }
 
 
@@ -215,6 +224,10 @@
             margin-left: 10px;
             box-shadow: 5px 5px 30px 1px #515a6e;
             padding: 10px;
+        }
+
+        .blogHeadDetail {
+            display: none;
         }
     }
 

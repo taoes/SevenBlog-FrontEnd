@@ -11,9 +11,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 
-import {mavonEditor} from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
-
 
 import fontawesome from '@fortawesome/fontawesome'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
@@ -31,9 +28,7 @@ fontawesome.library.add(brands);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 
-Vue.use(VueParticles)
-
-Vue.use(mavonEditor);
+Vue.use(VueParticles);
 Vue.use(ElementUI);
 Vue.use(VCharts);
 // 引入

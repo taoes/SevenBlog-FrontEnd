@@ -83,12 +83,11 @@
 <script>
 
     import "./style.css"
-    import {mavonEditor} from "mavon-editor";
     import AppMenu from "../AppMenu";
     import AdminMenu from "../backstage/menu/AdminMenu";
 
     export default {
-        components: {AdminMenu, AppMenu, mavonEditor},
+        components: {AdminMenu, AppMenu},
         data() {
             return {
                 githubCollapse: "0",
