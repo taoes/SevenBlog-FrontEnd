@@ -66,7 +66,6 @@
 <style>
     .markdown-body .highlight pre, .markdown-body pre {
         padding: 0;
-        font-size: 10px;
         font-weight: 200;
         line-height: 1.2;
     }

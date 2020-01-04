@@ -2,7 +2,7 @@
     width: 100%;
     height: fit-content;
     min-height: 1024px;
-    font-family: Monaco, "Microsoft YaHei", "PingFang SC", SimSun, "Helvetica Neue", Helvetica, "Hiragino Sans GB", "微软雅黑", Arial, sans-serif;
+    font-family: SansSerif, "Microsoft YaHei", "PingFang SC", SimSun, "Helvetica Neue", Helvetica, "Hiragino Sans GB", "微软雅黑", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
