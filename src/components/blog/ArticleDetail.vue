@@ -25,7 +25,7 @@
       </div>
 
       <div style="padding: 20px">
-        <markdown-it-vue class="md-body" :content="blog.content" :options="{}" />
+        <markdown-it-vue class="md-body" :content="blog.content" :options="{markdownIt: {html: true,langPrefix: true}}" />
       </div>
 
 
