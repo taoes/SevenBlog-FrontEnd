@@ -91,8 +91,17 @@ const router = new VueRouter({
 
 
 router.beforeEach((to, from, next) => {
+
     document.title = to.meta.title ? to.meta.title + " ☘️ 燕归来兮" : "燕归来兮";
+
+    document.body.scrollTop = 0
+    // firefox
+    document.documentElement.scrollTop = 0
+    // safari
+    window.pageYOffset = 0
+
     next()
 });
+
 export default router;
 

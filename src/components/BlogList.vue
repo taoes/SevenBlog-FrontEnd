@@ -57,7 +57,7 @@
                 <el-pagination
                         background
                         layout="prev, pager, next"
-                        :page-size="5"
+                        :page-size="10"
                         :total="total"
                         @current-change="currentChange">
                 </el-pagination>
@@ -110,7 +110,11 @@
                     this.data = resp.data.data;
                     this.total = resp.data.total;
 
-                    this.$refs.blogListDiv.scrollTop();
+                    document.body.scrollTop = 0
+                    // firefox
+                    document.documentElement.scrollTop = 0
+                    // safari
+                    window.pageYOffset = 0
                 };
                 document.querySelector("#sss").scrollIntoView(true);
                 blogApiListApi.getBlogList(pageNumber, this.pageSize, this.blogType, respFunc, errorFunc);
