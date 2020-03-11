@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="z-index: 1000">
         <div id="mobileMenu">
             <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center">
                 <el-button @click="showMobileMenu = !showMobileMenu"
@@ -151,6 +151,10 @@
         }
 
         #pcMenu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10000;
             display: block;
         }
 

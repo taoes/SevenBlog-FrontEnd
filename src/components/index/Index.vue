@@ -17,7 +17,7 @@
                 </div>
 
                 <div id="myBooks">
-                    <div v-for="(book,index) of this.myBooks" style="margin: 30px" :key="book.id">
+                    <div v-for="(book,index) of this.myBooks" style="margin: 30px" :key="book.url">
                         <div style="display: flex;flex-direction: column;max-width: 200px;"
                              @click="toMyBook(index)">
                             <el-image fit="cover" :src='book.imgUrl'
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <el-button icon="el-icon-star-off" @click="openMyBooks()">更多内容，点击访问我的语雀文档
+                <el-button icon="el-icon-star-off" @click="openMyBooks()">更多内容，点击访问我的 <b>知识库</b>
                 </el-button>
 
                 <div class="title">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <el-button icon="el-icon-star-off" @click="openGithub()">更多内容，点击访问我的Github仓库
+                <el-button icon="el-icon-star-off" @click="openGithub()">更多内容，点击访问我的 GitHub 仓库
                 </el-button>
 
                 <div class="title">
@@ -56,7 +56,6 @@
                     <div v-for="(article,index) of this.getHotArticle" :key="article.id" style="margin: 30px">
                         <div style="display: flex;flex-direction: column;max-width: 200px" @click="toHotArticle(index)">
                             <el-image fit="cover" :src="randomUrl + article.id"
-                                      :lazy="true"
                                       style="width: 200px;height: fit-content"/>
                             <span style="padding-top: 10px;color:rebeccapurple"> <b style="color: #2c3e50">[{{article.access}}]</b> {{article.title}}</span>
                         </div>
@@ -84,27 +83,27 @@
         data: function () {
             return {
                 randomUrl: 'https://picsum.photos/200/200?url=',
-                carouselImg: "http://www.zhoutao123.com/picture/index/14.jpg",
+                carouselImg: "http://www.zhoutao123.com/picture/index/1x.jpeg",
                 myBooks: [{
-                    id: Math.random() * 10000,
                     name: "深入理解Java 虚拟机",
                     imgUrl: 'http://www.zhoutao123.com/picture/book_convert/jvm.png',
                     url: 'https://www.yuque.com/tao_book/jvm'
                 }, {
-                    id: Math.random() * 10000,
                     name: "高性能MySQL",
                     imgUrl: 'http://www.zhoutao123.com/picture/book_convert/mysql.png',
                     url: 'https://www.yuque.com/tao_book/mysql'
                 }, {
-                    id: Math.random() * 10000,
                     name: "Netty 入门与实战",
                     imgUrl: 'http://www.zhoutao123.com/picture/book_convert/netty.png',
                     url: 'https://www.yuque.com/tao_book/netty'
                 }, {
-                    id: Math.random() * 10000,
                     name: "Java 并发编程",
                     imgUrl: 'http://www.zhoutao123.com/picture/book_convert/java.png',
                     url: 'https://www.yuque.com/tao_book/java_concurrent'
+                }, {
+                    name: "JavaScript 学习笔记",
+                    imgUrl: 'http://www.zhoutao123.com/picture/book_convert/js.png',
+                    url: 'https://www.yuque.com/tao_book/JavaScript'
                 }],
                 myGithubAddress:
                     [{
@@ -151,7 +150,7 @@
                 window.open(this.getGithubAddress);
             }, openMyBooks: function () {
                 // 打开语雀文档
-                window.open(this.getDocAddress)
+                this.$router.push('/book')
             }
             ,
             openBlog: function () {
@@ -184,7 +183,7 @@
 
         .pic {
             width: 100%;
-            height: 500px;
+            height: 600px;
         }
     }
 

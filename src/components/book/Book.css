@@ -1,0 +1,12 @@
+.bookName {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.bookName span{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'STFangsong', serif;
+}
