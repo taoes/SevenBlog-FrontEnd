@@ -91,7 +91,7 @@
                 emptyTip: "# 文章内容为空",
                 tocStatus: false, // 显示文章的导航目录
                 showCommentDialog: false,
-                carouselImg: "https://www.zhoutao123.com/picture/index/14.jpg",
+                carouselImg: "http://www.zhoutao123.com/picture/index/1x.jpeg",
                 accessInfo: {
                     ip: "1.1.1.1",
                     area: "北京市",
@@ -169,7 +169,7 @@
     .articleTitle {
         font-weight: 900;
         font-size: 50px;
-        font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+        font-family: "STFangsong", "Microsoft YaHei", "黑体", "宋体", sans-serif;
         color: seashell;
     }
 

@@ -4,6 +4,9 @@
 
         <BlogMenu></BlogMenu>
 
+
+        <div style="height: 100px"></div>
+
         <div class="blogList">
             <div style="margin-bottom: 20px;margin-top: 20px;display: flex;flex-direction: row;padding-left: 20px">
                 <el-input
@@ -23,7 +26,7 @@
             <el-card shadow="hover" v-for="item in data" :key="item.title" style="height: fit-content">
                 <div style="margin-bottom: 10px">
                     <router-link :to="'/blog/article/'+item.id">
-                        <span class="blogTitle">{{item.title}}</span>
+                        <span class="blogTitle">📄 {{item.title}}</span>
                     </router-link>
                     <el-tag v-for="(tag) of item.tagList" :key="tag" :type="tagType[Math.floor(Math.random()*5)]"
                             effect="dark"
@@ -41,13 +44,13 @@
                 </div>
 
                 <div style="margin-left: 20px;margin-top: 5px;margin-bottom: 5px" type="text">
-                    <i class="far fa-eye" style="color: #0088EE"/>
+                    <i class="far fa-eye" style="color: #0088EE"></i>
                     <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{item.access}}</span>
 
-                    <i class="far fa-thumbs-up" style="color: #E6A23C;margin-left: 30px"/>
+                    <i class="far fa-thumbs-up" style="color: #E6A23C;margin-left: 30px"></i>
                     <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{Math.ceil(item.access/3)}}</span>
 
-                    <i class="far fa-thumbs-down" style="color: #F56C6C;margin-left: 30px"/>
+                    <i class="far fa-thumbs-down" style="color: #F56C6C;margin-left: 30px"></i>
                     <span style="margin-left:5px;margin-right: 5px;color: darkgray">{{0}}</span>
                 </div>
             </el-card>
@@ -138,7 +141,7 @@
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        height: 1024px;
+        height: fit-content;
     }
 
 
@@ -180,7 +183,6 @@
 
     .descSpan {
         color: darkslategrey;
-        font-weight: bold;
         font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
     }
 
@@ -197,13 +199,14 @@
     /*     文章标题鼠标样式*/
     .blogTitle {
         font-size: 2em;
-        color: black;
-        font-weight: 900;
-        font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+        color: #4a4a4a;
+        font-weight: bolder;
+        font-family: "STFangsong","Microsoft YaHei","黑体","宋体",sans-serif;
     }
 
     .blogTitle:hover {
         color: #2c3e50;
+        font-family: "STFangsong","Microsoft YaHei","黑体","宋体",sans-serif;
     }
 
 

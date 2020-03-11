@@ -1,6 +1,7 @@
 <template>
     <div>
         <AppMenu></AppMenu>
+        <div style="height: 80px"></div>
         <div class="linkArea">
             <div class="title">
 

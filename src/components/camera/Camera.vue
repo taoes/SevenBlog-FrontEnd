@@ -1,6 +1,7 @@
 <template>
     <div>
         <AppMenu></AppMenu>
+        <div style="height: 80px"></div>
         <div class="camera">
             <el-collapse v-model="defaultShowPanel" accordion>
                 <el-collapse-item class="Panel" style="padding-left: 0">
@@ -47,11 +48,13 @@
                         <h2 class="titleStyle">&nbsp;📷 {{name}}</h2>
                     </template>
 
-
                     <div v-viewer="options"
                          style="display: flex;align-items: center;flex-wrap: wrap;justify-content: center">
                         <template v-for="{name, img,id} in serial">
-                            <img v-lazy="img +'?imageView2/1/w/400/h/400'" :data-source="img" class="image" :key="id"
+                            <img v-lazy="img +'?imageView2/1/w/400/h/400'"
+                                  :data-source="img"
+                                 class="image"
+                                 :key="id"
                                  :alt="name">
                         </template>
                     </div>
@@ -141,6 +144,7 @@
         font-size: 18px;
         font-weight: 500;
         margin-left: 20px;
+        font-family: "STFangsong", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
     }
 
 

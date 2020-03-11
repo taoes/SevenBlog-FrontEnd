@@ -1,6 +1,7 @@
 <template>
     <div id="deng" style="height: 1000px;">
         <AppMenu></AppMenu>
+        <div style="height: 80px"></div>
     </div>
 </template>
 
