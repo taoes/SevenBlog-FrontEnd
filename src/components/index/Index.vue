@@ -1,70 +1,74 @@
 <template>
     <div>
         <AppMenu></AppMenu>
-        <div id="carousel">
-            <el-carousel indicator-position="outside" height="500px" :interval="2000" arrow="always">
-                <el-carousel-item v-for="item in carouselImg" :key="item">
-                    <el-image
-                            class="pic"
-                            fit="cover"
-                            :src="item"></el-image>
-                </el-carousel-item>
-            </el-carousel>
-        </div>
 
-        <div>
-            <h1></h1>
+        <!--        图片轮播-->
+        <div id="carousel">
+            <el-image
+                    class="pic"
+                    fit="cover"
+                    :src="carouselImg"></el-image>
         </div>
 
         <div class="Index">
             <div id="index">
-                <h1><i class="far fa-lightbulb"></i> 心之所向，素履以往 </h1>
-                <p class="spanStyle">
-                    {{dream}}
-                </p>
+                <div class="title">
+                    <el-button type="primary" icon="fa fa-book"> &nbsp;&nbsp;&nbsp;我的进阶之路</el-button>
+                </div>
 
-                <h1 class="title"><i class="fa fa-music"></i> 生如逆旅，一苇以航</h1>
-                <p class="spanStyle">喜欢追寻梦想，走向远方，却总徘徊于现实，感受人世沧桑；想要随风飘扬，随波逐浪，却总经不起风浪，步步踉跄；希望插上翅膀，展翅颉颃，却颤栗于悬崖，被时光流放。</p>
-                <p class="spanStyle">
-                    喜爱一个人，喜他的善良，爱他的坚强，经年以后，怨他的倔强，恨他的猖狂；赞赏一个人，赏他的高尚，赞他的顽强，多年之后，厌他的冥顽不顾，恶他的装模作样；羡慕一个人，幕他的名扬天下，羡他的荣华富贵，期年之后，妒他富有四海，嫉他繁荣昌盛。</p>
-                <p class="spanStyle">
-                    总以为生活与我作对，要白色拖地长裙，却只得到一条黑色暴腿短裤；总认为生活与我相逆，想要出人头地，却总埋没于人群；总想得到自己想要的东西，却总失去自己不想失去的东西。</p>
-                <p class="spanStyle">
-                    总感觉经历过风雨过后就必定有彩虹，最后才发觉风雨过后还有暴风雪，没有我所谓的彩虹；总感觉别人说的话就像是黄婆卖瓜，最后才发现自己说话时也是自卖自夸，没有所谓的中正；总感觉恩爱情仇是那么的简单，最后才发现有朝一日落到自己身上时，没有所谓的坚强。`</p>
+                <div id="myBooks">
+                    <div v-for="(book,index) of this.myBooks" style="margin: 30px" :key="book.id">
+                        <div style="display: flex;flex-direction: column;max-width: 200px;"
+                             @click="toMyBook(index)">
+                            <el-image fit="cover" :src='book.imgUrl'
+                                      :lazy="true"
+                                      style="width: 200px;height: fit-content;border: #515a6e 1px solid"/>
+                            <span style="padding-top: 10px;"> <b>【进阶之路】{{book.name}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <el-button icon="el-icon-star-off" @click="openMyBooks()">更多内容，点击访问我的语雀文档
+                </el-button>
 
+                <div class="title">
+                    <el-button type="primary" icon="fa fa-music"> &nbsp;&nbsp;&nbsp;我的开源作品</el-button>
+                </div>
 
-                <h1 class="title"><i class="fa fa-music"></i> 我的作品 </h1>
                 <div id="myWork">
-                    <div v-for="(repos,index) of this.getGithubRepos" style="margin: 30px">
+                    <div v-for="(github,index) of this.myGithubAddress" style="margin: 30px" :key="github.id">
                         <div style="display: flex;flex-direction: column;max-width: 200px"
                              @click="toGithubRepos(index)">
-                            <el-image fit="cover" :src='randomUrl + repos.id'
-                                      style="width: 200px;height: 200px"/>
-                            <span style="padding-top: 10px;color:rebeccapurple"> <b style="color: #2c3e50">【{{repos.name}}】</b></span>
+                            <el-image fit="cover" :src='github.imgUrl'
+                                      :lazy="true"
+                                      style="width: 200px;height: fit-content;border: #515a6e 1px solid;"/>
+                            <span style="padding-top: 10px;"> <b>【Github】{{github.name}}</b></span>
                         </div>
                     </div>
                 </div>
-                <el-button type="primary" icon="el-icon-star-off" @click="openGithub()">更多内容，点击访问我的Github仓库
+                <el-button icon="el-icon-star-off" @click="openGithub()">更多内容，点击访问我的Github仓库
                 </el-button>
 
-
-                <h1 class="title"><i class="fa fa-music"/> 推荐文章</h1>
+                <div class="title">
+                    <el-button type="primary" icon="fa fa-file"> &nbsp;&nbsp;&nbsp;热门文章</el-button>
+                </div>
 
                 <div id="recommendArticle">
-                    <div v-for="(article,index) of this.getHotArticle" :key="index" style="margin: 30px">
+                    <div v-for="(article,index) of this.getHotArticle" :key="article.id" style="margin: 30px">
                         <div style="display: flex;flex-direction: column;max-width: 200px" @click="toHotArticle(index)">
                             <el-image fit="cover" :src="randomUrl + article.id"
-                                      style="width: 200px;height: 200px"/>
-                            <span style="padding-top: 10px;color:rebeccapurple"> <b style="color: #2c3e50">【{{article.access}}】</b> {{article.title}}</span>
+                                      :lazy="true"
+                                      style="width: 200px;height: fit-content"/>
+                            <span style="padding-top: 10px;color:rebeccapurple"> <b style="color: #2c3e50">[{{article.access}}]</b> {{article.title}}</span>
                         </div>
                     </div>
                 </div>
-                <el-button type="primary" icon="el-icon-star-off" @click="openBlog()" style="margin-bottom: 30px">
+                <el-button icon="el-icon-star-off" @click="openBlog()" style="margin-bottom: 30px">
                     更多文章，点击访问我的博客
                 </el-button>
-
             </div>
         </div>
+
+        <!--   尾注  -->
         <MyFooter></MyFooter>
     </div>
 </template>
@@ -80,42 +84,90 @@
         data: function () {
             return {
                 randomUrl: 'https://picsum.photos/200/200?url=',
-                dream: "不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐",
-                selfIntroduction: `
-　　 总以为生活与我作对，要白色拖地长裙，却只得到一条黑色暴腿短裤；总认为生活与我相逆，想要出人头地，却总埋没于人群；总想得到自己想要的东西，却总失去自己不想失去的东西。
-
-　　 总感觉经历过风雨过后就必定有彩虹，最后才发觉风雨过后还有暴风雪，没有我所谓的彩虹；总感觉别人说的话就像是黄婆卖瓜，最后才发现自己说话时也是自卖自夸，没有所谓的中正；总感觉恩爱情仇是那么的简单，最后才发现有朝一日落到自己身上时，没有所谓的坚强。`,
-                carouselImg: [
-                    "https://www.zhoutao123.com/picture/index/1.jpeg",
-                    "https://www.zhoutao123.com/picture/index/2.jpg",
-                    "https://www.zhoutao123.com/picture/index/3.jpg",
-                    "https://www.zhoutao123.com/picture/index/4.jpg",
-                ]
+                carouselImg: "http://www.zhoutao123.com/picture/index/14.jpg",
+                myBooks: [{
+                    id: Math.random() * 10000,
+                    name: "深入理解Java 虚拟机",
+                    imgUrl: 'http://www.zhoutao123.com/picture/book_convert/jvm.png',
+                    url: 'https://www.yuque.com/tao_book/jvm'
+                }, {
+                    id: Math.random() * 10000,
+                    name: "高性能MySQL",
+                    imgUrl: 'http://www.zhoutao123.com/picture/book_convert/mysql.png',
+                    url: 'https://www.yuque.com/tao_book/mysql'
+                }, {
+                    id: Math.random() * 10000,
+                    name: "Netty 入门与实战",
+                    imgUrl: 'http://www.zhoutao123.com/picture/book_convert/netty.png',
+                    url: 'https://www.yuque.com/tao_book/netty'
+                }, {
+                    id: Math.random() * 10000,
+                    name: "Java 并发编程",
+                    imgUrl: 'http://www.zhoutao123.com/picture/book_convert/java.png',
+                    url: 'https://www.yuque.com/tao_book/java_concurrent'
+                }],
+                myGithubAddress:
+                    [{
+                        "id": 6,
+                        "name": "JAVA 开发奇淫巧技",
+                        "url": "https://github.com/taoes/java-snippets",
+                        "imgUrl": 'http://www.zhoutao123.com/picture/book_convert/java_tips.png',
+                        "desc": "【持续更新中】Java开发奇淫巧技以及最佳实践"
+                    }, {
+                        "id": 5,
+                        "name": "GoLang的代码片段",
+                        "url": "https://github.com/taoes/go-snippets",
+                        "imgUrl": 'http://www.zhoutao123.com/picture/book_convert/golang.png',
+                        "desc": "【持续更新中】⚠️一些Go语法的代码实现以及有趣的框架使用"
+                    }, {
+                        "id": 2,
+                        "name": " 基于SpringBoot的Sake事件分发库",
+                        "url": "https://github.com/taoes/saka",
+                        "imgUrl": 'http://www.zhoutao123.com/picture/book_convert/saka.png',
+                        "desc": "一个基于SpringBoot的事件消息库"
+                    }, {
+                        "id": 1,
+                        "name": "基于Netty4.x 构建的Web服务器",
+                        "url": "https://github.com/taoes/NettyWebService",
+                        "imgUrl": 'http://www.zhoutao123.com/picture/book_convert/netty_web.png',
+                        "desc": "一个轻量级的类似SpringBoot的Web框架，实现IOC，以及拦截器等机制"
+                    }]
             }
         },
         computed: {
-            ...mapGetters(['getHotArticle', 'getGithubRepos', 'getGithubAddress']),
+            ...mapGetters(['getHotArticle', 'getGithubAddress', 'getDocAddress']),
             ...mapActions(['updateHotArticle', 'updateGithubRepos'])
         },
         methods: {
             toHotArticle: function (index) {
+                // 跳转到热门文章
                 this.$router.push(`/blog/article/${this.getHotArticle[index].id}`)
             }, toGithubRepos: function (index) {
-                window.open(this.getGithubRepos[index].url);
+                window.open(this.myGithubAddress[index].url);
+            }, toMyBook: function (index) {
+                window.open(this.myBooks[index].url);
             }, openGithub: function () {
+                // 打开Github地址页面
                 window.open(this.getGithubAddress);
-            }, openBlog: function () {
+            }, openMyBooks: function () {
+                // 打开语雀文档
+                window.open(this.getDocAddress)
+            }
+            ,
+            openBlog: function () {
                 this.$router.push("/blog")
             }
         },
-        components: {MyFooter, AppMenu},
+        components: {
+            MyFooter, AppMenu
+        }
+        ,
         mounted() {
             if (this.getHotArticle) {
                 this.updateHotArticle
             }
 
             if (this.getGithubRepos) {
-                console.log("1");
                 this.updateGithubRepos
             }
         }
@@ -126,13 +178,13 @@
 
     @media only screen and (min-width: 800px) {
         #carousel {
+            margin-top: -1px;
             display: block;
         }
 
         .pic {
             width: 100%;
             height: 500px;
-            margin-top: -3px;
         }
     }
 

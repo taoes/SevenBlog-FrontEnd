@@ -1,5 +1,7 @@
 <template>
     <div class="blogMenu">
+
+        <!--         手机界面菜单-->
         <div id="mobileMenu">
             <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center">
                 <el-button @click="showMobileMenu = !showMobileMenu"
@@ -33,7 +35,7 @@
                     <el-menu-item index="/">
                         <i class="fab fa-phoenix-framework menuIcon" style="margin-right:5px"></i>
                         <template slot="title">
-                            <span class="menuTitle subMenuTitle">主页</span>
+                            <span class="menuTitle subMenuTitle" style="color: white">主页</span>
                         </template>
                     </el-menu-item>
 
@@ -74,6 +76,8 @@
                 </el-menu>
             </slide-out>
         </div>
+
+        <!--        PC版本界面菜单-->
         <div id="pcMenu">
             <div style="background-color: #ffffff">
                 <el-menu
@@ -88,7 +92,7 @@
                     <el-menu-item index="/">
                         <i class="fab fa-phoenix-framework menuIcon" style="margin-right:5px"></i>
                         <template slot="title">
-                            <span class="menuTitle">主页</span>
+                            <span class="menuTitle subMenuTitle">主页</span>
                         </template>
                     </el-menu-item>
 
@@ -133,6 +137,9 @@
 </template>
 
 <script>
+
+    import './BlogMenu.css'
+
     export default {
         name: "BlogMenu",
         data: function () {
@@ -156,11 +163,13 @@
             }
         },
         methods: {
+            // 按钮点击后的跳转，如果index = '/' 标识返回主页
             onSelectItem: function (index) {
                 if (index.startsWith("/")) {
                     this.$router.push(index);
                     return;
                 }
+
                 this.$store.commit({
                     type: 'changeType',
                     params: index
@@ -177,59 +186,6 @@
 </script>
 
 <style scoped>
-    @media only screen and (min-width: 800px) {
-        .menuTitle {
-            display: inline-block;
-            font-weight: 900;
-        }
-
-        .subMenuTitle {
-            color: white;
-        }
-
-        #pcMenu {
-            display: block;
-        }
-
-        #mobileMenu {
-            display: none;
-        }
-
-        .menuIcon {
-            color: #FFFFFF;
-        }
-    }
-
-    @media only screen and (max-width: 800px) {
-        .menuTitle {
-            color: black;
-        }
-
-        .subMenuTitle {
-            font-weight: 900;
-            color: black;
-        }
-
-        #pcMenu {
-            display: none;
-        }
-
-        #mobileMenu {
-            display: block;
-            background-color: #3b455e !important;
-        }
-
-        .menuIcon {
-            color: black;
-        }
-
-        .mobileTitle {
-            color: #f0f2f5;
-            padding: 5px;
-            font-weight: 900;
-            font-size: 18px;
-        }
-    }
 
 
 </style>

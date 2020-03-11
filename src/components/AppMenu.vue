@@ -10,7 +10,7 @@
                 </el-button>
 
                 <div style="display: flex;flex-direction: row;align-items: center" @click="onSelectItem('/')">
-                    <img src="@/assets/favicon.png" width="20px">
+                    <img src="@/assets/favicon.png" width="20px"/>
                     <span class="mobileTitle">燕归来兮</span>
                 </div>
 

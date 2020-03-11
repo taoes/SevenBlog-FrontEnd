@@ -1,6 +1,4 @@
 
-
-
 .spanStyle {
     text-indent: 2em;
     margin-left: 10%;
@@ -40,6 +38,13 @@
     justify-content: center;
 }
 
+#myBooks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 @media only screen and (min-width: 987px) {
     .Index {
         display: flex;
@@ -60,9 +65,7 @@
         margin-top: 20px;
         border-radius: 10px;
         box-shadow: 5px 5px 30px 1px #515a6e;
-
     }
-
 }
 
 
