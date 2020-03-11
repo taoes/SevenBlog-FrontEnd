@@ -19,6 +19,7 @@
         props: ['book'],
         methods:{
             toWebPage:function (url) {
+                // 新的窗口打开URL
                 window.open(url)
             }
         }
