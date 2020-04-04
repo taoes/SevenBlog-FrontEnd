@@ -11,8 +11,13 @@
 
     <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
     <script type="text/javascript">
-        sessionStorage.setItem('ip', returnCitySN["cip"]);
-        sessionStorage.setItem('area', returnCitySN["cname"]);
+        // 如果是移动端设备，重定向到
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            window.location = "https://www.zhoutao123.com/web";
+        } else {
+            sessionStorage.setItem('ip', returnCitySN["cip"]);
+            sessionStorage.setItem('area', returnCitySN["cname"]);
+        }
     </script>
 
 </head>
