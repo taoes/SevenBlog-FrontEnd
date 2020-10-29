@@ -1,8 +1,8 @@
 <template>
   <div>
-    <PCMenu></PCMenu>
-    <Nuxt></Nuxt>
-    <Footer/>
+
+    <h1>ERROR</h1>
+
   </div>
 </template>
 
