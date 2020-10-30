@@ -13,5 +13,11 @@
     "ant-design-vue": "^1.6.4",
     "nuxt": "^2.14.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "3000"
+    }
+  }
 }

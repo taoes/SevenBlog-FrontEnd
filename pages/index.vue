@@ -35,6 +35,9 @@
 
     export default {
         name: 'Home',
+        head() {
+            return {title: '燕归来兮'}
+        },
         data() {
             return {dataOfItem}
         },

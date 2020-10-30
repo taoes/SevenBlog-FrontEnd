@@ -1,103 +1,69 @@
 <template>
   <div class="PCMenu">
     <a-menu @click="itemClick" mode="horizontal" theme="dark" v-model="current">
-      <a-menu-item key="/">
-        <a-icon type="desktop"/>
-        主页
-      </a-menu-item>
 
-      <a-sub-menu key="system">
-                <span class="submenu-title-wrapper" slot="title">
-                    <a-icon type="cluster"/>系统与架构</span>
-
-        <a-menu-item key="/page/book/2">
-          <a-icon type="codepen"/>
-          架构设计
-        </a-menu-item>
-        <a-menu-item key="/page/book/7">
-          <a-icon type="ci"/>
-          DevOps
-        </a-menu-item>
-        <a-menu-item key="/page/book/12">
-          <a-icon type="deployment-unit" />
-          分布式计算
-        </a-menu-item>
-
-        <a-menu-item key="system_more">
-          <a-icon type="snippets"/>
-          更多笔记
-        </a-menu-item>
-      </a-sub-menu>
-
-      <a-sub-menu key="code">
-                <span class="submenu-title-wrapper" slot="title">
-                    <a-icon type="code"/> 编程语言
-                </span>
-
-        <a-menu-item key="/page/book/3">
-          <a-icon type="coffee"/>
-          Java 进阶
-        </a-menu-item>
-        <a-menu-item key="/page/book/9">
-          <a-icon type="database"/>
-          MySQL 进阶
-        </a-menu-item>
-
-        <a-menu-item key="/page/book/11">
-          <a-icon type="lock"/>
-          Java 并发编程
-        </a-menu-item>
-
-        <a-menu-item key="/page/book/13">
-          <a-icon type="rocket"/>
-          数据结构与算法
-        </a-menu-item>
-
-        <a-menu-item key="code_other-language">
-          <a-icon type="build"/>
-          其他语言入门
-        </a-menu-item>
-      </a-sub-menu>
-
-      <a-sub-menu key="blog">
-                <span class="submenu-title-wrapper" slot="title">
-                    <a-icon type="read"/> 我的博客
-                </span>
-        <template v-for="blog of blogList">
-          <a-menu-item :key="'web_'+blog.name">
-            <a :href="blog.url" rel="noopener noreferrer" target="_blank">
-              <a-icon :type="blog.icon"/>{{blog.title}}</a>
+      <template v-for="menu in menuList">
+        <template v-if="menu.children == null">
+          <a-menu-item :key="menu.url">
+            <a-icon :type="menu.icon"/>
+            {{menu.title}}
           </a-menu-item>
         </template>
+        <!--        多级菜单-->
+        <template v-else>
+          <a-sub-menu :key="menu.title">
+            <span class="submenu-title-wrapper" slot="title"><a-icon :type="menu.icon"/>{{menu.title}}</span>
+            <template v-for="item in menu.children">
+              <a-menu-item :key="item.url">
+                <a-icon :type="item.icon"/>
+                {{item.title}}
+              </a-menu-item>
+            </template>
 
-      </a-sub-menu>
-
-      <a-menu-item key="about">
-        <a-icon type="user"/>
-        关于我
-      </a-menu-item>
+          </a-sub-menu>
+        </template>
+      </template>
     </a-menu>
   </div>
 </template>
 
 <script>
 
-    const blogList = [
+
+    const menuList = [
         {
-            title: "语雀文档",
-            name: "yuque",
-            icon: "yuque",
-            url: "https://www.yuque.com/zhoutao123"
+            title: '主页',
+            icon: 'desktop',
+            url: '/'
         }, {
-            title: "CSDN",
-            name: "csdn",
-            icon: "chrome",
-            url: "https://blog.csdn.net/qq_20221151"
+            title: '系统与架构',
+            icon: 'cluster',
+            children: [
+                {title: '后端架构设计', icon: 'codepen', url: '/page/book/2'},
+                {title: 'DevOps 实践', icon: 'ci', url: '/page/book/7'},
+                {title: '分布式系统', icon: 'deployment-unit', url: '/page/book/12'},
+            ]
         }, {
-            title: "知乎",
-            icon: "zhihu",
-            name: "zhihu",
-            url: "https://www.zhihu.com/people/zhoutao825638"
+            title: '编程语言',
+            icon: 'code',
+            children: [
+                {title: 'Java 编程进阶', icon: 'code', url: '/page/book/3'},
+                {title: 'Java 并发编程', icon: 'lock', url: '/page/book/11'},
+                {title: 'Java 虚拟机', icon: 'coffee', url: '/page/book/1'},
+                {title: '设计模式', icon: 'number', url: '/page/book/6'},
+                {title: '数据结构与算法', icon: 'rocket', url: '/page/book/13'},
+            ]
+        }, {
+            title: '中间件系统',
+            icon: 'gateway',
+            children: [
+                {title: 'MySQL 进阶', icon: 'database', url: '/page/book/9'},
+                {title: 'Netty 学习笔记', icon: 'shrink', url: '/page/book/8'},
+            ]
+        }, {
+            title: '关于我',
+            icon: 'user',
+            url:'/about'
         }
     ];
 
@@ -105,7 +71,7 @@
         name: 'PCMenu',
         data: function () {
             return {
-                blogList,
+                menuList,
                 current: ['desktop'],
             }
         },
@@ -115,12 +81,12 @@
                     return
                 }
                 this.current = keyPath[keyPath.length - 1];
-                this.$router.push(key)
+                window.location.href = key;
             }
         }
     }
 </script>
 
-<style  scoped>
+<style scoped>
 
 </style>
