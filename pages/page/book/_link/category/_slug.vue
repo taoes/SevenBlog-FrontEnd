@@ -13,7 +13,7 @@
             const book = await $axios.$get(`http://localhost:9999/apis/book/${params.link}/category/${params.slug}`);
             app.head.title = `${book.data.title}-燕归来兮`
             const html = book.data.body_html;
-            const bodyHtml = !html  ? "" : html.replace(new RegExp('https://cdn.nlark.com/', 'gm'), 'https://www.zhoutao123.com/picture?param=');
+            const bodyHtml = !html  ? "" : html.replace(new RegExp('https://cdn.nlark.com/', 'gm'), 'https://api.zhoutao123.com/picture?param=');
             return {content: book.data, bodyHtml, params}
         }, computed: {}
     }

@@ -5,6 +5,7 @@
       <h4>Welcome To My WebSite</h4>
       <div id="webSite">
         <a-icon :theme="web.theme" :type="web.icon" @click="toWebSitePage(web.url)" class="websiteIcon"
+                :key="web.url"
                 v-for="web in webSiteList">
         </a-icon>
       </div>
@@ -50,7 +51,6 @@
             return {title: '关于我'}
         }, data() {
             return {
-                visible: true,
                 webSiteList
             }
         }, methods: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-affix offset-top="0">
+    <a-affix :offset-top="0">
       <PCMenu></PCMenu>
     </a-affix>
     <Nuxt></Nuxt>
