@@ -12,8 +12,10 @@ cp ./nuxt.config.js ./build
 
 
 tar -czvf ./build.tar.gz ./build
-scp ./build.tar.gz root@47.98.143.247:/blog-fe
+scp ./build.tar.gz root@47.98.143.247:/root/blog-fe
 
 
 rm -rf ./build
 rm ./build.tar.gz
+
+tar -C . -xzvf build.tar.gz
