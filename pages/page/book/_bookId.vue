@@ -8,7 +8,7 @@
     <div id="content">
 
       <template v-for="category in this.categoryList">
-        <a-divider :key="category.slug" orientation="left" style="width: 100%;margin-top: 30px"
+        <a-divider :key="category.slug" orientation="left" style="width: 100%;margin-top: 20px;font-family: 'PT Serif', 'Times New Roman', Times, serif;"
                    v-if="category.depth === 1">
           <p @click="toContent(book.linkUrl,category.slug)" class="title1">
             {{category.title}}
@@ -17,7 +17,7 @@
 
         <template v-else>
           <p :class="'title' + category.depth"
-             :style="{marginLeft:10 * category.depth + 'px'}"
+             :style="{marginLeft:20 * category.depth + 'px'}"
              @click="toContent(book.linkUrl,category.slug)">
             {{category.title}}
           </p>
@@ -25,11 +25,7 @@
 
       </template>
     </div>
-
-
   </div>
-
-
 </template>
 
 
@@ -40,9 +36,6 @@
             const book = await $axios.$get(`http://localhost:9999/apis/book/${params.bookId}`);
             app.head.title = `${book.title}-燕归来兮`;
             return {categoryList, book}
-        },
-        head() {
-            return {}
         },
         data: function () {
             return {
@@ -105,7 +98,7 @@
 
 
   .title1 {
-    font-size: 20px;
+    font-size: 25px;
     padding-top: 20px;
     cursor: pointer;
     width: fit-content;
@@ -114,13 +107,14 @@
   }
 
   .title2 {
-    font-size: 16px;
+    font-size: 18px;
     margin-left: 40px;
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
     width: fit-content;
     height: fit-content;
+    color: #404040;
     padding: 4px;
     transition: all .1s;
     -moz-transition: all .1s;
@@ -129,6 +123,7 @@
   }
 
   .title3{
+    font-size: 15px;
     transition: all .1s;
     -moz-transition: all .1s;
     -webkit-transition: all .1s;
@@ -139,7 +134,6 @@
   .title2:hover, .title3:hover {
     color: #4a4a4a;
     font-weight: 700;
-    transform: scale(1.1)
-
+    transform: scale(1.1);
   }
 </style>

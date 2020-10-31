@@ -4,17 +4,26 @@
       <h1>{{content.title}}</h1>
     </div>
     <div id="html" v-html="bodyHtml"></div>
+
+    <div id="comment">
+      <Comment :commentList="commentList"/>
+    </div>
+
   </div>
 </template>
 
 <script>
+    import Comment from "@/components/book/Comment";
+
     export default {
+        components: {Comment},
         async asyncData({$axios, app, params}) {
             const book = await $axios.$get(`http://localhost:9999/apis/book/${params.link}/category/${params.slug}`);
-            app.head.title = `${book.data.title}-燕归来兮`
+            app.head.title = `${book.data.title}-燕归来兮`;
             const html = book.data.body_html;
-            const bodyHtml = !html  ? "" : html.replace(new RegExp('https://cdn.nlark.com/', 'gm'), 'https://api.zhoutao123.com/picture?param=');
-            return {content: book.data, bodyHtml, params}
+            const bodyHtml = !html ? "" : html.replace(new RegExp('https://cdn.nlark.com/', 'gm'), 'https://api.zhoutao123.com/picture?param=');
+            const commentList = await $axios.$get(`http://localhost:9999/apis/book/${params.link}/category/${params.slug}/comment`);
+            return {content: book.data, bodyHtml, params,commentList}
         }, computed: {}
     }
 </script>
@@ -25,17 +34,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 60px;
+    padding-bottom: 60px;
     background-color: #EFEFEF;
-  }
-
-  #contentTitle h1 {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 40px;
-    letter-spacing: 4px;
-    font-weight: bolder;
-    font-family: "PT Serif", 'Times New Roman', Times, serif;
   }
 
 
@@ -49,6 +49,21 @@
       align-items: center;
       background-color: white;
     }
+
+    #contentTitle h1 {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      font-size: 40px;
+      letter-spacing: 3px;
+      font-weight: bolder;
+      font-family: "PT Serif", 'Times New Roman', Times, serif;
+    }
+
+    #comment{
+      background-color: white;
+      width: 75%;
+      padding: 30px;
+    }
   }
 
 
@@ -61,7 +76,23 @@
       background: white;
       margin-top: 20px;
     }
+
+    #contentTitle h1 {
+      margin-top: 20px;
+      font-weight: bolder;
+      font-family: "PT Serif", 'Times New Roman', Times, serif;
+    }
+
+    #comment{
+      background-color: white;
+      width: 100%;
+      padding: 30px;
+    }
   }
+
+
+
+
 
 
   /* 修改文章样式*/
@@ -75,8 +106,9 @@
     width: 100% !important;
   }
 
-  .lake-drag-image{
+  .lake-drag-image {
     max-width: 100% !important;
+    height: auto !important;
   }
 
 </style>
