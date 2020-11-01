@@ -1,20 +1,13 @@
-# SevenBlogFe
+# SevenBlog 项目
 
-## Build Setup
+示例 [www.zhoutao123.com](https://www.zhoutao123.com)
 
-```bash
-# install dependencies
-$ yarn install
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+## 技术栈
+1. Nuxt SSR
+2. Ant Design For Vue
+3. SpringBoot
+4. MySQL
+5. MyBatis Plus
 
-# build for production and launch server
-$ yarn build
-$ yarn start
 
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
