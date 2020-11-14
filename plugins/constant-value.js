@@ -4,8 +4,7 @@ let ConstantValue = {
   install(Vue) {
     Vue.prototype.ConstantValue = {
       apiPrefix: function () {
-        // return 'https://api.zhoutao123.com'
-        return 'http://localhost:9999'
+        return 'https://api.zhoutao123.com'
       }, indexIcon: function () {
         const webSiteList = [
           {
