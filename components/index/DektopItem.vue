@@ -2,8 +2,8 @@
   <div class="desktopItem">
     <img :alt="image" :src="image" class="desktopItemPic">
     <div id="content">
-      <h1>{{title}}</h1>
-      <p v-html="content"></p>
+      <h1 class="descTitle">{{title}}</h1>
+      <p class="content" v-html="content"></p>
     </div>
   </div>
 </template>
@@ -33,6 +33,7 @@
 
     .desktopItemPic {
       width: 300px;
+      object-fit: contain;
     }
 
 
@@ -46,22 +47,19 @@
       width: 67%;
       margin-top: 30px;
       margin-bottom: 20px;
-
-
     }
 
     .desktopItemPic {
       width: 300px;
+      object-fit: contain;
     }
   }
 
   #content h1 {
     margin-left: 25px;
     font-size: 25px;
-    color: lightgray;
     margin-top: 15px;
     font-family: "PT Serif", 'Times New Roman', Times, serif;
-    text-transform: uppercase;
   }
 
 
@@ -69,6 +67,18 @@
     margin-left: 20px;
     line-height: 30px;
     text-indent: 2em;
+  }
+
+
+  .descTitle {
+    color: #4a4a4a;
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
+  }
+
+  .content {
+    font-size: 16px;
+    color: #010101;
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
   }
 
 

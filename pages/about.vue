@@ -2,10 +2,10 @@
   <div class="container">
     <div id="desktopBackground">
       <h1>燕归来兮</h1>
-      <h4>Welcome To My WebSite</h4>
+      <h4>凡心所向，素履以往，生如逆旅，一苇以航</h4>
       <div id="webSite">
-        <a-icon :theme="web.theme" :type="web.icon" @click="toWebSitePage(web.url)" class="websiteIcon"
-                :key="web.url"
+        <a-icon :key="web.url" :theme="web.theme" :type="web.icon" @click="toWebSitePage(web.url)"
+                class="websiteIcon"
                 v-for="web in webSiteList">
         </a-icon>
       </div>
@@ -16,44 +16,20 @@
 <script>
     import PCMenu from "../components/PCMenu";
 
-    const webSiteList = [
-        {
-            title: "语雀文档",
-            name: "yuque",
-            icon: "yuque",
-            theme: 'filled',
-            url: "https://www.yuque.com/zhoutao123"
-        }, {
-            title: "GitHub",
-            icon: "github",
-            theme: 'filled',
-            url: "https://github.com/taoes"
-        }, {
-            title: "Weibo",
-            icon: "weibo-circle",
-            theme: 'filled',
-            url: "https://weibo.com/zhoutao1230"
-        }, {
-            title: "知乎",
-            icon: "zhihu",
-            theme: 'outlined',
-            url: "https://www.zhihu.com/people/zhoutao825638"
-        }, {
-            title: "邮件",
-            icon: "mail",
-            theme: 'outlined',
-            url: "mailto:zhoutao825638@vip.qq.cin"
-        }
-    ];
     export default {
         components: {PCMenu},
         head() {
             return {title: '关于我'}
         }, data() {
             return {
-                webSiteList
+                webSiteList: []
             }
-        }, methods: {
+        },
+
+        mounted() {
+            this.webSiteList = this.ConstantValue.indexIcon();
+        },
+        methods: {
             toWebSitePage: (url) => {
                 if (url === 'wechat') {
                     return
@@ -94,7 +70,6 @@
 
   #webSite {
     display: flex;
-    margin-top: 20px;
   }
 
 

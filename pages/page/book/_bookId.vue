@@ -1,16 +1,17 @@
 <template>
 
   <div id="bookCategory">
-    <h1 id="bookTitle">{{book.title}}</h1>
-    <span>{{book.subTitle}}</span>
-
-
+    <div id="categoryBackDiv">
+      <h1 id="bookTitle">{{book.title}}</h1>
+      <span id="subBookTitle">{{book.subTitle}}</span>
+    </div>
     <div id="content">
 
       <template v-for="category in this.categoryList">
-        <a-divider :key="category.slug" orientation="left" style="width: 100%;margin-top: 20px;font-family: 'PT Serif', 'Times New Roman', Times, serif;"
+        <a-divider :key="category.slug" orientation="left"
+                   style="width: 100%;margin-top: 20px;font-family: 'PT Serif', 'Times New Roman', Times, serif;"
                    v-if="category.depth === 1">
-          <p @click="toContent(book.linkUrl,category.slug)" class="title1">
+          <p @click="toContent(category.slug)" class="title1">
             {{category.title}}
           </p>
         </a-divider>
@@ -18,11 +19,10 @@
         <template v-else>
           <p :class="'title' + category.depth"
              :style="{marginLeft:20 * category.depth + 'px'}"
-             @click="toContent(book.linkUrl,category.slug)">
+             @click="toContent(category.slug)">
             {{category.title}}
           </p>
         </template>
-
       </template>
     </div>
   </div>
@@ -35,7 +35,7 @@
             const categoryList = await $axios.$get(`http://localhost:9999/apis/book/${params.bookId}/category`);
             const book = await $axios.$get(`http://localhost:9999/apis/book/${params.bookId}`);
             app.head.title = `${book.title}-燕归来兮`;
-            return {categoryList, book}
+            return {categoryList, book, params}
         },
         data: function () {
             return {
@@ -46,8 +46,11 @@
         created: function () {
             this.bookId = this.$route.params.bookid;
         }, methods: {
-            toContent(book, slug) {
-                window.location.href = `/page/book/${book}/category/${slug}`
+            //跳转到内容页面
+            toContent(slug) {
+                let {bookId} = this.params;
+                let {linkUrl} = this.book;
+                window.location.href = `/page/book/${linkUrl}/category/${slug}?bookId=${bookId}`
             }
         }
     }
@@ -58,7 +61,6 @@
     width: 100%;
     height: 100%;
     min-height: 1024px;
-    background-color: #EFEFEF;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,11 +68,18 @@
 
   /*  图书标题*/
   #bookTitle {
-    font-family: "PT Serif", 'Times New Roman', Times, serif;
-    margin-top: 40px;
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
+    margin-top: 20px;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 50px;
     letter-spacing: 4px;
+    color: white;
+  }
+
+
+  #subBookTitle {
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
+    color: white;
   }
 
   @media screen and (min-width: 780px) {
@@ -103,7 +112,9 @@
     cursor: pointer;
     width: fit-content;
     line-height: 1;
-    color: #010101;
+    color: #000;
+    font-weight: bold;
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
   }
 
   .title2 {
@@ -114,20 +125,23 @@
     cursor: pointer;
     width: fit-content;
     height: fit-content;
-    color: #404040;
+    color: #010101;
     padding: 4px;
     transition: all .1s;
     -moz-transition: all .1s;
     -webkit-transition: all .1s;
     -o-transition: all .1s;
+    font-weight: bold;
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
   }
 
-  .title3{
+  .title3 {
     font-size: 15px;
     transition: all .1s;
     -moz-transition: all .1s;
     -webkit-transition: all .1s;
     -o-transition: all .1s;
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
   }
 
 
@@ -135,5 +149,18 @@
     color: #4a4a4a;
     font-weight: 700;
     transform: scale(1.1);
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
+  }
+
+  #categoryBackDiv {
+    display: flex;
+    flex-direction: column;
+    background: url('https://pic.zhoutao123.com/picture/background/bg-mia.jpg');
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+    min-height: 30%;
+    justify-content: center;
+    align-items: center;
   }
 </style>

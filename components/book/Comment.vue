@@ -4,7 +4,6 @@
     :header="`共 ${commentList.length} 回复`"
     class="comment-list"
     item-layout="horizontal"
-    locale="暂无评论"
   >
     <a-list-item slot="renderItem" slot-scope="item, index">
       <a-comment>
@@ -13,7 +12,7 @@
         </template>
 
         <template slot="avatar">
-          <a-avatar :src="avatar" size="50"></a-avatar>
+          <a-avatar :src="avatar" :size="50"></a-avatar>
         </template>
 
 
@@ -44,7 +43,6 @@
             return {
                 actions: ['回复', '点赞'],
                 avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                commentList: [],
                 data: [
                     {
                         actions: ['回复', '点赞'],
