@@ -13,6 +13,7 @@ import FormModel from 'ant-design-vue/lib/form-model'
 import Input from 'ant-design-vue/lib/input'
 
 
+
 Vue.use(Menu);
 Vue.use(Divider);
 Vue.use(Icon);
@@ -25,4 +26,5 @@ Vue.use(Button);
 Vue.use(Modal);
 Vue.use(FormModel);
 Vue.use(Input);
+// Vue.use(Message);
 

@@ -1,12 +1,26 @@
 import Vue from 'vue'
+import Notification from 'ant-design-vue/lib/notification'
+import Message from 'ant-design-vue/lib/message'
+
 
 let ConstantValue = {
   install(Vue) {
     Vue.prototype.ConstantValue = {
+      info: function (message, description) {
+        Notification.open({message, description});
+      },
+      error: function (content) {
+        Message.error(content);
+      },
       apiPrefix: function () {
-        return 'https://api.zhoutao123.com'
-      }, indexIcon: function () {
-        const webSiteList = [
+        if (process.env.NODE_ENV !== 'production') {
+          return "http://localhost:9999"
+        } else {
+          return 'https://api.zhoutao123.com'
+        }
+      },
+      indexIcon: function () {
+        return [
           {
             title: "语雀文档",
             name: "yuque",
@@ -35,7 +49,6 @@ let ConstantValue = {
             url: "mailto:zhoutao825638@vip.qq.cin"
           }
         ];
-        return webSiteList;
       }
     };
 

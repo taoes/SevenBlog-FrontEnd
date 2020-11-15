@@ -18,7 +18,6 @@
                 <span class="menuTitle"> <a-icon :type="item.icon"/>{{item.title}}</span>
               </a-menu-item>
             </template>
-
           </a-sub-menu>
         </template>
       </template>
@@ -35,7 +34,7 @@
                 icon: 'desktop',
                 url: '/'
             }, {
-                title: '架构与实践',
+                title: '系统架构',
                 icon: 'cluster',
                 children: [
                     {title: 'DevOps', icon: 'ci', url: '/page/book/7'},
@@ -43,7 +42,7 @@
                     {title: '后端架构设计', icon: 'codepen', url: '/page/book/2'},
                 ]
             }, {
-                title: 'JAVA',
+                title: 'Java 编程',
                 icon: 'coffee',
                 children: [
                     {title: 'Java 虚拟机', icon: 'coffee', url: '/page/book/1'},
@@ -53,7 +52,7 @@
                 ]
             },
             {
-                title: '计算机',
+                title: '计算机科学',
                 icon: 'code',
                 children: [
                     {title: '数据结构', icon: 'rocket', url: '/page/book/13'},
@@ -63,25 +62,29 @@
                 ]
             },
             {
-                title: '中间件',
-                icon:
-                    'gateway',
+                title: '中间件系统',
+                icon: 'gateway',
                 children:
                     [
+                        {title: '数据库', icon: 'database', url: '/page/book/9'},
                         {title: '消息队列', icon: 'message', url: 'pause3'},
-                        {title: '网络应用框架', icon: 'fullscreen-exit', url: '/page/book/8'},
-                        {title: '关系型数据库', icon: 'database', url: '/page/book/9'},
-                        {title: '非关系型数据库', icon: 'cloud-server', url: 'pause4'},
-                        {title: '高性能Web服务器', icon: 'box-plot', url: '/page/book/4'},
+                        {title: '网络应用', icon: 'fullscreen-exit', url: '/page/book/8'},
+                        {title: '高性能服务器', icon: 'box-plot', url: '/page/book/4'},
                     ]
+            }, {
+                title: '闲谈杂记',
+                icon: 'exception',
+                children: [
+                    {title: '我的博客', icon: 'flag', url: '/page/book/14'},
+                    {title: '影子不长', icon: 'smile', url: 'pause33'},
+                ]
+
             }
             ,
             {
                 title: '关于我',
-                icon:
-                    'user',
-                url:
-                    '/about'
+                icon: 'user',
+                url: '/about'
             }
         ]
     ;
@@ -97,7 +100,7 @@
         methods: {
             itemClick: function ({key, keyPath}) {
                 if (key.startsWith("pause")) {
-                    alert("暂未完成，敬请期待");
+                    this.ConstantValue.info('暂未完成', '该栏目暂无资源，敬请期待!');
                     return
                 }
 
@@ -116,7 +119,7 @@
   .menuTitle {
     color: white;
     font-size: 14px;
-    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
+    /*font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;*/
   }
 
 </style>

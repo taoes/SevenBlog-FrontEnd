@@ -7,10 +7,10 @@
 
     <div id="html">
       <div id="buttonGroup">
-        <a-button @click="openYuQuePage()" icon="yuque">语雀</a-button>
-        <a-button @click="openCategory()" icon="ordered-list">目录</a-button>
-        <a-button @click="toggleCommandVisible()" icon="sound">评论</a-button>
-        <a-button @click="downloadPdf()" icon="download">下载</a-button>
+        <a-button type="primary" @click="openYuQuePage()" icon="yuque">语雀</a-button>
+        <a-button type="primary" @click="openCategory()" icon="ordered-list">目录</a-button>
+        <a-button type="primary" @click="toggleCommandVisible()" icon="sound">评论</a-button>
+        <a-button type="primary" @click="downloadPdf()" icon="download">下载</a-button>
       </div>
       <a-divider/>
       <div id="contentHtml" v-html="bodyHtml"></div>
@@ -102,7 +102,7 @@
             }, downloadPdf: function () {
                 //以PDF 形式保存内容
                 if (!this.isPc()) {
-                    alert("请使用PC浏览器打印，暂不支持手机浏览器");
+                    this.ConstantValue.error("请使用PC浏览器打印，暂不支持手机浏览器");
                     return
                 }
                 window.document.body.innerHTML = document.getElementById("contentHtml").innerHTML;
@@ -215,14 +215,13 @@
   }
 
   #contentHtml p, #contentHtml a, #contentHtml ol {
-    line-height: 40px !important;
+    line-height: 30px !important;
     font-size: 17px !important;
     font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
   }
 
   #contentHtml span {
     line-height: 25px !important;
-    font-size: 13px !important;
   }
 
   #contentTitle {
