@@ -1,131 +1,151 @@
 <template>
   <div id="contentData">
     <div id="contentTitle">
-      <h1 style="color: white;font-size: 40px">{{content.title}}</h1>
+      <h1 class="title">{{content.title}}</h1>
     </div>
-
 
     <div id="html">
       <div id="buttonGroup">
         <a-button type="primary" @click="openYuQuePage()" icon="yuque">语雀</a-button>
         <a-button type="primary" @click="openCategory()" icon="ordered-list">目录</a-button>
-        <a-button type="primary" @click="toggleCommandVisible()" icon="sound">评论</a-button>
+        <a-button type="primary" @click="like()" icon="heart">点赞</a-button>
         <a-button type="primary" @click="downloadPdf()" icon="download">下载</a-button>
+        <span style="margin-left: 20px;">当前评分  &nbsp;&nbsp;<a-rate value="4" :tooltips="rateDesc"
+                                                                   disabled/></span>
       </div>
       <a-divider/>
       <div id="contentHtml" v-html="bodyHtml"></div>
+    </div>
+    <div id="addComment" style="width: 75%">
+      <a-comment>
+        <div slot="content">
+          <a-form-item>
+            文章评价 &nbsp;<a-rate v-model="rateVaue" :tooltips="rateDesc"/>
+          </a-form-item>
+          <div style="height: 30px"></div>
+          <a-form-item>
+            <a-textarea :rows="4" :value="value"/>
+          </a-form-item>
+          <a-form-item>
+            <a-button html-type="submit" type="primary" style="margin-top: 20px">
+              提交
+            </a-button>
+
+            <a-button html-type="submit" type="danger" style="margin-top: 20px">
+              重置
+            </a-button>
+          </a-form-item>
+        </div>
+      </a-comment>
     </div>
 
     <div id="comment">
       <a name="commentList"></a>
       <Comment :commentList="commentList"/>
     </div>
-
-    <a-modal @cancel="toggleCommandVisible()" @ok="subComment()" cancel-text="取消" ok-text="提交" title="评论"
-             v-model="visible">
-      <a-form-model :model="form" layout="horizontal" v-bind="layout">
-        <a-form-model-item label="昵称">
-          <a-input placeholder="请输入您的昵称" v-model="form.name"/>
-        </a-form-model-item>
-        <a-form-model-item label="邮箱">
-          <a-input placeholder="请输入您的邮箱" type="email" v-model="form.email"/>
-        </a-form-model-item>
-        <a-form-model-item label="内容">
-          <a-textarea placeholder="请输入评论内容" row="5" v-model="form.content"/>
-        </a-form-model-item>
-      </a-form-model>
-    </a-modal>
-
   </div>
 </template>
 
 <script>
-    import Comment from "../../../../../components/book/Comment";
+  import Comment from "../../../../../components/book/Comment";
 
-    export default {
-        components: {Comment},
-        data() {
-            return {
-                visible: false, form: {
-                    name: '', email: '', content: ''
-                }, layout: {
-                    labelCol: {span: 4},
-                    wrapperCol: {span: 20},
-                }
-            }
+  export default {
+    components: {Comment},
+    data() {
+      return {
+        visible: false,
+        labelCol: {
+          xs: {span: 1},
+          sm: {span: 1},
         },
-        async asyncData({$axios, app, params, query}) {
-
-            let [book, commentList] = await Promise.all([
-                $axios.$get(`http://localhost:9999/apis/book/${params.link}/category/${params.slug}`),
-                $axios.$get(`http://localhost:9999/apis/book/${params.link}/category/${params.slug}/comment`)
-            ]);
-            const html = book.data.body_html;
-            const bodyHtml = !html ? "" : html.replace(new RegExp('https://cdn.nlark.com/', 'gm'), 'https://api.zhoutao123.com/picture?param=');
-            app.head.title = `${book.data.title}-燕归来兮`;
-            return {content: book.data, bodyHtml, params, commentList, query}
+        wrapperCol: {
+          xs: {span: 23},
+          sm: {span: 23},
         },
-
-        beforeMount: function () {
-            let pList = document.getElementsByTagName("p");
-            let pTagList = Array.prototype.slice.call(pList)
-            for (let pIndex in pTagList) {
-                let p = pTagList[pIndex];
-                p.style.fontSize = "100px !important"
-            }
-
-        },
-        methods: {
-            openYuQuePage: function () {
-                let {link, slug} = this.params;
-                let yuQuePageUrl = `https://www.yuque.com/zhoutao123/${link}/${slug}`;
-                window.open(yuQuePageUrl, '_blank');
-            }, toggleCommandVisible: function () {
-                this.visible = !this.visible
-            },
-            openCategory: function () {
-                let {bookId} = this.query;
-                window.location.href = `/page/book/${bookId}`
-            },
-            subComment: function () {
-                //提交评论
-                let host = this.ConstantValue.apiPrefix();
-                let {link, slug} = this.params;
-                let data = {
-                    ...this.form,
-                    url: 'https://www.zhoutao123.com',
-                    bookName: link,
-                    slug
-                };
-                this.$axios.post(`${host}/book/comment`, data);
-                location.reload();
-            }, downloadPdf: function () {
-                //以PDF 形式保存内容
-                if (!this.isPc()) {
-                    this.ConstantValue.error("请使用PC浏览器打印，暂不支持手机浏览器");
-                    return
-                }
-                window.document.body.innerHTML = document.getElementById("contentHtml").innerHTML;
-                window.print();
-                window.location.reload()
-            }, isPc: function () {
-                //判断是否是PC浏览器
-                let userAgentInfo = navigator.userAgent;
-                let Agents = ["Android", "iPhone",
-                    "SymbianOS", "Windows Phone",
-                    "iPad", "iPod"];
-                let flag = true;
-                for (let v = 0; v < Agents.length; v++) {
-                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                        flag = false;
-                        break;
-                    }
-                }
-                return flag;
-            }
-
+        rateVaue: 3,
+        rateDesc: ["错误百出", "不值一读", "差强人意", "收货满满", "印象深刻"],
+        form: {
+          name: '', email: '', content: ''
+        }, layout: {
+          labelCol: {span: 4},
+          wrapperCol: {span: 20},
         }
+      }
+    },
+    async asyncData({$axios, app, params, query}) {
+
+      let [book, commentList] = await Promise.all([
+        $axios.$get(`http://localhost:9999/apis/book/${params.link}/category/${params.slug}`),
+        $axios.$get(
+          `http://localhost:9999/apis/book/${params.link}/category/${params.slug}/comment`)
+      ]);
+      const html = book.data.body_html;
+      const bodyHtml = !html ? "" : html.replace(new RegExp('https://cdn.nlark.com/', 'gm'),
+        'https://api.zhoutao123.com/picture?param=');
+      app.head.title = `${book.data.title}-燕归来兮`;
+      return {content: book.data, bodyHtml, params, commentList, query}
+    },
+
+    beforeMount: function () {
+      let pList = document.getElementsByTagName("p");
+      let pTagList = Array.prototype.slice.call(pList)
+      for (let pIndex in pTagList) {
+        let p = pTagList[pIndex];
+        p.style.fontSize = "100px !important"
+      }
+
+    },
+    methods: {
+      openYuQuePage: function () {
+        let {link, slug} = this.params;
+        let yuQuePageUrl = `https://www.yuque.com/zhoutao123/${link}/${slug}`;
+        window.open(yuQuePageUrl, '_blank');
+      }, toggleCommandVisible: function () {
+        this.visible = !this.visible
+      },
+      openCategory: function () {
+        let {bookId} = this.query;
+        window.location.href = `/page/book/${bookId}`
+      },
+      subComment: function () {
+        //提交评论
+        let host = this.ConstantValue.apiPrefix();
+        let {link, slug} = this.params;
+        let data = {
+          ...this.form,
+          url: 'https://www.zhoutao123.com',
+          bookName: link,
+          slug
+        };
+        this.$axios.post(`${host}/book/comment`, data);
+        location.reload();
+      }, downloadPdf: function () {
+        //以PDF 形式保存内容
+        if (!this.isPc()) {
+          this.ConstantValue.error("暂不支持手机端使用此功能", "请使用PC浏览器打印，暂不支持手机浏览器");
+          return
+        }
+        window.document.body.innerHTML = document.getElementById("contentHtml").innerHTML;
+        window.print();
+        window.location.reload()
+      }, isPc: function () {
+        //判断是否是PC浏览器
+        let userAgentInfo = navigator.userAgent;
+        let Agents = ["Android", "iPhone",
+          "SymbianOS", "Windows Phone",
+          "iPad", "iPod"];
+        let flag = true;
+        for (let v = 0; v < Agents.length; v++) {
+          if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+          }
+        }
+        return flag;
+      }
+
     }
+  }
 </script>
 
 <style>
@@ -227,7 +247,8 @@
   #contentTitle {
     display: flex;
     flex-direction: column;
-    background: url('https://pic.zhoutao123.com/picture/background/bg-mia.jpg');
+    /*background: url('https://pic.zhoutao123.com/picture/background/bg-mia.jpg');*/
+    background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);
     object-fit: cover;
     height: 300px;
     width: 100%;
@@ -236,6 +257,12 @@
     align-items: center;
     color: white;
     font-weight: bold;
+  }
+
+  .title {
+    color: white;
+    font-size: 40px;
+    text-transform: uppercase;
   }
 
 </style>

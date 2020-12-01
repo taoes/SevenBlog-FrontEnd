@@ -1,16 +1,14 @@
 import Vue from 'vue'
-import Notification from 'ant-design-vue/lib/notification'
-import Message from 'ant-design-vue/lib/message'
-
+import Modal from 'ant-design-vue/lib/modal'
 
 let ConstantValue = {
   install(Vue) {
     Vue.prototype.ConstantValue = {
-      info: function (message, description) {
-        Notification.open({message, description});
+      info: function (title, content) {
+        Modal.info({title, content})
       },
-      error: function (content) {
-        Message.error(content);
+      error: function (title, content) {
+        Modal.error({title, content});
       },
       apiPrefix: function () {
         if (process.env.NODE_ENV !== 'production') {
@@ -42,6 +40,11 @@ let ConstantValue = {
             icon: "zhihu",
             theme: 'outlined',
             url: "https://www.zhihu.com/people/zhoutao825638"
+          }, {
+            title: "微信",
+            icon: "wechat",
+            theme: 'outlined',
+            url: "wechat"
           }, {
             title: "邮件",
             icon: "mail",

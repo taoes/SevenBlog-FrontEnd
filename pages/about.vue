@@ -10,34 +10,47 @@
         </a-icon>
       </div>
     </div>
+    <a-modal
+      title="添加微信"
+      :visible="wechatVisible"
+      width="400px"
+      @ok="closeWechatModal()"
+      @cancel="closeWechatModal"
+      :footer="[]">
+      <img src="https://pic.zhoutao123.com/picture/wechat.png" width="100%"/>
+    </a-modal>
   </div>
 </template>
 
 <script>
-    import PCMenu from "../components/PCMenu";
+  import PCMenu from "../components/PCMenu";
 
-    export default {
-        components: {PCMenu},
-        head() {
-            return {title: '关于我'}
-        }, data() {
-            return {
-                webSiteList: []
-            }
-        },
+  export default {
+    components: {PCMenu},
+    head() {
+      return {title: '关于我'}
+    }, data() {
+      return {
+        wechatVisible: false,
+        webSiteList: []
+      }
+    },
 
-        mounted() {
-            this.webSiteList = this.ConstantValue.indexIcon();
-        },
-        methods: {
-            toWebSitePage: (url) => {
-                if (url === 'wechat') {
-                    return
-                }
-                window.open(url, '_blank')
-            }
+    mounted() {
+      this.webSiteList = this.ConstantValue.indexIcon();
+    },
+    methods: {
+      toWebSitePage: function (url) {
+        if (url === 'wechat') {
+          this.wechatVisible = true
+          return
         }
+        window.open(url, '_blank')
+      }, closeWechatModal: function () {
+        this.wechatVisible = false
+      }
     }
+  }
 </script>
 
 <style scoped>

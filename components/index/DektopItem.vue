@@ -59,7 +59,6 @@
     margin-left: 25px;
     font-size: 25px;
     margin-top: 15px;
-    font-family: "PT Serif", 'Times New Roman', Times, serif;
   }
 
 
@@ -72,7 +71,6 @@
 
   .descTitle {
     color: #4a4a4a;
-    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
   }
 
   .content {

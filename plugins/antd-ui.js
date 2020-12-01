@@ -11,6 +11,8 @@ import Button from 'ant-design-vue/lib/button'
 import Modal from 'ant-design-vue/lib/modal'
 import FormModel from 'ant-design-vue/lib/form-model'
 import Input from 'ant-design-vue/lib/input'
+import Rate from 'ant-design-vue/lib/rate'
+
 
 
 
@@ -26,5 +28,5 @@ Vue.use(Button);
 Vue.use(Modal);
 Vue.use(FormModel);
 Vue.use(Input);
-// Vue.use(Message);
+Vue.use(Rate);
 

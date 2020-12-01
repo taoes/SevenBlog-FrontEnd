@@ -9,7 +9,7 @@
 
       <template v-for="category in this.categoryList">
         <a-divider :key="category.slug" orientation="left"
-                   style="width: 100%;margin-top: 20px;font-family: 'PT Serif', 'Times New Roman', Times, serif;"
+                   class="dividerLine"
                    v-if="category.depth === 1">
           <p @click="toContent(category.slug)" class="title1">
             {{category.title}}
@@ -30,30 +30,35 @@
 
 
 <script>
-    export default {
-        async asyncData({$axios, app, params}) {
-            const categoryList = await $axios.$get(`http://localhost:9999/apis/book/${params.bookId}/category`);
-            const book = await $axios.$get(`http://localhost:9999/apis/book/${params.bookId}`);
-            app.head.title = `${book.title}-燕归来兮`;
-            return {categoryList, book, params}
-        },
-        data: function () {
-            return {
-                categoryList: [],
-                bookId: 0
-            }
-        },
-        created: function () {
-            this.bookId = this.$route.params.bookid;
-        }, methods: {
-            //跳转到内容页面
-            toContent(slug) {
-                let {bookId} = this.params;
-                let {linkUrl} = this.book;
-                window.location.href = `/page/book/${linkUrl}/category/${slug}?bookId=${bookId}`
-            }
-        }
+  export default {
+    async asyncData({$axios, app, params}) {
+      const categoryList = await $axios.$get(
+        `http://localhost:9999/apis/book/${params.bookId}/category`);
+      const book = await $axios.$get(`http://localhost:9999/apis/book/${params.bookId}`);
+      app.head.title = `${book.title}-燕归来兮`;
+      return {categoryList, book, params}
+    },
+    data: function () {
+      return {
+        categoryList: [],
+        bookId: 0, actions: [
+          {type: 'star-o', text: '156'},
+          {type: 'like-o', text: '156'},
+          {type: 'message', text: '2'},
+        ]
+      }
+    },
+    created: function () {
+      this.bookId = this.$route.params.bookid;
+    }, methods: {
+      //跳转到内容页面
+      toContent(slug) {
+        let {bookId} = this.params;
+        let {linkUrl} = this.book;
+        window.location.href = `/page/book/${linkUrl}/category/${slug}?bookId=${bookId}`
+      }
     }
+  }
 </script>
 
 <style scoped>
@@ -68,16 +73,17 @@
 
   /*  图书标题*/
   #bookTitle {
-    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
     margin-top: 20px;
     font-weight: bold;
     font-size: 50px;
     letter-spacing: 4px;
     color: white;
+    text-transform: uppercase;
   }
 
 
   #subBookTitle {
+    font-size: 18px;
     font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
     color: white;
   }
@@ -108,30 +114,28 @@
 
   .title1 {
     font-size: 25px;
-    padding-top: 20px;
+    padding-top: 10px;
     cursor: pointer;
     width: fit-content;
     line-height: 1;
-    color: #000;
-    font-weight: bold;
+    color: black;
     font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
   }
 
   .title2 {
     font-size: 18px;
     margin-left: 40px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     cursor: pointer;
     width: fit-content;
     height: fit-content;
-    color: #010101;
+    color: #001529;
     padding: 4px;
     transition: all .1s;
     -moz-transition: all .1s;
     -webkit-transition: all .1s;
     -o-transition: all .1s;
-    font-weight: bold;
     font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
   }
 
@@ -146,8 +150,8 @@
 
 
   .title2:hover, .title3:hover {
-    color: #4a4a4a;
-    font-weight: 700;
+    color: black;
+    font-weight: 900;
     transform: scale(1.1);
     font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
   }
@@ -155,12 +159,20 @@
   #categoryBackDiv {
     display: flex;
     flex-direction: column;
-    background: url('https://pic.zhoutao123.com/picture/background/bg-mia.jpg');
+    background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);
+    /*background: url('https://pic.zhoutao123.com/picture/background/bg-mia.jpg');*/
     object-fit: cover;
     height: 300px;
     width: 100%;
     min-height: 30%;
     justify-content: center;
     align-items: center;
+  }
+
+  /*  分割线样式*/
+  .dividerLine {
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'PT Serif', 'Times New Roman', Times, serif;
   }
 </style>
