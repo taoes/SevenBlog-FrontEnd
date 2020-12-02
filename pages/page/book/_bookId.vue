@@ -6,24 +6,25 @@
       <span id="subBookTitle">{{book.subTitle}}</span>
     </div>
     <div id="content">
+      <div id="contentList">
+        <template v-for="category in this.categoryList">
+          <a-divider :key="category.slug" orientation="left"
+                     class="dividerLine"
+                     v-if="category.depth === 1">
+            <p @click="toContent(category.slug)" class="title1">
+              {{category.title}}
+            </p>
+          </a-divider>
 
-      <template v-for="category in this.categoryList">
-        <a-divider :key="category.slug" orientation="left"
-                   class="dividerLine"
-                   v-if="category.depth === 1">
-          <p @click="toContent(category.slug)" class="title1">
-            {{category.title}}
-          </p>
-        </a-divider>
-
-        <template v-else>
-          <p :class="'title' + category.depth"
-             :style="{marginLeft:20 * category.depth + 'px'}"
-             @click="toContent(category.slug)">
-            {{category.title}}
-          </p>
+          <template v-else>
+            <p :class="'title' + category.depth"
+               :style="{marginLeft:20 * category.depth + 'px'}"
+               @click="toContent(category.slug)">
+              {{category.title}}
+            </p>
+          </template>
         </template>
-      </template>
+      </div>
     </div>
   </div>
 </template>
@@ -78,24 +79,34 @@
     font-size: 50px;
     letter-spacing: 4px;
     color: white;
+    text-align: center;
     text-transform: uppercase;
   }
 
 
   #subBookTitle {
     font-size: 18px;
+    text-align: center;
+    font-weight: 600;
     font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
     color: white;
   }
 
   @media screen and (min-width: 780px) {
     #content {
+      display: flex;
+      justify-content: center;
       padding: 50px;
-      width: 75%;
+      width: 100%;
+      background: #FAFAFA;
       min-height: 1024px;
       margin-bottom: 30px;
+    }
+
+    #contentList {
+      width: 75%;
       background: white;
-      margin-top: 40px;
+      padding: 20px;
     }
   }
 
@@ -107,7 +118,11 @@
       min-height: 524px;
       margin-bottom: 30px;
       background: white;
-      margin-top: 20px;
+    }
+
+    #contentList {
+      width: 100%;
+      background: white;
     }
   }
 

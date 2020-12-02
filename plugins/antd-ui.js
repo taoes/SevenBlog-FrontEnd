@@ -12,6 +12,10 @@ import Modal from 'ant-design-vue/lib/modal'
 import FormModel from 'ant-design-vue/lib/form-model'
 import Input from 'ant-design-vue/lib/input'
 import Rate from 'ant-design-vue/lib/rate'
+import Row from 'ant-design-vue/lib/row'
+import Col from 'ant-design-vue/lib/col'
+import Statistic from 'ant-design-vue/lib/statistic'
+import Form from 'ant-design-vue/lib/form'
 
 
 
@@ -29,4 +33,8 @@ Vue.use(Modal);
 Vue.use(FormModel);
 Vue.use(Input);
 Vue.use(Rate);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(Statistic);
+Vue.use(Form);
 

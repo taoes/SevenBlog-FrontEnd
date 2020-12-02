@@ -2,6 +2,7 @@
   <a-list
     :data-source="commentList"
     :header="`共 ${commentList.length} 回复`"
+    :locale="{emptyText: '暂无评论数据,快来做第一个评论!'}"
     class="comment-list"
     item-layout="horizontal"
   >
@@ -32,38 +33,38 @@
 
 
 <script>
-    import moment from 'moment';
+  import moment from 'moment';
 
-    export default {
-        name: "Comment",
-        props: {
-            commentList: Array
-        },
-        data: function () {
-            return {
-                actions: ['回复', '点赞'],
-                avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                data: [
-                    {
-                        actions: ['回复', '点赞'],
-                        author: '燕归来兮',
+  export default {
+    name: "Comment",
+    props: {
+      commentList: Array
+    },
+    data: function () {
+      return {
+        actions: ['回复', '点赞'],
+        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+        data: [
+          {
+            actions: ['回复', '点赞'],
+            author: '燕归来兮',
 
-                        content: '博主厉害，加油',
-                        datetime: moment().subtract(1, 'days'),
-                    },
-                    {
-                        actions: ['回复'],
-                        author: '燕归来兮',
-                        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                        content:
-                            'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-                        datetime: moment().subtract(9, 'days'),
-                    },
-                ],
-                moment,
-            }
-        }
+            content: '博主厉害，加油',
+            datetime: moment().subtract(1, 'days'),
+          },
+          {
+            actions: ['回复'],
+            author: '燕归来兮',
+            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+            content:
+              'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+            datetime: moment().subtract(9, 'days'),
+          },
+        ],
+        moment,
+      }
     }
+  }
 </script>
 
 <style scoped>

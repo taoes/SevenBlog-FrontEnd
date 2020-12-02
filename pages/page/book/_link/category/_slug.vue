@@ -6,32 +6,33 @@
 
     <div id="html">
       <div id="buttonGroup">
-        <a-button type="primary" @click="openYuQuePage()" icon="yuque">语雀</a-button>
-        <a-button type="primary" @click="openCategory()" icon="ordered-list">目录</a-button>
-        <a-button type="primary" @click="like()" icon="heart">点赞</a-button>
-        <a-button type="primary" @click="downloadPdf()" icon="download">下载</a-button>
-        <span style="margin-left: 20px;">当前评分  &nbsp;&nbsp;<a-rate value="4" :tooltips="rateDesc"
-                                                                   disabled/></span>
+        <a-button @click="openYuQuePage()" icon="yuque">语雀</a-button>
+        <a-button @click="openCategory()" icon="ordered-list">目录</a-button>
+        <a-button @click="likeContent()" icon="heart">点赞</a-button>
+        <a-button @click="downloadPdf()" icon="download">下载</a-button>
       </div>
       <a-divider/>
+
       <div id="contentHtml" v-html="bodyHtml"></div>
     </div>
     <div id="addComment" style="width: 75%">
       <a-comment>
         <div slot="content">
           <a-form-item>
-            文章评价 &nbsp;<a-rate v-model="rateVaue" :tooltips="rateDesc"/>
+            文章评价 &nbsp;<a-rate v-model="rateValue" :tooltips="rateDesc"/>
           </a-form-item>
           <div style="height: 30px"></div>
           <a-form-item>
-            <a-textarea :rows="4" :value="value"/>
+            <a-textarea rows="4" :value="commentValue" @change="commentChange"/>
           </a-form-item>
           <a-form-item>
-            <a-button html-type="submit" type="primary" style="margin-top: 20px">
+            <a-button type="primary" style="margin-top: 20px"
+                      @click="subComment">
               提交
             </a-button>
 
-            <a-button html-type="submit" type="danger" style="margin-top: 20px">
+            <a-button type="danger" style="margin-top: 20px"
+                      @click="resetComment">
               重置
             </a-button>
           </a-form-item>
@@ -40,20 +41,22 @@
     </div>
 
     <div id="comment">
-      <a name="commentList"></a>
+      <a id="commentList"></a>
       <Comment :commentList="commentList"/>
     </div>
   </div>
 </template>
 
 <script>
-  import Comment from "../../../../../components/book/Comment";
+  import Comment from "@/components/book/Comment";
 
   export default {
     components: {Comment},
     data() {
       return {
+        commentList: [],
         visible: false,
+        commentValue: '',
         labelCol: {
           xs: {span: 1},
           sm: {span: 1},
@@ -62,7 +65,7 @@
           xs: {span: 23},
           sm: {span: 23},
         },
-        rateVaue: 3,
+        rateValue: 4,
         rateDesc: ["错误百出", "不值一读", "差强人意", "收货满满", "印象深刻"],
         form: {
           name: '', email: '', content: ''
@@ -107,19 +110,28 @@
         let {bookId} = this.query;
         window.location.href = `/page/book/${bookId}`
       },
+      commentChange: function (e) {
+        this.commentValue = e.target.value;
+      },
       subComment: function () {
-        //提交评论
+        if (!this.commentValue) {
+          return
+        }
         let host = this.ConstantValue.apiPrefix();
         let {link, slug} = this.params;
         let data = {
-          ...this.form,
-          url: 'https://www.zhoutao123.com',
+          content: this.commentValue,
+          url: this.rateValue + "",
+          email: '无',
           bookName: link,
           slug
         };
         this.$axios.post(`${host}/book/comment`, data);
-        location.reload();
-      }, downloadPdf: function () {
+        this.ConstantValue.error("提交成功", "感谢您的评论");
+      }, resetComment: function () {
+        this.commentValue = ''
+      },
+      downloadPdf: function () {
         //以PDF 形式保存内容
         if (!this.isPc()) {
           this.ConstantValue.error("暂不支持手机端使用此功能", "请使用PC浏览器打印，暂不支持手机浏览器");
@@ -157,6 +169,7 @@
 
   #contentData {
     display: flex;
+    background: #FAFAFA;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -166,6 +179,7 @@
 
   @media screen and (min-width: 780px) {
     #html {
+      margin-top: 40px;
       display: flex;
       flex-direction: column;
       padding: 50px;
@@ -194,6 +208,7 @@
 
   @media screen and (max-width: 780px) {
     #html {
+      margin-top: 20px;
       display: flex;
       flex-direction: column;
       padding: 20px;
@@ -201,7 +216,6 @@
       min-height: 524px;
       margin-bottom: 30px;
       background: white;
-      margin-top: 20px;
     }
 
     #contentTitle h1 {
@@ -237,6 +251,7 @@
   #contentHtml p, #contentHtml a, #contentHtml ol {
     line-height: 30px !important;
     font-size: 17px !important;
+    font-weight: 500;
     font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
   }
 
@@ -262,7 +277,11 @@
   .title {
     color: white;
     font-size: 40px;
-    text-transform: uppercase;
+    text-align: center;
+  }
+
+  #buttonGroup {
+    margin-top: 40px;
   }
 
 </style>

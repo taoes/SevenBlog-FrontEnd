@@ -4,18 +4,21 @@
       <template v-for="menu in menuList">
         <template v-if="menu.children == null">
           <a-menu-item :key="menu.url">
-            <span class="menuTitle"><a-icon :type="menu.icon"/>{{menu.title}}</span>
+            <span class="menuTitle"><i
+              :class="'icon iconfont '+ menu.icon"></i>{{menu.title}}</span>
           </a-menu-item>
         </template>
         <!--        多级菜单-->
         <template v-else>
           <a-sub-menu :key="menu.title">
             <span class="submenu-title-wrapper" slot="title">
-              <span class="menuTitle"><a-icon :type="menu.icon"/>{{menu.title}}</span>
+              <span class="menuTitle"><i
+                :class="'icon iconfont '+ menu.icon"></i>{{menu.title}}</span>
             </span>
             <template v-for="item in menu.children">
               <a-menu-item :key="item.url">
-                <span class="menuTitle"> <a-icon :type="item.icon"/>{{item.title}}</span>
+                <span class="menuTitle"><i
+                  :class="'icon iconfont '+ item.icon"></i>{{item.title}}</span>
               </a-menu-item>
             </template>
           </a-sub-menu>
@@ -31,60 +34,60 @@
   const menuList = [
       {
         title: '主页',
-        icon: 'home',
+        icon: 'icon-jiaoyizonglan',
         url: '/'
       }, {
         title: '架构',
-        icon: 'cluster',
+        icon: 'icon-moxing1',
         children: [
-          {title: 'DevOps', icon: 'ci', url: '/page/book/7'},
-          {title: '分布式系统', icon: 'deployment-unit', url: '/page/book/12'},
-          {title: '后端架构设计', icon: 'codepen', url: '/page/book/2'},
+          {title: 'DevOps', icon: 'icon-caozuo', url: '/page/book/7'},
+          {title: '分布式系统', icon: 'icon-tuopu', url: '/page/book/12'},
+          {title: '后端架构设计', icon: 'icon-yunbushu', url: '/page/book/2'},
         ]
       }, {
         title: 'Java',
-        icon: 'coffee',
+        icon: 'icon-java',
         children: [
-
-          {title: 'Java 虚拟机', icon: 'coffee', url: '/page/book/1'},
-          {title: 'Java 进阶编程', icon: 'coffee', url: '/page/book/3'},
-          {title: 'Java 并发编程', icon: 'lock', url: '/page/book/11'},
-          {title: 'Java 框架解析', icon: 'coffee', url: '/page/book/10'},
+          {title: 'Java 虚拟机', icon: 'icon-ts-tubiao_VM', url: '/page/book/1'},
+          {title: 'Java 进阶编程', icon: 'icon-lujing', url: '/page/book/3'},
+          {title: 'Java 并发编程', icon: 'icon-zhuji', url: '/page/book/11'},
+          {title: 'Java 框架解析', icon: 'icon-cangku', url: '/page/book/10'},
         ]
       },
       {
         title: '编程',
-        icon: 'code',
+        icon: 'icon-zuoye',
         children: [
-          {title: '数据结构', icon: 'rocket', url: '/page/book/13'},
-          {title: '设计模式', icon: 'number', url: '/page/book/6'},
-          {title: '计算机网络', icon: 'global', url: 'pause1'},
-          {title: '其他编程语言', icon: 'sliders', url: 'pause2'}
+          {title: '数据结构', icon: 'icon-liuchengmoxing', url: '/page/book/13'},
+          {title: '设计模式', icon: 'icon-shuxing', url: '/page/book/6'},
+          {title: '计算机网络', icon: 'icon-lianlu', url: 'pause1'},
+          {title: '其他编程语言', icon: 'icon-coding', url: 'pause2'}
         ]
       },
       {
         title: '组件',
-        icon: 'cloud-server',
+        icon: 'icon-caiji',
         children:
           [
-            {title: '数据库存储', icon: 'database', url: '/page/book/9'},
-            {title: '消息队列实战', icon: 'message', url: 'pause3'},
-            {title: '网络编程框架', icon: 'fullscreen-exit', url: '/page/book/8'},
-            {title: '高性能服务器', icon: 'box-plot', url: '/page/book/4'},
+            {title: '数据库存储', icon: 'icon-sql', url: '/page/book/9'},
+            {title: '消息队列实战', icon: 'icon-jiaohuanji', url: 'pause3'},
+            {title: '网络编程框架', icon: 'icon-yingyongfenxi', url: '/page/book/8'},
+            {title: '高性能服务器', icon: 'icon-jianceqi1', url: '/page/book/4'},
           ]
       }, {
         title: '闲谈',
-        icon: 'exception',
+        icon: 'icon-dongtaiwenben',
         children: [
-          {title: '影子不长', icon: 'video-camera', url: 'pause33'},
-          {title: '我的博客', icon: 'flag', url: '/page/book/14'},
+          {title: '影子不长', icon: 'icon-cunchu', url: 'pause33'},
+          {title: '阅读计划', icon: 'icon-shuzhi', url: 'https://www.yuque.com/zhoutao123/read'},
+          {title: '我的博客', icon: 'icon-ziyuan', url: '/page/book/14'},
         ]
 
       }
       ,
       {
         title: '关于',
-        icon: 'user',
+        icon: 'icon-yonghu',
         url: '/about'
       }
     ]
@@ -105,7 +108,8 @@
           return
         }
 
-        if (key.startsWith("web_")) {
+        if (key.startsWith("http")) {
+          window.open(key, '_blank')
           return
         }
         this.current = keyPath[keyPath.length - 1];
@@ -119,6 +123,17 @@
 
   .menuTitle {
     color: white;
+    font-size: 14px;
+  }
+
+  .icon {
+    margin-right: 5px;
+    width: 16px;
+    color: white;
+  }
+
+  .ant-menu-dark {
+
   }
 
 </style>

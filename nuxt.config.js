@@ -6,10 +6,18 @@ export default {
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: process.env.npm_package_description || ''}
+      {
+        hid: 'description',
+        name: 'description',
+        content: process.env.npm_package_description || ''
+      }
     ],
     link: [
-      {rel: 'icon', type: 'image/png', href: 'https://api.zhoutao123.com/favicon.png'}
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: 'https://api.zhoutao123.com/favicon.png'
+      }
     ]
   },
   /*
@@ -17,6 +25,7 @@ export default {
   */
   css: [
     'ant-design-vue/dist/antd.css',
+    '@/assets/iconfont.css',
     '~/css/font.css',
   ],
   /*
@@ -25,6 +34,7 @@ export default {
   */
   plugins: [
     '@/plugins/antd-ui',
+    {src: '@/assets/iconfont.js', ssr: false},
     {src: '@/plugins/constant-value', ssr: false}
   ],
   /*
