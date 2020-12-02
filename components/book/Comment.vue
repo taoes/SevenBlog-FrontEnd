@@ -9,18 +9,20 @@
     <a-list-item slot="renderItem" slot-scope="item, index">
       <a-comment>
         <template slot="author">
-          <p>{{item.name}}</p>
+          <p style="color: black;font-size: 13px">{{item.name}} <span style="color: lightslategrey;font-size: 11px">{{ dateFormat(item.createTime) }}</span></p>
         </template>
 
         <template slot="avatar">
           <a-avatar :src="avatar" :size="50"></a-avatar>
+
         </template>
 
 
         <template slot="actions">
           <span v-for="action in actions">{{ action }}</span>
         </template>
-        <p slot="content" style="line-height: 2">
+
+        <p slot="content" style="line-height: 1.5">
           {{ item.content }}
         </p>
         <a-tooltip :title="item.createTime" slot="datetime">
@@ -42,7 +44,7 @@
     },
     data: function () {
       return {
-        actions: ['回复', '点赞'],
+        actions: [],
         avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
         data: [
           {
@@ -63,6 +65,24 @@
         ],
         moment,
       }
+    }, methods: {
+      appendZero: function (num) {
+        return num < 10 ? '0' + num : num;
+      },
+      dateFormat: function (v) {
+        let date = new Date(v);
+        return date.getFullYear()
+          + "-"
+          + this.appendZero(date.getMonth() + 1)
+          + "-"
+          + this.appendZero(date.getDate())
+          + " "
+          + this.appendZero(date.getHours())
+          + ":"
+          + this.appendZero(date.getMinutes())
+          + ":"
+          + this.appendZero(date.getSeconds());
+      },
     }
   }
 </script>

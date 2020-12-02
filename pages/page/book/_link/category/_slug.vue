@@ -15,7 +15,7 @@
 
       <div id="contentHtml" v-html="bodyHtml"></div>
     </div>
-    <div id="addComment" style="width: 75%">
+    <div id="addComment">
       <a-comment>
         <div slot="content">
           <a-form-item>
@@ -23,15 +23,18 @@
           </a-form-item>
           <div style="height: 30px"></div>
           <a-form-item>
+            <a-input :value="nickName" @change="nickNameChange" placeholder="请输入昵称"/>
+          </a-form-item>
+          <a-form-item>
             <a-textarea rows="4" :value="commentValue" @change="commentChange"/>
           </a-form-item>
           <a-form-item>
-            <a-button type="primary" style="margin-top: 20px"
+            <a-button type="primary" style="margin-top: 10px"
                       @click="subComment">
               提交
             </a-button>
 
-            <a-button type="danger" style="margin-top: 20px"
+            <a-button type="danger" style="margin-top: 10px;margin-left: 20px"
                       @click="resetComment">
               重置
             </a-button>
@@ -57,6 +60,7 @@
         commentList: [],
         visible: false,
         commentValue: '',
+        nickname: '',
         labelCol: {
           xs: {span: 1},
           sm: {span: 1},
@@ -112,6 +116,8 @@
       },
       commentChange: function (e) {
         this.commentValue = e.target.value;
+      }, nickNameChange: function (e) {
+        this.nickname = e.target.value;
       },
       subComment: function () {
         if (!this.commentValue) {
@@ -120,6 +126,7 @@
         let host = this.ConstantValue.apiPrefix();
         let {link, slug} = this.params;
         let data = {
+          name: this.nickname,
           content: this.commentValue,
           url: this.rateValue + "",
           email: '无',
@@ -143,9 +150,7 @@
       }, isPc: function () {
         //判断是否是PC浏览器
         let userAgentInfo = navigator.userAgent;
-        let Agents = ["Android", "iPhone",
-          "SymbianOS", "Windows Phone",
-          "iPad", "iPod"];
+        let Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
         let flag = true;
         for (let v = 0; v < Agents.length; v++) {
           if (userAgentInfo.indexOf(Agents[v]) > 0) {
@@ -198,6 +203,12 @@
       font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
     }
 
+    #addComment {
+      width: 75%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
     #comment {
       background-color: white;
       width: 75%;
@@ -222,6 +233,12 @@
       margin-top: 20px;
       font-weight: 900;
       font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
+    }
+
+    #addComment {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
     }
 
     #comment {
