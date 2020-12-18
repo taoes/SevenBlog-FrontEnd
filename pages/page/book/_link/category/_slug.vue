@@ -5,38 +5,45 @@
     </div>
 
     <div id="html">
+      <a-alert message="由于本人精力有限，部分文章未完成或者完成粗糙，但笔者正在持续更新中，如有您有不同的意见或者建议欢迎留言指导！" show-icon type="info"/>
       <div id="buttonGroup">
-        <a-button @click="openYuQuePage()" icon="yuque">语雀</a-button>
-        <a-button @click="openCategory()" icon="ordered-list">目录</a-button>
-        <a-button @click="likeContent()" icon="heart">点赞</a-button>
-        <a-button @click="downloadPdf()" icon="download">下载</a-button>
+        <a-button @click="openYuQuePage()" icon="yuque" type='primary'>语雀</a-button>
+        <a-button @click="openCategory()" icon="ordered-list" type='primary'>目录</a-button>
+        <a-button @click="likeContent()" icon="heart" type='primary'>点赞</a-button>
+        <a-button @click="downloadPdf()" icon="download" type='primary'>下载</a-button>
       </div>
       <a-divider/>
 
       <div id="contentHtml" v-html="bodyHtml"></div>
     </div>
-    <div id="addComment">
+    <div id="addComment" style="margin-bottom: 0 !important;">
       <a-comment>
         <div slot="content">
           <a-form-item>
-            文章评价 &nbsp;<a-rate v-model="rateValue" :tooltips="rateDesc"/>
+            文章评价 &nbsp;<a-rate :tooltips="rateDesc" v-model="rateValue"/>
           </a-form-item>
-          <div style="height: 30px"></div>
+          <div style="height: 10px"></div>
           <a-form-item>
-            <a-input :value="nickName" @change="nickNameChange" placeholder="请输入昵称"/>
+            <a-input :value="nickName" @change="nickNameChange" placeholder="请输入昵称，将用于列表展示"/>
+          </a-form-item>
+
+          <a-form-item>
+            <a-input :value="nickName" @change="emailChange" placeholder="请输入邮箱，作者回复后将通过邮箱通知您"/>
+          </a-form-item>
+
+          <a-form-item>
+            <a-textarea :value="commentValue" @change="commentChange" rows="4"/>
           </a-form-item>
           <a-form-item>
-            <a-textarea rows="4" :value="commentValue" @change="commentChange"/>
-          </a-form-item>
-          <a-form-item>
-            <a-button type="primary" style="margin-top: 10px"
-                      @click="subComment">
-              提交
+            <a-button @click="subComment" style="margin-top: 10px" type="primary">
+              <a-icon type="check"/>
+              &nbsp;提交
             </a-button>
 
-            <a-button type="danger" style="margin-top: 10px;margin-left: 20px"
-                      @click="resetComment">
-              重置
+            <a-button @click="resetComment" style="margin-top: 10px;margin-left: 20px"
+                      type="danger">
+              <a-icon type="redo"/>
+              &nbsp; 重置
             </a-button>
           </a-form-item>
         </div>
@@ -51,118 +58,121 @@
 </template>
 
 <script>
-  import Comment from "@/components/book/Comment";
+    import Comment from "@/components/book/Comment";
 
-  export default {
-    components: {Comment},
-    data() {
-      return {
-        commentList: [],
-        visible: false,
-        commentValue: '',
-        nickname: '',
-        labelCol: {
-          xs: {span: 1},
-          sm: {span: 1},
+    export default {
+        components: {Comment},
+        data() {
+            return {
+                commentList: [],
+                visible: false,
+                commentValue: '',
+                nickName: '',
+                email: '',
+                labelCol: {
+                    xs: {span: 1},
+                    sm: {span: 1},
+                },
+                wrapperCol: {
+                    xs: {span: 23},
+                    sm: {span: 23},
+                },
+                rateValue: 5,
+                rateDesc: ["错误百出", "不值一读", "差强人意", "收货满满", "印象深刻"],
+                form: {
+                    name: '', email: '', content: ''
+                }, layout: {
+                    labelCol: {span: 4},
+                    wrapperCol: {span: 20},
+                }
+            }
         },
-        wrapperCol: {
-          xs: {span: 23},
-          sm: {span: 23},
+        async asyncData({$axios, app, params, query}) {
+
+            let [book, commentList] = await Promise.all([
+                $axios.$get(`http://localhost:9999/apis/book/${params.link}/category/${params.slug}`),
+                $axios.$get(
+                    `http://localhost:9999/apis/book/${params.link}/category/${params.slug}/comment`)
+            ]);
+            const html = book.data.body_html;
+            const bodyHtml = !html ? "" : html.replace(new RegExp('https://cdn.nlark.com/', 'gm'),
+                'https://api.zhoutao123.com/picture?param=');
+            app.head.title = `${book.data.title}-燕归来兮`;
+            return {content: book.data, bodyHtml, params, commentList, query}
         },
-        rateValue: 4,
-        rateDesc: ["错误百出", "不值一读", "差强人意", "收货满满", "印象深刻"],
-        form: {
-          name: '', email: '', content: ''
-        }, layout: {
-          labelCol: {span: 4},
-          wrapperCol: {span: 20},
-        }
-      }
-    },
-    async asyncData({$axios, app, params, query}) {
 
-      let [book, commentList] = await Promise.all([
-        $axios.$get(`http://localhost:9999/apis/book/${params.link}/category/${params.slug}`),
-        $axios.$get(
-          `http://localhost:9999/apis/book/${params.link}/category/${params.slug}/comment`)
-      ]);
-      const html = book.data.body_html;
-      const bodyHtml = !html ? "" : html.replace(new RegExp('https://cdn.nlark.com/', 'gm'),
-        'https://api.zhoutao123.com/picture?param=');
-      app.head.title = `${book.data.title}-燕归来兮`;
-      return {content: book.data, bodyHtml, params, commentList, query}
-    },
+        beforeMount: function () {
+            let pList = document.getElementsByTagName("p");
+            let pTagList = Array.prototype.slice.call(pList)
+            for (let pIndex in pTagList) {
+                let p = pTagList[pIndex];
+                p.style.fontSize = "100px !important"
+            }
 
-    beforeMount: function () {
-      let pList = document.getElementsByTagName("p");
-      let pTagList = Array.prototype.slice.call(pList)
-      for (let pIndex in pTagList) {
-        let p = pTagList[pIndex];
-        p.style.fontSize = "100px !important"
-      }
+        },
+        methods: {
+            openYuQuePage: function () {
+                let {link, slug} = this.params;
+                let yuQuePageUrl = `https://www.yuque.com/zhoutao123/${link}/${slug}`;
+                window.open(yuQuePageUrl, '_blank');
+            }, toggleCommandVisible: function () {
+                this.visible = !this.visible
+            },
+            openCategory: function () {
+                let {bookId} = this.query;
+                window.location.href = `/page/book/${bookId}`
+            },
+            commentChange: function (e) {
+                this.commentValue = e.target.value;
+            }, nickNameChange: function (e) {
+                this.nickname = e.target.value;
+            }, emailChange: function (e) {
+                this.email = e.target.value;
+            },
+            subComment: function () {
+                if (!this.commentValue) {
+                    return
+                }
+                let host = this.ConstantValue.apiPrefix();
+                let {link, slug} = this.params;
+                let data = {
+                    name: this.nickname,
+                    content: this.commentValue,
+                    url: this.rateValue + "",
+                    email: this.email,
+                    bookName: link,
+                    slug
+                };
+                this.$axios.post(`${host}/book/comment`, data);
+                this.ConstantValue.error("提交成功", "感谢您的评论");
+            }, resetComment: function () {
+                this.commentValue = ''
+            },
+            downloadPdf: function () {
+                //以PDF 形式保存内容
+                if (!this.isPc()) {
+                    this.ConstantValue.error("暂不支持手机端使用此功能", "请使用PC浏览器打印，暂不支持手机浏览器");
+                    return
+                }
+                window.document.body.innerHTML = document.getElementById("contentHtml").innerHTML;
+                window.print();
+                window.location.reload()
+            }, isPc: function () {
+                //判断是否是PC浏览器
+                let userAgentInfo = navigator.userAgent;
+                let Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+                let flag = true;
+                for (let v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            }
 
-    },
-    methods: {
-      openYuQuePage: function () {
-        let {link, slug} = this.params;
-        let yuQuePageUrl = `https://www.yuque.com/zhoutao123/${link}/${slug}`;
-        window.open(yuQuePageUrl, '_blank');
-      }, toggleCommandVisible: function () {
-        this.visible = !this.visible
-      },
-      openCategory: function () {
-        let {bookId} = this.query;
-        window.location.href = `/page/book/${bookId}`
-      },
-      commentChange: function (e) {
-        this.commentValue = e.target.value;
-      }, nickNameChange: function (e) {
-        this.nickname = e.target.value;
-      },
-      subComment: function () {
-        if (!this.commentValue) {
-          return
         }
-        let host = this.ConstantValue.apiPrefix();
-        let {link, slug} = this.params;
-        let data = {
-          name: this.nickname,
-          content: this.commentValue,
-          url: this.rateValue + "",
-          email: '无',
-          bookName: link,
-          slug
-        };
-        this.$axios.post(`${host}/book/comment`, data);
-        this.ConstantValue.error("提交成功", "感谢您的评论");
-      }, resetComment: function () {
-        this.commentValue = ''
-      },
-      downloadPdf: function () {
-        //以PDF 形式保存内容
-        if (!this.isPc()) {
-          this.ConstantValue.error("暂不支持手机端使用此功能", "请使用PC浏览器打印，暂不支持手机浏览器");
-          return
-        }
-        window.document.body.innerHTML = document.getElementById("contentHtml").innerHTML;
-        window.print();
-        window.location.reload()
-      }, isPc: function () {
-        //判断是否是PC浏览器
-        let userAgentInfo = navigator.userAgent;
-        let Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
-        let flag = true;
-        for (let v = 0; v < Agents.length; v++) {
-          if (userAgentInfo.indexOf(Agents[v]) > 0) {
-            flag = false;
-            break;
-          }
-        }
-        return flag;
-      }
-
     }
-  }
 </script>
 
 <style>
@@ -174,7 +184,7 @@
 
   #contentData {
     display: flex;
-    background: #FAFAFA;
+    background: #EFEFEF;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -207,6 +217,7 @@
       width: 75%;
       padding-left: 10px;
       padding-right: 10px;
+      background-color: white;
     }
 
     #comment {
@@ -239,6 +250,7 @@
       width: 100%;
       padding-left: 10px;
       padding-right: 10px;
+      background-color: white;
     }
 
     #comment {
@@ -256,8 +268,10 @@
   }
 
   .lake-codeblock-content {
+    background-color: white !important;
     max-width: 100% !important;
     width: 100% !important;
+    margin-top: 30px !important;
   }
 
   .lake-drag-image {
@@ -265,15 +279,17 @@
     height: auto !important;
   }
 
-  #contentHtml p, #contentHtml a, #contentHtml ol {
+  #contentHtml p, #contentHtml a, #contentHtml ol, #contentHtml li {
     line-height: 30px !important;
     font-size: 17px !important;
     font-weight: 500;
     font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
   }
 
   #contentHtml span {
-    line-height: 25px !important;
+    line-height: 20px;
   }
 
   #contentTitle {
@@ -298,7 +314,7 @@
   }
 
   #buttonGroup {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
 </style>

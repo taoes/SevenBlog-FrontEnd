@@ -5,8 +5,10 @@
       <h1 id="bookTitle">{{book.title}}</h1>
       <span id="subBookTitle">{{book.subTitle}}</span>
     </div>
+
     <div id="content">
       <div id="contentList">
+        <a-alert message="由于本人精力有限，部分文章暂未完成，非常抱歉给您带来不好的体验，笔者将会持续不断的更新，感谢您的理解和关注！" type="warning" show-icon />
         <template v-for="category in this.categoryList">
           <a-divider :key="category.slug" orientation="left"
                      class="dividerLine"

@@ -71,6 +71,8 @@
 
   .descTitle {
     color: #4a4a4a;
+    font-weight: bolder;
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
   }
 
   .content {
