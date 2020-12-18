@@ -130,7 +130,8 @@
                 this.email = e.target.value;
             },
             subComment: function () {
-                if (!this.commentValue) {
+                if (!this.commentValue || this.commentValue === '') {
+                    this.ConstantValue.error("提交失败", "评论内容不能为空");
                     return
                 }
                 let host = this.ConstantValue.apiPrefix();
@@ -144,7 +145,7 @@
                     slug
                 };
                 this.$axios.post(`${host}/book/comment`, data);
-                this.ConstantValue.error("提交成功", "感谢您的评论");
+                this.ConstantValue.info("提交成功", "感谢您的评论");
             }, resetComment: function () {
                 this.commentValue = ''
             },
