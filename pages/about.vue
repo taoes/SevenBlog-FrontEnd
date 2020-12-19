@@ -176,7 +176,7 @@
     export default {
         components: {PCMenu},
         head() {
-            return {title: '关于我'}
+            return {title: '推荐'}
         }, data() {
             return {
                 linkContent: '',

@@ -32,9 +32,6 @@
         <p class="commentContent" slot="content" style="line-height: 1.5">
           {{ item.content }}
         </p>
-        <a-tooltip :title="item.createTime" slot="datetime">
-          <span>{{ item.datetime}}</span>
-        </a-tooltip>
       </a-comment>
     </a-list-item>
   </a-list>
