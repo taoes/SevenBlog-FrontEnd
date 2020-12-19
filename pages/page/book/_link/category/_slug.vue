@@ -288,10 +288,15 @@
   }
 
   .lake-codeblock-content {
-    background-color: white !important;
     max-width: 100% !important;
     width: 100% !important;
     margin-top: 30px !important;
+  }
+
+  .lake-codeblock-content pre {
+    letter-spacing: 2px;
+    font-size: large;
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
   }
 
   .lake-drag-image {
@@ -304,8 +309,6 @@
     font-size: 17px !important;
     font-weight: 500;
     font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
   }
 
   #contentHtml span {

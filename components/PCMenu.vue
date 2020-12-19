@@ -85,7 +85,7 @@
             icon: 'icon-jiaoyizonglan',
             url: '/'
         }, {
-            title: '架构',
+            title: '系统与架构',
             icon: 'icon-moxing1',
             children: [
                 {title: 'DevOps', icon: 'icon-caozuo', url: '/page/book/7'},
@@ -93,7 +93,7 @@
                 {title: '后端架构设计', icon: 'icon-yunbushu', url: '/page/book/2'},
             ]
         }, {
-            title: 'Java',
+            title: 'Java 编程',
             icon: 'icon-java',
             children: [
                 {title: 'Java 虚拟机', icon: 'icon-ts-tubiao_VM', url: '/page/book/1'},
@@ -113,7 +113,7 @@
             ]
         },
         {
-            title: '组件',
+            title: '中间件',
             icon: 'icon-caiji',
             children:
                 [
@@ -123,7 +123,7 @@
                     {title: '高性能服务器', icon: 'icon-jianceqi1', url: '/page/book/4'},
                 ]
         }, {
-            title: '闲谈',
+            title: '落笔闲谈',
             icon: 'icon-dongtaiwenben',
             children: [
                 {title: '影子不长', icon: 'icon-cunchu', url: 'https://love.zhoutao123.com'},
@@ -134,7 +134,7 @@
         }
         ,
         {
-            title: '推荐',
+            title: '资源推荐',
             icon: 'icon-apache',
             url: '/about'
         }
