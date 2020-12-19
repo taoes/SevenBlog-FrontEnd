@@ -294,17 +294,29 @@
   }
 
   .lake-codeblock-content pre {
-    letter-spacing: 2px;
-    font-size: large;
-    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
+    font-size: small;
+    line-height: 18px !important;
   }
+
+  .lake-codeblock-content {
+    background: url(https://pic.zhoutao123.com/blog/img/point.png) !important;
+    width: 100% !important;
+    background-size: 40px !important;
+    background-repeat: no-repeat !important;
+    background-color: #f8f8f8 !important;
+    margin-bottom: 7px !important;
+    border-radius: 5px !important;
+    padding-top: 25px !important;
+    background-position: 10px 10px !important;
+  }
+
 
   .lake-drag-image {
     max-width: 100% !important;
     height: auto !important;
   }
 
-  #contentHtml p, #contentHtml a, #contentHtml ol, #contentHtml li {
+  #contentHtml p,#contentHtml p span, #contentHtml a, #contentHtml ol, #contentHtml li {
     line-height: 30px !important;
     font-size: 17px !important;
     font-weight: 500;
@@ -312,7 +324,7 @@
   }
 
   #contentHtml span {
-    line-height: 20px;
+    line-height: 10px;
   }
 
   #contentTitle {
