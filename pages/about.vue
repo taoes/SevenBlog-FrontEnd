@@ -1,6 +1,6 @@
 <template>
   <div class="aboutContainer">
-    <div id="desktopBackground">
+    <div class="desktopBackground">
       <h1 class="title">燕归来兮</h1>
       <h4 class="subTitle">凡心所向，素履以往，生如逆旅，一苇以航</h4>
       <div id="webSite">
@@ -12,38 +12,19 @@
     </div>
 
 
+    <a-divider key="站点推荐" orientation="center">
+      <template slot="">
+        <span class="linkGroupTitle">站点推荐</span>
+      </template>
+    </a-divider>
     <div class="linkList">
-      <a-divider key="站点推荐" orientation="center">
-        <template slot="">
-          <span class="linkGroupTitle">站点推荐</span>
-        </template>
-      </a-divider>
-
       <a-list :data-source="website" item-layout="horizontal" style="width: 100%">
         <a-list-item slot="renderItem" slot-scope="item, index">
           <a-list-item-meta :description="item.desc">
-            <a :href="item.link" slot="title">{{ item.name }}</a>
+            <a :href="item.link" slot="title" target="_blank">{{ item.name }}</a>
             <img
-              :src="item.icon"
-              slot="avatar"
-              width="50px"
-            />
-          </a-list-item-meta>
-        </a-list-item>
-      </a-list>
-
-
-      <a-divider key="友情链接" orientation="center">
-        <template slot="">
-          <span class="linkGroupTitle">友情链接</span>
-        </template>
-      </a-divider>
-      <a-list :data-source="linkList" item-layout="horizontal" style="width: 100%">
-        <a-list-item slot="renderItem" slot-scope="item, index">
-          <a-list-item-meta :description="item.desc">
-            <a :href="item.link" slot="title">{{ item.name }}</a>
-            <img
-              :src="item.icon"
+              :src="item.icon === undefined?commonWebLogoUrl:item.icon"
+              class="icon"
               slot="avatar"
               width="50px"
             />
@@ -52,9 +33,36 @@
       </a-list>
     </div>
 
-    <div class="linkAdd">
-      <div style="margin: 15px;text-indent: 1rem">
 
+    <a-divider key="友情链接" orientation="center">
+      <template slot="">
+        <span class="linkGroupTitle">友情链接</span>
+      </template>
+    </a-divider>
+
+    <div class="linkList">
+      <a-list :data-source="linkList" item-layout="horizontal" style="width: 100%">
+        <a-list-item slot="renderItem" slot-scope="item, index">
+          <a-list-item-meta :description="item.desc">
+            <a :href="item.link" slot="title">{{ item.name }}</a>
+            <img
+              :src="item.icon === undefined?commonWebLogoUrl:item.icon"
+              alt=""
+              slot="avatar"
+              width="50px"/>
+          </a-list-item-meta>
+        </a-list-item>
+      </a-list>
+    </div>
+
+
+    <a-divider key="友情链接" orientation="center">
+      <template slot="">
+        <span class="linkGroupTitle">链接申请</span>
+      </template>
+    </a-divider>
+    <div class="linkList linkAdd">
+      <div style="margin: 15px;text-indent: 1rem" >
         <p>
           友链的作用就是让来的读者可以更容易的得到他们想要的东西或者去有需求的地方，所以现在友情链接基本上都是和技术相关的网站！如果你是一个喜欢写作的人并且有恒心去坚持的人，博主非常乐意和你做朋友并且交换友情链接的</p>
         <h3>要求</h3>
@@ -87,9 +95,9 @@
       </div>
 
 
-      <a-comment>
+      <a-comment style="width: 100%">
         <div slot="content">
-          <a-form-item>
+          <a-form-item style="width: 100%">
             <a-textarea :value="linkContent" @change="linkContentChange" rows="4"/>
           </a-form-item>
           <a-form-item>
@@ -101,7 +109,6 @@
           </a-form-item>
         </div>
       </a-comment>
-
     </div>
 
     <a-modal
@@ -127,16 +134,20 @@
             desc: '美团技术团队以浓厚的学习和分享氛围享誉业界：每天不止一场内部技术讲座与分享，还有荟萃业界专家的TopTalk，藏书近万的P2P图书馆，帮助同学拓展视野，追求卓越；每年定期举行的Hackathon、Ideathon和MDD Cup算法大赛，激发无限创意；当然还有业内已经有口皆碑的美团技术团队博客与微信公众号（meituantech），每月一次公开的技术沙龙，与同行切磋交流，不亦乐乎……'
         },
         {
-            icon: 'https://pic.zhoutao123.com/blog/logo/ibm.jpg',
             name: 'IBM Developer',
             link: 'https://developer.ibm.com/zh/',
-            desc: '专为开发者打造的技术资源平台。在这里，您可以掌握前沿趋势，获取开源代码，加入全球性社区。开发所需，我们皆有'
+            desc: '专为开发者打造的技术资源平台。在这里，您可以掌握前沿趋势，获取开源代码，加入全球性社区。开发所需，我们皆有！'
         },
         {
             icon: 'https://pic.zhoutao123.com/blog/logo/runoob.png',
             name: 'Running Noob',
             link: 'https://www.runoob.com/',
             desc: '致力于推广各种编程语言技术，所有资源是完全免费的，并且会根据当前互联网的变化实时更新本站内容'
+        },
+        {
+            name: 'HelloGithub',
+            link: 'https://hellogithub.com/',
+            desc: '分享 GitHub 上 有趣、入门级的开源项目'
         },
     ];
 
@@ -170,6 +181,7 @@
             return {
                 linkContent: '',
                 wechatQrCodeUrl: 'https://pic.zhoutao123.com/picture/wechat.png',
+                commonWebLogoUrl: 'https://pic.zhoutao123.com/blog/logo/common_web.png',
                 wechatVisible: false,
                 webSiteList: [],
                 linkList, website
@@ -211,7 +223,7 @@
 </script>
 
 <style scoped>
-  #desktopBackground {
+  .desktopBackground {
     display: flex;
     flex-direction: column;
     background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);
@@ -278,11 +290,13 @@
       flex-wrap: wrap;
     }
 
-    .linkAdd {
-      width: 100%;
+    .ant-list-item {
       padding-left: 10px;
       padding-right: 10px;
-      background-color: white;
+    }
+
+    .linkAdd {
+      width: 100% !important;
     }
   }
 
@@ -299,10 +313,7 @@
     }
 
     .linkAdd {
-      width: 75%;
-      padding-left: 10px;
-      padding-right: 10px;
-      background-color: white;
+      width: 75% !important;
     }
   }
 

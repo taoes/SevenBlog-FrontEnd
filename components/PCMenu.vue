@@ -134,8 +134,8 @@
         }
         ,
         {
-            title: '关于',
-            icon: 'icon-yonghu',
+            title: '推荐',
+            icon: 'icon-apache',
             url: '/about'
         }
     ];

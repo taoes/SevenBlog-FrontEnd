@@ -1,6 +1,6 @@
 <template>
   <div class="desktop">
-    <div id="desktopBackground">
+    <div class="desktopBackground">
       <h1 id="title">燕归来兮</h1>
       <h4 id="subTitle">凡心所向，素履以往，生如逆旅，一苇以航</h4>
       <div id="webSite">
@@ -79,7 +79,7 @@
 </script>
 
 <style scoped>
-  #desktopBackground {
+  .desktopBackground {
     display: flex;
     flex-direction: column;
     background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);

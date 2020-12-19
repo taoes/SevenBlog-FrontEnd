@@ -7,10 +7,10 @@
     <div id="html">
       <a-alert message="由于本人精力有限，部分文章未完成或者完成粗糙，但笔者正在持续更新中，如有您有不同的意见或者建议欢迎留言指导！" show-icon type="info"/>
       <div id="buttonGroup">
-        <a-button @click="openYuQuePage()" icon="yuque" type='primary'>语雀</a-button>
-        <a-button @click="openCategory()" icon="ordered-list" type='primary'>目录</a-button>
-        <a-button @click="likeContent()" icon="heart" type='primary'>点赞</a-button>
-        <a-button @click="downloadPdf()" icon="download" type='primary'>下载</a-button>
+        <a-button @click="openYuQuePage()" icon="yuque"><span class="tipText">语雀文档</span></a-button>
+        <a-button @click="openCategory()" icon="ordered-list"><span class="tipText">目录</span></a-button>
+        <a-button @click="downloadPdf()" icon="download"><span class="tipText">下载</span></a-button>
+        <a-button @click="hurryUp()" icon="bell"><span class="tipText">催一下</span></a-button>
       </div>
       <a-divider/>
 
@@ -149,6 +149,21 @@
             }, resetComment: function () {
                 this.commentValue = ''
             },
+            hurryUp: function () {
+                let host = this.ConstantValue.apiPrefix();
+                let {link, slug} = this.params;
+                let data = {
+                    name: "匿名读者00" + Math.floor(Math.random() * 10),
+                    content: `博主 快快更新 ${this.content.title} 特别期待!!!`,
+                    url: 5,
+                    email: this.email,
+                    bookName: link,
+                    slug
+                };
+                this.$axios.post(`${host}/book/comment`, data);
+                this.ConstantValue.info("催促成功", "您的催促博主已经收到，我会尽快完成此文章，感谢您的关注!!!");
+
+            },
             downloadPdf: function () {
                 //以PDF 形式保存内容
                 if (!this.isPc()) {
@@ -258,6 +273,10 @@
       background-color: white;
       width: 100%;
       padding: 30px;
+    }
+
+    .tipText {
+      display: none !important;
     }
   }
 
