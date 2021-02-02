@@ -6,7 +6,7 @@
           <template v-if="menu.children == null">
             <a-menu-item :key="menu.url">
             <span class="menuTitle"><i
-              :class="'icon iconfont '+ menu.icon"></i>{{menu.title}}</span>
+              :class="'icon iconfont '+ menu.icon"></i> <b>{{menu.title}}</b></span>
             </a-menu-item>
           </template>
           <!--        多级菜单-->
@@ -14,12 +14,12 @@
             <a-sub-menu :key="menu.title">
             <span class="submenu-title-wrapper" slot="title">
               <span class="menuTitle"><i
-                :class="'icon iconfont '+ menu.icon"></i>{{menu.title}}</span>
+                :class="'icon iconfont '+ menu.icon"></i><b>{{menu.title}}</b></span>
             </span>
               <template v-for="item in menu.children">
                 <a-menu-item :key="item.url">
                 <span class="menuTitle"><i
-                  :class="'icon iconfont '+ item.icon"></i>{{item.title}}</span>
+                  :class="'icon iconfont '+ item.icon"></i><b>{{item.title}}</b></span>
                 </a-menu-item>
               </template>
             </a-sub-menu>
@@ -85,7 +85,7 @@
             icon: 'icon-jiaoyizonglan',
             url: '/'
         }, {
-            title: '系统与架构',
+            title: '系统架构',
             icon: 'icon-moxing1',
             children: [
                 {title: 'DevOps', icon: 'icon-caozuo', url: '/page/book/7'},
@@ -93,7 +93,7 @@
                 {title: '后端架构设计', icon: 'icon-yunbushu', url: '/page/book/2'},
             ]
         }, {
-            title: 'Java 编程',
+            title: 'Java编程',
             icon: 'icon-java',
             children: [
                 {title: 'Java 虚拟机', icon: 'icon-ts-tubiao_VM', url: '/page/book/1'},
@@ -103,7 +103,7 @@
             ]
         },
         {
-            title: '编程',
+            title: '编程技术',
             icon: 'icon-zuoye',
             children: [
                 {title: '数据结构', icon: 'icon-liuchengmoxing', url: '/page/book/13'},

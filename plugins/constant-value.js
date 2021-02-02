@@ -41,11 +41,6 @@ let ConstantValue = {
             theme: 'outlined',
             url: "https://www.zhihu.com/people/zhoutao825638"
           }, {
-            title: "微信",
-            icon: "wechat",
-            theme: 'outlined',
-            url: "wechat"
-          }, {
             title: "邮件",
             icon: "mail",
             theme: 'outlined',

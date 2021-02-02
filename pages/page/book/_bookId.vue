@@ -176,8 +176,8 @@
   #categoryBackDiv {
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);
-    /*background: url('https://pic.zhoutao123.com/picture/background/bg-mia.jpg');*/
+    /*background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);*/
+    background: url('https://pic.zhoutao123.com/picture/background/bg-mia.jpg');
     object-fit: cover;
     height: 300px;
     width: 100%;
