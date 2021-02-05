@@ -20,7 +20,7 @@ let ConstantValue = {
       indexIcon: function () {
         return [
           {
-            title: "语雀文档",
+            title: "语雀",
             name: "yuque",
             icon: "yuque",
             theme: 'filled',

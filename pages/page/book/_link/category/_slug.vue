@@ -7,7 +7,7 @@
     <div id="html">
       <a-alert message="由于本人精力有限，部分文章未完成或者完成粗糙，但笔者正在持续更新中，如有您有不同的意见或者建议欢迎留言指导！" show-icon type="info"/>
       <div id="buttonGroup">
-        <a-button @click="openYuQuePage()" icon="yuque"><span class="tipText">语雀文档</span></a-button>
+        <a-button @click="openYuQuePage()" icon="yuque"><span class="tipText">语雀</span></a-button>
         <a-button @click="openCategory()" icon="ordered-list"><span class="tipText">目录</span></a-button>
         <a-button @click="downloadPdf()" icon="download"><span class="tipText">下载</span></a-button>
         <a-button @click="hurryUp()" icon="bell"><span class="tipText">催一下</span></a-button>
