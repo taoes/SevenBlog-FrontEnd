@@ -1,4 +1,4 @@
 module.exports = {
-  domain: 'http://localhost:9999',
+  domain: 'https://api.zhoutao123.com',
   apiDomain: 'https://api.zhoutao123.com'
 }
