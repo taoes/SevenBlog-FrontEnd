@@ -104,13 +104,11 @@ export default {
   color: white;
   font-size: 50px;
   transition: all 0.8s linear;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
 }
 
 #subTitle {
   color: white;
   font-size: 20px;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
 }
 
 #title:hover {
