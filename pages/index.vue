@@ -2,7 +2,7 @@
   <div class="desktop">
     <div class="desktopBackground">
       <h1 id="title">燕归来兮</h1>
-      <h4 id="subTitle">凡心所向，素履以往，生如逆旅，一苇以航</h4>
+      <span id="subTitle">凡心所向，素履以往，生如逆旅，一苇以航</span>
       <div id="webSite">
         <a-icon :key="web.url" :theme="web.theme" :type="web.icon" @click="toWebSitePage(web.url)"
                 class="websiteIcon"
@@ -16,15 +16,6 @@
         <a-divider/>
       </template>
     </div>
-    <a-modal
-      :footer="[]"
-      :visible="wechatVisible"
-      @cancel="closeWechatModal"
-      @ok="closeWechatModal()"
-      title="添加微信"
-      width="400px">
-      <img :src="wechatLogo" alt="" width="100%"/>
-    </a-modal>
   </div>
 </template>
 
@@ -79,8 +70,8 @@ export default {
 .desktopBackground {
   display: flex;
   flex-direction: column;
-  /*background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);*/
-  background: url('https://pic.zhoutao123.com/picture/background/bg-contact.jpg');
+  background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);
+  /*background: url('https://pic.zhoutao123.com/picture/background/bg-contact.jpg');*/
   object-fit: cover;
   height: 300px;
   width: 100%;
@@ -104,6 +95,8 @@ export default {
   color: white;
   font-size: 50px;
   transition: all 0.8s linear;
+  font-weight: bolder;
+  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
 }
 
 #subTitle {

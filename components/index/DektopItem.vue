@@ -34,6 +34,7 @@
     .desktopItemPic {
       width: 300px;
       object-fit: contain;
+      border-radius: 10px;
     }
 
 
@@ -52,6 +53,7 @@
     .desktopItemPic {
       width: 300px;
       object-fit: contain;
+      border-radius: 10px;
     }
   }
 
@@ -59,6 +61,8 @@
     margin-left: 25px;
     font-size: 25px;
     margin-top: 15px;
+    font-weight: bolder;
+    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
   }
 
 
@@ -71,12 +75,12 @@
 
   .descTitle {
     color: #4a4a4a;
-    font-weight: bolder;
+    font-weight: normal;
   }
 
   .content {
-    font-size: 16px;
-    color: #010101;
+    font-size: 14px;
+    color: #040404;
   }
 
 

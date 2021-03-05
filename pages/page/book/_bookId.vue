@@ -61,6 +61,9 @@ export default {
   }, methods: {
     //跳转到内容页面
     toContent(slug) {
+      if (slug === '#') {
+        return
+      }
       let {bookId} = this.params;
       let {linkUrl} = this.book;
       window.location.href = `/page/book/${linkUrl}/category/${slug}?bookId=${bookId}`
@@ -135,19 +138,18 @@ export default {
 
 
 .title1 {
-  font-size: 25px;
+  font-size: 20px;
   padding-top: 10px;
   cursor: pointer;
   width: fit-content;
   line-height: 1;
   color: black;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
 }
 
 .title2 {
-  font-size: 18px;
+  font-size: 17px;
   margin-left: 40px;
-  margin-top: 5px;
+  margin-top: 3px;
   margin-bottom: 5px;
   cursor: pointer;
   width: fit-content;
@@ -167,6 +169,7 @@ export default {
   -moz-transition: all .1s;
   -webkit-transition: all .1s;
   -o-transition: all .1s;
+  color: #001529;
   font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
 }
 
@@ -174,7 +177,6 @@ export default {
 .title2:hover, .title3:hover {
   color: black;
   font-weight: 900;
-  transform: scale(1.1);
   font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
 }
 

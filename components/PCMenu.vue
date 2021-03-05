@@ -6,7 +6,7 @@
           <template v-if="menu.children == null">
             <a-menu-item :key="menu.url">
             <span class="menuTitle"><i
-              :class="'icon iconfont '+ menu.icon"></i> <b>{{menu.title}}</b></span>
+              :class="'icon iconfont '+ menu.icon"></i> {{menu.title}}</span>
             </a-menu-item>
           </template>
           <!--        多级菜单-->
@@ -14,12 +14,12 @@
             <a-sub-menu :key="menu.title">
             <span class="submenu-title-wrapper" slot="title">
               <span class="menuTitle"><i
-                :class="'icon iconfont '+ menu.icon"></i><b>{{menu.title}}</b></span>
+                :class="'icon iconfont '+ menu.icon"></i>{{menu.title}}</span>
             </span>
               <template v-for="item in menu.children">
                 <a-menu-item :key="item.url">
                 <span class="menuTitle"><i
-                  :class="'icon iconfont '+ item.icon"></i><b>{{item.title}}</b></span>
+                  :class="'icon iconfont '+ item.icon"></i>{{item.title}}</span>
                 </a-menu-item>
               </template>
             </a-sub-menu>
@@ -81,7 +81,7 @@
 
     const menuList = [
         {
-            title: '主页',
+            title: '网站主页',
             icon: 'icon-jiaoyizonglan',
             url: '/'
         }, {
@@ -93,7 +93,7 @@
                 {title: '后端架构设计', icon: 'icon-yunbushu', url: '/page/book/2'},
             ]
         }, {
-            title: 'Java编程',
+            title: 'Java 编程',
             icon: 'icon-java',
             children: [
                 {title: 'Java 虚拟机', icon: 'icon-ts-tubiao_VM', url: '/page/book/1'},
@@ -103,7 +103,7 @@
             ]
         },
         {
-            title: '编程技术',
+            title: '编程开发',
             icon: 'icon-zuoye',
             children: [
                 {title: '数据结构', icon: 'icon-liuchengmoxing', url: '/page/book/13'},
@@ -113,7 +113,7 @@
             ]
         },
         {
-            title: '中间件',
+            title: '中间件系统',
             icon: 'icon-caiji',
             children:
                 [
@@ -123,7 +123,7 @@
                     {title: '高性能服务器', icon: 'icon-jianceqi1', url: '/page/book/4'},
                 ]
         }, {
-            title: '落笔闲谈',
+            title: '闲情杂谈',
             icon: 'icon-dongtaiwenben',
             children: [
                 {title: '影子不长', icon: 'icon-cunchu', url: 'https://love.zhoutao123.com'},
