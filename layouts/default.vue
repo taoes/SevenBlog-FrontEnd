@@ -12,10 +12,10 @@
 
 </style>
 <script>
-    import PCMenu from "../components/PCMenu";
-    import Footer from "../components/Footer";
+import PCMenu from "@/components/PCMenu";
+import Footer from "@/components/Footer";
 
-    export default {
-        components: {Footer, PCMenu}
-    }
+export default {
+  components: {Footer, PCMenu}
+}
 </script>

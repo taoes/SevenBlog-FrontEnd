@@ -1,24 +1,29 @@
 <template>
   <div class="desktopItem">
-    <img :alt="image" :src="image" class="desktopItemPic">
+    <img :alt="coverImgUrl" :src="coverImgUrl" class="desktopItemPic">
     <div id="content">
-      <h1 class="descTitle">{{ title }}</h1>
-      <p class="content" v-html="content"></p>
+      <h1 class="descTitle" @click="openArticle(bookSlug,slug)">{{ title }}</h1>
+      <p class="content" v-html="desc"></p>
     </div>
   </div>
+
 </template>
 
 
 <script>
-
 export default {
-  name: "DesktopItem",
-  props: {title: String, content: String, image: String}
+  name: 'PublishRecord',
+  props: {title: String, desc: String, coverImgUrl: String, bookSlug: String, slug: String},
+  data() {
+    return {}
+  }, methods: {
+    openArticle: function (bookSlug, slug) {
+      window.open(`/page/book/${bookSlug}/category/${slug}`)
+    }
+  }
 }
 
-
 </script>
-
 <style scoped>
 
 @media screen and (max-width: 780px) {
@@ -26,6 +31,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 87%;
     margin-top: 30px;
     margin-bottom: 20px;
   }
@@ -44,6 +50,7 @@ export default {
   .desktopItem {
     display: flex;
     flex-direction: row;
+    width: 67%;
     margin-top: 30px;
     margin-bottom: 20px;
   }
@@ -83,3 +90,4 @@ export default {
 
 
 </style>
+

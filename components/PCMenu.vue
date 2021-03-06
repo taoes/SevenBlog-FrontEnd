@@ -134,7 +134,7 @@
         }
         ,
         {
-            title: '资源推荐',
+            title: '关于我',
             icon: 'icon-apache',
             url: '/about'
         }
