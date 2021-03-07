@@ -1,9 +1,10 @@
 <template>
   <div class="desktopItem">
-    <img :alt="coverImgUrl" :src="coverImgUrl" class="desktopItemPic">
-    <div id="content">
-      <h1 class="descTitle" @click="openArticle(bookSlug,slug)">{{ title }}</h1>
-      <p class="content" v-html="desc"></p>
+    <img :alt="coverImgUrl" :src="coverImgUrl" class="desktopItemPic"
+         @click="openArticle(bookSlug,slug)">
+    <div id="content" @click="openArticle(bookSlug,slug)">
+      <h1 class="recordTitle" @click="openArticle(bookSlug,slug)">{{ title }}</h1>
+      <p class="recordContent" v-html="desc"></p>
     </div>
   </div>
 
@@ -78,12 +79,13 @@ export default {
 }
 
 
-.descTitle {
+.recordTitle {
   color: #4a4a4a;
+  cursor: grab;
   font-weight: normal;
 }
 
-.content {
+.recordContent {
   font-size: 14px;
   color: #040404;
 }
