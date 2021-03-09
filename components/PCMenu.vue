@@ -109,7 +109,7 @@
                 {title: '数据结构', icon: 'icon-liuchengmoxing', url: '/page/book/13'},
                 {title: '设计模式', icon: 'icon-shuxing', url: '/page/book/6'},
                 {title: '计算机网络', icon: 'icon-lianlu', url: 'pause1'},
-                {title: '其他编程语言', icon: 'icon-coding', url: 'pause2'}
+                {title: '其他编程语言', icon: 'icon-coding', url: '/page/book/5'}
             ]
         },
         {
