@@ -1,9 +1,8 @@
 <template>
-  <div class="desktopItem">
-    <img :alt="coverImgUrl" :src="coverImgUrl" class="desktopItemPic"
-         @click="openArticle(bookSlug,slug)">
-    <div id="content" @click="openArticle(bookSlug,slug)">
-      <h1 class="recordTitle" @click="openArticle(bookSlug,slug)">{{ title }}</h1>
+  <div class="desktopItem" @click="openArticle(bookSlug,slug)">
+    <img :alt="coverImgUrl" :src="coverImgUrl" class="desktopItemPic">
+    <div id="content">
+      <h1 class="recordTitle">{{ title }}</h1>
       <p class="recordContent" v-html="desc"></p>
     </div>
   </div>
