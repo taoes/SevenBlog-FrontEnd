@@ -176,7 +176,7 @@
 
   .menuTitle {
     color: white;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .icon {

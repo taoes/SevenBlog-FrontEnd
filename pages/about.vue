@@ -145,9 +145,9 @@ let website = [
     desc: '致力于推广各种编程语言技术，所有资源是完全免费的，并且会根据当前互联网的变化实时更新本站内容'
   },
   {
-    name: 'HelloGithub',
-    link: 'https://hellogithub.com/',
-    desc: '分享 GitHub 上 有趣、入门级的开源项目'
+    name: 'ThoughtWorks洞见',
+    link: 'https://insights.thoughtworks.cn/',
+    desc: 'TW洞见就是这样的媒体渠道，汇集了来自TW最优秀的那些经验和思考，分享给真正对软件有意愿思考和不断改进的人'
   },
 ];
 
@@ -214,7 +214,6 @@ export default {
         this.ConstantValue.error("提交失败", "友情链接内容不能为空");
         return
       }
-      let host = this.ConstantValue.apiPrefix();
       let data = {
         name: "友链申请",
         content: this.linkContent,
@@ -247,14 +246,12 @@ export default {
   color: white;
   font-size: 45px;
   font-weight: bold;
-  font-family: "PT Serif", 'Times New Roman', Times, serif !important;
   transition: all 0.8s linear;
 }
 
 .subTitle {
   color: white;
   font-size: 20px;
-  font-family: "PT Serif", 'Times New Roman', Times, serif !important;
 }
 
 #webSite {

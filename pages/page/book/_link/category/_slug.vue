@@ -229,7 +229,6 @@ export default {
     font-size: 40px;
     letter-spacing: 3px;
     font-weight: 900;
-    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
   }
 
   #addComment {
@@ -262,7 +261,6 @@ export default {
   #contentTitle h1 {
     margin-top: 20px;
     font-weight: 900;
-    font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
   }
 
   #addComment {
@@ -323,7 +321,6 @@ export default {
   line-height: 30px !important;
   font-size: 17px !important;
   font-weight: 500;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif !important;
 }
 
 #contentHtml span {

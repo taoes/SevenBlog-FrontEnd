@@ -98,7 +98,6 @@ export default {
   font-size: 18px;
   text-align: center;
   font-weight: 600;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
   color: white;
 }
 
@@ -160,7 +159,6 @@ export default {
   -moz-transition: all .1s;
   -webkit-transition: all .1s;
   -o-transition: all .1s;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
 }
 
 .title3 {
@@ -170,14 +168,12 @@ export default {
   -webkit-transition: all .1s;
   -o-transition: all .1s;
   color: #001529;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
 }
 
 
 .title2:hover, .title3:hover {
   color: black;
   font-weight: 900;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
 }
 
 #categoryBackDiv {
@@ -197,6 +193,5 @@ export default {
 .dividerLine {
   width: 100%;
   margin-top: 20px;
-  font-family: 'PT Serif', 'Times New Roman', Times, serif;
 }
 </style>

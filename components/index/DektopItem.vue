@@ -60,7 +60,6 @@ export default {
   font-size: 25px;
   margin-top: 15px;
   font-weight: bolder;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
 }
 
 
@@ -77,7 +76,7 @@ export default {
 }
 
 .content {
-  font-size: 14px;
+  font-size: 16px;
   color: #040404;
 }
 

@@ -98,7 +98,6 @@ export default {
   font-size: 50px;
   transition: all 0.8s linear;
   font-weight: bolder;
-  font-family: "Noto Serif", "PT Serif", 'Times New Roman', Times, serif;
 }
 
 #subTitle {
