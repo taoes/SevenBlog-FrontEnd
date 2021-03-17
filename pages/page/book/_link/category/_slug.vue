@@ -101,9 +101,8 @@ export default {
     const html = book.data.body_html;
     const bodyHtml = !html ? "" : html.replace(new RegExp('https://cdn.nlark.com/', 'gm'),
       'https://api.zhoutao123.com/picture?param=');
-    // app.head.title = `${book.data.title}-燕归来兮`;
+    app.head.title = `${book.data.title}-燕归来兮`;
     app.head.meta[0].description = book.data.description;
-    console.log(book.data.description)
     query.bookId = bookId;
     return {content: book.data, bodyHtml, params, commentList, query}
   },
