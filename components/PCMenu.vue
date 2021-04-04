@@ -176,12 +176,12 @@
 
   .menuTitle {
     color: white;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .icon {
     margin-right: 5px;
-    width: 16px;
+    width: 13px;
     color: white;
   }
 
