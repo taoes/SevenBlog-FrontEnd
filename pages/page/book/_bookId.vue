@@ -91,6 +91,7 @@ export default {
   color: white;
   text-align: center;
   text-transform: uppercase;
+  text-shadow: 1px 1px 3px #000;
 }
 
 
@@ -99,6 +100,7 @@ export default {
   text-align: center;
   font-weight: 600;
   color: white;
+  text-shadow: 1px 1px 3px #000;
 }
 
 @media screen and (min-width: 780px) {
@@ -107,7 +109,7 @@ export default {
     justify-content: center;
     padding: 50px;
     width: 100%;
-    background: #FAFAFA;
+    background: white;
     min-height: 1024px;
     margin-bottom: 30px;
   }
@@ -179,7 +181,8 @@ export default {
 #categoryBackDiv {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);
+  background: url('https://www.qikqiak.com/img/posts/photo-1531826912410-2811a685b572.jpeg') no-repeat 51% 54%;
+  /*background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);*/
   /*background: url('https://pic.zhoutao123.com/picture/background/bg-mia.jpg');*/
   object-fit: cover;
   height: 300px;

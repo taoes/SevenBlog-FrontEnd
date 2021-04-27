@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="PCMenu">
-      <a-menu @click="itemClick" mode="horizontal" theme="dark" v-model="current">
+      <a-menu @click="itemClick" mode="horizontal" theme="light" v-model="current">
         <template v-for="menu in menuList">
           <template v-if="menu.children == null">
             <a-menu-item :key="menu.url">
@@ -175,14 +175,13 @@
 <style scoped>
 
   .menuTitle {
-    color: white;
-    font-size: 14px;
+    color: black;
   }
 
   .icon {
     margin-right: 5px;
     width: 13px;
-    color: white;
+    color: black;
   }
 
   @media screen and (max-width: 780px) {

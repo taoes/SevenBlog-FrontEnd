@@ -72,7 +72,8 @@ export default {
 .desktopBackground {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);
+  background: url('https://www.qikqiak.com/img/posts/photo-1531826912410-2811a685b572.jpeg') no-repeat 51% 54%;
+  /*background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);*/
   /*background: url('https://pic.zhoutao123.com/picture/background/bg-contact.jpg');*/
   object-fit: cover;
   height: 300px;
@@ -98,18 +99,21 @@ export default {
   font-size: 50px;
   transition: all 0.8s linear;
   font-weight: bolder;
+  text-shadow: 1px 1px 3px #000;
 }
 
 #subTitle {
   color: white;
   font-size: 20px;
+  text-shadow: 1px 1px 3px #000;
 }
 
 #title:hover {
   letter-spacing: 4px;
-  font-size: 60px;
+  /*font-size: 60px;*/
   transition: all 0.5s linear;
   margin-top: -20px;
+  text-shadow: 1px 1px 3px #000;
   color: snow;
 }
 

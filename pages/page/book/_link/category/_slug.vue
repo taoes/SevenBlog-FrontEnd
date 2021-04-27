@@ -203,7 +203,7 @@ export default {
 
 #contentData {
   display: flex;
-  background: #EFEFEF;
+  background: white;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -330,8 +330,9 @@ export default {
 #contentTitle {
   display: flex;
   flex-direction: column;
+  background: url('https://www.qikqiak.com/img/posts/photo-1531826912410-2811a685b572.jpeg') no-repeat 51% 54%;
   /*background: url('https://pic.zhoutao123.com/picture/background/bg-mia.jpg');*/
-  background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);
+  /*background-image: linear-gradient(160deg, #7474BF 20%, #348AC7 80%);*/
   object-fit: cover;
   height: 300px;
   width: 100%;
@@ -346,6 +347,8 @@ export default {
   color: white;
   font-size: 40px;
   text-align: center;
+  font-weight: 900;
+  font-family: Serif, "Microsoft YaHei", Serif, !important;
 }
 
 #buttonGroup {
